@@ -24,9 +24,12 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
       {/* Hero Section - Meet AqionVox Ai */}
       <section className="relative py-24 px-6 max-w-7xl mx-auto z-10">
           <div className="text-center max-w-4xl mx-auto mb-20">
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">Meet <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">AqionVox Ai</span></h1>
+              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+                  Meet <br className="md:hidden" />
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">AqionVox Ai</span>
+              </h1>
               <p className="text-xl md:text-2xl text-slate-300 leading-relaxed font-light">
-                  UAE's first AI Revenue Engine.
+                  Your New AI <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 font-semibold">Revenue</span> Engine
               </p>
           </div>
 
