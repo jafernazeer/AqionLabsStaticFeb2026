@@ -61,22 +61,22 @@ const HeroSection = () => {
       });
 
       // Entrance (0-30%): micro parallax only
-      scrollTl.fromTo(bg, 
-        { y: 0 }, 
-        { y: '-2vh', ease: 'none' }, 
+      scrollTl.fromTo(bg,
+        { y: 0 },
+        { y: '-2vh', ease: 'none' },
         0
       );
 
       // Exit (70-100%): panel exits, background scales
-      scrollTl.fromTo(panel, 
-        { y: 0, opacity: 1 }, 
-        { y: '-18vh', opacity: 0, ease: 'power2.in' }, 
+      scrollTl.fromTo(panel,
+        { y: 0, opacity: 1 },
+        { y: '-18vh', opacity: 0, ease: 'power2.in' },
         0.7
       );
 
-      scrollTl.fromTo(bg, 
-        { scale: 1, y: '-2vh' }, 
-        { scale: 1.04, y: '-8vh', ease: 'none' }, 
+      scrollTl.fromTo(bg,
+        { scale: 1, y: '-2vh' },
+        { scale: 1.04, y: '-8vh', ease: 'none' },
         0.7
       );
 
@@ -95,34 +95,28 @@ const HeroSection = () => {
   };
 
   return (
-    <section 
-      ref={sectionRef} 
+    <section
+      ref={sectionRef}
       className="section-pinned z-10"
     >
-      {/* Background Image */}
-      <div 
+      {/* Background Grid */}
+      <div
         ref={bgRef}
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full bg-navy-950 bg-grid-indigo pointer-events-none"
       >
-        <img 
-          src="/images/bg-hero.jpg" 
-          alt="Modern logistics hub"
-          className="w-full h-full object-cover"
-          style={{ filter: 'saturate(0.85) contrast(1.05)' }}
-        />
         <div className="bg-overlay" />
       </div>
 
       {/* Glass Panel */}
-      <div 
+      <div
         ref={panelRef}
         className="absolute left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2 w-[min(86vw,1100px)] min-h-[min(52vh,520px)] glass-panel flex flex-col items-center justify-center px-8 py-12 lg:px-16 lg:py-16"
       >
         {/* Pills */}
         <div ref={pillsRef} className="flex flex-wrap justify-center gap-2 lg:gap-3 mb-8">
           {pills.map((pill) => (
-            <button 
-              key={pill} 
+            <button
+              key={pill}
               onClick={() => scrollToSection(`#${pill.toLowerCase()}`)}
               className="pill"
             >
@@ -133,14 +127,14 @@ const HeroSection = () => {
 
         {/* Logo */}
         <div ref={logoRef} className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2EE9A8] to-[#1DB584] flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-400 to-purple-400 flex items-center justify-center">
             <span className="text-[#070B14] font-bold text-xl">A</span>
           </div>
           <span className="text-[#F4F7FF] font-semibold text-xl">AqionFlo</span>
         </div>
 
         {/* Headline */}
-        <h1 
+        <h1
           ref={headlineRef}
           className="text-[clamp(32px,5vw,64px)] font-semibold text-[#F4F7FF] text-center leading-tight mb-4"
         >
@@ -148,7 +142,7 @@ const HeroSection = () => {
         </h1>
 
         {/* Subheadline */}
-        <p 
+        <p
           ref={subheadlineRef}
           className="text-[#A7B1C8] text-center text-base lg:text-lg max-w-2xl mb-8 leading-relaxed"
         >
@@ -157,14 +151,14 @@ const HeroSection = () => {
 
         {/* CTAs */}
         <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4">
-          <button 
+          <button
             onClick={() => scrollToSection('#cta')}
             className="btn-primary"
           >
             Request a demo
             <ArrowRight size={18} />
           </button>
-          <button 
+          <button
             onClick={() => scrollToSection('#financial')}
             className="btn-secondary"
           >

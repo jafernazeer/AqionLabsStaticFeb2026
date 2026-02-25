@@ -54,7 +54,7 @@ const Footer = () => {
             {/* Brand Column */}
             <div className="col-span-2">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2EE9A8] to-[#1DB584] flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#818cf8] to-[#c084fc] flex items-center justify-center">
                   <span className="text-[#070B14] font-bold text-xl">A</span>
                 </div>
                 <span className="text-[#F4F7FF] font-semibold text-xl">AqionFlo</span>
@@ -70,7 +70,7 @@ const Footer = () => {
                     key={index}
                     href={social.href}
                     aria-label={social.label}
-                    className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#A7B1C8] hover:text-[#2EE9A8] hover:border-[#2EE9A8]/30 transition-all"
+                    className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#A7B1C8] hover:text-[#818cf8] hover:border-[#818cf8]/30 transition-all"
                   >
                     {social.icon}
                   </a>
@@ -109,7 +109,7 @@ const Footer = () => {
               {/* Badges */}
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
-                  <div className="w-2 h-2 rounded-full bg-[#2EE9A8] animate-pulse" />
+                  <div className="w-2 h-2 rounded-full bg-[#818cf8] animate-pulse" />
                   <span className="text-[#A7B1C8] text-xs">System Operational</span>
                 </div>
                 <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">

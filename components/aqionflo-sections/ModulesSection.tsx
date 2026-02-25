@@ -73,7 +73,7 @@ const ModulesSection = () => {
       title: 'Dashboard',
       description: 'Real-time visibility into financial health, liquidity, and key metrics at a glance.',
       features: ['Financial Health', 'Liquidity Pulse', 'Expense Breakdown'],
-      color: '#2EE9A8'
+      color: '#818cf8'
     },
     {
       icon: <ShoppingCart size={28} />,

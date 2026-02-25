@@ -92,7 +92,7 @@ const CTASection = () => {
       </div>
 
       {/* Radial Gradient */}
-      <div className="absolute inset-0 bg-gradient-radial from-[#2EE9A8]/5 via-transparent to-transparent opacity-50" />
+      <div className="absolute inset-0 bg-gradient-radial from-[#818cf8]/5 via-transparent to-transparent opacity-50" />
 
       <div className="relative w-full px-6 lg:px-12">
         <div className="max-w-6xl mx-auto">
@@ -110,8 +110,8 @@ const CTASection = () => {
               {/* Contact Info */}
               <div className="space-y-4 mb-8">
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-[#2EE9A8]/10 flex items-center justify-center">
-                    <Mail size={18} className="text-[#2EE9A8]" />
+                  <div className="w-10 h-10 rounded-lg bg-[#818cf8]/10 flex items-center justify-center">
+                    <Mail size={18} className="text-[#818cf8]" />
                   </div>
                   <div>
                     <div className="text-[#A7B1C8] text-sm">Email us</div>
@@ -119,8 +119,8 @@ const CTASection = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-[#2EE9A8]/10 flex items-center justify-center">
-                    <Phone size={18} className="text-[#2EE9A8]" />
+                  <div className="w-10 h-10 rounded-lg bg-[#818cf8]/10 flex items-center justify-center">
+                    <Phone size={18} className="text-[#818cf8]" />
                   </div>
                   <div>
                     <div className="text-[#A7B1C8] text-sm">Call us</div>
@@ -128,8 +128,8 @@ const CTASection = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-[#2EE9A8]/10 flex items-center justify-center">
-                    <MapPin size={18} className="text-[#2EE9A8]" />
+                  <div className="w-10 h-10 rounded-lg bg-[#818cf8]/10 flex items-center justify-center">
+                    <MapPin size={18} className="text-[#818cf8]" />
                   </div>
                   <div>
                     <div className="text-[#A7B1C8] text-sm">Visit us</div>
@@ -150,8 +150,8 @@ const CTASection = () => {
               <div className="glass-panel p-8">
                 {isSubmitted ? (
                   <div className="text-center py-12">
-                    <div className="w-16 h-16 rounded-full bg-[#2EE9A8]/20 flex items-center justify-center mx-auto mb-4">
-                      <CheckCircle size={32} className="text-[#2EE9A8]" />
+                    <div className="w-16 h-16 rounded-full bg-[#818cf8]/20 flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle size={32} className="text-[#818cf8]" />
                     </div>
                     <h3 className="text-[#F4F7FF] text-xl font-semibold mb-2">Thank you!</h3>
                     <p className="text-[#A7B1C8]">We'll be in touch within 24 hours.</p>
@@ -166,7 +166,7 @@ const CTASection = () => {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-[#F4F7FF] placeholder:text-white/30 focus:outline-none focus:border-[#2EE9A8]/50 transition-colors"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-[#F4F7FF] placeholder:text-white/30 focus:outline-none focus:border-[#818cf8]/50 transition-colors"
                         placeholder="John Doe"
                       />
                     </div>
@@ -178,7 +178,7 @@ const CTASection = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-[#F4F7FF] placeholder:text-white/30 focus:outline-none focus:border-[#2EE9A8]/50 transition-colors"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-[#F4F7FF] placeholder:text-white/30 focus:outline-none focus:border-[#818cf8]/50 transition-colors"
                         placeholder="john@company.com"
                       />
                     </div>
@@ -190,7 +190,7 @@ const CTASection = () => {
                         value={formData.company}
                         onChange={handleChange}
                         required
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-[#F4F7FF] placeholder:text-white/30 focus:outline-none focus:border-[#2EE9A8]/50 transition-colors"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-[#F4F7FF] placeholder:text-white/30 focus:outline-none focus:border-[#818cf8]/50 transition-colors"
                         placeholder="Acme Inc."
                       />
                     </div>
@@ -201,7 +201,7 @@ const CTASection = () => {
                         value={formData.message}
                         onChange={handleChange}
                         rows={4}
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-[#F4F7FF] placeholder:text-white/30 focus:outline-none focus:border-[#2EE9A8]/50 transition-colors resize-none"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-[#F4F7FF] placeholder:text-white/30 focus:outline-none focus:border-[#818cf8]/50 transition-colors resize-none"
                         placeholder="Tell us about your project..."
                       />
                     </div>

@@ -99,7 +99,7 @@ const DashboardShowcase = () => {
       style={{ zIndex: 30 }}
     >
       {/* Background Gradient */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#2EE9A8]/5 to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#818cf8]/5 to-transparent pointer-events-none" />
 
       <div className="relative w-full px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
@@ -122,9 +122,9 @@ const DashboardShowcase = () => {
                 {highlights.map((item, index) => (
                   <div 
                     key={index}
-                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#2EE9A8]/10 border border-[#2EE9A8]/20"
+                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#818cf8]/10 border border-[#818cf8]/20"
                   >
-                    <span className="text-[#2EE9A8]">{item.icon}</span>
+                    <span className="text-[#818cf8]">{item.icon}</span>
                     <span className="text-[#F4F7FF] text-sm">{item.text}</span>
                   </div>
                 ))}
@@ -143,7 +143,7 @@ const DashboardShowcase = () => {
             {/* Right - Dashboard Preview */}
             <div ref={dashboardRef} className="relative">
               {/* Glow Effect */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-[#2EE9A8]/20 to-[#3B82F6]/20 rounded-3xl blur-2xl opacity-50" />
+              <div className="absolute -inset-4 bg-gradient-to-r from-[#818cf8]/20 to-[#3B82F6]/20 rounded-3xl blur-2xl opacity-50" />
               
               {/* Dashboard Frame */}
               <div className="relative bg-white rounded-2xl overflow-hidden shadow-2xl">
@@ -166,7 +166,7 @@ const DashboardShowcase = () => {
                   {/* Header */}
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2EE9A8] to-[#1DB584] flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#818cf8] to-[#c084fc] flex items-center justify-center">
                         <span className="text-white font-bold text-sm">A</span>
                       </div>
                       <span className="text-gray-800 font-semibold">AqionFlo</span>
@@ -208,7 +208,7 @@ const DashboardShowcase = () => {
                       {[40, 65, 45, 80, 55, 90, 70, 85, 60, 95, 75, 88].map((h, i) => (
                         <div 
                           key={i} 
-                          className="flex-1 bg-gradient-to-t from-[#2EE9A8] to-[#2EE9A8]/50 rounded-t"
+                          className="flex-1 bg-gradient-to-t from-[#818cf8] to-[#818cf8]/50 rounded-t"
                           style={{ height: `${h}%` }}
                         />
                       ))}
@@ -245,8 +245,8 @@ const DashboardShowcase = () => {
           <div ref={featuresRef} className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, index) => (
               <div key={index} className="feature-item flex items-center gap-3">
-                <div className="w-6 h-6 rounded-full bg-[#2EE9A8]/20 flex items-center justify-center flex-shrink-0">
-                  <Check size={14} className="text-[#2EE9A8]" />
+                <div className="w-6 h-6 rounded-full bg-[#818cf8]/20 flex items-center justify-center flex-shrink-0">
+                  <Check size={14} className="text-[#818cf8]" />
                 </div>
                 <span className="text-[#A7B1C8]">{feature}</span>
               </div>

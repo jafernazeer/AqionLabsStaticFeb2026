@@ -122,9 +122,9 @@ const AIIntegrationSection = () => {
       <div className="relative w-full px-6 lg:px-12">
         {/* Header */}
         <div ref={contentRef} className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#2EE9A8]/10 border border-[#2EE9A8]/20 mb-6">
-            <Sparkles size={16} className="text-[#2EE9A8]" />
-            <span className="text-[#2EE9A8] text-sm font-medium">Powered by AqionLabs AI</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#818cf8]/10 border border-[#818cf8]/20 mb-6">
+            <Sparkles size={16} className="text-[#818cf8]" />
+            <span className="text-[#818cf8] text-sm font-medium">Powered by AqionLabs AI</span>
           </div>
           
           <h2 className="text-[clamp(32px,4vw,52px)] font-semibold text-[#F4F7FF] leading-tight mb-6">
@@ -141,7 +141,7 @@ const AIIntegrationSection = () => {
           {aiFeatures.map((feature, index) => (
             <div 
               key={index}
-              className="ai-card glass-panel p-6 hover:border-[#2EE9A8]/30 transition-all duration-300 group"
+              className="ai-card glass-panel p-6 hover:border-[#818cf8]/30 transition-all duration-300 group"
             >
               <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                 <span className="text-white">{feature.icon}</span>
@@ -164,8 +164,8 @@ const AIIntegrationSection = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {benefits.map((benefit, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#2EE9A8]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check size={12} className="text-[#2EE9A8]" />
+                  <div className="w-5 h-5 rounded-full bg-[#818cf8]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check size={12} className="text-[#818cf8]" />
                   </div>
                   <span className="text-[#A7B1C8] text-sm">{benefit}</span>
                 </div>
