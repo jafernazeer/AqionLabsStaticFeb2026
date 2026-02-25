@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import AqionFloLogoIcon from "./AqionFloLogoIcon";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Check, ArrowRight, Zap, Shield, Clock } from 'lucide-react';
@@ -92,7 +93,7 @@ const DashboardShowcase = () => {
   ];
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       id="showcase"
       className="relative py-24 lg:py-32 bg-[#070B14] overflow-hidden"
@@ -104,7 +105,7 @@ const DashboardShowcase = () => {
       <div className="relative w-full px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            
+
             {/* Left Content */}
             <div ref={contentRef}>
               <div className="eyebrow">The Operating System for Modern Business</div>
@@ -113,14 +114,14 @@ const DashboardShowcase = () => {
                 <span className="text-gradient">Reimagined.</span>
               </h2>
               <p className="body-text mb-8">
-                The AqionFlo dashboard aggregates millions of data points into immediate intelligence. 
+                The AqionFlo dashboard aggregates millions of data points into immediate intelligence.
                 Financial health, liquidity, receivables, and obligations—all in one unified view.
               </p>
 
               {/* Highlights */}
               <div className="flex flex-wrap gap-4 mb-8">
                 {highlights.map((item, index) => (
-                  <div 
+                  <div
                     key={index}
                     className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#818cf8]/10 border border-[#818cf8]/20"
                   >
@@ -131,7 +132,7 @@ const DashboardShowcase = () => {
               </div>
 
               {/* CTA */}
-              <button 
+              <button
                 onClick={() => document.querySelector('#cta')?.scrollIntoView({ behavior: 'smooth' })}
                 className="btn-primary"
               >
@@ -144,7 +145,7 @@ const DashboardShowcase = () => {
             <div ref={dashboardRef} className="relative">
               {/* Glow Effect */}
               <div className="absolute -inset-4 bg-gradient-to-r from-[#818cf8]/20 to-[#3B82F6]/20 rounded-3xl blur-2xl opacity-50" />
-              
+
               {/* Dashboard Frame */}
               <div className="relative bg-white rounded-2xl overflow-hidden shadow-2xl">
                 {/* Browser Chrome */}
@@ -166,9 +167,7 @@ const DashboardShowcase = () => {
                   {/* Header */}
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#818cf8] to-[#c084fc] flex items-center justify-center">
-                        <span className="text-white font-bold text-sm">A</span>
-                      </div>
+                      <AqionFloLogoIcon className="w-8 h-8" />
                       <span className="text-gray-800 font-semibold">AqionFlo</span>
                     </div>
                     <div className="flex gap-2">
@@ -206,8 +205,8 @@ const DashboardShowcase = () => {
                     </div>
                     <div className="h-32 flex items-end gap-2">
                       {[40, 65, 45, 80, 55, 90, 70, 85, 60, 95, 75, 88].map((h, i) => (
-                        <div 
-                          key={i} 
+                        <div
+                          key={i}
                           className="flex-1 bg-gradient-to-t from-[#818cf8] to-[#818cf8]/50 rounded-t"
                           style={{ height: `${h}%` }}
                         />

@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import AqionFloLogoIcon from "./AqionFloLogoIcon";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Menu, X } from 'lucide-react';
@@ -46,19 +47,16 @@ const Navigation = () => {
   return (
     <nav
       ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
           ? 'bg-[#070B14]/90 backdrop-blur-md border-b border-white/5'
           : 'bg-transparent'
-      }`}
+        }`}
     >
       <div className="w-full px-6 lg:px-12">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#818cf8] to-[#c084fc] flex items-center justify-center">
-              <span className="text-[#070B14] font-bold text-lg">A</span>
-            </div>
+            <AqionFloLogoIcon className="w-8 h-8" />
             <span className="text-[#F4F7FF] font-semibold text-lg tracking-tight">
               AqionFlo
             </span>
@@ -79,7 +77,7 @@ const Navigation = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <button 
+            <button
               onClick={() => scrollToSection('#cta')}
               className="btn-primary text-sm py-2.5 px-5"
             >
@@ -110,7 +108,7 @@ const Navigation = () => {
                 {link.label}
               </button>
             ))}
-            <button 
+            <button
               onClick={() => scrollToSection('#cta')}
               className="btn-primary w-full justify-center mt-4"
             >

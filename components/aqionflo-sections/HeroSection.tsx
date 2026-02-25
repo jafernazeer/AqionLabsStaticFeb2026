@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import AqionFloLogoIcon from "./AqionFloLogoIcon";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, ChevronRight } from 'lucide-react';
@@ -127,9 +128,7 @@ const HeroSection = () => {
 
         {/* Logo */}
         <div ref={logoRef} className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-400 to-purple-400 flex items-center justify-center">
-            <span className="text-[#070B14] font-bold text-xl">A</span>
-          </div>
+          <AqionFloLogoIcon className="w-10 h-10" />
           <span className="text-[#F4F7FF] font-semibold text-xl">AqionFlo</span>
         </div>
 
@@ -167,7 +166,7 @@ const HeroSection = () => {
           </button>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 
