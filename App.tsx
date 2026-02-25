@@ -12,6 +12,7 @@ const Home = lazy(() => import('./pages/Home'));
 const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
 const ProductDetail = lazy(() => import('./pages/ProductDetail'));
 const AqionVox = lazy(() => import('./pages/AqionVox'));
+const AqionFlo = lazy(() => import('./pages/AqionFlo'));
 const AIChatbots = lazy(() => import('./pages/AIChatbots'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
@@ -23,7 +24,7 @@ const Terms = lazy(() => import('./pages/Terms'));
 const AppContent: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  
+
   // Map path to PageType for Navbar highlighting
   const getPageTypeFromPath = (path: string): PageType => {
     if (path === '/') return PageType.HOME;
@@ -33,6 +34,7 @@ const AppContent: React.FC = () => {
     if (path === '/privacy') return PageType.PRIVACY;
     if (path === '/terms') return PageType.TERMS;
     if (path === '/products/aqionvox-ai') return PageType.PRODUCT_AQIONVOX;
+    if (path === '/products/aqionflo') return PageType.PRODUCT_AQIONFLO;
     if (path === '/services/intelligent-chatbots') return PageType.SOLUTION_CHATBOTS;
     if (path === '/services/custom-web-app-development') return PageType.SOLUTION_WEB_DEV;
     if (path === '/services/mobile-app-development') return PageType.SOLUTION_MOBILE_DEV;
@@ -54,6 +56,7 @@ const AppContent: React.FC = () => {
       [PageType.PRIVACY]: '/privacy',
       [PageType.TERMS]: '/terms',
       [PageType.PRODUCT_AQIONVOX]: '/products/aqionvox-ai',
+      [PageType.PRODUCT_AQIONFLO]: '/products/aqionflo',
       [PageType.SOLUTION_CHATBOTS]: '/services/intelligent-chatbots',
       [PageType.SOLUTION_WEB_DEV]: '/services/custom-web-app-development',
       [PageType.SOLUTION_MOBILE_DEV]: '/services/mobile-app-development',
@@ -62,7 +65,7 @@ const AppContent: React.FC = () => {
       [PageType.SOLUTION_GOVERNANCE]: '/services/ai-governance-security',
       [PageType.SOLUTION_DIGITAL_HUMAN]: '/services/human-ai-avatars',
     };
-    
+
     const path = pathMap[page] || '/';
     navigate(path);
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -80,10 +83,11 @@ const AppContent: React.FC = () => {
             <Route path="/careers" element={<Careers />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
-            
+
             {/* Products */}
             <Route path="/products/aqionvox-ai" element={<AqionVox onNavigate={handleNavigate} />} />
-            
+            <Route path="/products/aqionflo" element={<AqionFlo onNavigate={handleNavigate} />} />
+
             {/* Services */}
             <Route path="/services/intelligent-chatbots" element={<AIChatbots onNavigate={handleNavigate} />} />
             <Route path="/services/custom-web-app-development" element={<ServiceDetail data={SERVICE_DATA[PageType.SOLUTION_WEB_DEV]} onNavigate={handleNavigate} />} />
@@ -92,7 +96,7 @@ const AppContent: React.FC = () => {
             <Route path="/services/private-gpt-development" element={<ServiceDetail data={SERVICE_DATA[PageType.SOLUTION_GENAI]} onNavigate={handleNavigate} />} />
             <Route path="/services/ai-governance-security" element={<ServiceDetail data={SERVICE_DATA[PageType.SOLUTION_GOVERNANCE]} onNavigate={handleNavigate} />} />
             <Route path="/services/human-ai-avatars" element={<ServiceDetail data={SERVICE_DATA[PageType.SOLUTION_DIGITAL_HUMAN]} onNavigate={handleNavigate} />} />
-            
+
             {/* Fallback */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
