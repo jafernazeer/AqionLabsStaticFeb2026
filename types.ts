@@ -1,7 +1,7 @@
 
 export enum PageType {
   HOME = 'HOME',
-
+  
   // New AI Solutions
   SOLUTION_STRATEGY = 'SOLUTION_STRATEGY', // Strategy & Integration
   SOLUTION_GENAI = 'SOLUTION_GENAI',       // Private GPT (formerly GenAI)
@@ -13,11 +13,10 @@ export enum PageType {
   SOLUTION_WORKSHOPS = 'SOLUTION_WORKSHOPS', // Workshops (Legacy/Removed from Nav)
 
   // Flagship Product
-  PRODUCT_AQIONVOX = 'PRODUCT_AQIONVOX',
-  PRODUCT_AQIONFLO = 'PRODUCT_AQIONFLO',
-
+  PRODUCT_AQIONVOX = 'PRODUCT_AQIONVOX', 
+  
   // Legacy types (kept for safety/reference in existing code but will be unused in UI)
-  SERVICE_STRATEGY = 'SERVICE_STRATEGY',
+  SERVICE_STRATEGY = 'SERVICE_STRATEGY', 
   SERVICE_GPT = 'SERVICE_GPT',
   SERVICE_AGENTS_SUPPORT = 'SERVICE_AGENTS_SUPPORT',
   SERVICE_GEO = 'SERVICE_GEO',
@@ -51,7 +50,7 @@ export interface ContentSection {
 export interface PricingTier {
   name: string;
   price: string;
-  features?: string[];
+  features?: string[]; 
   highlight?: boolean;
 }
 
@@ -66,7 +65,7 @@ export interface DetailPageData {
   icon?: any;
   heroImage?: string;
   sections: ContentSection[];
-
+  
   // Service/Solution specific
   featuresTitle?: string;
   features?: {
@@ -83,7 +82,7 @@ export interface DetailPageData {
   howAiIsLeveraged?: string[];
   differentiation?: string[];
   useCases?: UseCase[];
-
+  
   // Both
   pricing?: PricingTier[];
 }

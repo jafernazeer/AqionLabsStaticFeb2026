@@ -1,6 +1,6 @@
 # AqionLabs Website
 
-Aqionlabs website built with React, Vite, and Tailwind CSS.
+Global AI Intelligence Hub website built with React, Vite, and Tailwind CSS.
 
 ## 🚀 Getting Started
 
