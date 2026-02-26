@@ -1,62 +1,6 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Brain, Sparkles, MessageSquare, Phone, Calendar, TrendingUp, Check } from 'lucide-react';
 
-gsap.registerPlugin(ScrollTrigger);
-
 const AIIntegrationSection = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const content = contentRef.current;
-    const cards = cardsRef.current;
-
-    if (!section || !content || !cards) return;
-
-    const ctx = gsap.context(() => {
-      // Content reveal
-      gsap.fromTo(content,
-        { y: 60, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 70%',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      );
-
-      // Cards stagger reveal
-      const cardElements = cards.querySelectorAll('.ai-card');
-      gsap.fromTo(cardElements,
-        { y: 40, opacity: 0, scale: 0.98 },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: cards,
-            start: 'top 75%',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      );
-
-    }, section);
-
-    return () => ctx.revert();
-  }, []);
 
   const aiFeatures = [
     {
@@ -105,8 +49,7 @@ const AIIntegrationSection = () => {
   ];
 
   return (
-    <section 
-      ref={sectionRef}
+    <section
       id="ai"
       className="relative py-24 lg:py-32 bg-[#070B14]"
       style={{ zIndex: 30 }}
@@ -121,25 +64,25 @@ const AIIntegrationSection = () => {
 
       <div className="relative w-full px-6 lg:px-12">
         {/* Header */}
-        <div ref={contentRef} className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#818cf8]/10 border border-[#818cf8]/20 mb-6">
             <Sparkles size={16} className="text-[#818cf8]" />
             <span className="text-[#818cf8] text-sm font-medium">Powered by AqionLabs AI</span>
           </div>
-          
+
           <h2 className="text-[clamp(32px,4vw,52px)] font-semibold text-[#F4F7FF] leading-tight mb-6">
             Intelligence That <span className="text-gradient">Delivers Growth</span>
           </h2>
-          
+
           <p className="text-[#A7B1C8] text-lg leading-relaxed">
             AqionFlo integrates cutting-edge AI capabilities from AqionLabs, transforming every interaction into qualified opportunities and measurable revenue.
           </p>
         </div>
 
         {/* AI Features Grid */}
-        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16">
           {aiFeatures.map((feature, index) => (
-            <div 
+            <div
               key={index}
               className="ai-card glass-panel p-6 hover:border-[#818cf8]/30 transition-all duration-300 group"
             >

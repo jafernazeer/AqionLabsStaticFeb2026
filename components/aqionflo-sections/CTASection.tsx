@@ -1,65 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useState } from 'react';
 import { ArrowRight, Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
 
-gsap.registerPlugin(ScrollTrigger);
-
 const CTASection = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const leftRef = useRef<HTMLDivElement>(null);
-  const rightRef = useRef<HTMLDivElement>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: ''
-  });
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const left = leftRef.current;
-    const right = rightRef.current;
-
-    if (!section || !left || !right) return;
-
-    const ctx = gsap.context(() => {
-      gsap.fromTo(left,
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 70%',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      );
-
-      gsap.fromTo(right,
-        { y: 60, opacity: 0, scale: 0.98 },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 65%',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      );
-
-    }, section);
-
-    return () => ctx.revert();
-  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,8 +21,7 @@ const CTASection = () => {
   };
 
   return (
-    <section 
-      ref={sectionRef}
+    <section
       id="cta"
       className="relative py-24 lg:py-32 bg-[#0B1220]"
       style={{ zIndex: 30 }}
@@ -97,9 +39,9 @@ const CTASection = () => {
       <div className="relative w-full px-6 lg:px-12">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            
+
             {/* Left Column - Info */}
-            <div ref={leftRef}>
+            <div>
               <h2 className="text-[clamp(32px,4vw,48px)] font-semibold text-[#F4F7FF] leading-tight mb-6">
                 Ready to unify your <span className="text-gradient">operations?</span>
               </h2>
@@ -146,7 +88,7 @@ const CTASection = () => {
             </div>
 
             {/* Right Column - Form */}
-            <div ref={rightRef}>
+            <div>
               <div className="glass-panel p-8">
                 {isSubmitted ? (
                   <div className="text-center py-12">

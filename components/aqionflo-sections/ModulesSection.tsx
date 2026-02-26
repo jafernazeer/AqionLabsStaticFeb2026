@@ -1,71 +1,18 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { 
-  LayoutDashboard, 
-  ShoppingCart, 
-  Package, 
-  Calculator, 
-  Users, 
+
+import {
+  LayoutDashboard,
+  ShoppingCart,
+  Package,
+  Calculator,
+  Users,
   Factory,
   FileText,
   BarChart3,
   ArrowRight
 } from 'lucide-react';
 
-gsap.registerPlugin(ScrollTrigger);
-
 const ModulesSection = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const modulesRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    const header = headerRef.current;
-    const modules = modulesRef.current;
-
-    if (!section || !header || !modules) return;
-
-    const ctx = gsap.context(() => {
-      // Header reveal
-      gsap.fromTo(header,
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 70%',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      );
-
-      // Modules stagger reveal
-      const moduleCards = modules.querySelectorAll('.module-card');
-      gsap.fromTo(moduleCards,
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.08,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: modules,
-            start: 'top 75%',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      );
-
-    }, section);
-
-    return () => ctx.revert();
-  }, []);
 
   const modules = [
     {
@@ -127,15 +74,14 @@ const ModulesSection = () => {
   ];
 
   return (
-    <section 
-      ref={sectionRef}
+    <section
       id="modules"
       className="relative py-24 lg:py-32 bg-[#0B1220]"
       style={{ zIndex: 30 }}
     >
       <div className="w-full px-6 lg:px-12">
         {/* Header */}
-        <div ref={headerRef} className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="eyebrow">Complete ERP Suite</div>
           <h2 className="headline mb-6">
             Every Module. <span className="text-gradient">One Platform.</span>
@@ -146,15 +92,15 @@ const ModulesSection = () => {
         </div>
 
         {/* Modules Grid */}
-        <div ref={modulesRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {modules.map((module, index) => (
-            <div 
+            <div
               key={index}
-              className="module-card glass-panel p-6 group hover:border-opacity-30 transition-all duration-300"
+              className="glass-panel p-6 group hover:border-opacity-30 transition-all duration-300"
               style={{ '--module-color': module.color } as React.CSSProperties}
             >
               {/* Icon */}
-              <div 
+              <div
                 className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
                 style={{ backgroundColor: `${module.color}20`, color: module.color }}
               >
@@ -175,7 +121,7 @@ const ModulesSection = () => {
               <div className="space-y-2">
                 {module.features.map((feature, fIndex) => (
                   <div key={fIndex} className="flex items-center gap-2">
-                    <div 
+                    <div
                       className="w-1.5 h-1.5 rounded-full"
                       style={{ backgroundColor: module.color }}
                     />

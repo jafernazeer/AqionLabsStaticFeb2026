@@ -1,81 +1,8 @@
-import { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import AqionFloLogoIcon from "./AqionFloLogoIcon";
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Check, ArrowRight, Zap, Shield, Clock } from 'lucide-react';
 
-gsap.registerPlugin(ScrollTrigger);
-
 const DashboardShowcase = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const dashboardRef = useRef<HTMLDivElement>(null);
-  const featuresRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const content = contentRef.current;
-    const dashboard = dashboardRef.current;
-    const features = featuresRef.current;
-
-    if (!section || !content || !dashboard || !features) return;
-
-    const ctx = gsap.context(() => {
-      // Content reveal
-      gsap.fromTo(content,
-        { x: -60, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 60%',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      );
-
-      // Dashboard reveal
-      gsap.fromTo(dashboard,
-        { x: 60, opacity: 0, scale: 0.95 },
-        {
-          x: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 1,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 55%',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      );
-
-      // Features stagger
-      const featureItems = features.querySelectorAll('.feature-item');
-      gsap.fromTo(featureItems,
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-          stagger: 0.1,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: features,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      );
-
-    }, section);
-
-    return () => ctx.revert();
-  }, []);
 
   const highlights = [
     { icon: <Zap size={18} />, text: 'Real-time data synchronization' },
@@ -94,7 +21,6 @@ const DashboardShowcase = () => {
 
   return (
     <section
-      ref={sectionRef}
       id="showcase"
       className="relative py-24 lg:py-32 bg-[#070B14] overflow-hidden"
       style={{ zIndex: 30 }}
@@ -107,7 +33,7 @@ const DashboardShowcase = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
             {/* Left Content */}
-            <div ref={contentRef}>
+            <div>
               <div className="eyebrow">The Operating System for Modern Business</div>
               <h2 className="headline mb-6">
                 Your Command Center. <br />
@@ -133,8 +59,11 @@ const DashboardShowcase = () => {
 
               {/* CTA */}
               <button
-                onClick={() => document.querySelector('#cta')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-primary"
+                onClick={() => {
+                  const el = document.querySelector('#cta');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="btn-primary inline-flex items-center justify-center text-center"
               >
                 See it in action
                 <ArrowRight size={18} />

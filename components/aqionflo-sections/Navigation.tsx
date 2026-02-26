@@ -1,11 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import AqionFloLogoIcon from "./AqionFloLogoIcon";
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Menu, X } from 'lucide-react';
-
-gsap.registerPlugin(ScrollTrigger);
-
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -20,14 +14,6 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    if (navRef.current) {
-      gsap.fromTo(navRef.current,
-        { y: -100, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, delay: 0.5, ease: 'power2.out' }
-      );
-    }
-  }, []);
 
   const navLinks = [
     { label: 'Product', href: '#financial' },
@@ -35,7 +21,6 @@ const Navigation = () => {
     { label: 'Pricing', href: '#cta' },
     { label: 'Contact', href: '#cta' },
   ];
-
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -48,15 +33,17 @@ const Navigation = () => {
     <nav
       ref={navRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? 'bg-[#070B14]/90 backdrop-blur-md border-b border-white/5'
-          : 'bg-transparent'
+        ? 'bg-[#070B14]/90 backdrop-blur-md border-b border-white/5'
+        : 'bg-transparent'
         }`}
     >
       <div className="w-full px-6 lg:px-12">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3">
-            <AqionFloLogoIcon className="w-8 h-8" />
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#818cf8] to-[#c084fc] flex items-center justify-center">
+              <span className="text-[#070B14] font-bold text-lg">A</span>
+            </div>
             <span className="text-[#F4F7FF] font-semibold text-lg tracking-tight">
               AqionFlo
             </span>

@@ -1,6 +1,4 @@
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useRef } from 'react';
 import { PageType } from '../types';
 
 // Importing copied components from aqionflo
@@ -11,8 +9,6 @@ import ModulesSection from '../components/aqionflo-sections/ModulesSection';
 import DashboardShowcase from '../components/aqionflo-sections/DashboardShowcase';
 import CTASection from '../components/aqionflo-sections/CTASection';
 
-gsap.registerPlugin(ScrollTrigger);
-
 interface AqionFloProps {
   onNavigate: (page: PageType) => void;
 }
@@ -20,62 +16,18 @@ interface AqionFloProps {
 const AqionFlo: React.FC<AqionFloProps> = ({ onNavigate }) => {
   const mainRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    // Global snap for pinned sections
-    const setupGlobalSnap = () => {
-      const pinned = ScrollTrigger.getAll()
-        .filter(st => st.vars.pin)
-        .sort((a, b) => a.start - b.start);
-      
-      const maxScroll = ScrollTrigger.maxScroll(window);
-      if (!maxScroll || pinned.length === 0) return;
-
-      const pinnedRanges = pinned.map(st => ({
-        start: st.start / maxScroll,
-        end: (st.end ?? st.start) / maxScroll,
-        center: (st.start + ((st.end ?? st.start) - st.start) * 0.5) / maxScroll,
-      }));
-
-      ScrollTrigger.create({
-        snap: {
-          snapTo: (value: number) => {
-            const inPinned = pinnedRanges.some(r => value >= r.start - 0.02 && value <= r.end + 0.02);
-            if (!inPinned) return value;
-
-            const target = pinnedRanges.reduce((closest, r) =>
-              Math.abs(r.center - value) < Math.abs(closest - value) ? r.center : closest,
-              pinnedRanges[0]?.center ?? 0
-            );
-            return target;
-          },
-          duration: { min: 0.15, max: 0.35 },
-          delay: 0,
-          ease: "power2.out"
-        }
-      });
-    };
-
-    // Delay to ensure all ScrollTriggers are created
-    const timer = setTimeout(setupGlobalSnap, 500);
-
-    return () => {
-      clearTimeout(timer);
-      ScrollTrigger.getAll().forEach(st => st.kill());
-    };
-  }, []);
-
   return (
     <div ref={mainRef} className="relative bg-[#070B14]">
       {/* Grain Overlay */}
       <div className="grain-overlay" />
-      
+
       {/* Main Content (without global Nav and Footer since AqionLabs handles it) */}
       <main className="relative pt-20"> {/* Add padding top to account for AqionLabs navbar */}
         {/* Hero Section */}
         <HeroSection />
-        
+
         {/* Feature Sections */}
-        <FeatureSection 
+        <FeatureSection
           id="financial"
           eyebrow="Financial Health"
           headline="Visibility at the Speed of Business."
@@ -85,8 +37,8 @@ const AqionFlo: React.FC<AqionFloProps> = ({ onNavigate }) => {
           bgImage="/images/bg-warehouse.jpg"
           reverse={false}
         />
-        
-        <FeatureSection 
+
+        <FeatureSection
           id="interactive"
           eyebrow="Interactive Intelligence"
           headline="Static reports are obsolete."
@@ -97,8 +49,8 @@ const AqionFlo: React.FC<AqionFloProps> = ({ onNavigate }) => {
           reverse={true}
           showAnnotation={true}
         />
-        
-        <FeatureSection 
+
+        <FeatureSection
           id="sales"
           eyebrow="Sales Pipeline"
           headline="Convert opportunity into revenue with zero friction."
@@ -108,8 +60,8 @@ const AqionFlo: React.FC<AqionFloProps> = ({ onNavigate }) => {
           bgImage="/images/bg-retail.jpg"
           reverse={false}
         />
-        
-        <FeatureSection 
+
+        <FeatureSection
           id="workflow"
           eyebrow="Workflow & Context"
           headline="The Flow: from Quotation to Invoice."
@@ -119,8 +71,8 @@ const AqionFlo: React.FC<AqionFloProps> = ({ onNavigate }) => {
           bgImage="/images/bg-logistics.jpg"
           reverse={true}
         />
-        
-        <FeatureSection 
+
+        <FeatureSection
           id="inventory"
           eyebrow="Inventory"
           headline="Inventory Control & Asset Valuation."
@@ -130,8 +82,8 @@ const AqionFlo: React.FC<AqionFloProps> = ({ onNavigate }) => {
           bgImage="/images/bg-storage.jpg"
           reverse={false}
         />
-        
-        <FeatureSection 
+
+        <FeatureSection
           id="fulfillment"
           eyebrow="Fulfillment"
           headline="Automated Fulfillment Oversight."
@@ -141,8 +93,8 @@ const AqionFlo: React.FC<AqionFloProps> = ({ onNavigate }) => {
           bgImage="/images/bg-loading.jpg"
           reverse={true}
         />
-        
-        <FeatureSection 
+
+        <FeatureSection
           id="finance"
           eyebrow="Finance"
           headline="Financial Oversight & Banking."
@@ -152,8 +104,8 @@ const AqionFlo: React.FC<AqionFloProps> = ({ onNavigate }) => {
           bgImage="/images/bg-office.jpg"
           reverse={false}
         />
-        
-        <FeatureSection 
+
+        <FeatureSection
           id="reporting"
           eyebrow="Reporting"
           headline="Comprehensive Reporting Suite."
@@ -163,16 +115,16 @@ const AqionFlo: React.FC<AqionFloProps> = ({ onNavigate }) => {
           bgImage="/images/bg-architecture.jpg"
           reverse={true}
         />
-        
+
         {/* AI Integration Section */}
         <AIIntegrationSection />
-        
+
         {/* Modules Section */}
         <ModulesSection />
-        
+
         {/* Dashboard Showcase */}
         <DashboardShowcase />
-        
+
         {/* CTA Section */}
         <CTASection />
       </main>

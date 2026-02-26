@@ -55,7 +55,9 @@ const Footer = () => {
             {/* Brand Column */}
             <div className="col-span-2">
               <div className="flex items-center gap-3 mb-4">
-                <AqionFloLogoIcon className="w-10 h-10" />
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#818cf8] to-[#c084fc] flex items-center justify-center">
+                  <span className="text-[#070B14] font-bold text-xl">A</span>
+                </div>
                 <span className="text-[#F4F7FF] font-semibold text-xl">AqionFlo</span>
               </div>
               <p className="text-[#A7B1C8] text-sm leading-relaxed mb-6 max-w-xs">
