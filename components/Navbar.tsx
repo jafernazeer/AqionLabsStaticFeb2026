@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, Brain, Bot } from 'lucide-react';
+import { Menu, X, ChevronDown, Brain, Bot, Activity } from 'lucide-react';
 import { PageType, NavItem } from '../types';
 
 interface NavbarProps {
@@ -11,26 +11,37 @@ interface NavbarProps {
 const navItems: NavItem[] = [
   { label: 'Home', page: PageType.HOME },
   { 
-    label: 'Core AI Products', 
+    label: 'Products', 
     children: [
-        { label: 'AqionVox Ai', page: PageType.PRODUCT_AQIONVOX }
+        { label: 'AqionVox', page: PageType.PRODUCT_AQIONVOX }
     ]
   },
   { 
-    label: 'Core AI Services', 
+    label: 'AI Services', 
     children: [
-      { label: 'Custom Web App Development', page: PageType.SOLUTION_WEB_DEV },
-      { label: 'Mobile App Development', page: PageType.SOLUTION_MOBILE_DEV },
-      { label: 'AI Strategy Consulting', page: PageType.SOLUTION_STRATEGY },
-      { label: 'Private GPT Development', page: PageType.SOLUTION_GENAI },
-      { label: 'AI Governance & Security', page: PageType.SOLUTION_GOVERNANCE },
-      { label: 'Human AI Avatars', page: PageType.SOLUTION_DIGITAL_HUMAN },
-      { label: 'Intelligent Chatbots', page: PageType.SOLUTION_CHATBOTS },
+      { label: 'Web & Mobile Application Development', page: PageType.SERVICE_RAPID_APP },
+      { label: 'Conversational AI', page: PageType.SERVICE_CONVERSATIONAL_AI },
+      { label: 'AI Automation', page: PageType.SERVICE_AI_AUTOMATION },
+      { label: 'Enterprise AI Solutions', page: PageType.SERVICE_ENTERPRISE_AI },
+      { label: 'AI Strategy, Governance & Advisory', page: PageType.SERVICE_AI_STRATEGY },
     ]
   },
-  { label: 'About Us', page: PageType.ABOUT },
-  { label: 'Careers', page: PageType.CAREERS },
-  { label: 'Contact Us', page: PageType.CONTACT },
+  { 
+    label: 'Industries', 
+    children: [
+      { label: 'Healthcare', page: PageType.INDUSTRY_HEALTHCARE },
+      { label: 'Real Estate', page: PageType.INDUSTRY_REAL_ESTATE },
+      { label: 'Education', page: PageType.INDUSTRY_EDUCATION },
+      { label: 'Retail', page: PageType.INDUSTRY_RETAIL },
+      { label: 'Government', page: PageType.INDUSTRY_GOVERNMENT },
+      { label: 'Financial Services', page: PageType.INDUSTRY_FINANCE },
+      { label: 'Hospitality', page: PageType.INDUSTRY_HOSPITALITY },
+      { label: 'Logistics', page: PageType.INDUSTRY_LOGISTICS },
+      { label: 'Professional Services', page: PageType.INDUSTRY_PROFESSIONAL },
+    ]
+  },
+  { label: 'About', page: PageType.ABOUT },
+  { label: 'Contact', page: PageType.CONTACT },
 ];
 
 const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
@@ -68,7 +79,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                 <Brain className="w-6 h-6 text-indigo-400" strokeWidth={2.5} />
              </div>
              <span className="text-2xl font-bold text-white tracking-tight">
-                AQION<span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">LABS</span>
+                AQIONLABS
              </span>
           </div>
           
@@ -103,13 +114,19 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                                     }`}
                                   >
                                     <span className={`block ${
-                                        child.label === 'AqionVox Ai'
-                                        ? 'bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent font-bold'
+                                        (child.label === 'AqionVox' || child.label === 'AqionFlo')
+                                        ? 'font-bold'
                                         : 'text-slate-300 group-hover:text-white transition-colors'
                                     }`}>
-                                      {child.label === 'AqionVox Ai' ? (
+                                      {child.label === 'AqionVox' ? (
                                           <span className="flex items-center gap-2">
-                                              <Bot className="w-4 h-4 text-indigo-400" /> {child.label}
+                                              <Bot className="w-4 h-4 text-indigo-400" /> 
+                                              <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">AqionVox</span>
+                                          </span>
+                                      ) : child.label === 'AqionFlo' ? (
+                                          <span className="flex items-center gap-2">
+                                              <Activity className="w-4 h-4 text-indigo-400" /> 
+                                              <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">{child.label}</span>
                                           </span>
                                       ) : child.label}
                                     </span>
@@ -185,11 +202,15 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                                         : 'bg-slate-700 group-hover:bg-indigo-400'
                                     }`}></span>
                                     <span className={`transition-all ${
-                                      child.label === 'AqionVox Ai'
-                                        ? 'bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent font-bold'
+                                      (child.label === 'AqionVox' || child.label === 'AqionFlo')
+                                        ? 'font-bold'
                                         : 'text-slate-300 group-hover:text-white'
                                     }`}>
-                                        {child.label}
+                                        {child.label === 'AqionVox' ? (
+                                            <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">AqionVox</span>
+                                        ) : child.label === 'AqionFlo' ? (
+                                            <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">{child.label}</span>
+                                        ) : child.label}
                                     </span>
                                 </button>
                              ))}

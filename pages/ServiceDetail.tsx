@@ -1,7 +1,7 @@
 
 import React, { useEffect } from 'react';
 import { DetailPageData, PageType } from '../types';
-import { Check, Zap, Shield, Star, Rocket } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 interface ServiceDetailProps {
   data: DetailPageData;
@@ -23,7 +23,13 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ data, onNavigate }) => {
         "AI Strategy Consulting & Integration": " Consulting & Integration",
         "Private GPT Development": "GPT",
         "AI Governance & Security": "Security",
-        "Human AI Avatars": "Avatars"
+        "Human AI Avatars": "Avatars",
+        // New Services
+        "Web & Mobile Application Development": "Application Development",
+        "Conversational AI": "AI",
+        "AI Automation": "Automation",
+        "Enterprise AI Solutions": "AI Solutions",
+        "AI Strategy, Governance & Advisory": "Strategy, Governance"
     };
 
     const highlight = highlights[title];
@@ -173,7 +179,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ data, onNavigate }) => {
                                  <div className="w-full h-px bg-navy-800 mb-6"></div>
 
                                  <ul className="space-y-4 mb-8 flex-1">
-                                     {tier.features.map((feat, fIdx) => (
+                                     {tier.features?.map((feat, fIdx) => (
                                          <li key={fIdx} className="flex items-start text-sm text-slate-300">
                                              <Check className="w-5 h-5 text-indigo-500 mr-3 flex-shrink-0" />
                                              <span className="leading-relaxed">{feat}</span>

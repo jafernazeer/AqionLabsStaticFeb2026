@@ -1,21 +1,40 @@
 
+import { LucideIcon } from 'lucide-react';
+
 export enum PageType {
   HOME = 'HOME',
   
-  // New AI Solutions
-  SOLUTION_STRATEGY = 'SOLUTION_STRATEGY', // Strategy & Integration
-  SOLUTION_GENAI = 'SOLUTION_GENAI',       // Private GPT (formerly GenAI)
-  SOLUTION_GOVERNANCE = 'SOLUTION_GOVERNANCE', // Governance & Security
-  SOLUTION_DIGITAL_HUMAN = 'SOLUTION_DIGITAL_HUMAN', // Human AI Avatars
-  SOLUTION_CHATBOTS = 'SOLUTION_CHATBOTS', // Intelligent Chatbots
-  SOLUTION_WEB_DEV = 'SOLUTION_WEB_DEV', // Custom Web App Development
-  SOLUTION_MOBILE_DEV = 'SOLUTION_MOBILE_DEV', // Mobile App Development
-  SOLUTION_WORKSHOPS = 'SOLUTION_WORKSHOPS', // Workshops (Legacy/Removed from Nav)
+  // New AI Services
+  SERVICE_RAPID_APP = 'SERVICE_RAPID_APP',
+  SERVICE_CONVERSATIONAL_AI = 'SERVICE_CONVERSATIONAL_AI',
+  SERVICE_AI_AUTOMATION = 'SERVICE_AI_AUTOMATION',
+  SERVICE_ENTERPRISE_AI = 'SERVICE_ENTERPRISE_AI',
+  SERVICE_AI_STRATEGY = 'SERVICE_AI_STRATEGY',
+
+  // Industries
+  INDUSTRY_HEALTHCARE = 'INDUSTRY_HEALTHCARE',
+  INDUSTRY_REAL_ESTATE = 'INDUSTRY_REAL_ESTATE',
+  INDUSTRY_EDUCATION = 'INDUSTRY_EDUCATION',
+  INDUSTRY_RETAIL = 'INDUSTRY_RETAIL',
+  INDUSTRY_GOVERNMENT = 'INDUSTRY_GOVERNMENT',
+  INDUSTRY_FINANCE = 'INDUSTRY_FINANCE',
+  INDUSTRY_HOSPITALITY = 'INDUSTRY_HOSPITALITY',
+  INDUSTRY_LOGISTICS = 'INDUSTRY_LOGISTICS',
+  INDUSTRY_PROFESSIONAL = 'INDUSTRY_PROFESSIONAL',
 
   // Flagship Product
   PRODUCT_AQIONVOX = 'PRODUCT_AQIONVOX', 
+  PRODUCT_AQIONFLO = 'PRODUCT_AQIONFLO',
   
   // Legacy types (kept for safety/reference in existing code but will be unused in UI)
+  SOLUTION_STRATEGY = 'SOLUTION_STRATEGY', 
+  SOLUTION_GENAI = 'SOLUTION_GENAI',       
+  SOLUTION_GOVERNANCE = 'SOLUTION_GOVERNANCE', 
+  SOLUTION_DIGITAL_HUMAN = 'SOLUTION_DIGITAL_HUMAN', 
+  SOLUTION_CHATBOTS = 'SOLUTION_CHATBOTS', 
+  SOLUTION_WEB_DEV = 'SOLUTION_WEB_DEV', 
+  SOLUTION_MOBILE_DEV = 'SOLUTION_MOBILE_DEV', 
+  SOLUTION_WORKSHOPS = 'SOLUTION_WORKSHOPS',
   SERVICE_STRATEGY = 'SERVICE_STRATEGY', 
   SERVICE_GPT = 'SERVICE_GPT',
   SERVICE_AGENTS_SUPPORT = 'SERVICE_AGENTS_SUPPORT',
@@ -62,7 +81,7 @@ export interface UseCase {
 export interface DetailPageData {
   title: string;
   subtitle: string;
-  icon?: any;
+  icon?: LucideIcon;
   heroImage?: string;
   sections: ContentSection[];
   
@@ -85,4 +104,19 @@ export interface DetailPageData {
   
   // Both
   pricing?: PricingTier[];
+}
+
+export interface IndustryPageData {
+  title: string;
+  headline: string;
+  context: string;
+  challenges: string[];
+  solutions: {
+    aqionVox?: string[];
+    aiAutomation?: string[];
+    governance?: string[];
+    enterpriseAi?: string[];
+  };
+  outcome: string[];
+  ctaText: string;
 }

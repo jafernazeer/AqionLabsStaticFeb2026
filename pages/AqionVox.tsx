@@ -2,9 +2,9 @@
 import React, { useEffect } from 'react';
 import { PageType } from '../types';
 import { 
-  Bot, Phone, MessageSquare, Calendar, Filter, DollarSign, 
-  BarChart, Users, Clock, Shield, Check, ArrowRight, Brain, Globe,
-  Activity, Zap, Mail, RefreshCw, TrendingUp, Building, ShoppingBag, 
+  Bot, Phone, MessageSquare, Calendar, Filter, 
+  BarChart, Users, Clock, Shield, Check, ArrowRight, Brain,
+  Activity, Zap, RefreshCw, TrendingUp, Building, ShoppingBag, 
   GraduationCap, Stethoscope, Database, Settings, LayoutGrid
 } from 'lucide-react';
 
@@ -21,15 +21,15 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
     <div className="bg-navy-950 min-h-screen text-white pt-20 font-sans relative overflow-x-hidden">
       <div className="fixed inset-0 pointer-events-none z-0 bg-grid-indigo opacity-80"></div>
 
-      {/* Hero Section - Meet AqionVox Ai */}
+      {/* Hero Section - Meet AqionVox */}
       <section className="relative py-24 px-6 max-w-7xl mx-auto z-10">
           <div className="text-center max-w-4xl mx-auto mb-20">
               <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
                   Meet <br className="md:hidden" />
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">AqionVox Ai</span>
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">AqionVox</span>
               </h1>
               <p className="text-xl md:text-2xl text-slate-300 leading-relaxed font-light">
-                  Your New AI <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 font-semibold">Revenue</span> Engine
+                  The AI customer support agent that answers, qualifies, and converts. <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 font-semibold">Generating Revenue 24/7.</span>
               </p>
           </div>
 
@@ -102,8 +102,8 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
                                   </div>
                                   
                                   <div className="text-center px-4">
-                                      <h3 className="text-white font-bold text-lg tracking-tight">AqionVox Ai</h3>
-                                      <div className="text-indigo-400 text-sm font-semibold tracking-wider uppercase">AI Engine</div>
+                                      <h3 className="text-white font-bold text-lg tracking-tight"><span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">AqionVox</span></h3>
+                                      <div className="text-indigo-400 text-sm font-semibold tracking-wider uppercase">AI Cx Engine</div>
                                   </div>
                                   
                                   {/* Scanning line animation */}
@@ -570,7 +570,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
           <div className="fixed inset-0 pointer-events-none z-0 bg-grid-indigo opacity-80"></div>
           <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 relative z-10 items-center">
               <div>
-                  <h2 className="text-4xl font-bold mb-8 text-white">Why <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">AqionVox Ai</span> Wins in the Region</h2>
+                  <h2 className="text-4xl font-bold mb-8 text-white">Why <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">AqionVox</span> Wins in the Region</h2>
                   <ul className="space-y-6">
                       {[
                           { title: "Localization", desc: "Arabic-ready from day one." },

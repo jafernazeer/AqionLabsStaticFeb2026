@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { PageType } from '../types';
 import { 
   MessageSquare, HelpCircle, FileText, ArrowRight, 
-  Bot, Zap, Check, X as XIcon, Phone 
+  Zap, Check, X as XIcon, Phone 
 } from 'lucide-react';
 
 interface AIChatbotsProps {
@@ -93,9 +93,9 @@ const AIChatbots: React.FC<AIChatbotsProps> = ({ onNavigate }) => {
                 <Zap className="w-3 h-3 fill-current" />
                 ENTERPRISE UPGRADE
               </div>
-              <h2 className="text-4xl font-bold text-white mb-6">Need More Than Just Text? Upgrade to <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">AqionVox Ai</span></h2>
+              <h2 className="text-4xl font-bold text-white mb-6">Need More Than Just Text? Upgrade to <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">AqionVox</span></h2>
               <p className="text-lg text-slate-300 leading-relaxed mb-8">
-                Conventional chatbots are reactive—they wait for customers to type. <strong>AqionVox</strong> is a proactive AI workforce. It speaks, it texts on WhatsApp, and it closes deals autonomously.
+                Conventional chatbots are reactive—they wait for customers to type. <strong className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">AqionVox</strong> is a proactive AI workforce. It speaks, it texts on WhatsApp, and it closes deals autonomously.
               </p>
               
               <button 
@@ -113,7 +113,7 @@ const AIChatbots: React.FC<AIChatbotsProps> = ({ onNavigate }) => {
                   Conventional Chatbot
                 </div>
                 <div className="p-6 bg-indigo-900/20 text-indigo-400 font-bold text-sm uppercase tracking-wider relative">
-                  AqionVox Ai
+                  AqionVox
                   <div className="absolute top-0 right-0 w-full h-1 bg-indigo-500"></div>
                 </div>
               </div>

@@ -1,7 +1,7 @@
 
 import React, { useEffect } from 'react';
 import { DetailPageData, PageType } from '../types';
-import { ArrowRight, Star, Zap, Shield, Check, Box } from 'lucide-react';
+import { ArrowRight, Zap, Shield, Check, Box } from 'lucide-react';
 
 interface ProductDetailProps {
   data: DetailPageData;

@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Instagram, Linkedin, Facebook, Brain } from 'lucide-react';
 import { PageType } from '../types';
 
@@ -19,24 +19,24 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
       <div className="max-w-7xl mx-auto px-6 pb-14">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20">
           <div className="lg:col-span-5">
-            {/* Logo */}
-            <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-xl border-2 border-indigo-400 flex items-center justify-center bg-navy-900/50">
-                    <Brain className="w-6 h-6 text-indigo-400" strokeWidth={2.5} />
+            {/* Logo & Tagline */}
+            <div className="inline-flex flex-col mb-10 w-fit">
+                <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl border-2 border-indigo-400 flex items-center justify-center bg-navy-900/50 flex-shrink-0">
+                        <Brain className="w-6 h-6 text-indigo-400" strokeWidth={2.5} />
+                    </div>
+                    <span className="text-2xl font-bold tracking-tight text-white">
+                        AQIONLABS
+                    </span>
                 </div>
-                <span className="text-2xl font-bold tracking-tight text-white flex items-center">
-                    AQION<span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">LABS</span>
-                </span>
-            </div>
-
-            {/* Tagline Badge */}
-            <div className="p-[1px] rounded-full bg-gradient-to-r from-indigo-400 to-purple-400 mb-10 inline-block shadow-[0_0_20px_rgba(99,102,241,0.2)]">
-                <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-navy-950 text-white text-sm font-semibold uppercase tracking-normal">
-                     <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-indigo-400 to-purple-400 shadow-[0_0_10px_rgba(129,140,248,0.5)]"></div>
-                     INTELLIGENCE THAT <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">DELIVERS GROWTH</span>
+                
+                <div className="w-full h-px bg-indigo-500/30 my-3"></div>
+                
+                <div className="w-full text-lg font-bold">
+                    <span className="text-white">Intelligence That </span>
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">Delivers Growth</span>
                 </div>
             </div>
-
             <div className="flex gap-3">
               {[
                 { Icon: Instagram, href: "https://instagram.com/aqionlabs" },
