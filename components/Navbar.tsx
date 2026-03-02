@@ -19,7 +19,7 @@ const navItems: NavItem[] = [
   { 
     label: 'AI Services', 
     children: [
-      { label: 'Web & Mobile Application Development', page: PageType.SERVICE_RAPID_APP },
+      { label: 'Custom Web & Mobile Apps', page: PageType.SERVICE_RAPID_APP },
       { label: 'Conversational AI', page: PageType.SERVICE_CONVERSATIONAL_AI },
       { label: 'AI Automation', page: PageType.SERVICE_AI_AUTOMATION },
       { label: 'Enterprise AI Solutions', page: PageType.SERVICE_ENTERPRISE_AI },
@@ -37,7 +37,7 @@ const navItems: NavItem[] = [
       { label: 'Financial Services', page: PageType.INDUSTRY_FINANCE },
       { label: 'Hospitality', page: PageType.INDUSTRY_HOSPITALITY },
       { label: 'Logistics', page: PageType.INDUSTRY_LOGISTICS },
-      { label: 'Professional Services', page: PageType.INDUSTRY_PROFESSIONAL },
+      { label: 'Legal Services', page: PageType.INDUSTRY_PROFESSIONAL },
     ]
   },
   { label: 'About', page: PageType.ABOUT },

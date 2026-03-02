@@ -1,11 +1,12 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { PageType } from '../types';
 import { 
   Bot, Phone, MessageSquare, Calendar, Filter, 
   BarChart, Users, Clock, Shield, Check, ArrowRight, Brain,
   Activity, Zap, RefreshCw, TrendingUp, Building, ShoppingBag, 
-  GraduationCap, Stethoscope, Database, Settings, LayoutGrid
+  GraduationCap, Stethoscope, Database, Settings, LayoutGrid,
+  Landmark, Truck, Briefcase, Coffee, Banknote
 } from 'lucide-react';
 
 interface AqionVoxProps {
@@ -13,9 +14,24 @@ interface AqionVoxProps {
 }
 
 const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
+  const [activeDemo, setActiveDemo] = useState(0);
+  const demoSectionRef = useRef<HTMLElement>(null);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const industries = [
+    { id: 'healthcare', name: 'Healthcare', shortName: 'Healthcare', agentName: 'Sarah', icon: Stethoscope, color: 'text-teal-400', bg: 'bg-teal-500/20', desc: 'Patient booking & triage.' },
+    { id: 'realestate', name: 'Real Estate', shortName: 'Real Estate', agentName: 'Michael', icon: Building, color: 'text-amber-400', bg: 'bg-amber-500/20', desc: 'Lead qualification.' },
+    { id: 'retail', name: 'Retail', shortName: 'Retail', agentName: 'Alex', icon: ShoppingBag, color: 'text-blue-400', bg: 'bg-blue-500/20', desc: 'Order & FAQ handling.' },
+    { id: 'education', name: 'Education', shortName: 'Education', agentName: 'Emma', icon: GraduationCap, color: 'text-indigo-400', bg: 'bg-indigo-500/20', desc: 'Enrollment enquiries.' },
+    { id: 'government', name: 'Government', shortName: 'Government', agentName: 'James', icon: Landmark, color: 'text-slate-400', bg: 'bg-slate-500/20', desc: 'Citizen support.' },
+    { id: 'finance', name: 'Finance', shortName: 'Finance', agentName: 'David', icon: Banknote, color: 'text-emerald-400', bg: 'bg-emerald-500/20', desc: 'Account queries.' },
+    { id: 'hospitality', name: 'Hospitality', shortName: 'Hospitality', agentName: 'Sofia', icon: Coffee, color: 'text-rose-400', bg: 'bg-rose-500/20', desc: 'Booking management.' },
+    { id: 'logistics', name: 'Logistics', shortName: 'Logistics', agentName: 'Ryan', icon: Truck, color: 'text-orange-400', bg: 'bg-orange-500/20', desc: 'Shipment tracking.' },
+    { id: 'professional', name: 'Legal', shortName: 'Legal', agentName: 'Olivia', icon: Briefcase, color: 'text-sky-400', bg: 'bg-sky-500/20', desc: 'Client onboarding.' },
+  ];
 
   return (
     <div className="bg-navy-950 min-h-screen text-white pt-20 font-sans relative overflow-x-hidden">
@@ -28,9 +44,13 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
                   Meet <br className="md:hidden" />
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">AqionVox</span>
               </h1>
-              <p className="text-xl md:text-2xl text-slate-300 leading-relaxed font-light">
-                  The AI customer support agent that answers, qualifies, and converts. <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 font-semibold">Generating Revenue 24/7.</span>
-              </p>
+              <div className="flex flex-col items-center gap-2 text-xl md:text-3xl font-light leading-relaxed">
+                  <p className="text-slate-300">The AI Customer Support Agent that</p>
+                  <p className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 py-1 max-w-3xl mx-auto">
+                      Answers, Qualifies and Converts Your Clients 24/7.
+                  </p>
+                  <p className="text-slate-300 text-lg md:text-2xl mt-2">Driving Revenue Beyond Business Hours.</p>
+              </div>
           </div>
 
           {/* Architecture Diagram */}
@@ -38,72 +58,124 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
               {/* Desktop Connection Lines (Absolute Background) */}
               <div className="hidden lg:block absolute top-1/2 left-0 w-full -translate-y-1/2 z-0 pointer-events-none">
                   <div className="max-w-4xl mx-auto h-[400px] flex items-center justify-center relative">
-                      {/* We'll use individual lines in the grid items for better responsiveness, 
-                          but could add a central glow here if needed */}
+                      {/* We'll use individual lines in the grid items for better responsiveness */}
                   </div>
               </div>
 
-              <div className="grid lg:grid-cols-3 items-center gap-8 lg:gap-0 relative z-10">
+              <div className="flex flex-col lg:grid lg:grid-cols-3 items-center gap-8 lg:gap-0 relative z-10">
                   
-                  {/* Left Column Features */}
-                  <div className="flex flex-col gap-8 lg:gap-16 lg:items-end lg:pr-4 order-2 lg:order-1">
-                      {/* Feature 1 */}
-                      <div className="flex items-center gap-4 lg:flex-row-reverse text-left lg:text-right group relative">
-                           <div className="bg-navy-900 border border-navy-700 p-4 rounded-2xl shadow-lg group-hover:border-indigo-500/50 transition-colors z-10 relative">
-                               <Phone className="w-6 h-6 text-indigo-400" />
-                           </div>
-                           <div className="flex-1">
-                               <h3 className="text-slate-200 font-semibold text-lg">Answers phone calls instantly</h3>
-                           </div>
-                           {/* Connecting Line */}
-                           <div className="hidden lg:block absolute right-[-50px] top-1/2 w-[50px] h-[2px] bg-gradient-to-r from-navy-700 to-indigo-500/30"></div>
-                           <div className="hidden lg:block absolute right-[-54px] top-1/2 w-2 h-2 bg-indigo-500 rounded-full -translate-y-[3px]"></div>
+                  {/* Left Column Features (Inputs) - Mobile Order 1 */}
+                  <div className="w-full lg:w-auto flex flex-col gap-8 lg:gap-16 lg:items-end lg:pr-4 order-1 lg:order-1 relative">
+                      
+                      {/* Mobile Layout Container (Pyramid) */}
+                      <div className="lg:hidden grid grid-cols-2 gap-y-8 relative pb-8 w-full">
+                          {/* Connecting Lines (Mobile) */}
+                          <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" style={{ overflow: 'visible' }} viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <defs>
+                                <linearGradient id="mobile-line-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                  <stop offset="0%" stopColor="#60a5fa" /> {/* Blue-400 */}
+                                  <stop offset="100%" stopColor="#2563eb" /> {/* Blue-600 */}
+                                </linearGradient>
+                              </defs>
+                              
+                              {/* From Top Center (WhatsApp) - Small line down */}
+                              <path d="M50 45 L50 60" stroke="url(#mobile-line-gradient)" strokeWidth="2" fill="none" className="opacity-60" vectorEffect="non-scaling-stroke" />
+                              
+                              {/* From Bottom Left (Phone) - Small line down */}
+                              <path d="M25 85 L25 100" stroke="url(#mobile-line-gradient)" strokeWidth="2" fill="none" className="opacity-60" vectorEffect="non-scaling-stroke" />
+                              
+                              {/* From Bottom Right (Qualify) - Small line down */}
+                              <path d="M75 85 L75 100" stroke="url(#mobile-line-gradient)" strokeWidth="2" fill="none" className="opacity-60" vectorEffect="non-scaling-stroke" />
+                          </svg>
+
+                          {/* Feature 2: WhatsApp (Top Center) */}
+                          <div className="col-span-2 flex flex-col items-center text-center z-10">
+                               <div className="bg-navy-900 border border-navy-700 p-3 rounded-xl shadow-lg relative">
+                                   <MessageSquare className="w-6 h-6 text-green-400" />
+                                   {/* Dot */}
+                                   <div className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-2 h-2 bg-blue-500 rounded-full"></div>
+                               </div>
+                               <h3 className="text-slate-200 font-semibold text-xs mt-2">WhatsApp Nurturing</h3>
+                          </div>
+
+                          {/* Feature 1: Phone (Bottom Left) */}
+                          <div className="col-span-1 flex flex-col items-center text-center z-10">
+                               <div className="bg-navy-900 border border-navy-700 p-3 rounded-xl shadow-lg relative">
+                                   <Phone className="w-6 h-6 text-indigo-400" />
+                                   <div className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-2 h-2 bg-blue-500 rounded-full"></div>
+                               </div>
+                               <h3 className="text-slate-200 font-semibold text-xs mt-2">Answers Calls</h3>
+                          </div>
+
+                          {/* Feature 3: Qualify (Bottom Right) */}
+                          <div className="col-span-1 flex flex-col items-center text-center z-10">
+                               <div className="bg-navy-900 border border-navy-700 p-3 rounded-xl shadow-lg relative">
+                                   <Filter className="w-6 h-6 text-orange-400" />
+                                   <div className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-2 h-2 bg-blue-500 rounded-full"></div>
+                               </div>
+                               <h3 className="text-slate-200 font-semibold text-xs mt-2">Qualify Leads</h3>
+                          </div>
                       </div>
 
-                      {/* Feature 2 */}
-                      <div className="flex items-center gap-4 lg:flex-row-reverse text-left lg:text-right group relative">
-                           <div className="bg-navy-900 border border-navy-700 p-4 rounded-2xl shadow-lg group-hover:border-indigo-500/50 transition-colors z-10 relative">
-                               <MessageSquare className="w-6 h-6 text-green-400" />
-                           </div>
-                           <div className="flex-1">
-                               <h3 className="text-slate-200 font-semibold text-lg">Engages and nurtures on WhatsApp</h3>
-                           </div>
-                           <div className="hidden lg:block absolute right-[-50px] top-1/2 w-[50px] h-[2px] bg-gradient-to-r from-navy-700 to-indigo-500/30"></div>
-                           <div className="hidden lg:block absolute right-[-54px] top-1/2 w-2 h-2 bg-indigo-500 rounded-full -translate-y-[3px]"></div>
-                      </div>
+                      {/* Desktop Layout (Hidden on Mobile) */}
+                      <div className="hidden lg:contents">
+                          {/* Feature 1 */}
+                          <div className="flex items-center gap-4 lg:flex-row-reverse text-left lg:text-right group relative">
+                               <div className="bg-navy-900 border border-navy-700 p-4 rounded-2xl shadow-lg group-hover:border-indigo-500/50 transition-colors z-10 relative">
+                                   <Phone className="w-6 h-6 text-indigo-400" />
+                               </div>
+                               <div className="flex-1">
+                                   <h3 className="text-slate-200 font-semibold text-lg">Answers phone calls instantly</h3>
+                               </div>
+                               <div className="hidden lg:block absolute right-[-50px] top-1/2 w-[50px] h-[2px] bg-gradient-to-r from-navy-700 to-indigo-500/30"></div>
+                               <div className="hidden lg:block absolute right-[-54px] top-1/2 w-2 h-2 bg-indigo-500 rounded-full -translate-y-[3px]"></div>
+                          </div>
 
-                      {/* Feature 3 */}
-                      <div className="flex items-center gap-4 lg:flex-row-reverse text-left lg:text-right group relative">
-                           <div className="bg-navy-900 border border-navy-700 p-4 rounded-2xl shadow-lg group-hover:border-indigo-500/50 transition-colors z-10 relative">
-                               <Filter className="w-6 h-6 text-orange-400" />
-                           </div>
-                           <div className="flex-1">
-                               <h3 className="text-slate-200 font-semibold text-lg">Qualifies leads based on intent</h3>
-                           </div>
-                           <div className="hidden lg:block absolute right-[-50px] top-1/2 w-[50px] h-[2px] bg-gradient-to-r from-navy-700 to-indigo-500/30"></div>
-                           <div className="hidden lg:block absolute right-[-54px] top-1/2 w-2 h-2 bg-indigo-500 rounded-full -translate-y-[3px]"></div>
+                          {/* Feature 2 */}
+                          <div className="flex items-center gap-4 lg:flex-row-reverse text-left lg:text-right group relative">
+                               <div className="bg-navy-900 border border-navy-700 p-4 rounded-2xl shadow-lg group-hover:border-indigo-500/50 transition-colors z-10 relative">
+                                   <MessageSquare className="w-6 h-6 text-green-400" />
+                               </div>
+                               <div className="flex-1">
+                                   <h3 className="text-slate-200 font-semibold text-lg">Engages and nurtures on WhatsApp</h3>
+                               </div>
+                               <div className="hidden lg:block absolute right-[-50px] top-1/2 w-[50px] h-[2px] bg-gradient-to-r from-navy-700 to-indigo-500/30"></div>
+                               <div className="hidden lg:block absolute right-[-54px] top-1/2 w-2 h-2 bg-indigo-500 rounded-full -translate-y-[3px]"></div>
+                          </div>
+
+                          {/* Feature 3 */}
+                          <div className="flex items-center gap-4 lg:flex-row-reverse text-left lg:text-right group relative">
+                               <div className="bg-navy-900 border border-navy-700 p-4 rounded-2xl shadow-lg group-hover:border-indigo-500/50 transition-colors z-10 relative">
+                                   <Filter className="w-6 h-6 text-orange-400" />
+                               </div>
+                               <div className="flex-1">
+                                   <h3 className="text-slate-200 font-semibold text-lg">Qualifies leads based on intent</h3>
+                               </div>
+                               <div className="hidden lg:block absolute right-[-50px] top-1/2 w-[50px] h-[2px] bg-gradient-to-r from-navy-700 to-indigo-500/30"></div>
+                               <div className="hidden lg:block absolute right-[-54px] top-1/2 w-2 h-2 bg-indigo-500 rounded-full -translate-y-[3px]"></div>
+                          </div>
                       </div>
                   </div>
 
-                  {/* Center Hub */}
-                  <div className="flex justify-center order-1 lg:order-2 py-12 lg:py-0 relative">
+                  {/* Center Hub - Mobile Order 2 */}
+                  <div className="flex justify-center order-2 lg:order-2 py-4 lg:py-0 relative">
                       <div className="relative z-20">
                           {/* Glow effect */}
                           <div className="absolute inset-0 bg-indigo-500 blur-[80px] opacity-30 rounded-full"></div>
                           
                           {/* Central Badge Icon */}
-                          <div className="relative w-64 h-64 bg-gradient-to-b from-navy-800 to-navy-950 rounded-[3rem] border border-indigo-500/30 shadow-[0_0_50px_rgba(99,102,241,0.15)] flex items-center justify-center p-2">
-                              <div className="absolute inset-0 rounded-[3rem] border border-white/5 opacity-50"></div>
-                              <div className="w-full h-full bg-navy-900/80 rounded-[2.5rem] flex flex-col items-center justify-center backdrop-blur-md overflow-hidden relative border border-white/5">
+                          <div className="relative w-48 h-48 lg:w-64 lg:h-64 bg-gradient-to-b from-navy-800 to-navy-950 rounded-[2.5rem] lg:rounded-[3rem] border border-indigo-500/30 shadow-[0_0_50px_rgba(99,102,241,0.15)] flex items-center justify-center p-2">
+                              <div className="absolute inset-0 rounded-[2.5rem] lg:rounded-[3rem] border border-white/5 opacity-50"></div>
+                              <div className="w-full h-full bg-navy-900/80 rounded-[2rem] lg:rounded-[2.5rem] flex flex-col items-center justify-center backdrop-blur-md overflow-hidden relative border border-white/5">
                                   
                                   {/* Inner Content */}
-                                  <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-indigo-400 to-purple-400 flex items-center justify-center shadow-lg mb-4 transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                                      <Brain className="w-12 h-12 text-white" />
+                                  <div className="w-16 h-16 lg:w-24 lg:h-24 rounded-2xl bg-gradient-to-br from-indigo-400 to-purple-400 flex items-center justify-center shadow-lg mb-4 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                                      <Brain className="w-8 h-8 lg:w-12 lg:h-12 text-white" />
                                   </div>
                                   
                                   <div className="text-center px-4">
-                                      <h3 className="text-white font-bold text-lg tracking-tight"><span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">AqionVox</span></h3>
-                                      <div className="text-indigo-400 text-sm font-semibold tracking-wider uppercase">AI Cx Engine</div>
+                                      <h3 className="text-white font-bold text-base lg:text-lg tracking-tight"><span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">AqionVox</span></h3>
+                                      <div className="text-indigo-400 text-xs lg:text-sm font-semibold tracking-wider uppercase">AI Cx Engine</div>
                                   </div>
                                   
                                   {/* Scanning line animation */}
@@ -114,45 +186,101 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
                           {/* Connecting lines entering center (visual enhancement) */}
                           <div className="absolute top-1/2 left-[-20px] w-[20px] h-[2px] bg-indigo-500/30 hidden lg:block"></div>
                           <div className="absolute top-1/2 right-[-20px] w-[20px] h-[2px] bg-indigo-500/30 hidden lg:block"></div>
+                          
+                          {/* Mobile Connecting Lines (Top/Bottom) */}
+                          <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-[2px] h-4 bg-indigo-500/30 lg:hidden"></div>
+                          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[2px] h-4 bg-indigo-500/30 lg:hidden"></div>
                       </div>
                   </div>
 
-                  {/* Right Column Features */}
-                  <div className="flex flex-col gap-8 lg:gap-16 items-start lg:pl-4 order-3">
-                      {/* Feature 4 */}
-                      <div className="flex items-center gap-4 group relative">
-                           <div className="hidden lg:block absolute left-[-50px] top-1/2 w-[50px] h-[2px] bg-gradient-to-l from-navy-700 to-indigo-500/30"></div>
-                           <div className="hidden lg:block absolute left-[-54px] top-1/2 w-2 h-2 bg-indigo-500 rounded-full -translate-y-[3px]"></div>
-                           <div className="bg-navy-900 border border-navy-700 p-4 rounded-2xl shadow-lg group-hover:border-indigo-500/50 transition-colors z-10 relative">
-                               <Calendar className="w-6 h-6 text-blue-400" />
+                  {/* Right Column Features (Outputs) - Mobile Order 3 */}
+                  <div className="w-full lg:w-auto flex flex-col gap-8 lg:gap-16 items-center lg:items-start lg:pl-4 order-3 lg:order-3">
+                      {/* Mobile Layout (V-Shape Pyramid) */}
+                      <div className="lg:hidden grid grid-cols-2 gap-y-8 relative pt-8 w-full">
+                           {/* Connecting Lines (Mobile) */}
+                           <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" style={{ overflow: 'visible' }} viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <defs>
+                                <linearGradient id="mobile-line-gradient-up" x1="0%" y1="100%" x2="0%" y2="0%">
+                                  <stop offset="0%" stopColor="#60a5fa" /> {/* Blue-400 */}
+                                  <stop offset="100%" stopColor="#2563eb" /> {/* Blue-600 */}
+                                </linearGradient>
+                              </defs>
+
+                              {/* From Top Left (Books) - Small line up */}
+                              <path d="M25 15 L25 0" stroke="url(#mobile-line-gradient-up)" strokeWidth="2" fill="none" className="opacity-60" vectorEffect="non-scaling-stroke" />
+                              
+                              {/* From Top Right (Follow-up) - Small line up */}
+                              <path d="M75 15 L75 0" stroke="url(#mobile-line-gradient-up)" strokeWidth="2" fill="none" className="opacity-60" vectorEffect="non-scaling-stroke" />
+                              
+                              {/* From Bottom Center (CRM) - Small line up */}
+                              <path d="M50 55 L50 40" stroke="url(#mobile-line-gradient-up)" strokeWidth="2" fill="none" className="opacity-60" vectorEffect="non-scaling-stroke" />
+                           </svg>
+
+                           {/* Feature 4: Books appts (Top Left) */}
+                           <div className="col-span-1 flex flex-col items-center text-center z-10">
+                               <div className="bg-navy-900 border border-navy-700 p-3 rounded-xl shadow-lg relative">
+                                   <Calendar className="w-6 h-6 text-blue-400" />
+                                   <div className="absolute top-[-6px] left-1/2 -translate-x-1/2 w-2 h-2 bg-blue-500 rounded-full"></div>
+                               </div>
+                               <h3 className="text-slate-200 font-semibold text-xs mt-2">Book Appointments</h3>
                            </div>
-                           <div className="flex-1">
-                               <h3 className="text-slate-200 font-semibold text-lg">Books appointments autonomously</h3>
+
+                           {/* Feature 5: Follow-up (Top Right) */}
+                           <div className="col-span-1 flex flex-col items-center text-center z-10">
+                               <div className="bg-navy-900 border border-navy-700 p-3 rounded-xl shadow-lg relative">
+                                   <RefreshCw className="w-6 h-6 text-purple-400" />
+                                   <div className="absolute top-[-6px] left-1/2 -translate-x-1/2 w-2 h-2 bg-blue-500 rounded-full"></div>
+                               </div>
+                               <h3 className="text-slate-200 font-semibold text-xs mt-2">Automated Follow Ups</h3>
+                           </div>
+
+                           {/* Feature 6: CRM (Bottom Center) */}
+                           <div className="col-span-2 flex flex-col items-center text-center z-10">
+                               <div className="bg-navy-900 border border-navy-700 p-3 rounded-xl shadow-lg relative">
+                                   <TrendingUp className="w-6 h-6 text-yellow-400" />
+                                   <div className="absolute top-[-6px] left-1/2 -translate-x-1/2 w-2 h-2 bg-blue-500 rounded-full"></div>
+                               </div>
+                               <h3 className="text-slate-200 font-semibold text-xs mt-2">Customer Journey CRM</h3>
                            </div>
                       </div>
 
-                      {/* Feature 5 */}
-                      <div className="flex items-center gap-4 group relative">
-                           <div className="hidden lg:block absolute left-[-50px] top-1/2 w-[50px] h-[2px] bg-gradient-to-l from-navy-700 to-indigo-500/30"></div>
-                           <div className="hidden lg:block absolute left-[-54px] top-1/2 w-2 h-2 bg-indigo-500 rounded-full -translate-y-[3px]"></div>
-                           <div className="bg-navy-900 border border-navy-700 p-4 rounded-2xl shadow-lg group-hover:border-indigo-500/50 transition-colors z-10 relative">
-                               <RefreshCw className="w-6 h-6 text-purple-400" />
-                           </div>
-                           <div className="flex-1">
-                               <h3 className="text-slate-200 font-semibold text-lg">Follows up automatically</h3>
-                           </div>
-                      </div>
+                      {/* Desktop Layout */}
+                      <div className="hidden lg:contents">
+                          {/* Feature 4 */}
+                          <div className="flex items-center gap-4 group relative">
+                               <div className="hidden lg:block absolute left-[-50px] top-1/2 w-[50px] h-[2px] bg-gradient-to-l from-navy-700 to-indigo-500/30"></div>
+                               <div className="hidden lg:block absolute left-[-54px] top-1/2 w-2 h-2 bg-indigo-500 rounded-full -translate-y-[3px]"></div>
+                               <div className="bg-navy-900 border border-navy-700 p-4 rounded-2xl shadow-lg group-hover:border-indigo-500/50 transition-colors z-10 relative">
+                                   <Calendar className="w-6 h-6 text-blue-400" />
+                               </div>
+                               <div className="flex-1">
+                                   <h3 className="text-slate-200 font-semibold text-lg">Books appointments autonomously</h3>
+                               </div>
+                          </div>
 
-                      {/* Feature 6 */}
-                      <div className="flex items-center gap-4 group relative">
-                           <div className="hidden lg:block absolute left-[-50px] top-1/2 w-[50px] h-[2px] bg-gradient-to-l from-navy-700 to-indigo-500/30"></div>
-                           <div className="hidden lg:block absolute left-[-54px] top-1/2 w-2 h-2 bg-indigo-500 rounded-full -translate-y-[3px]"></div>
-                           <div className="bg-navy-900 border border-navy-700 p-4 rounded-2xl shadow-lg group-hover:border-indigo-500/50 transition-colors z-10 relative">
-                               <TrendingUp className="w-6 h-6 text-yellow-400" />
-                           </div>
-                           <div className="flex-1">
-                               <h3 className="text-slate-200 font-semibold text-lg">Converts conversations into tangible revenue</h3>
-                           </div>
+                          {/* Feature 5 */}
+                          <div className="flex items-center gap-4 group relative">
+                               <div className="hidden lg:block absolute left-[-50px] top-1/2 w-[50px] h-[2px] bg-gradient-to-l from-navy-700 to-indigo-500/30"></div>
+                               <div className="hidden lg:block absolute left-[-54px] top-1/2 w-2 h-2 bg-indigo-500 rounded-full -translate-y-[3px]"></div>
+                               <div className="bg-navy-900 border border-navy-700 p-4 rounded-2xl shadow-lg group-hover:border-indigo-500/50 transition-colors z-10 relative">
+                                   <RefreshCw className="w-6 h-6 text-purple-400" />
+                               </div>
+                               <div className="flex-1">
+                                   <h3 className="text-slate-200 font-semibold text-lg">Follows up automatically</h3>
+                               </div>
+                          </div>
+
+                          {/* Feature 6 */}
+                          <div className="flex items-center gap-4 group relative">
+                               <div className="hidden lg:block absolute left-[-50px] top-1/2 w-[50px] h-[2px] bg-gradient-to-l from-navy-700 to-indigo-500/30"></div>
+                               <div className="hidden lg:block absolute left-[-54px] top-1/2 w-2 h-2 bg-indigo-500 rounded-full -translate-y-[3px]"></div>
+                               <div className="bg-navy-900 border border-navy-700 p-4 rounded-2xl shadow-lg group-hover:border-indigo-500/50 transition-colors z-10 relative">
+                                   <TrendingUp className="w-6 h-6 text-yellow-400" />
+                               </div>
+                               <div className="flex-1">
+                                   <h3 className="text-slate-200 font-semibold text-lg">CRM with Customer Journey</h3>
+                               </div>
+                          </div>
                       </div>
                   </div>
 
@@ -196,56 +324,104 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
                    <p className="text-2xl text-slate-300">conversations across industries.</p>
                </div>
                
-               <div className="grid md:grid-cols-2 gap-6">
-                   {/* Healthcare */}
-                   <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 flex items-start gap-6 hover:bg-white/10 transition-colors">
-                       <div className="p-4 bg-teal-500/20 rounded-xl text-teal-400">
-                           <Stethoscope className="w-8 h-8" />
+               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                   {industries.map((ind, i) => (
+                       <div 
+                           key={i} 
+                           onClick={() => {
+                               setActiveDemo(i);
+                               demoSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+                           }}
+                           className={`bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-3 md:p-4 flex items-center gap-3 hover:bg-white/10 transition-colors group cursor-pointer ${
+                               i === industries.length - 1 ? 'col-span-2 md:col-span-1' : ''
+                           }`}
+                       >
+                           <div className={`p-2 rounded-lg ${ind.bg} ${ind.color} group-hover:scale-110 transition-transform duration-300 shrink-0`}>
+                               <ind.icon className="w-4 h-4 md:w-5 md:h-5" />
+                           </div>
+                           <div className={i === industries.length - 1 ? 'text-center md:text-left' : ''}>
+                               <h4 className="text-sm md:text-base font-bold text-white leading-tight">{ind.name}</h4>
+                               <p className="text-slate-400 text-xs mt-0.5 line-clamp-2 hidden md:block">{ind.desc}</p>
+                           </div>
                        </div>
-                       <div>
-                           <h4 className="text-xl font-bold text-white mb-2">Healthcare & Clinics</h4>
-                           <p className="text-slate-300">Patient booking and triage.</p>
-                       </div>
-                   </div>
-
-                   {/* Real Estate */}
-                   <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 flex items-start gap-6 hover:bg-white/10 transition-colors">
-                       <div className="p-4 bg-amber-500/20 rounded-xl text-amber-400">
-                           <Building className="w-8 h-8" />
-                       </div>
-                       <div>
-                           <h4 className="text-xl font-bold text-white mb-2">Real Estate</h4>
-                           <p className="text-slate-300">Lead qualification and viewing scheduling.</p>
-                       </div>
-                   </div>
-
-                   {/* Retail */}
-                   <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 flex items-start gap-6 hover:bg-white/10 transition-colors">
-                       <div className="p-4 bg-blue-500/20 rounded-xl text-blue-400">
-                           <ShoppingBag className="w-8 h-8" />
-                       </div>
-                       <div>
-                           <h4 className="text-xl font-bold text-white mb-2">Retail & Services</h4>
-                           <p className="text-slate-300">Order updates and FAQ handling.</p>
-                       </div>
-                   </div>
-
-                   {/* Education */}
-                   <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 flex items-start gap-6 hover:bg-white/10 transition-colors">
-                       <div className="p-4 bg-indigo-500/20 rounded-xl text-indigo-400">
-                           <GraduationCap className="w-8 h-8" />
-                       </div>
-                       <div>
-                           <h4 className="text-xl font-bold text-white mb-2">Education & Training</h4>
-                           <p className="text-slate-300">Enrollment enquiries.</p>
-                       </div>
-                   </div>
+                   ))}
                </div>
 
                <div className="text-center mt-12 text-slate-400 text-sm">
                    Differentiation: Each industry runs on custom conversation logic, not generic bots.
                </div>
            </div>
+      </section>
+
+      {/* Try an Industry Demo Now Section */}
+      <section ref={demoSectionRef} className="py-24 bg-navy-900/30 border-y border-navy-800 relative z-10">
+          <div className="max-w-7xl mx-auto px-6">
+              <div className="text-center mb-16">
+                  <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Try an industry demo Now</h2>
+                  <p className="text-xl text-slate-300">Click the "Start a Call" button below to start a free demo call!</p>
+              </div>
+
+              <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+                  {/* Left Column: Industry Tabs */}
+                  <div className="hidden lg:block lg:col-span-4 space-y-2">
+                      {industries.map((ind, index) => (
+                          <button
+                              key={index}
+                              onClick={() => setActiveDemo(index)}
+                              className={`w-full text-left px-6 py-4 rounded-xl transition-all duration-300 flex items-center gap-4 border ${
+                                  activeDemo === index 
+                                  ? 'bg-indigo-600/20 border-indigo-500/50 text-white shadow-[0_0_20px_rgba(99,102,241,0.15)]' 
+                                  : 'bg-navy-900/50 border-navy-800 text-slate-400 hover:bg-navy-800 hover:text-slate-200'
+                              }`}
+                          >
+                              <ind.icon className={`w-5 h-5 ${activeDemo === index ? 'text-indigo-400' : 'text-slate-500'}`} />
+                              <span className="font-semibold">{ind.shortName}</span>
+                              {activeDemo === index && (
+                                  <div className="ml-auto w-2 h-2 rounded-full bg-indigo-400 shadow-[0_0_10px_rgba(129,140,248,0.8)]"></div>
+                              )}
+                          </button>
+                      ))}
+                  </div>
+
+                  {/* Right Column: Demo Card */}
+                  <div className="lg:col-span-8">
+                      <div className="h-full bg-navy-950 border border-navy-800 rounded-3xl p-8 lg:p-12 relative overflow-hidden flex flex-col items-center justify-center text-center">
+                          {/* Background Glow */}
+                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none"></div>
+                          
+                          <div className="relative z-10 w-full max-w-md">
+                              <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">
+                                  Your <span className="text-indigo-400">{industries[activeDemo].shortName}</span> Advisor powered by AqionVox
+                              </h3>
+                              
+                              <div className="mb-8 relative inline-block">
+                                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 p-1 shadow-[0_0_40px_rgba(99,102,241,0.3)]">
+                                      <div className="w-full h-full rounded-full bg-navy-900 flex items-center justify-center border-4 border-navy-950">
+                                          <Phone className="w-12 h-12 text-white fill-current" />
+                                      </div>
+                                  </div>
+                                  <div className="absolute bottom-2 right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-navy-950 flex items-center justify-center">
+                                      <div className="w-full h-full rounded-full bg-green-400 animate-ping opacity-75 absolute"></div>
+                                      <div className="w-3 h-3 bg-white rounded-full relative z-10"></div>
+                                  </div>
+                              </div>
+
+                              <div className="mb-2 text-3xl font-bold text-white">{industries[activeDemo].agentName}</div>
+                              
+                              <div className="flex items-center justify-center gap-2 mb-10">
+                                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                                  <span className="text-green-400 font-medium tracking-wide uppercase text-sm">Available Now</span>
+                              </div>
+
+                              <button className="w-full py-4 bg-white text-navy-950 font-bold text-lg rounded-xl hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 group">
+                                  <Phone className="w-5 h-5 group-hover:animate-bounce" />
+                                  Start a Call
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </section>
 
       {/* AI Voice Experience (Screenshot 4) */}

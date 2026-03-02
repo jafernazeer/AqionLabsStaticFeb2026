@@ -24,43 +24,42 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-900/10 blur-[120px] rounded-full translate-x-1/3 -translate-y-1/3"></div>
         
         <div className="max-w-7xl mx-auto">
-            <div className="max-w-4xl">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+                {/* Left Column: Text Content */}
+                <div>
                     <h1 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
                         Intelligence That <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">Delivers Growth</span>
                     </h1>
                     <p className="text-lg text-slate-300 leading-relaxed mb-8">
                         AqionLabs proudly operates from the United Arab Emirates, contributing to the nation’s ambition to lead in advanced technology, digital economy growth, and AI innovation.
                     </p>
-                    
-                    <div className="grid md:grid-cols-2 gap-8 mb-12">
-                        <div className="bg-navy-900/50 border border-navy-800 rounded-2xl p-8 backdrop-blur-sm">
-                            <h3 className="text-white font-semibold mb-6 flex items-center gap-2">
-                                <Globe className="w-5 h-5 text-indigo-400" />
-                                Aligned with the UAE’s Vision 2031 strategy:
-                            </h3>
-                            <ul className="space-y-4">
-                                {[
-                                    "Digital transformation across public and private sectors",
-                                    "AI adoption that enhances economic diversification",
-                                    "Development of knowledge-based, innovation-driven enterprises",
-                                    "Creation of high-value technology capabilities within the region"
-                                ].map((item, i) => (
-                                    <li key={i} className="flex items-start gap-3">
-                                        <CheckCircle className="w-5 h-5 text-indigo-500 flex-shrink-0 mt-0.5" />
-                                        <span className="text-slate-400 text-sm leading-relaxed">{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                        
-                        <div className="flex flex-col justify-center">
-                            <p className="text-slate-400 text-lg leading-relaxed border-l-4 border-indigo-600 pl-6 italic">
-                                By combining local leadership with global delivery, AqionLabs helps position the UAE as a hub for enterprise AI excellence — exporting innovation from the region to the world.
-                            </p>
-                        </div>
-                    </div>
+                    <p className="text-slate-400 text-lg leading-relaxed border-l-4 border-indigo-600 pl-6 italic mb-8 lg:mb-0">
+                        By combining local leadership with global delivery, AqionLabs helps position the UAE as a hub for enterprise AI excellence — exporting innovation from the region to the world.
+                    </p>
+                </div>
+
+                {/* Right Column: Vision Card */}
+                <div className="bg-navy-900/50 border border-navy-800 rounded-2xl p-8 backdrop-blur-sm">
+                    <h3 className="text-white font-semibold mb-6 flex items-center gap-2">
+                        <Globe className="w-5 h-5 text-indigo-400" />
+                        Aligned with the UAE’s Vision 2031 strategy:
+                    </h3>
+                    <ul className="space-y-4">
+                        {[
+                            "Digital transformation across public and private sectors",
+                            "AI adoption that enhances economic diversification",
+                            "Development of knowledge-based, innovation-driven enterprises",
+                            "Creation of high-value technology capabilities within the region"
+                        ].map((item, i) => (
+                            <li key={i} className="flex items-start gap-3">
+                                <CheckCircle className="w-5 h-5 text-indigo-500 flex-shrink-0 mt-0.5" />
+                                <span className="text-slate-400 text-sm leading-relaxed">{item}</span>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             </div>
+        </div>
         </div>
 
       {/* Vision & Mission */}

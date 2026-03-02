@@ -389,9 +389,9 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
     ctaText: "Infographic showing how AqionVox will help the Logistics & Transportation Firms to deal with customer service"
   },
   [PageType.INDUSTRY_PROFESSIONAL]: {
-    title: "Professional Services",
-    headline: "AI for Legal, Consulting, and Accounting",
-    context: "Professional services firms need efficient client communication and knowledge management.",
+    title: "Legal Services",
+    headline: "AI for Legal and Consulting",
+    context: "Legal services firms need efficient client communication and knowledge management.",
     challenges: [
       "Client communication management",
       "Knowledge retrieval",
@@ -411,7 +411,7 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
       "Faster knowledge access",
       "Automated document workflows"
     ],
-    ctaText: "Infographic showing how AqionLabs will help Professional Services"
+    ctaText: "Infographic showing how AqionLabs will help Legal Services"
   }
 };
 
