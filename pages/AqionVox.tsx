@@ -21,7 +21,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
   const vapiRef = useRef<any>(null);
 
   useEffect(() => {
-    const vapi = new Vapi('1f781107-b2d9-4ed1-9633-ec76834cd63e');
+    const vapi = new Vapi('312d4d63-78cf-4b5a-89fb-e480cb83a46f');
     vapiRef.current = vapi;
 
     vapi.on('call-start', () => {
