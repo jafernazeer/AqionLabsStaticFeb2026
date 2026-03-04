@@ -4,7 +4,7 @@ import { Check, ArrowRight, TrendingUp, Shield, Bot, Workflow, Server } from 'lu
 
 interface IndustryDetailProps {
   data: IndustryPageData;
-  onNavigate: (page: PageType) => void;
+  onNavigate: (page: PageType, scrollToDemo?: boolean) => void;
 }
 
 const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => {
@@ -182,7 +182,7 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
                 <h3 className="text-3xl font-bold text-white mb-6">Ready to Transform?</h3>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <button 
-                        onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX)}
+                        onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX, true)}
                         className="bg-white text-indigo-900 px-8 py-4 rounded-full font-bold hover:bg-indigo-50 transition-colors shadow-lg shadow-white/10 flex items-center justify-center gap-2"
                     >
                         Book AqionVox Demo <ArrowRight className="w-5 h-5" />

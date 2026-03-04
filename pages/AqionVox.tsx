@@ -1,12 +1,13 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { PageType } from '../types';
+import Vapi from '@vapi-ai/web';
 import { 
   Bot, Phone, MessageSquare, Calendar, Filter, 
   BarChart, Users, Clock, Shield, Check, ArrowRight, Brain,
   Activity, Zap, RefreshCw, TrendingUp, Building, ShoppingBag, 
   GraduationCap, Stethoscope, Database, Settings, LayoutGrid,
-  Landmark, Truck, Briefcase, Coffee, Banknote
+  Landmark, Truck, Briefcase, Coffee, Banknote, Megaphone, Ruler, Ticket, Loader2, PhoneOff
 } from 'lucide-react';
 
 interface AqionVoxProps {
@@ -16,21 +17,73 @@ interface AqionVoxProps {
 const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
   const [activeDemo, setActiveDemo] = useState(0);
   const demoSectionRef = useRef<HTMLElement>(null);
+  const [callStatus, setCallStatus] = useState<'inactive' | 'loading' | 'active'>('inactive');
+  const vapiRef = useRef<any>(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const vapi = new Vapi('1f781107-b2d9-4ed1-9633-ec76834cd63e');
+    vapiRef.current = vapi;
+
+    vapi.on('call-start', () => {
+      setCallStatus('active');
+    });
+
+    vapi.on('call-end', () => {
+      setCallStatus('inactive');
+    });
+
+    vapi.on('error', (e) => {
+      console.error(e);
+      setCallStatus('inactive');
+    });
+
+    return () => {
+      vapi.stop();
+    };
+  }, []);
+
+  const toggleCall = async () => {
+    if (callStatus === 'active') {
+      vapiRef.current?.stop();
+      setCallStatus('inactive');
+    } else {
+      setCallStatus('loading');
+      try {
+        await vapiRef.current?.start('0330fcba-1033-437b-8e3c-9b53aeca6394');
+      } catch (e) {
+        console.error(e);
+        setCallStatus('inactive');
+      }
+    }
+  };
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const shouldScrollToDemo = urlParams.get('demo') === 'true';
+
+    if (shouldScrollToDemo && demoSectionRef.current) {
+        // Add a small delay to ensure the page is fully rendered before scrolling
+        setTimeout(() => {
+            demoSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+    } else {
+        window.scrollTo(0, 0);
+    }
   }, []);
 
   const industries = [
-    { id: 'healthcare', name: 'Healthcare', shortName: 'Healthcare', agentName: 'Sarah', icon: Stethoscope, color: 'text-teal-400', bg: 'bg-teal-500/20', desc: 'Patient booking & triage.' },
-    { id: 'realestate', name: 'Real Estate', shortName: 'Real Estate', agentName: 'Michael', icon: Building, color: 'text-amber-400', bg: 'bg-amber-500/20', desc: 'Lead qualification.' },
-    { id: 'retail', name: 'Retail', shortName: 'Retail', agentName: 'Alex', icon: ShoppingBag, color: 'text-blue-400', bg: 'bg-blue-500/20', desc: 'Order & FAQ handling.' },
-    { id: 'education', name: 'Education', shortName: 'Education', agentName: 'Emma', icon: GraduationCap, color: 'text-indigo-400', bg: 'bg-indigo-500/20', desc: 'Enrollment enquiries.' },
-    { id: 'government', name: 'Government', shortName: 'Government', agentName: 'James', icon: Landmark, color: 'text-slate-400', bg: 'bg-slate-500/20', desc: 'Citizen support.' },
-    { id: 'finance', name: 'Finance', shortName: 'Finance', agentName: 'David', icon: Banknote, color: 'text-emerald-400', bg: 'bg-emerald-500/20', desc: 'Account queries.' },
-    { id: 'hospitality', name: 'Hospitality', shortName: 'Hospitality', agentName: 'Sofia', icon: Coffee, color: 'text-rose-400', bg: 'bg-rose-500/20', desc: 'Booking management.' },
-    { id: 'logistics', name: 'Logistics', shortName: 'Logistics', agentName: 'Ryan', icon: Truck, color: 'text-orange-400', bg: 'bg-orange-500/20', desc: 'Shipment tracking.' },
-    { id: 'professional', name: 'Legal', shortName: 'Legal', agentName: 'Olivia', icon: Briefcase, color: 'text-sky-400', bg: 'bg-sky-500/20', desc: 'Client onboarding.' },
+    { id: 'healthcare', name: 'Healthcare', shortName: 'Healthcare', agentName: 'Aparna', icon: Stethoscope, color: 'text-teal-400', bg: 'bg-teal-500/20', desc: 'Patient booking & triage.', demoHeading: 'Your Medical Triage Assistant' },
+    { id: 'retail', name: 'Retail', shortName: 'Retail', agentName: 'Rahul', icon: ShoppingBag, color: 'text-blue-400', bg: 'bg-blue-500/20', desc: 'Order & FAQ handling.', demoHeading: 'Your Retail Support Specialist' },
+    { id: 'government', name: 'Government', shortName: 'Government', agentName: 'Abdul', icon: Landmark, color: 'text-slate-400', bg: 'bg-slate-500/20', desc: 'Citizen support.', demoHeading: 'Your Citizen Services Guide' },
+    { id: 'realestate', name: 'Real Estate', shortName: 'Real Estate', agentName: 'Sanjay', icon: Building, color: 'text-amber-400', bg: 'bg-amber-500/20', desc: 'Lead qualification.', demoHeading: 'Your Real Estate Consultant' },
+    { id: 'education', name: 'Education', shortName: 'Education', agentName: 'Divya', icon: GraduationCap, color: 'text-indigo-400', bg: 'bg-indigo-500/20', desc: 'Enrollment enquiries.', demoHeading: 'Your Student Enrollment Counselor' },
+    { id: 'finance', name: 'Finance', shortName: 'Finance', agentName: 'Tariq', icon: Banknote, color: 'text-emerald-400', bg: 'bg-emerald-500/20', desc: 'Account queries.', demoHeading: 'Your Financial Services Representative' },
+    { id: 'hospitality', name: 'Hospitality', shortName: 'Hospitality', agentName: 'Preethi', icon: Coffee, color: 'text-rose-400', bg: 'bg-rose-500/20', desc: 'Booking management.', demoHeading: 'Your Hotel Concierge & Booking Agent' },
+    { id: 'professional', name: 'Legal', shortName: 'Legal', agentName: 'Aisha', icon: Briefcase, color: 'text-sky-400', bg: 'bg-sky-500/20', desc: 'Client onboarding.', demoHeading: 'Your Legal Intake Coordinator' },
+    { id: 'media_events', name: 'Media & Events', shortName: 'Media & Events', agentName: 'Arjun', icon: Ticket, color: 'text-purple-400', bg: 'bg-purple-500/20', desc: 'Ticketing enquiries.', demoHeading: 'Your Event Ticketing Specialist' },
+    { id: 'logistics', name: 'Logistics', shortName: 'Logistics', agentName: 'Ameen', icon: Truck, color: 'text-orange-400', bg: 'bg-orange-500/20', desc: 'Shipment tracking.', demoHeading: 'Your Shipment Tracking Assistant' },
+    { id: 'architecture', name: 'Architecture & Planning', shortName: 'Architecture', agentName: 'Omar', icon: Ruler, color: 'text-cyan-400', bg: 'bg-cyan-500/20', desc: 'Project enquiries.', demoHeading: 'Your Project Enquiry Coordinator' },
+    { id: 'marketing_design', name: 'Marketing & Design', shortName: 'Marketing & Design', agentName: 'Fatima', icon: Megaphone, color: 'text-pink-400', bg: 'bg-pink-500/20', desc: 'Campaign enquiries.', demoHeading: 'Your Campaign Strategy Advisor' },
   ];
 
   return (
@@ -67,8 +120,8 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
                   {/* Left Column Features (Inputs) - Mobile Order 1 */}
                   <div className="w-full lg:w-auto flex flex-col gap-8 lg:gap-16 lg:items-end lg:pr-4 order-1 lg:order-1 relative">
                       
-                      {/* Mobile Layout Container (Pyramid) */}
-                      <div className="lg:hidden grid grid-cols-2 gap-y-8 relative pb-8 w-full">
+                      {/* Mobile Layout Container (Unified Grid) */}
+                      <div className="lg:hidden grid grid-cols-2 gap-x-4 gap-y-8 relative pb-8 w-full">
                           {/* Connecting Lines (Mobile) */}
                           <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" style={{ overflow: 'visible' }} viewBox="0 0 100 100" preserveAspectRatio="none">
                               <defs>
@@ -78,42 +131,91 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
                                 </linearGradient>
                               </defs>
                               
-                              {/* From Top Center (WhatsApp) - Small line down */}
-                              <path d="M50 45 L50 60" stroke="url(#mobile-line-gradient)" strokeWidth="2" fill="none" className="opacity-60" vectorEffect="non-scaling-stroke" />
-                              
-                              {/* From Bottom Left (Phone) - Small line down */}
-                              <path d="M25 85 L25 100" stroke="url(#mobile-line-gradient)" strokeWidth="2" fill="none" className="opacity-60" vectorEffect="non-scaling-stroke" />
-                              
-                              {/* From Bottom Right (Qualify) - Small line down */}
-                              <path d="M75 85 L75 100" stroke="url(#mobile-line-gradient)" strokeWidth="2" fill="none" className="opacity-60" vectorEffect="non-scaling-stroke" />
+                              {/* Top Left to Center */}
+                              <path d="M25 20 L50 50" stroke="url(#mobile-line-gradient)" strokeWidth="1" fill="none" className="opacity-40" vectorEffect="non-scaling-stroke" />
+                              {/* Top Right to Center */}
+                              <path d="M75 20 L50 50" stroke="url(#mobile-line-gradient)" strokeWidth="1" fill="none" className="opacity-40" vectorEffect="non-scaling-stroke" />
+                              {/* Left to Center */}
+                              <path d="M20 50 L40 50" stroke="url(#mobile-line-gradient)" strokeWidth="1" fill="none" className="opacity-40" vectorEffect="non-scaling-stroke" />
+                              {/* Right to Center */}
+                              <path d="M80 50 L60 50" stroke="url(#mobile-line-gradient)" strokeWidth="1" fill="none" className="opacity-40" vectorEffect="non-scaling-stroke" />
+                              {/* Bottom Left to Center */}
+                              <path d="M25 80 L50 50" stroke="url(#mobile-line-gradient)" strokeWidth="1" fill="none" className="opacity-40" vectorEffect="non-scaling-stroke" />
+                              {/* Bottom Right to Center */}
+                              <path d="M75 80 L50 50" stroke="url(#mobile-line-gradient)" strokeWidth="1" fill="none" className="opacity-40" vectorEffect="non-scaling-stroke" />
                           </svg>
 
-                          {/* Feature 2: WhatsApp (Top Center) */}
-                          <div className="col-span-2 flex flex-col items-center text-center z-10">
+                          {/* Row 1: WhatsApp (Top Left) & Book Appts (Top Right) */}
+                          <div className="flex flex-col items-center text-center z-10">
                                <div className="bg-navy-900 border border-navy-700 p-3 rounded-xl shadow-lg relative">
-                                   <MessageSquare className="w-6 h-6 text-green-400" />
-                                   {/* Dot */}
-                                   <div className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-2 h-2 bg-blue-500 rounded-full"></div>
+                                   <MessageSquare className="w-5 h-5 text-green-400" />
+                                   <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
                                </div>
-                               <h3 className="text-slate-200 font-semibold text-xs mt-2">WhatsApp Nurturing</h3>
+                               <h3 className="text-slate-200 font-semibold text-[10px] mt-2 leading-tight">WhatsApp Engagement</h3>
                           </div>
 
-                          {/* Feature 1: Phone (Bottom Left) */}
-                          <div className="col-span-1 flex flex-col items-center text-center z-10">
+                          <div className="flex flex-col items-center text-center z-10">
                                <div className="bg-navy-900 border border-navy-700 p-3 rounded-xl shadow-lg relative">
-                                   <Phone className="w-6 h-6 text-indigo-400" />
-                                   <div className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-2 h-2 bg-blue-500 rounded-full"></div>
+                                   <Calendar className="w-5 h-5 text-blue-400" />
+                                   <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
                                </div>
-                               <h3 className="text-slate-200 font-semibold text-xs mt-2">Answers Calls</h3>
+                               <h3 className="text-slate-200 font-semibold text-[10px] mt-2 leading-tight">Book Appointments</h3>
                           </div>
 
-                          {/* Feature 3: Qualify (Bottom Right) */}
-                          <div className="col-span-1 flex flex-col items-center text-center z-10">
+                          {/* Row 2: Answers Calls (Left), Image (Center), Qualify Leads (Right) */}
+                          <div className="col-span-2 grid grid-cols-3 items-center">
+                              <div className="flex flex-col items-center text-center z-10">
+                                   <div className="bg-navy-900 border border-navy-700 p-3 rounded-xl shadow-lg relative">
+                                       <Phone className="w-5 h-5 text-indigo-400" />
+                                       <div className="absolute -right-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+                                   </div>
+                                   <h3 className="text-slate-200 font-semibold text-[10px] mt-2 leading-tight">Answers Calls</h3>
+                              </div>
+
+                              {/* Center Image Placeholder - It will be absolutely positioned or handled by the main grid structure, 
+                                  but here we need to reserve space or integrate it. 
+                                  Actually, the main image is in a separate div (order-2). 
+                                  To achieve the "around" layout, we might need to hide the main image div on mobile 
+                                  and render it here, OR use absolute positioning. 
+                                  Let's render a smaller version here for mobile and hide the main one on mobile. */}
+                              <div className="flex justify-center items-center z-20">
+                                  <div className="relative w-24 h-24 bg-gradient-to-b from-navy-800 to-navy-950 rounded-2xl border border-indigo-500/30 shadow-[0_0_20px_rgba(99,102,241,0.15)] flex items-center justify-center p-1">
+                                      <div className="w-full h-full bg-navy-900/80 rounded-xl flex flex-col items-center justify-center backdrop-blur-md overflow-hidden relative border border-white/5">
+                                          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-400 to-purple-400 flex items-center justify-center shadow-lg mb-1">
+                                              <Brain className="w-4 h-4 text-white" />
+                                          </div>
+                                          <div className="text-center">
+                                              <h3 className="text-white font-bold text-[10px] tracking-tight"><span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">AqionVox</span></h3>
+                                              <div className="text-white text-[8px] font-semibold tracking-wider uppercase">Engine</div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div className="flex flex-col items-center text-center z-10">
+                                   <div className="bg-navy-900 border border-navy-700 p-3 rounded-xl shadow-lg relative">
+                                       <Filter className="w-5 h-5 text-orange-400" />
+                                       <div className="absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+                                   </div>
+                                   <h3 className="text-slate-200 font-semibold text-[10px] mt-2 leading-tight">Qualify Leads</h3>
+                              </div>
+                          </div>
+
+                          {/* Row 3: Automated Follow Up (Bottom Left) & CRM (Bottom Right) */}
+                          <div className="flex flex-col items-center text-center z-10">
                                <div className="bg-navy-900 border border-navy-700 p-3 rounded-xl shadow-lg relative">
-                                   <Filter className="w-6 h-6 text-orange-400" />
-                                   <div className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-2 h-2 bg-blue-500 rounded-full"></div>
+                                   <RefreshCw className="w-5 h-5 text-purple-400" />
+                                   <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
                                </div>
-                               <h3 className="text-slate-200 font-semibold text-xs mt-2">Qualify Leads</h3>
+                               <h3 className="text-slate-200 font-semibold text-[10px] mt-2 leading-tight">Automated Follow Up</h3>
+                          </div>
+
+                          <div className="flex flex-col items-center text-center z-10">
+                               <div className="bg-navy-900 border border-navy-700 p-3 rounded-xl shadow-lg relative">
+                                   <TrendingUp className="w-5 h-5 text-yellow-400" />
+                                   <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+                               </div>
+                               <h3 className="text-slate-200 font-semibold text-[10px] mt-2 leading-tight">Customer Journey CRM</h3>
                           </div>
                       </div>
 
@@ -158,7 +260,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
                   </div>
 
                   {/* Center Hub - Mobile Order 2 */}
-                  <div className="flex justify-center order-2 lg:order-2 py-4 lg:py-0 relative">
+                  <div className="hidden lg:flex justify-center order-2 lg:order-2 py-4 lg:py-0 relative">
                       <div className="relative z-20">
                           {/* Glow effect */}
                           <div className="absolute inset-0 bg-indigo-500 blur-[80px] opacity-30 rounded-full"></div>
@@ -175,7 +277,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
                                   
                                   <div className="text-center px-4">
                                       <h3 className="text-white font-bold text-base lg:text-lg tracking-tight"><span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">AqionVox</span></h3>
-                                      <div className="text-indigo-400 text-xs lg:text-sm font-semibold tracking-wider uppercase">AI Cx Engine</div>
+                                      <div className="text-white text-xs lg:text-sm font-semibold tracking-wider uppercase">Engine</div>
                                   </div>
                                   
                                   {/* Scanning line animation */}
@@ -196,52 +298,16 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
                   {/* Right Column Features (Outputs) - Mobile Order 3 */}
                   <div className="w-full lg:w-auto flex flex-col gap-8 lg:gap-16 items-center lg:items-start lg:pl-4 order-3 lg:order-3">
                       {/* Mobile Layout (V-Shape Pyramid) */}
-                      <div className="lg:hidden grid grid-cols-2 gap-y-8 relative pt-8 w-full">
+                      <div className="hidden">
                            {/* Connecting Lines (Mobile) */}
-                           <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" style={{ overflow: 'visible' }} viewBox="0 0 100 100" preserveAspectRatio="none">
-                              <defs>
-                                <linearGradient id="mobile-line-gradient-up" x1="0%" y1="100%" x2="0%" y2="0%">
-                                  <stop offset="0%" stopColor="#60a5fa" /> {/* Blue-400 */}
-                                  <stop offset="100%" stopColor="#2563eb" /> {/* Blue-600 */}
-                                </linearGradient>
-                              </defs>
 
-                              {/* From Top Left (Books) - Small line up */}
-                              <path d="M25 15 L25 0" stroke="url(#mobile-line-gradient-up)" strokeWidth="2" fill="none" className="opacity-60" vectorEffect="non-scaling-stroke" />
-                              
-                              {/* From Top Right (Follow-up) - Small line up */}
-                              <path d="M75 15 L75 0" stroke="url(#mobile-line-gradient-up)" strokeWidth="2" fill="none" className="opacity-60" vectorEffect="non-scaling-stroke" />
-                              
-                              {/* From Bottom Center (CRM) - Small line up */}
-                              <path d="M50 55 L50 40" stroke="url(#mobile-line-gradient-up)" strokeWidth="2" fill="none" className="opacity-60" vectorEffect="non-scaling-stroke" />
-                           </svg>
 
-                           {/* Feature 4: Books appts (Top Left) */}
-                           <div className="col-span-1 flex flex-col items-center text-center z-10">
-                               <div className="bg-navy-900 border border-navy-700 p-3 rounded-xl shadow-lg relative">
-                                   <Calendar className="w-6 h-6 text-blue-400" />
-                                   <div className="absolute top-[-6px] left-1/2 -translate-x-1/2 w-2 h-2 bg-blue-500 rounded-full"></div>
-                               </div>
-                               <h3 className="text-slate-200 font-semibold text-xs mt-2">Book Appointments</h3>
-                           </div>
 
-                           {/* Feature 5: Follow-up (Top Right) */}
-                           <div className="col-span-1 flex flex-col items-center text-center z-10">
-                               <div className="bg-navy-900 border border-navy-700 p-3 rounded-xl shadow-lg relative">
-                                   <RefreshCw className="w-6 h-6 text-purple-400" />
-                                   <div className="absolute top-[-6px] left-1/2 -translate-x-1/2 w-2 h-2 bg-blue-500 rounded-full"></div>
-                               </div>
-                               <h3 className="text-slate-200 font-semibold text-xs mt-2">Automated Follow Ups</h3>
-                           </div>
 
-                           {/* Feature 6: CRM (Bottom Center) */}
-                           <div className="col-span-2 flex flex-col items-center text-center z-10">
-                               <div className="bg-navy-900 border border-navy-700 p-3 rounded-xl shadow-lg relative">
-                                   <TrendingUp className="w-6 h-6 text-yellow-400" />
-                                   <div className="absolute top-[-6px] left-1/2 -translate-x-1/2 w-2 h-2 bg-blue-500 rounded-full"></div>
-                               </div>
-                               <h3 className="text-slate-200 font-semibold text-xs mt-2">Customer Journey CRM</h3>
-                           </div>
+
+
+
+
                       </div>
 
                       {/* Desktop Layout */}
@@ -288,6 +354,118 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
           </div>
       </section>
 
+
+
+      {/* Use Cases Section */}
+      <section className="py-24 relative z-10">
+           <div className="max-w-7xl mx-auto px-6">
+               <div className="text-center mb-16">
+                   <p className="text-xl text-slate-400 mb-2 uppercase tracking-wide font-medium">Built for</p>
+                   <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+                       High Volume & <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">High Value</span>
+                   </h2>
+                   <p className="text-2xl text-slate-300">conversations across industries.</p>
+               </div>
+               
+               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                   {industries.map((ind, i) => (
+                       <div 
+                           key={i} 
+                           onClick={() => {
+                               setActiveDemo(i);
+                               demoSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+                           }}
+                           className={`bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-3 md:p-4 flex items-center gap-3 hover:bg-white/10 transition-colors group cursor-pointer`}
+                       >
+                           <div className={`p-2 rounded-lg ${ind.bg} ${ind.color} group-hover:scale-110 transition-transform duration-300 shrink-0`}>
+                               <ind.icon className="w-4 h-4 md:w-5 md:h-5" />
+                           </div>
+                           <div className="flex-1">
+                               <h4 className="text-sm md:text-base font-bold text-white leading-tight">{ind.name}</h4>
+                               <p className="text-slate-400 text-xs mt-0.5 line-clamp-2 hidden md:block">{ind.desc}</p>
+                           </div>
+                       </div>
+                   ))}
+               </div>
+
+               <div className="text-center mt-12 text-slate-400 text-sm">
+                   Differentiation: Each industry runs on custom conversation logic, not generic bots.
+               </div>
+           </div>
+      </section>
+
+      {/* Try an Industry Demo Now Section */}
+      <section ref={demoSectionRef} className="py-24 bg-navy-900/30 border-y border-navy-800 relative z-10">
+          <div className="max-w-7xl mx-auto px-6">
+              <div className="text-center mb-10 md:mb-12">
+                  <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Try a Live Demo Call Now</h2>
+              </div>
+
+              <div className="flex justify-center px-4">
+                  <div className="w-full max-w-2xl">
+                      <div className="bg-navy-950 border border-navy-800 rounded-3xl p-8 md:p-10 relative overflow-hidden flex flex-col items-center justify-center text-center shadow-2xl">
+                          {/* Background Glow */}
+                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none"></div>
+                          
+                          <div className="relative z-10 w-full flex flex-col items-center">
+                              <h3 className="text-lg md:text-xl font-medium text-slate-300 mb-8 max-w-md leading-relaxed">
+                                  Click the "Start a Call" button below to start a free demo call with our AI Agent
+                              </h3>
+                              
+                              <div className="mb-6 relative inline-block">
+                                  <div className="w-28 h-28 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 p-1 shadow-[0_0_40px_rgba(99,102,241,0.3)]">
+                                      <div className="w-full h-full rounded-full bg-navy-900 flex items-center justify-center border-4 border-navy-950">
+                                          <Phone className="w-10 h-10 md:w-12 md:h-12 text-white fill-current" />
+                                      </div>
+                                  </div>
+                                  <div className="absolute bottom-2 right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-navy-950 flex items-center justify-center">
+                                      <div className="w-full h-full rounded-full bg-green-400 animate-ping opacity-75 absolute"></div>
+                                      <div className="w-3 h-3 bg-white rounded-full relative z-10"></div>
+                                  </div>
+                              </div>
+
+                              <div className="mb-2 text-3xl font-bold text-white">Jafer</div>
+                              
+                              <div className="flex items-center justify-center gap-2 mb-8">
+                                  <div className={`w-2 h-2 rounded-full ${callStatus === 'active' ? 'bg-red-500' : 'bg-green-500'} animate-pulse`}></div>
+                                  <span className={`${callStatus === 'active' ? 'text-red-400' : 'text-green-400'} font-medium tracking-wide uppercase text-sm`}>
+                                      {callStatus === 'active' ? 'On Call' : 'Available Now'}
+                                  </span>
+                              </div>
+
+                              <button 
+                                  onClick={toggleCall}
+                                  disabled={callStatus === 'loading'}
+                                  className={`w-full max-w-xs py-4 font-bold text-lg rounded-xl transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 group ${
+                                      callStatus === 'active' 
+                                          ? 'bg-red-500 text-white hover:bg-red-600 shadow-red-500/20' 
+                                          : 'bg-white text-navy-950 hover:scale-105'
+                                  } ${callStatus === 'loading' ? 'opacity-80 cursor-not-allowed' : ''}`}
+                              >
+                                  {callStatus === 'loading' ? (
+                                      <>
+                                          <Loader2 className="w-5 h-5 animate-spin" />
+                                          Connecting...
+                                      </>
+                                  ) : callStatus === 'active' ? (
+                                      <>
+                                          <PhoneOff className="w-5 h-5" />
+                                          End Call
+                                      </>
+                                  ) : (
+                                      <>
+                                          <Phone className="w-5 h-5 group-hover:animate-bounce" />
+                                          Start a Call
+                                      </>
+                                  )}
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
       {/* Core Capabilities */}
       <section className="py-24 bg-navy-900/50 border-y border-navy-800 relative z-10">
           <div className="max-w-7xl mx-auto px-6">
@@ -309,117 +487,6 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
                           <p className="text-slate-400 text-sm leading-relaxed">{card.desc}</p>
                       </div>
                   ))}
-              </div>
-          </div>
-      </section>
-
-      {/* Use Cases Section */}
-      <section className="py-24 relative z-10">
-           <div className="max-w-7xl mx-auto px-6">
-               <div className="text-center mb-16">
-                   <p className="text-xl text-slate-400 mb-2 uppercase tracking-wide font-medium">Built for</p>
-                   <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-                       High Volume & <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">High Value</span>
-                   </h2>
-                   <p className="text-2xl text-slate-300">conversations across industries.</p>
-               </div>
-               
-               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                   {industries.map((ind, i) => (
-                       <div 
-                           key={i} 
-                           onClick={() => {
-                               setActiveDemo(i);
-                               demoSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
-                           }}
-                           className={`bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-3 md:p-4 flex items-center gap-3 hover:bg-white/10 transition-colors group cursor-pointer ${
-                               i === industries.length - 1 ? 'col-span-2 md:col-span-1' : ''
-                           }`}
-                       >
-                           <div className={`p-2 rounded-lg ${ind.bg} ${ind.color} group-hover:scale-110 transition-transform duration-300 shrink-0`}>
-                               <ind.icon className="w-4 h-4 md:w-5 md:h-5" />
-                           </div>
-                           <div className={i === industries.length - 1 ? 'text-center md:text-left' : ''}>
-                               <h4 className="text-sm md:text-base font-bold text-white leading-tight">{ind.name}</h4>
-                               <p className="text-slate-400 text-xs mt-0.5 line-clamp-2 hidden md:block">{ind.desc}</p>
-                           </div>
-                       </div>
-                   ))}
-               </div>
-
-               <div className="text-center mt-12 text-slate-400 text-sm">
-                   Differentiation: Each industry runs on custom conversation logic, not generic bots.
-               </div>
-           </div>
-      </section>
-
-      {/* Try an Industry Demo Now Section */}
-      <section ref={demoSectionRef} className="py-24 bg-navy-900/30 border-y border-navy-800 relative z-10">
-          <div className="max-w-7xl mx-auto px-6">
-              <div className="text-center mb-16">
-                  <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Try an industry demo Now</h2>
-                  <p className="text-xl text-slate-300">Click the "Start a Call" button below to start a free demo call!</p>
-              </div>
-
-              <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
-                  {/* Left Column: Industry Tabs */}
-                  <div className="hidden lg:block lg:col-span-4 space-y-2">
-                      {industries.map((ind, index) => (
-                          <button
-                              key={index}
-                              onClick={() => setActiveDemo(index)}
-                              className={`w-full text-left px-6 py-4 rounded-xl transition-all duration-300 flex items-center gap-4 border ${
-                                  activeDemo === index 
-                                  ? 'bg-indigo-600/20 border-indigo-500/50 text-white shadow-[0_0_20px_rgba(99,102,241,0.15)]' 
-                                  : 'bg-navy-900/50 border-navy-800 text-slate-400 hover:bg-navy-800 hover:text-slate-200'
-                              }`}
-                          >
-                              <ind.icon className={`w-5 h-5 ${activeDemo === index ? 'text-indigo-400' : 'text-slate-500'}`} />
-                              <span className="font-semibold">{ind.shortName}</span>
-                              {activeDemo === index && (
-                                  <div className="ml-auto w-2 h-2 rounded-full bg-indigo-400 shadow-[0_0_10px_rgba(129,140,248,0.8)]"></div>
-                              )}
-                          </button>
-                      ))}
-                  </div>
-
-                  {/* Right Column: Demo Card */}
-                  <div className="lg:col-span-8">
-                      <div className="h-full bg-navy-950 border border-navy-800 rounded-3xl p-8 lg:p-12 relative overflow-hidden flex flex-col items-center justify-center text-center">
-                          {/* Background Glow */}
-                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none"></div>
-                          
-                          <div className="relative z-10 w-full max-w-md">
-                              <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">
-                                  Your <span className="text-indigo-400">{industries[activeDemo].shortName}</span> Advisor powered by AqionVox
-                              </h3>
-                              
-                              <div className="mb-8 relative inline-block">
-                                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 p-1 shadow-[0_0_40px_rgba(99,102,241,0.3)]">
-                                      <div className="w-full h-full rounded-full bg-navy-900 flex items-center justify-center border-4 border-navy-950">
-                                          <Phone className="w-12 h-12 text-white fill-current" />
-                                      </div>
-                                  </div>
-                                  <div className="absolute bottom-2 right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-navy-950 flex items-center justify-center">
-                                      <div className="w-full h-full rounded-full bg-green-400 animate-ping opacity-75 absolute"></div>
-                                      <div className="w-3 h-3 bg-white rounded-full relative z-10"></div>
-                                  </div>
-                              </div>
-
-                              <div className="mb-2 text-3xl font-bold text-white">{industries[activeDemo].agentName}</div>
-                              
-                              <div className="flex items-center justify-center gap-2 mb-10">
-                                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                                  <span className="text-green-400 font-medium tracking-wide uppercase text-sm">Available Now</span>
-                              </div>
-
-                              <button className="w-full py-4 bg-white text-navy-950 font-bold text-lg rounded-xl hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 group">
-                                  <Phone className="w-5 h-5 group-hover:animate-bounce" />
-                                  Start a Call
-                              </button>
-                          </div>
-                      </div>
-                  </div>
               </div>
           </div>
       </section>

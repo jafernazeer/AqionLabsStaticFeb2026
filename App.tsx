@@ -54,13 +54,16 @@ const AppContent: React.FC = () => {
     if (path === '/industries/hospitality') return PageType.INDUSTRY_HOSPITALITY;
     if (path === '/industries/logistics') return PageType.INDUSTRY_LOGISTICS;
     if (path === '/industries/professional-services') return PageType.INDUSTRY_PROFESSIONAL;
+    if (path === '/industries/media-events') return PageType.INDUSTRY_MEDIA_EVENTS;
+    if (path === '/industries/marketing-design') return PageType.INDUSTRY_MARKETING_DESIGN;
+    if (path === '/industries/architecture-planning') return PageType.INDUSTRY_ARCHITECTURE;
 
     return PageType.HOME;
   };
 
   const currentPage = getPageTypeFromPath(location.pathname);
 
-  const handleNavigate = (page: PageType) => {
+  const handleNavigate = (page: PageType, scrollToDemo?: boolean) => {
     const pathMap: Record<string, string> = {
       [PageType.HOME]: '/',
       [PageType.ABOUT]: '/about',
@@ -87,9 +90,15 @@ const AppContent: React.FC = () => {
       [PageType.INDUSTRY_HOSPITALITY]: '/industries/hospitality',
       [PageType.INDUSTRY_LOGISTICS]: '/industries/logistics',
       [PageType.INDUSTRY_PROFESSIONAL]: '/industries/professional-services',
+      [PageType.INDUSTRY_MEDIA_EVENTS]: '/industries/media-events',
+      [PageType.INDUSTRY_MARKETING_DESIGN]: '/industries/marketing-design',
+      [PageType.INDUSTRY_ARCHITECTURE]: '/industries/architecture-planning',
     };
     
-    const path = pathMap[page] || '/';
+    let path = pathMap[page] || '/';
+    if (scrollToDemo && page === PageType.PRODUCT_AQIONVOX) {
+        path += '?demo=true';
+    }
     navigate(path);
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
@@ -128,6 +137,9 @@ const AppContent: React.FC = () => {
             <Route path="/industries/hospitality" element={<IndustryDetail data={INDUSTRY_DATA[PageType.INDUSTRY_HOSPITALITY]} onNavigate={handleNavigate} />} />
             <Route path="/industries/logistics" element={<IndustryDetail data={INDUSTRY_DATA[PageType.INDUSTRY_LOGISTICS]} onNavigate={handleNavigate} />} />
             <Route path="/industries/professional-services" element={<IndustryDetail data={INDUSTRY_DATA[PageType.INDUSTRY_PROFESSIONAL]} onNavigate={handleNavigate} />} />
+            <Route path="/industries/media-events" element={<IndustryDetail data={INDUSTRY_DATA[PageType.INDUSTRY_MEDIA_EVENTS]} onNavigate={handleNavigate} />} />
+            <Route path="/industries/marketing-design" element={<IndustryDetail data={INDUSTRY_DATA[PageType.INDUSTRY_MARKETING_DESIGN]} onNavigate={handleNavigate} />} />
+            <Route path="/industries/architecture-planning" element={<IndustryDetail data={INDUSTRY_DATA[PageType.INDUSTRY_ARCHITECTURE]} onNavigate={handleNavigate} />} />
             
             {/* Fallback */}
             <Route path="*" element={<Navigate to="/" replace />} />

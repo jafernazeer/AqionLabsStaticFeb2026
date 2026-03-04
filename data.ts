@@ -412,6 +412,128 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
       "Automated document workflows"
     ],
     ctaText: "Infographic showing how AqionLabs will help Legal Services"
+  },
+  [PageType.INDUSTRY_MARKETING_DESIGN]: {
+    title: "Marketing & Design",
+    headline: "AI-Powered Engagement & Automation for Marketing & Creative Agencies",
+    context: "Marketing and creative agencies operate in fast-paced environments where response speed, lead management, and operational efficiency directly impact revenue. From handling client enquiries to managing campaigns and internal coordination, AI can reduce delays and improve performance across the entire workflow.",
+    challenges: [
+      "High volume of inbound enquiries",
+      "Missed client calls and WhatsApp messages",
+      "Delayed proposal follow-ups",
+      "Manual campaign coordination",
+      "Repetitive client reporting tasks",
+      "Inefficient internal communication"
+    ],
+    solutions: {
+      aqionVox: [
+        "Instant response to new client enquiries",
+        "Arabic & English call answering",
+        "WhatsApp automation for campaign enquiries",
+        "Lead qualification before human sales contact",
+        "Appointment booking for consultations",
+        "Automated follow-up on proposals"
+      ],
+      aiAutomation: [
+        "Automated proposal routing",
+        "Campaign approval workflows",
+        "Client onboarding processes",
+        "Task assignment automation",
+        "Automated reporting generation",
+        "Contract approval flows",
+        "Invoice processing automation"
+      ],
+      enterpriseAi: [
+        "Private GPT for internal knowledge assistants",
+        "AI content assistance systems",
+        "Secure client data handling",
+        "AI governance frameworks"
+      ]
+    },
+    outcome: [
+      "Faster client response times",
+      "Improved lead conversion rates",
+      "Reduced administrative workload",
+      "Enhanced client satisfaction",
+      "Scalable operational efficiency"
+    ],
+    ctaText: "Deploy AI for Smarter Campaign Operations"
+  },
+  [PageType.INDUSTRY_MEDIA_EVENTS]: {
+    title: "Media & Events",
+    headline: "AI-Powered Engagement for Media & Events",
+    context: "Media and event companies handle massive spikes in customer interactions, especially around big music festivals, conferences, and product launches. AI ensures every fan and attendee gets instant support.",
+    challenges: [
+      "High volume of ticketing enquiries during peak times",
+      "Managing event schedules and FAQ requests",
+      "Handling cancellations and refunds efficiently",
+      "Coordinating attendee communications"
+    ],
+    solutions: {
+      aqionVox: [
+        "Instant response to ticketing enquiries for big music festivals and events",
+        "Automated FAQ handling for event details (parking, schedules, prohibited items)",
+        "WhatsApp automation for attendee updates",
+        "Multilingual support for international events"
+      ],
+      aiAutomation: [
+        "Automated refund and cancellation processing",
+        "Vendor and sponsor coordination workflows",
+        "Post-event feedback collection"
+      ]
+    },
+    outcome: [
+      "Zero wait times for ticketing support",
+      "Seamless attendee experience",
+      "Reduced load on human support staff during peak spikes",
+      "Higher engagement and satisfaction rates"
+    ],
+    ctaText: "Deploy AI for Smarter Event Management"
+  },
+  [PageType.INDUSTRY_ARCHITECTURE]: {
+    title: "Architecture & Planning",
+    headline: "AI-Driven Efficiency for Architecture & Planning Firms",
+    context: "Architecture and planning firms manage complex projects, approvals, client communication, and coordination between multiple stakeholders. AI enables these firms to automate communication, streamline documentation, and improve project visibility.",
+    challenges: [
+      "High volume of project enquiries",
+      "Missed calls from potential clients",
+      "Manual documentation workflows",
+      "Complex approval processes",
+      "Coordination between design teams and stakeholders",
+      "Time-consuming reporting"
+    ],
+    solutions: {
+      aqionVox: [
+        "24/7 enquiry handling in Arabic & English",
+        "Automatic qualification of project enquiries",
+        "Consultation booking automation",
+        "Missed call recovery",
+        "Client follow-up automation"
+      ],
+      aiAutomation: [
+        "Digital approval routing",
+        "Permit application tracking",
+        "Internal review workflows",
+        "RFI management automation",
+        "Automated proposal generation",
+        "Contract workflow management",
+        "Vendor coordination processes"
+      ],
+      enterpriseAi: [
+        "Private GPT for technical knowledge queries",
+        "AI-powered design document search",
+        "Secure AI infrastructure deployment",
+        "Compliance-ready AI governance frameworks"
+      ]
+    },
+    outcome: [
+      "Faster client onboarding",
+      "Reduced administrative workload",
+      "Improved project visibility",
+      "Better stakeholder communication",
+      "Scalable firm operations"
+    ],
+    ctaText: "Transform Architectural Operations with AI"
   }
 };
 

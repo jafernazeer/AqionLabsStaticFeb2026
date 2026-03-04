@@ -3,9 +3,9 @@ import React from 'react';
 import { PageType } from '../types';
 import { 
   ArrowRight, Bot, MessageSquare, Shield, 
-  Phone, Check, Activity, Globe, Users, GraduationCap,
-  Briefcase, ShieldCheck, Layers, ShoppingCart,
-  Workflow, Server, Stethoscope, Building, Landmark, Truck, Coffee, TrendingUp
+  Phone, Check, Activity, Globe, GraduationCap,
+  ShieldCheck, Layers, ShoppingBag, Ticket,
+  Workflow, Server, Stethoscope, Building, Landmark, Truck, Coffee, TrendingUp, Megaphone, Ruler, Banknote, Briefcase
 } from 'lucide-react';
 
 interface HomeProps {
@@ -257,31 +257,33 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                   </p>
               </div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {[
-                      { title: "Healthcare", icon: Stethoscope, page: PageType.INDUSTRY_HEALTHCARE },
-                      { title: "Real Estate", icon: Building, page: PageType.INDUSTRY_REAL_ESTATE },
-                      { title: "Education", icon: GraduationCap, page: PageType.INDUSTRY_EDUCATION },
-                      { title: "Retail", icon: ShoppingCart, page: PageType.INDUSTRY_RETAIL },
-                      { title: "Government", icon: Landmark, page: PageType.INDUSTRY_GOVERNMENT },
-                      { title: "Financial Services", icon: Briefcase, page: PageType.INDUSTRY_FINANCE },
-                      { title: "Hospitality", icon: Coffee, page: PageType.INDUSTRY_HOSPITALITY },
-                      { title: "Logistics", icon: Truck, page: PageType.INDUSTRY_LOGISTICS },
-                      { title: "Professional Services", icon: Users, page: PageType.INDUSTRY_PROFESSIONAL }
+                      { title: "Healthcare", icon: Stethoscope, page: PageType.INDUSTRY_HEALTHCARE, color: 'text-teal-400', bg: 'bg-teal-500/20', desc: 'Patient booking & triage.' },
+                      { title: "Retail", icon: ShoppingBag, page: PageType.INDUSTRY_RETAIL, color: 'text-blue-400', bg: 'bg-blue-500/20', desc: 'Order & FAQ handling.' },
+                      { title: "Government", icon: Landmark, page: PageType.INDUSTRY_GOVERNMENT, color: 'text-slate-400', bg: 'bg-slate-500/20', desc: 'Citizen support.' },
+                      { title: "Real Estate", icon: Building, page: PageType.INDUSTRY_REAL_ESTATE, color: 'text-amber-400', bg: 'bg-amber-500/20', desc: 'Lead qualification.' },
+                      { title: "Education", icon: GraduationCap, page: PageType.INDUSTRY_EDUCATION, color: 'text-indigo-400', bg: 'bg-indigo-500/20', desc: 'Enrollment enquiries.' },
+                      { title: "Financial Services", icon: Banknote, page: PageType.INDUSTRY_FINANCE, color: 'text-emerald-400', bg: 'bg-emerald-500/20', desc: 'Account queries.' },
+                      { title: "Hospitality", icon: Coffee, page: PageType.INDUSTRY_HOSPITALITY, color: 'text-rose-400', bg: 'bg-rose-500/20', desc: 'Booking management.' },
+                      { title: "Legal", icon: Briefcase, page: PageType.INDUSTRY_PROFESSIONAL, color: 'text-sky-400', bg: 'bg-sky-500/20', desc: 'Client onboarding.' },
+                      { title: "Media & Events", icon: Ticket, page: PageType.INDUSTRY_MEDIA_EVENTS, color: 'text-purple-400', bg: 'bg-purple-500/20', desc: 'Ticketing enquiries.' },
+                      { title: "Logistics", icon: Truck, page: PageType.INDUSTRY_LOGISTICS, color: 'text-orange-400', bg: 'bg-orange-500/20', desc: 'Shipment tracking.' },
+                      { title: "Architecture & Planning", icon: Ruler, page: PageType.INDUSTRY_ARCHITECTURE, color: 'text-cyan-400', bg: 'bg-cyan-500/20', desc: 'Project enquiries.' },
+                      { title: "Marketing & Design", icon: Megaphone, page: PageType.INDUSTRY_MARKETING_DESIGN, color: 'text-pink-400', bg: 'bg-pink-500/20', desc: 'Campaign enquiries.' }
                   ].map((industry, idx) => (
                       <div 
                         key={idx}
                         onClick={() => onNavigate(industry.page)}
-                        className="bg-navy-950 border border-navy-800 p-6 rounded-2xl hover:border-indigo-500/30 hover:bg-navy-900 transition-all cursor-pointer flex items-center gap-4 group"
+                        className={`bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-3 md:p-4 flex items-center gap-3 hover:bg-white/10 transition-colors group cursor-pointer`}
                       >
-                          <div className="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500/20 transition-colors">
-                              <industry.icon className="w-6 h-6" />
+                          <div className={`p-2 rounded-lg ${industry.bg} ${industry.color} group-hover:scale-110 transition-transform duration-300 shrink-0`}>
+                              <industry.icon className="w-4 h-4 md:w-5 md:h-5" />
                           </div>
-                          <div>
-                              <h3 className="text-lg font-bold text-white group-hover:text-indigo-300 transition-colors">{industry.title}</h3>
-                              <span className="text-xs text-slate-500 uppercase tracking-wider group-hover:text-slate-400">View Solution</span>
+                          <div className="flex-1">
+                              <h4 className="text-sm md:text-base font-bold text-white leading-tight">{industry.title}</h4>
+                              <p className="text-slate-400 text-xs mt-0.5 line-clamp-2 hidden md:block">{industry.desc}</p>
                           </div>
-                          <ArrowRight className="w-5 h-5 text-slate-600 ml-auto group-hover:text-indigo-400 group-hover:translate-x-1 transition-all" />
                       </div>
                   ))}
               </div>

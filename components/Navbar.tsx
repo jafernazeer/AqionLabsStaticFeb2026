@@ -33,11 +33,7 @@ const navItems: NavItem[] = [
       { label: 'Real Estate', page: PageType.INDUSTRY_REAL_ESTATE },
       { label: 'Education', page: PageType.INDUSTRY_EDUCATION },
       { label: 'Retail', page: PageType.INDUSTRY_RETAIL },
-      { label: 'Government', page: PageType.INDUSTRY_GOVERNMENT },
-      { label: 'Financial Services', page: PageType.INDUSTRY_FINANCE },
-      { label: 'Hospitality', page: PageType.INDUSTRY_HOSPITALITY },
-      { label: 'Logistics', page: PageType.INDUSTRY_LOGISTICS },
-      { label: 'Legal Services', page: PageType.INDUSTRY_PROFESSIONAL },
+      { label: 'Explore All', page: PageType.HOME },
     ]
   },
   { label: 'About', page: PageType.ABOUT },
@@ -114,7 +110,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                                     }`}
                                   >
                                     <span className={`block ${
-                                        (child.label === 'AqionVox' || child.label === 'AqionFlo')
+                                        (child.label === 'AqionVox' || child.label === 'AqionFlo' || child.label === 'Explore All')
                                         ? 'font-bold'
                                         : 'text-slate-300 group-hover:text-white transition-colors'
                                     }`}>
@@ -128,6 +124,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                                               <Activity className="w-4 h-4 text-indigo-400" /> 
                                               <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">{child.label}</span>
                                           </span>
+                                      ) : child.label === 'Explore All' ? (
+                                          <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">{child.label}</span>
                                       ) : child.label}
                                     </span>
                                   </button>
@@ -202,13 +200,15 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                                         : 'bg-slate-700 group-hover:bg-indigo-400'
                                     }`}></span>
                                     <span className={`transition-all ${
-                                      (child.label === 'AqionVox' || child.label === 'AqionFlo')
+                                      (child.label === 'AqionVox' || child.label === 'AqionFlo' || child.label === 'Explore All')
                                         ? 'font-bold'
                                         : 'text-slate-300 group-hover:text-white'
                                     }`}>
                                         {child.label === 'AqionVox' ? (
                                             <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">AqionVox</span>
                                         ) : child.label === 'AqionFlo' ? (
+                                            <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">{child.label}</span>
+                                        ) : child.label === 'Explore All' ? (
                                             <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">{child.label}</span>
                                         ) : child.label}
                                     </span>
