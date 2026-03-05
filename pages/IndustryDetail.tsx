@@ -23,7 +23,7 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
       {/* Hero Section */}
       <div className="bg-navy-900 py-20 border-b border-navy-800 relative z-10 overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/10 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
-        <div className="max-w-7xl mx-auto px-6 relative">
+        <div className="max-w-7xl mx-auto px-6 relative text-center flex flex-col items-center">
             <span className="bg-indigo-900/30 text-indigo-300 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide mb-6 inline-block border border-indigo-500/30">
                 Industry Solution
             </span>
@@ -43,7 +43,7 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
         
         {/* Challenges Section */}
         <section>
-            <h3 className="text-3xl font-bold text-white mb-8 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-8 flex items-center justify-center gap-3">
                 <span className="w-1 h-8 bg-red-500 rounded-full"></span>
                 Industry Challenges
             </h3>
@@ -76,7 +76,7 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
 
         {/* Solutions Section */}
         <section>
-            <h3 className="text-3xl font-bold text-white mb-12 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-12 flex items-center justify-center gap-3">
                 <span className="w-1 h-8 bg-indigo-500 rounded-full"></span>
                 AqionLabs Solutions
             </h3>
@@ -178,7 +178,7 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
 
         {/* Outcomes Section */}
         <section>
-            <h3 className="text-3xl font-bold text-white mb-8 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-white mb-8 flex items-center justify-center gap-3">
                 <span className="w-1 h-8 bg-green-500 rounded-full"></span>
                 Measurable Outcomes
             </h3>
@@ -212,14 +212,17 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
         {/* CTA Section */}
         <section className="bg-gradient-to-r from-indigo-900/50 to-purple-900/50 border border-indigo-500/30 rounded-3xl p-12 text-center relative overflow-hidden">
             <div className="absolute inset-0 bg-grid-white opacity-5 pointer-events-none"></div>
-            <div className="relative z-10">
-                <h3 className="text-3xl font-bold text-white mb-6">Ready to Transform?</h3>
+            <div className="relative z-10 flex flex-col items-center">
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Experience the Power of AI Voice Automation</h3>
+                <p className="text-lg text-slate-300 mb-8 max-w-2xl">
+                    Start a live demo call with our AI agent and experience how AqionVox can streamline customer communication and support.
+                </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <button 
                         onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX, true)}
                         className="bg-white text-indigo-900 px-8 py-4 rounded-full font-bold hover:bg-indigo-50 transition-colors shadow-lg shadow-white/10 flex items-center justify-center gap-2"
                     >
-                        Book AqionVox Demo <ArrowRight className="w-5 h-5" />
+                        Try AqionVox Demo <ArrowRight className="w-5 h-5" />
                     </button>
                     <button 
                         onClick={() => onNavigate(PageType.CONTACT)}

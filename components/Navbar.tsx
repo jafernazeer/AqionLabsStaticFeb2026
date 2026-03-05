@@ -4,7 +4,7 @@ import { Menu, X, ChevronDown, Brain, Bot, Activity } from 'lucide-react';
 import { PageType, NavItem } from '../types';
 
 interface NavbarProps {
-  onNavigate: (page: PageType) => void;
+  onNavigate: (page: PageType, scrollToDemo?: boolean, scrollToIndustries?: boolean) => void;
   currentPage: PageType;
 }
 
@@ -33,7 +33,7 @@ const navItems: NavItem[] = [
       { label: 'Real Estate', page: PageType.INDUSTRY_REAL_ESTATE },
       { label: 'Education', page: PageType.INDUSTRY_EDUCATION },
       { label: 'Retail', page: PageType.INDUSTRY_RETAIL },
-      { label: 'Explore All', page: PageType.HOME },
+      { label: 'Explore All', page: PageType.PRODUCT_AQIONVOX },
     ]
   },
   { label: 'About', page: PageType.ABOUT },
@@ -45,8 +45,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const [desktopHover, setDesktopHover] = useState<string | null>(null);
 
-  const handleNavigate = (page: PageType) => {
-    onNavigate(page);
+  const handleNavigate = (page: PageType, scrollToIndustries?: boolean) => {
+    onNavigate(page, false, scrollToIndustries);
     setIsOpen(false);
     setMobileExpanded(null);
   };
@@ -104,7 +104,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                                 {item.children.map((child) => (
                                   <button
                                     key={child.label}
-                                    onClick={() => handleNavigate(child.page!)}
+                                    onClick={() => handleNavigate(child.page!, child.label === 'Explore All')}
                                     className={`block w-full text-left px-4 py-3 text-sm transition-all rounded-lg group ${
                                       currentPage === child.page ? 'bg-white/10' : 'hover:bg-white/10'
                                     }`}
@@ -191,7 +191,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                              {item.children.map((child) => (
                                 <button
                                     key={child.label}
-                                    onClick={() => handleNavigate(child.page!)}
+                                    onClick={() => handleNavigate(child.page!, child.label === 'Explore All')}
                                     className="block w-full text-left px-8 py-4 text-base hover:bg-indigo-500/10 hover:pl-10 transition-all flex items-center border-l-4 border-transparent hover:border-indigo-500 group"
                                 >
                                     <span className={`w-2 h-2 rounded-full mr-3 transition-colors ${

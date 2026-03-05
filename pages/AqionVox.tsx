@@ -17,6 +17,7 @@ interface AqionVoxProps {
 const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
   const [activeDemo, setActiveDemo] = useState(0);
   const demoSectionRef = useRef<HTMLElement>(null);
+  const industriesSectionRef = useRef<HTMLElement>(null);
   const [callStatus, setCallStatus] = useState<'inactive' | 'loading' | 'active'>('inactive');
   const vapiRef = useRef<any>(null);
 
@@ -60,11 +61,16 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const shouldScrollToDemo = urlParams.get('demo') === 'true';
+    const shouldScrollToIndustries = urlParams.get('industries') === 'true';
 
     if (shouldScrollToDemo && demoSectionRef.current) {
         // Add a small delay to ensure the page is fully rendered before scrolling
         setTimeout(() => {
             demoSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+    } else if (shouldScrollToIndustries && industriesSectionRef.current) {
+        setTimeout(() => {
+            industriesSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
         }, 100);
     } else {
         window.scrollTo(0, 0);
@@ -357,7 +363,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
 
 
       {/* Use Cases Section */}
-      <section className="py-24 relative z-10">
+      <section ref={industriesSectionRef} className="py-24 relative z-10">
            <div className="max-w-7xl mx-auto px-6">
                <div className="text-center mb-16">
                    <p className="text-xl text-slate-400 mb-2 uppercase tracking-wide font-medium">Built for</p>

@@ -63,7 +63,7 @@ const AppContent: React.FC = () => {
 
   const currentPage = getPageTypeFromPath(location.pathname);
 
-  const handleNavigate = (page: PageType, scrollToDemo?: boolean) => {
+  const handleNavigate = (page: PageType, scrollToDemo?: boolean, scrollToIndustries?: boolean) => {
     const pathMap: Record<string, string> = {
       [PageType.HOME]: '/',
       [PageType.ABOUT]: '/about',
@@ -98,6 +98,8 @@ const AppContent: React.FC = () => {
     let path = pathMap[page] || '/';
     if (scrollToDemo && page === PageType.PRODUCT_AQIONVOX) {
         path += '?demo=true';
+    } else if (scrollToIndustries && page === PageType.PRODUCT_AQIONVOX) {
+        path += '?industries=true';
     }
     navigate(path);
     window.scrollTo({ top: 0, behavior: 'instant' });
