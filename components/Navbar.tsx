@@ -33,7 +33,7 @@ const navItems: NavItem[] = [
       { label: 'Real Estate', page: PageType.INDUSTRY_REAL_ESTATE },
       { label: 'Education', page: PageType.INDUSTRY_EDUCATION },
       { label: 'Retail', page: PageType.INDUSTRY_RETAIL },
-      { label: 'Explore All', page: PageType.PRODUCT_AQIONVOX },
+      { label: 'Explore All', page: PageType.HOME },
     ]
   },
   { label: 'About', page: PageType.ABOUT },

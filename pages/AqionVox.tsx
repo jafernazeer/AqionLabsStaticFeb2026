@@ -1,7 +1,9 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { PageType } from '../types';
+import { useLocation } from 'react-router-dom';
 import Vapi from '@vapi-ai/web';
+import { VAPI_PUBLIC_KEY, VAPI_ASSISTANT_ID } from '../constants';
 import { 
   Bot, Phone, MessageSquare, Calendar, Filter, 
   BarChart, Users, Clock, Shield, Check, ArrowRight, Brain,
@@ -15,6 +17,7 @@ interface AqionVoxProps {
 }
 
 const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
+  const location = useLocation();
   const [activeDemo, setActiveDemo] = useState(0);
   const demoSectionRef = useRef<HTMLElement>(null);
   const industriesSectionRef = useRef<HTMLElement>(null);
@@ -22,7 +25,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
   const vapiRef = useRef<any>(null);
 
   useEffect(() => {
-    const vapi = new Vapi('312d4d63-78cf-4b5a-89fb-e480cb83a46f');
+    const vapi = new Vapi(VAPI_PUBLIC_KEY);
     vapiRef.current = vapi;
 
     vapi.on('call-start', () => {
@@ -50,7 +53,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
     } else {
       setCallStatus('loading');
       try {
-        await vapiRef.current?.start('0330fcba-1033-437b-8e3c-9b53aeca6394');
+        await vapiRef.current?.start(VAPI_ASSISTANT_ID);
       } catch (e) {
         console.error(e);
         setCallStatus('inactive');
@@ -59,7 +62,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
   };
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
+    const urlParams = new URLSearchParams(location.search);
     const shouldScrollToDemo = urlParams.get('demo') === 'true';
     const shouldScrollToIndustries = urlParams.get('industries') === 'true';
 
@@ -75,7 +78,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
     } else {
         window.scrollTo(0, 0);
     }
-  }, []);
+  }, [location.search]);
 
   const industries = [
     { id: 'healthcare', name: 'Healthcare', shortName: 'Healthcare', agentName: 'Aparna', icon: Stethoscope, color: 'text-teal-400', bg: 'bg-teal-500/20', desc: 'Patient booking & triage.', demoHeading: 'Your Medical Triage Assistant' },

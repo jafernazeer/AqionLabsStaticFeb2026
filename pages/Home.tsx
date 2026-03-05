@@ -1,11 +1,15 @@
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { PageType } from '../types';
+import { useLocation } from 'react-router-dom';
+import Vapi from '@vapi-ai/web';
+import { VAPI_PUBLIC_KEY, VAPI_ASSISTANT_ID } from '../constants';
 import { 
   ArrowRight, Bot, MessageSquare, Shield, 
   Phone, Check, Activity, Globe, GraduationCap,
   ShieldCheck, Layers, ShoppingBag, Ticket,
-  Workflow, Server, Stethoscope, Building, Landmark, Truck, Coffee, TrendingUp, Megaphone, Ruler, Banknote, Briefcase
+  Workflow, Server, Stethoscope, Building, Landmark, Truck, Coffee, TrendingUp, Megaphone, Ruler, Banknote, Briefcase,
+  Loader2, PhoneOff
 } from 'lucide-react';
 
 interface HomeProps {
@@ -13,6 +17,61 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ onNavigate }) => {
+  const location = useLocation();
+  const industriesSectionRef = useRef<HTMLElement>(null);
+  const [callStatus, setCallStatus] = useState<'inactive' | 'loading' | 'active'>('inactive');
+  const vapiRef = useRef<any>(null);
+
+  useEffect(() => {
+    const vapi = new Vapi(VAPI_PUBLIC_KEY);
+    vapiRef.current = vapi;
+
+    vapi.on('call-start', () => {
+      setCallStatus('active');
+    });
+
+    vapi.on('call-end', () => {
+      setCallStatus('inactive');
+    });
+
+    vapi.on('error', (e) => {
+      console.error(e);
+      setCallStatus('inactive');
+    });
+
+    return () => {
+      vapi.stop();
+    };
+  }, []);
+
+  const toggleCall = async () => {
+    if (callStatus === 'active') {
+      vapiRef.current?.stop();
+      setCallStatus('inactive');
+    } else {
+      setCallStatus('loading');
+      try {
+        await vapiRef.current?.start(VAPI_ASSISTANT_ID);
+      } catch (e) {
+        console.error(e);
+        setCallStatus('inactive');
+      }
+    }
+  };
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const shouldScrollToIndustries = urlParams.get('industries') === 'true';
+
+    if (shouldScrollToIndustries && industriesSectionRef.current) {
+        setTimeout(() => {
+            industriesSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+    } else {
+        window.scrollTo(0, 0);
+    }
+  }, [location.search]);
+
   const scrollToServices = () => {
     const element = document.getElementById('core-ai-services');
     if (element) {
@@ -248,7 +307,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       </section>
 
       {/* Industries We Serve Section */}
-      <section className="py-24 relative z-10 bg-navy-900">
+      <section ref={industriesSectionRef} className="py-24 relative z-10 bg-navy-900">
            <div className="max-w-7xl mx-auto px-6">
               <div className="text-center mb-16">
                   <h2 className="text-4xl font-bold text-white mb-6">Industries We Serve</h2>
@@ -288,6 +347,78 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                   ))}
               </div>
            </div>
+      </section>
+
+      {/* Try an Industry Demo Now Section */}
+      <section className="py-24 bg-navy-900/30 border-y border-navy-800 relative z-10">
+          <div className="max-w-7xl mx-auto px-6">
+              <div className="text-center mb-10 md:mb-12">
+                  <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Try a Live Demo Call Now</h2>
+              </div>
+
+              <div className="flex justify-center px-4">
+                  <div className="w-full max-w-2xl">
+                      <div className="bg-navy-950 border border-navy-800 rounded-3xl p-8 md:p-10 relative overflow-hidden flex flex-col items-center justify-center text-center shadow-2xl">
+                          {/* Background Glow */}
+                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none"></div>
+                          
+                          <div className="relative z-10 w-full flex flex-col items-center">
+                              <h3 className="text-lg md:text-xl font-medium text-slate-300 mb-8 max-w-md leading-relaxed">
+                                  Click the "Start a Call" button below to start a free demo call with our AI Agent
+                              </h3>
+                              
+                              <div className="mb-6 relative inline-block">
+                                  <div className="w-28 h-28 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 p-1 shadow-[0_0_40px_rgba(99,102,241,0.3)]">
+                                      <div className="w-full h-full rounded-full bg-navy-900 flex items-center justify-center border-4 border-navy-950">
+                                          <Phone className="w-10 h-10 md:w-12 md:h-12 text-white fill-current" />
+                                      </div>
+                                  </div>
+                                  <div className="absolute bottom-2 right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-navy-950 flex items-center justify-center">
+                                      <div className="w-full h-full rounded-full bg-green-400 animate-ping opacity-75 absolute"></div>
+                                      <div className="w-3 h-3 bg-white rounded-full relative z-10"></div>
+                                  </div>
+                              </div>
+
+                              <div className="mb-2 text-3xl font-bold text-white">Rahul</div>
+                              
+                              <div className="flex items-center justify-center gap-2 mb-8">
+                                  <div className={`w-2 h-2 rounded-full ${callStatus === 'active' ? 'bg-red-500' : 'bg-green-500'} animate-pulse`}></div>
+                                  <span className={`${callStatus === 'active' ? 'text-red-400' : 'text-green-400'} font-medium tracking-wide uppercase text-sm`}>
+                                      {callStatus === 'active' ? 'On Call' : 'Available Now'}
+                                  </span>
+                              </div>
+
+                              <button 
+                                  onClick={toggleCall}
+                                  disabled={callStatus === 'loading'}
+                                  className={`w-full max-w-xs py-4 font-bold text-lg rounded-xl transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.15)] flex items-center justify-center gap-3 group ${
+                                      callStatus === 'active' 
+                                          ? 'bg-red-500 text-white hover:bg-red-600 shadow-red-500/20' 
+                                          : 'bg-white text-navy-950 hover:scale-105'
+                                  } ${callStatus === 'loading' ? 'opacity-80 cursor-not-allowed' : ''}`}
+                              >
+                                  {callStatus === 'loading' ? (
+                                      <>
+                                          <Loader2 className="w-5 h-5 animate-spin" />
+                                          Connecting...
+                                      </>
+                                  ) : callStatus === 'active' ? (
+                                      <>
+                                          <PhoneOff className="w-5 h-5" />
+                                          End Call
+                                      </>
+                                  ) : (
+                                      <>
+                                          <Phone className="w-5 h-5 fill-current" />
+                                          Start a Call
+                                      </>
+                                  )}
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </section>
 
       {/* Why AqionLabs Section */}

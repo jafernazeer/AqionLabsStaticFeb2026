@@ -100,6 +100,8 @@ const AppContent: React.FC = () => {
         path += '?demo=true';
     } else if (scrollToIndustries && page === PageType.PRODUCT_AQIONVOX) {
         path += '?industries=true';
+    } else if (scrollToIndustries && page === PageType.HOME) {
+        path += '?industries=true';
     }
     navigate(path);
     window.scrollTo({ top: 0, behavior: 'instant' });
