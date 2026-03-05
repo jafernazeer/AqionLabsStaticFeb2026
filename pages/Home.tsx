@@ -99,7 +99,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           </h1>
 
           <p className="text-lg md:text-xl text-slate-400 max-w-3xl mb-12 leading-relaxed animate-entry delay-[200ms] font-light">
-             At AqionLabs, we help businesses across the UAE turn AI into measurable revenue, operational efficiency, and real competitive advantage. Through our integrated AI ecosystem, we convert strategy into fully deployed solutions, enabling scalable growth from pilot projects to enterprise-wide implementation.
+             Empowering UAE Businesses with AI That Delivers Measurable Revenue Growth, Operational Efficiency, And Sustainable Competitive Advantage.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 animate-entry delay-[300ms] w-full justify-center">
@@ -208,7 +208,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
       <div className="flex flex-col">
           {/* Core AI Services Section */}
-          <section id="core-ai-services" className="py-24 relative bg-navy-950/50 z-10 order-3 md:order-1">
+          <section id="core-ai-services" className="py-24 relative bg-navy-950/50 z-10 order-3 md:order-3">
               <div className="max-w-7xl mx-auto px-6">
                   <div className="text-center mb-16">
                       <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Core AI Services</h2>
@@ -308,7 +308,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           </section>
 
           {/* Industries We Serve Section */}
-          <section ref={industriesSectionRef} className="py-12 md:py-24 relative z-10 bg-navy-900 order-1 md:order-2">
+          <section ref={industriesSectionRef} className="py-12 md:py-24 relative z-10 bg-navy-900 order-1 md:order-1">
                <div className="max-w-7xl mx-auto px-6">
                   <div className="text-center mb-10 md:mb-16">
                       <h2 className="text-4xl font-bold text-white mb-6">Industries We Serve</h2>
@@ -354,7 +354,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           </section>
 
           {/* Try an Industry Demo Now Section */}
-          <section className="py-12 md:py-24 bg-navy-900/30 border-y border-navy-800 relative z-10 order-2 md:order-3">
+          <section className="py-12 md:py-24 bg-navy-900/30 border-y border-navy-800 relative z-10 order-2 md:order-2">
               <div className="max-w-7xl mx-auto px-6">
                   <div className="text-center mb-10 md:mb-12">
                       <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
