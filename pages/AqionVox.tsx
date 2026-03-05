@@ -91,8 +91,8 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
     { id: 'professional', name: 'Legal', shortName: 'Legal', agentName: 'Aisha', icon: Briefcase, color: 'text-sky-400', bg: 'bg-sky-500/20', desc: 'Client onboarding.', demoHeading: 'Your Legal Intake Coordinator' },
     { id: 'media_events', name: 'Media & Events', shortName: 'Media & Events', agentName: 'Arjun', icon: Ticket, color: 'text-purple-400', bg: 'bg-purple-500/20', desc: 'Ticketing enquiries.', demoHeading: 'Your Event Ticketing Specialist' },
     { id: 'logistics', name: 'Logistics', shortName: 'Logistics', agentName: 'Ameen', icon: Truck, color: 'text-orange-400', bg: 'bg-orange-500/20', desc: 'Shipment tracking.', demoHeading: 'Your Shipment Tracking Assistant' },
-    { id: 'architecture', name: 'Architecture & Planning', shortName: 'Architecture', agentName: 'Omar', icon: Ruler, color: 'text-cyan-400', bg: 'bg-cyan-500/20', desc: 'Project enquiries.', demoHeading: 'Your Project Enquiry Coordinator' },
-    { id: 'marketing_design', name: 'Marketing & Design', shortName: 'Marketing & Design', agentName: 'Fatima', icon: Megaphone, color: 'text-pink-400', bg: 'bg-pink-500/20', desc: 'Campaign enquiries.', demoHeading: 'Your Campaign Strategy Advisor' },
+    { id: 'architecture', name: 'Architecture', shortName: 'Architecture', agentName: 'Omar', icon: Ruler, color: 'text-cyan-400', bg: 'bg-cyan-500/20', desc: 'Project enquiries.', demoHeading: 'Your Project Enquiry Coordinator' },
+    { id: 'marketing_design', name: 'Marketing', shortName: 'Marketing & Design', agentName: 'Fatima', icon: Megaphone, color: 'text-pink-400', bg: 'bg-pink-500/20', desc: 'Campaign enquiries.', demoHeading: 'Your Campaign Strategy Advisor' },
   ];
 
   return (
@@ -100,8 +100,8 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
       <div className="fixed inset-0 pointer-events-none z-0 bg-grid-indigo opacity-80"></div>
 
       {/* Hero Section - Meet AqionVox */}
-      <section className="relative py-24 px-6 max-w-7xl mx-auto z-10">
-          <div className="text-center max-w-4xl mx-auto mb-20">
+      <section className="relative pt-24 pb-10 md:py-24 px-6 max-w-7xl mx-auto z-10">
+          <div className="text-center max-w-4xl mx-auto mb-10 md:mb-20">
               <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
                   Meet <br className="md:hidden" />
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">AqionVox</span>
@@ -130,29 +130,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
                   <div className="w-full lg:w-auto flex flex-col gap-8 lg:gap-16 lg:items-end lg:pr-4 order-1 lg:order-1 relative">
                       
                       {/* Mobile Layout Container (Unified Grid) */}
-                      <div className="lg:hidden grid grid-cols-2 gap-x-4 gap-y-8 relative pb-8 w-full">
-                          {/* Connecting Lines (Mobile) */}
-                          <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" style={{ overflow: 'visible' }} viewBox="0 0 100 100" preserveAspectRatio="none">
-                              <defs>
-                                <linearGradient id="mobile-line-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                  <stop offset="0%" stopColor="#60a5fa" /> {/* Blue-400 */}
-                                  <stop offset="100%" stopColor="#2563eb" /> {/* Blue-600 */}
-                                </linearGradient>
-                              </defs>
-                              
-                              {/* Top Left to Center */}
-                              <path d="M25 20 L50 50" stroke="url(#mobile-line-gradient)" strokeWidth="1" fill="none" className="opacity-40" vectorEffect="non-scaling-stroke" />
-                              {/* Top Right to Center */}
-                              <path d="M75 20 L50 50" stroke="url(#mobile-line-gradient)" strokeWidth="1" fill="none" className="opacity-40" vectorEffect="non-scaling-stroke" />
-                              {/* Left to Center */}
-                              <path d="M20 50 L40 50" stroke="url(#mobile-line-gradient)" strokeWidth="1" fill="none" className="opacity-40" vectorEffect="non-scaling-stroke" />
-                              {/* Right to Center */}
-                              <path d="M80 50 L60 50" stroke="url(#mobile-line-gradient)" strokeWidth="1" fill="none" className="opacity-40" vectorEffect="non-scaling-stroke" />
-                              {/* Bottom Left to Center */}
-                              <path d="M25 80 L50 50" stroke="url(#mobile-line-gradient)" strokeWidth="1" fill="none" className="opacity-40" vectorEffect="non-scaling-stroke" />
-                              {/* Bottom Right to Center */}
-                              <path d="M75 80 L50 50" stroke="url(#mobile-line-gradient)" strokeWidth="1" fill="none" className="opacity-40" vectorEffect="non-scaling-stroke" />
-                          </svg>
+                      <div className="lg:hidden grid grid-cols-2 gap-x-4 gap-y-8 relative pb-8 w-full scale-110 origin-top">
 
                           {/* Row 1: WhatsApp (Top Left) & Book Appts (Top Right) */}
                           <div className="flex flex-col items-center text-center z-10">
@@ -366,9 +344,9 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
 
 
       {/* Use Cases Section */}
-      <section ref={industriesSectionRef} className="py-24 relative z-10">
+      <section ref={industriesSectionRef} className="py-12 md:py-24 relative z-10">
            <div className="max-w-7xl mx-auto px-6">
-               <div className="text-center mb-16">
+               <div className="text-center mb-10 md:mb-16">
                    <p className="text-xl text-slate-400 mb-2 uppercase tracking-wide font-medium">Built for</p>
                    <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
                        High Volume & <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">High Value</span>
@@ -376,7 +354,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
                    <p className="text-2xl text-slate-300">conversations across industries.</p>
                </div>
                
-               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+               <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4">
                    {industries.map((ind, i) => (
                        <div 
                            key={i} 
@@ -384,13 +362,13 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
                                setActiveDemo(i);
                                demoSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
                            }}
-                           className={`bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-3 md:p-4 flex items-center gap-3 hover:bg-white/10 transition-colors group cursor-pointer`}
+                           className={`bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-2 md:p-4 flex items-center gap-2 md:gap-3 hover:bg-white/10 transition-colors group cursor-pointer`}
                        >
-                           <div className={`p-2 rounded-lg ${ind.bg} ${ind.color} group-hover:scale-110 transition-transform duration-300 shrink-0`}>
+                           <div className={`p-1.5 md:p-2 rounded-lg ${ind.bg} ${ind.color} group-hover:scale-110 transition-transform duration-300 shrink-0`}>
                                <ind.icon className="w-4 h-4 md:w-5 md:h-5" />
                            </div>
-                           <div className="flex-1">
-                               <h4 className="text-sm md:text-base font-bold text-white leading-tight">{ind.name}</h4>
+                           <div className="flex-1 min-w-0">
+                               <h4 className="text-[11px] sm:text-xs md:text-base font-bold text-white leading-tight truncate">{ind.name}</h4>
                                <p className="text-slate-400 text-xs mt-0.5 line-clamp-2 hidden md:block">{ind.desc}</p>
                            </div>
                        </div>
@@ -407,7 +385,10 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
       <section ref={demoSectionRef} className="py-24 bg-navy-900/30 border-y border-navy-800 relative z-10">
           <div className="max-w-7xl mx-auto px-6">
               <div className="text-center mb-10 md:mb-12">
-                  <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Try a Live Demo Call Now</h2>
+                  <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                      <span className="md:hidden">Try a Demo Call Now</span>
+                      <span className="hidden md:inline">Try a Live Demo Call Now</span>
+                  </h2>
               </div>
 
               <div className="flex justify-center px-4">
@@ -418,7 +399,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
                           
                           <div className="relative z-10 w-full flex flex-col items-center">
                               <h3 className="text-lg md:text-xl font-medium text-slate-300 mb-8 max-w-md leading-relaxed">
-                                  Click the "Start a Call" button below to start a free demo call with our AI Agent
+                                  Click the "Start a Call" button to speak with our AI agent now.
                               </h3>
                               
                               <div className="mb-6 relative inline-block">
