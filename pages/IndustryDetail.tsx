@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import { IndustryPageData, PageType } from '../types';
-import { Check, ArrowRight, TrendingUp, Shield, Bot, Workflow, Server } from 'lucide-react';
+import { 
+  Check, ArrowRight, ArrowDown, TrendingUp, Shield, Bot, Workflow, Server,
+  AlertTriangle, Clock, TrendingDown, XCircle, ZapOff, ShieldAlert,
+  CheckCircle, Zap, ShieldCheck, Award, Star
+} from 'lucide-react';
 
 interface IndustryDetailProps {
   data: IndustryPageData;
@@ -43,15 +47,30 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
                 <span className="w-1 h-8 bg-red-500 rounded-full"></span>
                 Industry Challenges
             </h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {data.challenges.map((challenge, idx) => (
-                    <div key={idx} className="bg-navy-900/50 border border-navy-800 p-6 rounded-xl hover:border-red-500/30 transition-colors">
-                        <div className="w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center mb-4 text-red-400 font-bold">
-                            {idx + 1}
-                        </div>
-                        <p className="text-slate-300 font-medium">{challenge}</p>
-                    </div>
-                ))}
+            <div className="flex flex-col lg:flex-row items-stretch justify-center gap-4 lg:gap-6">
+                {data.challenges.map((challenge, idx) => {
+                    const ChallengeIcon = [AlertTriangle, Clock, TrendingDown, XCircle, ZapOff, ShieldAlert][idx % 6];
+                    return (
+                        <React.Fragment key={idx}>
+                            <div className="bg-navy-900/50 border border-navy-800 p-6 rounded-xl hover:border-red-500/30 transition-colors flex-1 relative group flex flex-col items-center text-center">
+                                <div className="w-14 h-14 rounded-full bg-red-500/10 flex items-center justify-center mb-4 text-red-400 group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(239,68,68,0.1)]">
+                                    <ChallengeIcon className="w-7 h-7" />
+                                </div>
+                                <p className="text-slate-300 font-medium">{challenge}</p>
+                            </div>
+                            {idx < data.challenges.length - 1 && (
+                                <div className="hidden lg:flex items-center justify-center text-navy-800">
+                                    <ArrowRight className="w-8 h-8" />
+                                </div>
+                            )}
+                            {idx < data.challenges.length - 1 && (
+                                <div className="lg:hidden flex items-center justify-center text-navy-800 py-1">
+                                    <ArrowDown className="w-6 h-6" />
+                                </div>
+                            )}
+                        </React.Fragment>
+                    );
+                })}
             </div>
         </section>
 
@@ -163,15 +182,30 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
                 <span className="w-1 h-8 bg-green-500 rounded-full"></span>
                 Measurable Outcomes
             </h3>
-            <div className="grid md:grid-cols-3 gap-6">
-                {data.outcome.map((outcome, idx) => (
-                    <div key={idx} className="bg-navy-900/80 border border-navy-800 p-6 rounded-xl text-center">
-                        <div className="w-12 h-12 mx-auto bg-green-500/10 rounded-full flex items-center justify-center mb-4 text-green-400">
-                            <TrendingUp className="w-6 h-6" />
-                        </div>
-                        <p className="text-lg font-semibold text-white">{outcome}</p>
-                    </div>
-                ))}
+            <div className="flex flex-col lg:flex-row items-stretch justify-center gap-4 lg:gap-6">
+                {data.outcome.map((outcome, idx) => {
+                    const OutcomeIcon = [TrendingUp, CheckCircle, Zap, ShieldCheck, Award, Star][idx % 6];
+                    return (
+                        <React.Fragment key={idx}>
+                            <div className="bg-navy-900/80 border border-navy-800 p-6 rounded-xl text-center flex-1 relative group hover:border-green-500/30 transition-colors flex flex-col items-center">
+                                <div className="w-14 h-14 mx-auto bg-green-500/10 rounded-full flex items-center justify-center mb-4 text-green-400 group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(34,197,94,0.1)]">
+                                    <OutcomeIcon className="w-7 h-7" />
+                                </div>
+                                <p className="text-lg font-semibold text-white">{outcome}</p>
+                            </div>
+                            {idx < data.outcome.length - 1 && (
+                                <div className="hidden lg:flex items-center justify-center text-navy-800">
+                                    <ArrowRight className="w-8 h-8" />
+                                </div>
+                            )}
+                            {idx < data.outcome.length - 1 && (
+                                <div className="lg:hidden flex items-center justify-center text-navy-800 py-1">
+                                    <ArrowDown className="w-6 h-6" />
+                                </div>
+                            )}
+                        </React.Fragment>
+                    );
+                })}
             </div>
         </section>
 

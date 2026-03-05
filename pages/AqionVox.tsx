@@ -424,7 +424,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
                                   </div>
                               </div>
 
-                              <div className="mb-2 text-3xl font-bold text-white">Jafer</div>
+                              <div className="mb-2 text-3xl font-bold text-white">Rahul</div>
                               
                               <div className="flex items-center justify-center gap-2 mb-8">
                                   <div className={`w-2 h-2 rounded-full ${callStatus === 'active' ? 'bg-red-500' : 'bg-green-500'} animate-pulse`}></div>
