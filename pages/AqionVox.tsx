@@ -48,14 +48,21 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
 
   const toggleCall = async () => {
     if (callStatus === 'active') {
-      vapiRef.current?.stop();
-      setCallStatus('inactive');
+      setCallStatus('loading');
+      try {
+        vapiRef.current?.stop();
+        // We don't manually set 'inactive' here because the 'call-end' event will trigger it
+        // This prevents race conditions where the state might be set to inactive before the call actually ends
+      } catch (e) {
+        console.error("Error stopping call:", e);
+        setCallStatus('inactive');
+      }
     } else {
       setCallStatus('loading');
       try {
         await vapiRef.current?.start(VAPI_ASSISTANT_ID);
       } catch (e) {
-        console.error(e);
+        console.error("Error starting call:", e);
         setCallStatus('inactive');
       }
     }
