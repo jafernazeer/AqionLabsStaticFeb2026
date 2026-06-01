@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600">
+  <defs>
+    <!-- Gradient 1: Neon Purple to Vibrant Orange -->
+    <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#9B30FF;stop-opacity:1" />
+      <stop offset="35%" style="stop-color:#CC44FF;stop-opacity:1" />
+      <stop offset="65%" style="stop-color:#FF6A00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF9500;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Gradient 2: Orange to Purple -->
+    <linearGradient id="waveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF7A00;stop-opacity:0.9" />
+      <stop offset="40%" style="stop-color:#FF44AA;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#7B2FFF;stop-opacity:0.9" />
+    </linearGradient>
+
+    <!-- Gradient 3: Deep Purple -->
+    <linearGradient id="waveGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6600CC;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#FF55BB;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#FF8800;stop-opacity:0.8" />
+    </linearGradient>
+
+    <!-- Gradient 4: Accent -->
+    <linearGradient id="waveGrad4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF9900;stop-opacity:0.7" />
+      <stop offset="50%" style="stop-color:#CC33FF;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#5511FF;stop-opacity:0.7" />
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="glow" x="-30%" y="-100%" width="160%" height="300%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Stronger Glow Filter -->
+    <filter id="strongGlow" x="-30%" y="-150%" width="160%" height="400%">
+      <feGaussianBlur stdDeviation="12" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Reflection gradient mask -->
+    <linearGradient id="reflectMask" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:white;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:white;stop-opacity:0"/>
+    </linearGradient>
+    <mask id="reflectionMaskGrad">
+      <rect x="0" y="0" width="1200" height="300" fill="url(#reflectMask)"/>
+    </mask>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="600" fill="#F8F5EE"/>
+
+  <!-- === MAIN WAVES === -->
+  <g transform="translate(0, 300)">
+
+    <!-- Wave 1 - Primary (thickest, most prominent) -->
+    <path id="wave1" 
+      d="M-100,0 C50,-80 150,60 300,-20 C450,-100 550,70 700,10 C850,-60 950,80 1100,-10 C1200,-60 1300,40 1400,0"
+      fill="none"
+      stroke="url(#waveGrad1)"
+      stroke-width="4"
+      stroke-linecap="round"
+      filter="url(#strongGlow)"
+      opacity="1">
+    </path>
+
+    <!-- Wave 2 - Offset -->
+    <path id="wave2"
+      d="M-100,20 C80,-60 180,80 320,0 C460,-80 560,60 720,30 C880,-50 980,70 1120,20 C1220,-40 1320,50 1400,20"
+      fill="none"
+      stroke="url(#waveGrad2)"
+      stroke-width="3"
+      stroke-linecap="round"
+      filter="url(#glow)"
+      opacity="0.9">
+    </path>
+
+    <!-- Wave 3 - Subtle background -->
+    <path id="wave3"
+      d="M-100,-20 C70,60 170,-70 300,10 C440,90 540,-60 700,-30 C860,50 960,-70 1100,10 C1210,70 1310,-40 1400,-20"
+      fill="none"
+      stroke="url(#waveGrad3)"
+      stroke-width="3"
+      stroke-linecap="round"
+      filter="url(#glow)"
+      opacity="0.8">
+    </path>
+
+    <!-- Wave 4 - Fine highlight -->
+    <path id="wave4"
+      d="M-100,10 C60,-90 160,70 310,-10 C470,-90 570,80 710,20 C870,-50 960,90 1110,0 C1215,-70 1315,50 1400,10"
+      fill="none"
+      stroke="url(#waveGrad4)"
+      stroke-width="2"
+      stroke-linecap="round"
+      filter="url(#glow)"
+      opacity="0.7">
+    </path>
+  </g>
+
+  <!-- === REFLECTION WAVES (flipped, low opacity) === -->
+  <g transform="translate(0, 300) scale(1, -1)" opacity="0.3" mask="url(#reflectionMaskGrad)">
+    <path
+      d="M-100,0 C50,-80 150,60 300,-20 C450,-100 550,70 700,10 C850,-60 950,80 1100,-10 C1200,-60 1300,40 1400,0"
+      fill="none"
+      stroke="url(#waveGrad1)"
+      stroke-width="4"
+      stroke-linecap="round"
+      filter="url(#glow)"
+      opacity="0.6">
+    </path>
+    <path
+      d="M-100,20 C80,-60 180,80 320,0 C460,-80 560,60 720,30 C880,-50 980,70 1120,20 C1220,-40 1320,50 1400,20"
+      fill="none"
+      stroke="url(#waveGrad2)"
+      stroke-width="3"
+      stroke-linecap="round"
+      filter="url(#glow)"
+      opacity="0.5">
+    </path>
+    <path
+      d="M-100,-20 C70,60 170,-70 300,10 C440,90 540,-60 700,-30 C860,50 960,-70 1100,10 C1210,70 1310,-40 1400,-20"
+      fill="none"
+      stroke="url(#waveGrad3)"
+      stroke-width="2"
+      stroke-linecap="round"
+      filter="url(#glow)"
+      opacity="0.4">
+    </path>
+  </g>
+
+  <style>
+    /* Negative delays drop each wave into mid-cycle on first frame —
+       the animation is already "running" the moment the file opens.
+       Using infinite (not alternate) with matching 0%/100% keyframes
+       gives a perfectly seamless loop with no ease-in ramp. */
+    #wave1 {
+      animation: wave1Morph 4s ease-in-out infinite;
+      animation-delay: -1.4s;
+    }
+    #wave2 {
+      animation: wave2Morph 5s ease-in-out infinite;
+      animation-delay: -2.1s;
+    }
+    #wave3 {
+      animation: wave3Morph 6s ease-in-out infinite;
+      animation-delay: -3.8s;
+    }
+    #wave4 {
+      animation: wave4Morph 3.5s ease-in-out infinite;
+      animation-delay: -0.9s;
+    }
+
+    @keyframes wave1Morph {
+      0%   { d: path("M-100,0 C50,-80 150,60 300,-20 C450,-100 550,70 700,10 C850,-60 950,80 1100,-10 C1200,-60 1300,40 1400,0"); }
+      25%  { d: path("M-100,30 C60,-50 160,90 310,0 C470,-90 560,80 710,40 C870,-40 960,90 1110,20 C1215,-50 1315,60 1400,30"); }
+      50%  { d: path("M-100,-30 C80,70 180,-80 320,20 C460,100 550,-70 720,-20 C880,60 970,-80 1120,30 C1220,80 1320,-50 1400,-30"); }
+      75%  { d: path("M-100,10 C40,-100 140,80 300,-30 C460,-110 560,90 700,20 C860,-70 950,100 1100,-20 C1200,-70 1300,50 1400,10"); }
+      100% { d: path("M-100,0 C50,-80 150,60 300,-20 C450,-100 550,70 700,10 C850,-60 950,80 1100,-10 C1200,-60 1300,40 1400,0"); }
+    }
+
+    @keyframes wave2Morph {
+      0%   { d: path("M-100,20 C80,-60 180,80 320,0 C460,-80 560,60 720,30 C880,-50 980,70 1120,20 C1220,-40 1320,50 1400,20"); }
+      33%  { d: path("M-100,-10 C60,80 160,-60 310,30 C470,100 570,-70 710,-10 C870,60 970,-80 1110,30 C1215,80 1315,-50 1400,-10"); }
+      66%  { d: path("M-100,40 C90,-80 190,90 330,-10 C470,-90 560,80 720,50 C880,-60 980,90 1120,40 C1220,-60 1320,70 1400,40"); }
+      100% { d: path("M-100,20 C80,-60 180,80 320,0 C460,-80 560,60 720,30 C880,-50 980,70 1120,20 C1220,-40 1320,50 1400,20"); }
+    }
+
+    @keyframes wave3Morph {
+      0%   { d: path("M-100,-20 C70,60 170,-70 300,10 C440,90 540,-60 700,-30 C860,50 960,-70 1100,10 C1210,70 1310,-40 1400,-20"); }
+      50%  { d: path("M-100,30 C50,-70 150,80 300,-10 C440,-90 550,70 700,40 C850,-60 950,80 1100,-20 C1210,-70 1310,60 1400,30"); }
+      100% { d: path("M-100,-20 C70,60 170,-70 300,10 C440,90 540,-60 700,-30 C860,50 960,-70 1100,10 C1210,70 1310,-40 1400,-20"); }
+    }
+
+    @keyframes wave4Morph {
+      0%   { d: path("M-100,10 C60,-90 160,70 310,-10 C470,-90 570,80 710,20 C870,-50 960,90 1110,0 C1215,-70 1315,50 1400,10"); }
+      50%  { d: path("M-100,-10 C80,80 180,-80 320,20 C460,100 560,-80 720,-20 C880,70 970,-80 1120,20 C1220,80 1320,-60 1400,-10"); }
+      100% { d: path("M-100,10 C60,-90 160,70 310,-10 C470,-90 570,80 710,20 C870,-50 960,90 1110,0 C1215,-70 1315,50 1400,10"); }
+    }
+  </style>
+</svg>

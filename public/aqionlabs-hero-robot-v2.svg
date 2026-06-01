@@ -1,0 +1,358 @@
+<svg viewBox="0 0 800 920" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+<style><![CDATA[
+#stick { transform-origin: 580px 800px; animation: stickSway 5s ease-in-out infinite; }
+#ghutraTail { transform-origin: 540px 200px; animation: tailFlutter 4.5s ease-in-out infinite; }
+@keyframes stickSway { 0%,100% { transform: rotate(-1.2deg); } 50% { transform: rotate(1.2deg); } }
+@keyframes tailFlutter { 0%,100% { transform: rotate(-2deg); } 50% { transform: rotate(3deg); } }
+@media (prefers-reduced-motion: reduce) { #stick, #ghutraTail { animation: none !important; } }
+]]></style>
+          <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2a2a28"/>
+            <stop offset="0.45" stop-color="#0e0e0c"/>
+            <stop offset="1" stop-color="#000000"/>
+          </linearGradient>
+
+          <radialGradient id="headGloss" cx="0.35" cy="0.28" r="0.7">
+            <stop offset="0" stop-color="#5e5e5a" stop-opacity="0.95"/>
+            <stop offset="0.18" stop-color="#26261f" stop-opacity="0.85"/>
+            <stop offset="0.55" stop-color="#080806" stop-opacity="1"/>
+            <stop offset="1" stop-color="#000000" stop-opacity="1"/>
+          </radialGradient>
+
+          <linearGradient id="armGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#1a1a17"/>
+            <stop offset="0.4" stop-color="#0a0a08"/>
+            <stop offset="0.7" stop-color="#161614"/>
+            <stop offset="1" stop-color="#252522"/>
+          </linearGradient>
+          <radialGradient id="jointGrad" cx="0.35" cy="0.3" r="0.7">
+            <stop offset="0" stop-color="#4a4a45"/>
+            <stop offset="0.5" stop-color="#0a0a08"/>
+            <stop offset="1" stop-color="#000"/>
+          </radialGradient>
+
+          <!-- Carbon fiber for torso -->
+          <pattern id="carbon" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+            <rect width="14" height="14" fill="#0a0a08"/>
+            <circle cx="3.5" cy="3.5" r="0.6" fill="#1f1f1b" opacity="0.6"/>
+            <circle cx="10.5" cy="10.5" r="0.6" fill="#1f1f1b" opacity="0.6"/>
+            <circle cx="10.5" cy="3.5" r="0.4" fill="#040402" opacity="0.5"/>
+            <circle cx="3.5" cy="10.5" r="0.4" fill="#040402" opacity="0.5"/>
+          </pattern>
+
+          <!-- White ghutra (turban) gradient -->
+          <linearGradient id="ghutra" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0"   stop-color="#ffffff"/>
+            <stop offset="0.55" stop-color="#f1efe9"/>
+            <stop offset="1"   stop-color="#d4d0c6"/>
+          </linearGradient>
+          <radialGradient id="ghutraShade" cx="0.6" cy="0.6" r="0.7">
+            <stop offset="0"   stop-color="#000" stop-opacity="0"/>
+            <stop offset="0.6" stop-color="#a8a397" stop-opacity="0.18"/>
+            <stop offset="1"   stop-color="#8b8676" stop-opacity="0.5"/>
+          </radialGradient>
+          <linearGradient id="ghutraHi" x1="0" y1="0" x2="0.4" y2="0.5">
+            <stop offset="0"   stop-color="#ffffff" stop-opacity="0.95"/>
+            <stop offset="1"   stop-color="#ffffff" stop-opacity="0"/>
+          </linearGradient>
+
+          <!-- Agal (black rope coil) -->
+          <linearGradient id="agal" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0"   stop-color="#1a1a18"/>
+            <stop offset="0.5" stop-color="#000000"/>
+            <stop offset="1"   stop-color="#1a1a18"/>
+          </linearGradient>
+
+          <!-- Wooden stick gradient -->
+          <linearGradient id="wood" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0"    stop-color="#6b4626"/>
+            <stop offset="0.5"  stop-color="#8a5a30"/>
+            <stop offset="1"    stop-color="#4f3219"/>
+          </linearGradient>
+          <linearGradient id="woodHi" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0"   stop-color="#ffffff" stop-opacity="0"/>
+            <stop offset="0.4" stop-color="#d9a16a" stop-opacity="0.5"/>
+            <stop offset="1"   stop-color="#ffffff" stop-opacity="0"/>
+          </linearGradient>
+
+          <!-- Eye dot pattern -->
+          <pattern id="eyeDots" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+            <circle cx="6" cy="6" r="2.4" fill="#c8d4d6"/>
+          </pattern>
+
+          <clipPath id="headClip">
+            <path d="M400,90
+                     C490,90 540,170 540,260
+                     C540,330 510,395 460,420
+                     C455,440 458,455 460,470
+                     L340,470
+                     C342,455 345,440 340,420
+                     C290,395 260,330 260,260
+                     C260,170 310,90 400,90 Z"/>
+          </clipPath>
+
+          <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="2"/>
+          </filter>
+          <filter id="bigBlur" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="14"/>
+          </filter>
+
+          <radialGradient id="shadowGrad" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#000" stop-opacity="0.32"/>
+            <stop offset="1" stop-color="#000" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- floor shadow -->
+        <ellipse cx="400" cy="892" rx="240" ry="22" fill="url(#shadowGrad)"/>
+
+        <!-- ─── HIPS / LEG STUBS ─── -->
+        <g id="hips" opacity="0.95">
+          <path d="M310,700 C310,690 320,682 332,682 L468,682 C480,682 490,690 490,700 L490,740 C490,752 480,760 468,760 L332,760 C320,760 310,752 310,740 Z"
+                fill="url(#bodyGrad)"/>
+          <circle cx="340" cy="755" r="34" fill="url(#jointGrad)"/>
+          <circle cx="460" cy="755" r="34" fill="url(#jointGrad)"/>
+          <rect x="318" y="770" width="44" height="80" rx="14" fill="#080807"/>
+          <rect x="438" y="770" width="44" height="80" rx="14" fill="#080807"/>
+          <circle cx="340" cy="850" r="20" fill="#1a1a17"/>
+          <circle cx="460" cy="850" r="20" fill="#1a1a17"/>
+        </g>
+
+        <!-- ─── STICK ('asa) — placed behind right arm so the hand wraps over it ─── -->
+        <g id="stick">
+          <!-- vertical wooden cane held in robot's left hand (viewer right) -->
+          <!-- the stick goes from low (around hand at ~800) up past head -->
+          <rect x="572" y="180" width="14" height="660" rx="6" fill="url(#wood)"/>
+          <!-- subtle highlight stripe -->
+          <rect x="574" y="180" width="3" height="660" fill="#d9a16a" opacity="0.55"/>
+          <!-- wood grain -->
+          <path d="M576,200 Q581,420 576,620 Q579,720 577,820" stroke="#3a200d" stroke-width="0.8" opacity="0.35" fill="none"/>
+          <path d="M582,220 Q578,440 583,640 Q580,750 582,830" stroke="#3a200d" stroke-width="0.6" opacity="0.25" fill="none"/>
+          <!-- knob on top (curved cane head) -->
+          <path d="M572,180 C572,158 582,148 600,148 C620,148 632,158 632,180 C632,196 620,206 600,206 C588,206 580,202 575,196 Z"
+                fill="url(#wood)"/>
+          <path d="M580,160 C586,156 596,154 606,158" stroke="#d9a16a" stroke-width="2" opacity="0.55" fill="none"/>
+          <!-- bottom tip -->
+          <ellipse cx="579" cy="845" rx="9" ry="5" fill="#3a200d"/>
+          <!-- wrap leather band where hand grips -->
+          <rect x="568" y="788" width="22" height="22" rx="3" fill="#4a2e12"/>
+          <rect x="568" y="790" width="22" height="3" fill="#7a4c20"/>
+          <rect x="568" y="803" width="22" height="3" fill="#7a4c20"/>
+        </g>
+
+        <!-- ─── LEFT ARM (robot's left = viewer's right) — holding stick ─── -->
+        <g id="armRight">
+          <g id="shoulderRight" style="transform-origin: 555px 380px;">
+            <circle cx="555" cy="380" r="46" fill="url(#jointGrad)"/>
+            <circle cx="548" cy="370" r="14" fill="#4a4a45" opacity="0.55" filter="url(#softGlow)"/>
+            <!-- upper arm -->
+            <path d="M540,395 C575,395 600,415 612,460 C620,510 615,560 600,600 C590,615 565,618 545,605 C530,560 528,510 528,455 C528,425 525,395 540,395 Z"
+                  fill="url(#armGrad)"/>
+            <ellipse cx="568" cy="410" rx="20" ry="38" fill="#3a3a37" opacity="0.35" filter="url(#softGlow)"/>
+
+            <g id="elbowRight" style="transform-origin: 575px 605px;">
+              <circle cx="575" cy="605" r="28" fill="url(#jointGrad)"/>
+              <!-- forearm -->
+              <path d="M558,605 C595,605 615,625 622,665 C628,710 625,750 614,778 C608,790 590,792 575,786 C562,758 555,720 552,680 C550,650 545,605 558,605 Z"
+                    fill="url(#armGrad)"/>
+              <!-- hand wrapped around stick -->
+              <g id="handRight">
+                <ellipse cx="582" cy="800" rx="32" ry="22" fill="#121210"/>
+                <!-- knuckle hint -->
+                <rect x="568" y="795" width="9" height="14" rx="3" fill="#1c1c1a"/>
+                <rect x="582" y="797" width="9" height="14" rx="3" fill="#1c1c1a"/>
+                <rect x="596" y="795" width="9" height="14" rx="3" fill="#1c1c1a"/>
+                <!-- thumb wrapped over front -->
+                <ellipse cx="560" cy="800" rx="10" ry="7" fill="#1c1c1a"/>
+                <!-- fingertip wrap covering stick -->
+                <ellipse cx="580" cy="795" rx="14" ry="6" fill="#0a0a08"/>
+              </g>
+            </g>
+          </g>
+        </g>
+
+        <!-- ─── RIGHT ARM (robot's right = viewer's left) — relaxed ─── -->
+        <g id="armLeft">
+          <g id="shoulderLeft" style="transform-origin: 245px 380px;">
+            <circle cx="245" cy="380" r="46" fill="url(#jointGrad)"/>
+            <circle cx="238" cy="370" r="14" fill="#4a4a45" opacity="0.55" filter="url(#softGlow)"/>
+            <path d="M260,395 C225,395 200,415 188,460 C180,510 185,560 200,600 C210,615 235,618 255,605 C270,560 272,510 272,455 C272,425 275,395 260,395 Z"
+                  fill="url(#armGrad)"/>
+            <ellipse cx="232" cy="410" rx="20" ry="38" fill="#3a3a37" opacity="0.35" filter="url(#softGlow)"/>
+
+            <g id="elbowLeft" style="transform-origin: 225px 605px;">
+              <circle cx="225" cy="605" r="28" fill="url(#jointGrad)"/>
+              <path d="M242,605 C205,605 185,625 178,665 C172,710 175,750 186,778 C192,790 210,792 225,786 C238,758 245,720 248,680 C250,650 255,605 242,605 Z"
+                    fill="url(#armGrad)"/>
+              <g id="handLeft">
+                <ellipse cx="208" cy="800" rx="30" ry="22" fill="#121210"/>
+                <rect x="218" y="795" width="10" height="14" rx="3" fill="#1c1c1a"/>
+                <rect x="204" y="797" width="10" height="14" rx="3" fill="#1c1c1a"/>
+                <rect x="190" y="795" width="10" height="14" rx="3" fill="#1c1c1a"/>
+                <ellipse cx="236" cy="795" rx="9" ry="6" fill="#1c1c1a"/>
+              </g>
+            </g>
+          </g>
+        </g>
+
+        <!-- ─── TORSO ─── -->
+        <g id="torso">
+          <path d="M300,440 C295,420 310,400 340,395 L460,395 C490,400 505,420 500,440 L520,560 C525,620 510,680 500,705 C495,712 485,716 475,716 L325,716 C315,716 305,712 300,705 C290,680 275,620 280,560 Z"
+                fill="url(#carbon)"/>
+          <path d="M300,440 C295,420 310,400 340,395 L460,395 C490,400 505,420 500,440 L520,560 C525,620 510,680 500,705 C495,712 485,716 475,716 L325,716 C315,716 305,712 300,705 C290,680 275,620 280,560 Z"
+                fill="url(#bodyGrad)" opacity="0.55"/>
+          <path d="M400,400 L400,710" stroke="#2a2a27" stroke-width="1.5" opacity="0.55"/>
+          <path d="M300,440 L280,560 C275,620 290,680 300,705" stroke="#3a3a37" stroke-width="2" opacity="0.5" fill="none"/>
+          <path d="M500,440 L520,560 C525,620 510,680 500,705" stroke="#3a3a37" stroke-width="2" opacity="0.5" fill="none"/>
+          <path d="M340,460 L460,460" stroke="#1f1f1c" stroke-width="1" opacity="0.7"/>
+          <path d="M320,580 L480,580" stroke="#1f1f1c" stroke-width="1" opacity="0.6"/>
+          <!-- chest indicator gem -->
+          <circle cx="400" cy="495" r="6" fill="#0a0a08"/>
+          <circle cx="400" cy="495" r="3.5" fill="#a78bfa" opacity="0.95" filter="url(#softGlow)"/>
+          <circle cx="400" cy="495" r="1.5" fill="#ffffff"/>
+          <!-- neck shroud -->
+          <path d="M370,395 C370,380 375,365 385,360 L415,360 C425,365 430,380 430,395 Z" fill="#0a0a08"/>
+          <rect x="390" y="338" width="20" height="30" rx="4" fill="#1a1a17"/>
+          <circle cx="400" cy="370" r="11" fill="#2a2a27"/>
+        </g>
+
+        <!-- ─── HEAD ─── -->
+        <g id="head">
+          <path d="M400,90
+                   C490,90 540,170 540,260
+                   C540,330 510,395 460,420
+                   C455,440 458,455 460,470
+                   L340,470
+                   C342,455 345,440 340,420
+                   C290,395 260,330 260,260
+                   C260,170 310,90 400,90 Z"
+                fill="url(#headGloss)"/>
+          <!-- top crown gloss -->
+          <ellipse cx="370" cy="155" rx="65" ry="80" fill="#7a7a73" opacity="0.18" filter="url(#bigBlur)"/>
+          <ellipse cx="340" cy="135" rx="38" ry="58" fill="#a0a098" opacity="0.22" filter="url(#softGlow)"/>
+          <!-- side cheek reflections -->
+          <ellipse cx="510" cy="280" rx="22" ry="80" fill="#5a5a52" opacity="0.25" filter="url(#softGlow)"/>
+          <ellipse cx="295" cy="300" rx="14" ry="50" fill="#3a3a35" opacity="0.35" filter="url(#softGlow)"/>
+          <!-- chin under-shadow -->
+          <path d="M340,420 C360,440 440,440 460,420 L460,470 L340,470 Z" fill="#000" opacity="0.55"/>
+
+          <!-- visor area -->
+          <g clip-path="url(#headClip)">
+            <rect x="280" y="240" width="240" height="80" rx="40" fill="#000"/>
+            <rect x="280" y="240" width="240" height="14" rx="7" fill="#3a3a37" opacity="0.45" filter="url(#softGlow)"/>
+
+            <g id="eyeLeft">
+              <rect id="eyeLeftDots" x="320" y="270" width="60" height="22" fill="url(#eyeDots)" opacity="0.95"/>
+            </g>
+            <g id="eyeRight">
+              <rect id="eyeRightDots" x="420" y="270" width="60" height="22" fill="url(#eyeDots)" opacity="0.95"/>
+            </g>
+
+            <path d="M295,210 Q400,180 505,210 L520,235 Q400,200 280,235 Z"
+                  fill="#ffffff" opacity="0.06"/>
+            <ellipse cx="345" cy="200" rx="60" ry="22" fill="#ffffff" opacity="0.08" filter="url(#softGlow)"/>
+          </g>
+
+          <!-- subtle mouth/jaw seam -->
+          <path d="M362,398 Q400,406 438,398" stroke="#3a3a35" stroke-width="1" fill="none" opacity="0.45"/>
+          <!-- cheek glints (softer face) -->
+          <circle cx="320" cy="350" r="6" fill="#5a5a52" opacity="0.35" filter="url(#softGlow)"/>
+          <circle cx="480" cy="350" r="6" fill="#5a5a52" opacity="0.35" filter="url(#softGlow)"/>
+        </g>
+
+        <!-- ─── GHUTRA (Emirati white turban / headcloth) ─── -->
+        <g id="ghutra">
+          <!-- back of cloth flowing down from head -->
+          <path d="M 248,175
+                   C 230,210 226,260 240,330
+                   C 256,395 286,438 304,452
+                   L 314,452
+                   C 296,432 274,400 264,360
+                   C 254,310 256,260 266,222
+                   Z" fill="url(#ghutra)" opacity="0.95"/>
+          <path d="M 552,175
+                   C 570,210 574,260 560,330
+                   C 544,395 514,438 496,452
+                   L 486,452
+                   C 504,432 526,400 536,360
+                   C 546,310 544,260 534,222
+                   Z" fill="url(#ghutra)" opacity="0.95"/>
+
+          <!-- main turban cap covering top of head -->
+          <path d="M 252,178
+                   C 248,140 270,98 312,78
+                   C 348,60 392,52 432,58
+                   C 478,64 522,82 544,124
+                   C 558,150 558,178 552,200
+                   C 540,168 510,142 460,128
+                   C 410,116 360,118 322,134
+                   C 286,150 264,170 252,200
+                   Z" fill="url(#ghutra)"/>
+
+          <!-- ghutra inner shading -->
+          <path d="M 252,178
+                   C 248,140 270,98 312,78
+                   C 348,60 392,52 432,58
+                   C 478,64 522,82 544,124
+                   C 558,150 558,178 552,200
+                   C 540,168 510,142 460,128
+                   C 410,116 360,118 322,134
+                   C 286,150 264,170 252,200
+                   Z" fill="url(#ghutraShade)"/>
+
+          <!-- folds/creases (subtle curved lines) -->
+          <path d="M 280,170 Q 320,120 380,108" stroke="#c7c2b3" stroke-width="2" opacity="0.45" fill="none"/>
+          <path d="M 308,180 Q 360,130 430,116" stroke="#c7c2b3" stroke-width="2" opacity="0.4" fill="none"/>
+          <path d="M 360,188 Q 420,140 490,138" stroke="#c7c2b3" stroke-width="2" opacity="0.38" fill="none"/>
+          <path d="M 420,196 Q 470,156 522,166" stroke="#c7c2b3" stroke-width="1.6" opacity="0.32" fill="none"/>
+          <!-- highlight on left top -->
+          <path d="M 270,158 C 300,118 350,90 400,82 C 360,96 322,118 296,148 Z" fill="url(#ghutraHi)" opacity="0.7"/>
+
+          <!-- right tail (the corner of ghutra hanging down) -->
+          <g id="ghutraTail">
+            <path d="M 538,168
+                     C 568,220 580,290 562,360
+                     C 552,400 538,430 526,438
+                     L 510,432
+                     C 524,400 538,360 546,308
+                     C 552,260 548,212 540,176 Z"
+                  fill="url(#ghutra)"/>
+            <path d="M 540,200 Q 560,280 548,360" stroke="#c7c2b3" stroke-width="1.6" opacity="0.42" fill="none"/>
+            <path d="M 552,220 Q 568,300 552,380" stroke="#c7c2b3" stroke-width="1.2" opacity="0.32" fill="none"/>
+          </g>
+
+          <!-- left small tail -->
+          <path d="M 248,170 C 232,212 226,260 236,304 C 232,260 234,212 250,176 Z" fill="url(#ghutra)" opacity="0.9"/>
+
+          <!-- subtle bottom shadow where ghutra meets shoulders -->
+          <ellipse cx="400" cy="448" rx="170" ry="10" fill="#000" opacity="0.18" filter="url(#softGlow)"/>
+
+          <!-- ─── AGAL (black rope coil on top of ghutra) ─── -->
+          <g id="agal">
+            <!-- two stacked tori-like bands -->
+            <ellipse cx="400" cy="138" rx="148" ry="20" fill="none" stroke="url(#agal)" stroke-width="12"/>
+            <ellipse cx="400" cy="124" rx="146" ry="18" fill="none" stroke="url(#agal)" stroke-width="11"/>
+            <!-- subtle weave marks on the rope -->
+            <g opacity="0.6">
+              <line x1="276" y1="138" x2="278" y2="148" stroke="#3a3a37" stroke-width="1.2"/>
+              <line x1="306" y1="146" x2="308" y2="156" stroke="#3a3a37" stroke-width="1.2"/>
+              <line x1="338" y1="152" x2="340" y2="162" stroke="#3a3a37" stroke-width="1.2"/>
+              <line x1="372" y1="156" x2="374" y2="166" stroke="#3a3a37" stroke-width="1.2"/>
+              <line x1="408" y1="156" x2="410" y2="166" stroke="#3a3a37" stroke-width="1.2"/>
+              <line x1="444" y1="154" x2="446" y2="164" stroke="#3a3a37" stroke-width="1.2"/>
+              <line x1="478" y1="148" x2="480" y2="158" stroke="#3a3a37" stroke-width="1.2"/>
+              <line x1="508" y1="142" x2="510" y2="152" stroke="#3a3a37" stroke-width="1.2"/>
+              <line x1="528" y1="134" x2="530" y2="144" stroke="#3a3a37" stroke-width="1.2"/>
+            </g>
+            <!-- two small tassels at front (typical agal detail) -->
+            <path d="M 372,144 L 370,168 L 368,182 L 365,168 Z" fill="#1a1a18"/>
+            <path d="M 428,144 L 430,168 L 432,182 L 435,168 Z" fill="#1a1a18"/>
+            <!-- highlight along top of rope -->
+            <path d="M 270,128 C 320,108 380,100 400,100 C 420,100 480,108 530,128"
+                  stroke="#5a5a55" stroke-width="2" opacity="0.6" fill="none"/>
+          </g>
+        </g>
+
+      </svg>

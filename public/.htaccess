@@ -1,0 +1,25 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # SPA Routing Fallback (Standard for React Apps)
+  # If the requested filename or directory does not exist, serve index.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [QSA,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Cache Control for Static Assets (1 year)
+  <FilesMatch "\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$">
+    Header set Cache-Control "max-age=31536000, public"
+  </FilesMatch>
+  
+  # No Cache for index.html to ensure updates are seen immediately
+  <FilesMatch "^index\.html$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+  </FilesMatch>
+</IfModule>

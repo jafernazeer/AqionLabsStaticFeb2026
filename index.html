@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>AqionLabs | Intelligence That Delivers Growth</title>
+    <meta name="title" content="AqionLabs | Intelligence That Delivers Growth" />
+    <meta name="description" content="UAE's premier AI Hub delivering enterprise-grade solutions, strategy & products that empower businesses to grow smarter and faster." />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#FAF7F2" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aqionlabs.com/" />
+    <meta property="og:title" content="AqionLabs | Intelligence That Delivers Growth" />
+    <meta property="og:description" content="UAE's premier AI Hub delivering enterprise-grade solutions, strategy & products that empower businesses to grow smarter and faster." />
+    <meta property="og:image" content="/og-image.png" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://aqionlabs.com/" />
+    <meta property="twitter:title" content="AqionLabs | Intelligence That Delivers Growth" />
+    <meta property="twitter:description" content="UAE's premier AI Hub delivering enterprise-grade solutions, strategy & products that empower businesses to grow smarter and faster." />
+    <meta property="twitter:image" content="/og-image.png" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Fraunces', 'serif'],
+              serif: ['"Instrument Serif"', 'serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+              hero: ['"Bricolage Grotesque"', 'sans-serif'],
+              bricolage: ['"Bricolage Grotesque"', 'sans-serif'],
+              instrument: ['"Instrument Serif"', 'serif'],
+              geist: ['Geist', 'sans-serif'],
+            },
+            colors: {
+              bone:    '#FAF7F2',
+              paper:   '#FFFFFF',
+              parchment:'#F1ECE2',
+              sand:    '#E8E2D5',
+              dune:    '#D9D1C0',
+              ink:     '#1C1917',
+              graphite:'#3A332C',
+              taupe:   '#6B6357',
+              ash:     '#8A8378',
+              hairline:'#E8E2D5',
+              petrol:  '#4F46E5',
+              petrolDeep:'#9333EA',
+              brass:   '#B8945F',
+              clay:    '#C26B4A',
+              sage:    '#4F46E5',
+              /* legacy aliases remapped to light tones so unswept classes still render correctly */
+              navy: {
+                950: '#FAF7F2',
+                900: '#FFFFFF',
+                800: '#F1ECE2',
+                700: '#E8E2D5',
+              },
+              slate: {
+                850: '#F1ECE2',
+                900: '#FFFFFF',
+                950: '#FAF7F2',
+              }
+            },
+            animation: {
+              'float': 'float 8s ease-in-out infinite',
+              'marquee': 'marquee 40s linear infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-8px)' },
+              },
+              marquee: {
+                '0%': { transform: 'translateX(0)' },
+                '100%': { transform: 'translateX(-50%)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        --bone: #FAF7F2;
+        --ink: #1C1917;
+        --hairline: #E8E2D5;
+        --petrol: #4F46E5;
+        --brass: #B8945F;
+      }
+      html, body {
+        background-color: var(--bone);
+        color: var(--ink);
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        font-feature-settings: "ss01", "cv11";
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      .bg-paper-grain,
+      .mesh-bg {
+        background-color: var(--bone);
+        background-image:
+          radial-gradient(60% 50% at 50% 40%, rgba(147, 51, 234, 0.06), transparent 70%),
+          radial-gradient(70% 60% at 50% 110%, rgba(79, 70, 229, 0.07), transparent 70%),
+          radial-gradient(rgba(20,20,30,0.045) 1px, transparent 1px);
+        background-size: auto, auto, 3px 3px;
+      }
+      .bg-hairline-grid {
+        background-color: var(--bone);
+        background-image:
+          radial-gradient(60% 50% at 50% 40%, rgba(147, 51, 234, 0.06), transparent 70%),
+          radial-gradient(70% 60% at 50% 110%, rgba(79, 70, 229, 0.07), transparent 70%),
+          radial-gradient(rgba(20,20,30,0.045) 1px, transparent 1px);
+        background-size: auto, auto, 3px 3px;
+      }
+      .bg-grid-pattern { background: var(--bone); }
+      .bg-grid-indigo { background: var(--bone); }
+
+      .aqion-platform-bg {
+        background-color: #0d0d10;
+        background-image: none;
+      }
+
+      .hero-video-bg {
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        contain: layout paint size;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .hero-video-bg {
+          display: none;
+        }
+      }
+
+      .animate-entry { animation: fadeInUpBlur 0.9s cubic-bezier(0.2,0.8,0.2,1) both; }
+      @keyframes fadeInUpBlur{
+        0% { opacity:0; transform:translateY(14px); filter:blur(8px) }
+        100% { opacity:1; transform:translateY(0); filter:blur(0) }
+      }
+
+      .font-display { font-family: 'Fraunces', serif; font-optical-sizing: auto; letter-spacing: -0.02em; }
+      .display-xxl { font-family:'Fraunces',serif; font-weight:400; letter-spacing:-0.035em; line-height:0.95; }
+      .display-italic { font-family:'Instrument Serif', serif; font-style: italic; font-weight: 400; }
+      .eyebrow {
+        font-family:'JetBrains Mono', monospace;
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #4F46E5;
+      }
+      .rule-hairline { border-color: #E8E2D5; }
+
+      ::-webkit-scrollbar { width: 10px; height: 10px; }
+      ::-webkit-scrollbar-track { background: #FAF7F2; }
+      ::-webkit-scrollbar-thumb { background: #D9D1C0; border-radius: 5px; border: 2px solid #FAF7F2; }
+      ::-webkit-scrollbar-thumb:hover { background: #B8945F; }
+
+      :focus-visible { outline: 2px solid #4F46E5; outline-offset: 2px; border-radius: 6px; }
+      ::selection { background: #4F46E5; color: #FAF7F2; }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation: none !important; transition: none !important; }
+      }
+
+      @media (max-width: 767px) {
+        .mobile-section-tight {
+          padding-top: 3.5rem !important;
+          padding-bottom: 3.5rem !important;
+        }
+        .mobile-section-tight-top {
+          padding-top: 2.5rem !important;
+        }
+        .mobile-text-compact {
+          font-size: 0.95rem !important;
+          line-height: 1.55 !important;
+        }
+        .mobile-clamp-2,
+        .mobile-clamp-3,
+        .mobile-clamp-4 {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        .mobile-clamp-2 { -webkit-line-clamp: 2; }
+        .mobile-clamp-3 { -webkit-line-clamp: 3; }
+        .mobile-clamp-4 { -webkit-line-clamp: 4; }
+        .mobile-priority-list,
+        .mobile-priority-grid,
+        .mobile-priority-two {
+          row-gap: 0.75rem;
+        }
+        .mobile-visual-reduce {
+          opacity: 0.42 !important;
+          filter: saturate(0.9);
+        }
+        .mobile-visual-hide {
+          opacity: 0.96;
+        }
+        .mobile-card-compact {
+          border-radius: 1.25rem !important;
+          padding: 1rem !important;
+        }
+        .mobile-no-overlap {
+          overflow-wrap: anywhere;
+        }
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react/": "https://esm.sh/react@^19.2.4/"
+  }
+}
+</script>
+</head>
+  <body class="bg-bone text-ink">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
