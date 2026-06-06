@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, Bot, Activity, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ChevronDown, Bot, Activity, ArrowUpRight, Building2, Check } from 'lucide-react';
 import { PageType, NavItem } from '../types';
 
 interface NavbarProps {
@@ -36,8 +36,24 @@ const navItems: NavItem[] = [
   { label: 'Contact', page: PageType.CONTACT },
 ];
 
+const industryItems = [
+  { label: 'Healthcare', page: PageType.INDUSTRY_HEALTHCARE },
+  { label: 'Real Estate', page: PageType.INDUSTRY_REAL_ESTATE },
+  { label: 'Education', page: PageType.INDUSTRY_EDUCATION },
+  { label: 'Retail', page: PageType.INDUSTRY_RETAIL },
+  { label: 'Government', page: PageType.INDUSTRY_GOVERNMENT },
+  { label: 'Financial Services', page: PageType.INDUSTRY_FINANCE },
+  { label: 'Hospitality', page: PageType.INDUSTRY_HOSPITALITY },
+  { label: 'Logistics', page: PageType.INDUSTRY_LOGISTICS },
+  { label: 'Legal Services', page: PageType.INDUSTRY_PROFESSIONAL },
+  { label: 'Media & Events', page: PageType.INDUSTRY_MEDIA_EVENTS },
+  { label: 'Marketing & Design', page: PageType.INDUSTRY_MARKETING_DESIGN },
+  { label: 'Architecture & Planning', page: PageType.INDUSTRY_ARCHITECTURE },
+];
+
 const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [industryOpen, setIndustryOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const [desktopHover, setDesktopHover] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
@@ -45,6 +61,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
   const handleNavigate = (page: PageType, scrollToIndustries?: boolean) => {
     onNavigate(page, false, scrollToIndustries);
     setIsOpen(false);
+    setIndustryOpen(false);
     setMobileExpanded(null);
   };
 
@@ -55,6 +72,14 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
   const isCurrentPage = (page?: PageType) => {
     if (!page) return false;
     return currentPage === page || (page === PageType.INDUSTRIES && currentPage.startsWith('INDUSTRY_'));
+  };
+  const isIndustryPage = currentPage.startsWith('INDUSTRY_');
+  const currentIndustry = industryItems.find(item => item.page === currentPage);
+
+  const toggleIndustryMenu = () => {
+    setIndustryOpen(prev => !prev);
+    setIsOpen(false);
+    setMobileExpanded(null);
   };
 
   useEffect(() => {
@@ -72,6 +97,57 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    setIndustryOpen(false);
+  }, [currentPage]);
+
+  useEffect(() => {
+    if (!industryOpen) return undefined;
+
+    const closeOnOutsideTap = (event: PointerEvent) => {
+      const target = event.target as Element | null;
+      if (!target?.closest('[data-industry-switcher]')) setIndustryOpen(false);
+    };
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIndustryOpen(false);
+    };
+
+    document.addEventListener('pointerdown', closeOnOutsideTap);
+    document.addEventListener('keydown', closeOnEscape);
+    return () => {
+      document.removeEventListener('pointerdown', closeOnOutsideTap);
+      document.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [industryOpen]);
+
+  const industryMenu = (mobile: boolean) => (
+    <div
+      role="menu"
+      aria-label="Select another industry"
+      className={`grid grid-cols-2 gap-1.5 overflow-y-auto rounded-[22px] border border-white/60 bg-white/90 p-2.5 shadow-[0_24px_70px_-28px_rgba(28,25,23,0.45)] backdrop-blur-2xl ${
+        mobile ? 'max-h-[calc(100vh-6rem)]' : 'w-[25rem]'
+      }`}
+    >
+      {industryItems.map(item => {
+        const selected = item.page === currentPage;
+        return (
+          <button
+            key={item.page}
+            type="button"
+            role="menuitem"
+            onClick={() => selected ? setIndustryOpen(false) : handleNavigate(item.page)}
+            className={`flex min-h-12 cursor-pointer items-center justify-between gap-2 rounded-2xl px-3 py-2 text-left text-[12px] font-medium leading-tight transition-colors focus:outline-none focus:ring-2 focus:ring-petrol/40 ${
+              selected ? 'bg-petrol text-bone' : 'bg-paper/70 text-graphite hover:bg-parchment hover:text-ink'
+            }`}
+          >
+            <span>{item.label}</span>
+            {selected && <Check className="h-3.5 w-3.5 shrink-0" strokeWidth={2.5} />}
+          </button>
+        );
+      })}
+    </div>
+  );
 
   return (
     <nav
@@ -92,7 +168,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
             </span>
           </div>
 
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <div className="ml-10 flex items-center space-x-1 h-full">
               {navItems.map(item => (
                 <div key={item.label} className="relative group h-full flex items-center">
@@ -178,9 +254,29 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
             </div>
           </div>
 
-          <div className="md:hidden flex items-center">
+          <div className="flex items-center gap-2 lg:hidden">
+            {isIndustryPage && (
+              <div data-industry-switcher>
+                <button
+                  type="button"
+                  onClick={toggleIndustryMenu}
+                  aria-haspopup="menu"
+                  aria-expanded={industryOpen}
+                  className={`inline-flex min-h-11 cursor-pointer items-center justify-center gap-1.5 rounded-full border px-3 text-[11px] font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-petrol/35 ${
+                    industryOpen ? 'border-petrol/25 bg-parchment text-ink' : 'border-ink/10 bg-paper text-graphite hover:text-ink'
+                  }`}
+                >
+                  <Building2 className="h-3.5 w-3.5 text-petrol" />
+                  Change industry
+                  <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${industryOpen ? 'rotate-180' : ''}`} />
+                </button>
+              </div>
+            )}
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => {
+                setIsOpen(!isOpen);
+                setIndustryOpen(false);
+              }}
               className="z-50 inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full border border-ink/10 bg-paper text-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] transition-colors hover:bg-parchment focus:outline-none"
               aria-label="Toggle menu"
             >
@@ -190,8 +286,41 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
         </div>
       </div>
 
+      {isIndustryPage && industryOpen && (
+        <div data-industry-switcher className="fixed inset-x-3 top-[4.5rem] z-[60] lg:hidden">
+          <div className="mx-auto max-w-md">
+            <div className="mb-2 px-2">
+              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ash">
+                Current: {currentIndustry?.label}
+              </p>
+            </div>
+            {industryMenu(true)}
+          </div>
+        </div>
+      )}
+
+      {isIndustryPage && (
+        <div data-industry-switcher className="absolute right-8 top-[calc(100%+12px)] hidden lg:block">
+          <button
+            type="button"
+            onClick={toggleIndustryMenu}
+            aria-haspopup="menu"
+            aria-expanded={industryOpen}
+            className={`ml-auto flex min-h-11 cursor-pointer items-center gap-2 rounded-full border px-4 text-[12px] font-semibold shadow-[0_14px_38px_-24px_rgba(28,25,23,0.5)] backdrop-blur-xl transition-colors focus:outline-none focus:ring-2 focus:ring-petrol/35 ${
+              industryOpen ? 'border-petrol/25 bg-parchment text-ink' : 'border-hairline bg-paper/90 text-graphite hover:border-ink/20 hover:text-ink'
+            }`}
+          >
+            <Building2 className="h-4 w-4 text-petrol" />
+            Change industry
+            <span className="max-w-36 truncate text-ink/65">{currentIndustry?.label}</span>
+            <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${industryOpen ? 'rotate-180' : ''}`} />
+          </button>
+          {industryOpen && <div className="mt-2">{industryMenu(false)}</div>}
+        </div>
+      )}
+
       {isOpen && (
-        <div className="fixed inset-x-3 top-[4.5rem] z-40 md:hidden">
+        <div className="fixed inset-x-3 top-[4.5rem] z-40 lg:hidden">
           <div className="mx-auto max-w-md overflow-hidden rounded-[28px] border border-white/55 bg-white/68 px-3 py-3 shadow-[0_24px_70px_-34px_rgba(28,25,23,0.45)] backdrop-blur-2xl">
             {navItems.map(item => (
               <div key={item.label} className="border-b border-hairline/70">

@@ -46,30 +46,30 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
         <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-bone/84 via-bone/70 to-bone/92" />
         <div aria-hidden className="absolute inset-0 bg-hairline-grid opacity-25" />
         <div aria-hidden className="absolute left-1/2 top-1/2 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-petrol/10 blur-[130px]" />
-        <div className="relative mx-auto grid w-full min-w-0 max-w-7xl grid-cols-12 items-center gap-8 px-6 md:gap-10">
-          <div className="col-span-12 min-w-0 lg:col-span-7">
+        <div className="relative mx-auto grid w-full min-w-0 max-w-7xl grid-cols-12 items-center gap-8 px-5 sm:px-6 md:gap-10">
+          <div className="mobile-page-center col-span-12 min-w-0 lg:col-span-7 lg:text-left">
             <p className="eyebrow mb-4 md:mb-5">[ About AqionLabs ]</p>
-            <h1 className="max-w-full font-display text-[2.35rem] leading-[1] tracking-tight text-ink md:text-7xl md:leading-[0.98]">
+            <h1 className="mobile-heading max-w-full font-display text-[2.35rem] leading-[1] tracking-tight text-ink md:text-7xl md:leading-[0.98]">
               UAE's Premier<br />
               <span className="display-italic block break-words text-petrol md:inline">AI Product Development</span>
               <span className="display-italic block text-petrol md:inline"> House.</span>
             </h1>
-            <p className="mobile-clamp-3 mt-5 max-w-[21rem] break-words font-display text-lg leading-[1.24] tracking-tight text-graphite md:mt-7 md:max-w-2xl md:text-3xl md:leading-[1.18]">
-              We design, build and operate AI products that move revenue, service quality and operational leverage for ambitious UAE companies.
+            <p className="mobile-copy-measure mt-5 max-w-[21rem] break-words font-display text-lg leading-[1.24] tracking-tight text-graphite md:mt-7 md:max-w-2xl md:text-3xl md:leading-[1.18] lg:mx-0">
+              We build production AI that improves revenue, service and operations for UAE companies.
             </p>
             <p className="mt-5 hidden max-w-2xl text-base leading-relaxed text-taupe md:mt-6 md:block md:text-lg">
               AqionLabs is not a slideware consultancy and not a generic dev shop. We work like a senior AI product team embedded inside your business, combining strategy, software engineering, workflow automation and enterprise governance into one accountable delivery model.
             </p>
-            <div className="mt-7 flex max-w-full flex-col gap-3 sm:flex-row md:mt-9">
+            <div className="mobile-center-row mt-7 flex max-w-full flex-col gap-3 sm:flex-row md:mt-9 lg:justify-start">
               <button
                 onClick={() => onNavigate(PageType.CONTACT)}
-                className="inline-flex min-h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-medium text-bone transition-colors hover:bg-petrolDeep sm:w-auto md:px-7 md:py-4"
+                className="mobile-action inline-flex min-h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-medium text-bone transition-colors hover:bg-petrolDeep sm:w-auto md:px-7 md:py-4"
               >
                 Start a build conversation <ArrowUpRight className="h-4 w-4" />
               </button>
               <button
                 onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX)}
-                className="inline-flex min-h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-hairline bg-paper px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-ink/30 sm:w-auto md:px-7 md:py-4"
+                className="mobile-action inline-flex min-h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-hairline bg-paper px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-ink/30 sm:w-auto md:px-7 md:py-4"
               >
                 Explore AqionVox
               </button>
@@ -98,17 +98,20 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      <section className="mobile-section-tight mx-auto max-w-7xl px-6 py-24 md:py-32">
+      <section className="mobile-section-tight mx-auto max-w-7xl px-5 py-24 sm:px-6 md:py-32">
         <div className="mb-14 grid grid-cols-12 gap-6">
-          <div className="col-span-12 md:col-span-6">
+          <div className="mobile-page-center col-span-12 md:col-span-6 md:text-left">
             <p className="eyebrow mb-4">[ How we work ]</p>
-            <h2 className="font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
+            <h2 className="mobile-subheading font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
               Strategy, code<br />
               <span className="display-italic">and operations.</span>
             </h2>
           </div>
-          <div className="col-span-12 md:col-span-5 md:col-start-8 md:pt-4">
-            <p className="mobile-clamp-3 text-base leading-relaxed text-graphite md:text-lg">
+          <div className="mobile-page-center col-span-12 md:col-span-5 md:col-start-8 md:pt-4 md:text-left">
+            <p className="mobile-copy-measure text-[15px] leading-relaxed text-graphite md:hidden">
+              We ship AI into real workflows and measure what changes.
+            </p>
+            <p className="hidden text-lg leading-relaxed text-graphite md:block">
               The SaaS market now rewards teams that ship AI into real workflows, prove adoption and compound data advantages. Our model is built for that reality.
             </p>
           </div>
@@ -116,23 +119,23 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
 
         <div className="mobile-priority-two grid gap-px overflow-hidden rounded-2xl border border-hairline bg-hairline md:grid-cols-3">
           {operatingPrinciples.map((item) => (
-            <div key={item.title} className="mobile-card-compact bg-paper p-8">
-              <span className="mb-7 flex h-12 w-12 items-center justify-center rounded-xl border border-hairline bg-parchment text-petrol">
+            <div key={item.title} className="mobile-card-center mobile-card-compact bg-paper p-8 md:text-left">
+              <span className="mobile-center-icon mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-hairline bg-parchment text-petrol md:mb-7 md:ml-0">
                 <item.icon className="h-5 w-5" strokeWidth={1.5} />
               </span>
               <h3 className="font-display text-2xl leading-tight text-ink">{item.title}</h3>
-              <p className="mobile-clamp-3 mt-4 text-sm leading-relaxed text-taupe">{item.body}</p>
+              <p className="mobile-copy-measure mt-3 text-sm leading-relaxed text-taupe md:mt-4 md:mx-0">{item.body}</p>
             </div>
           ))}
         </div>
       </section>
 
       <section className="mobile-section-tight bg-[#0d0d10] py-24 text-bone md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <div className="grid grid-cols-12 gap-6">
-            <div className="col-span-12 md:col-span-6">
+            <div className="mobile-page-center col-span-12 md:col-span-6 md:text-left">
               <p className="eyebrow mb-4">[ Delivery system ]</p>
-              <h2 className="font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
+              <h2 className="mobile-subheading font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
                 A studio built<br />
                 <span className="display-italic text-white">for production AI.</span>
               </h2>
@@ -146,8 +149,8 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
                   'Governance, security and data-residency planning',
                   'Post-launch optimisation against commercial KPIs',
                 ].map((item) => (
-                  <div key={item} className="flex gap-3 rounded-2xl border border-white/10 bg-white/[0.05] p-4 text-bone/76">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-petrol" />
+                  <div key={item} className="mobile-center-row flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.05] p-4 text-bone/76 md:items-start md:justify-start md:text-left">
+                    <Check className="h-4 w-4 shrink-0 text-petrol md:mt-0.5" />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -157,29 +160,29 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      <section className="mobile-section-tight mx-auto max-w-7xl px-6 py-24 md:py-32">
-        <div className="rounded-3xl bg-petrol p-6 text-bone md:p-14">
+      <section className="mobile-section-tight mx-auto max-w-7xl px-5 py-24 sm:px-6 md:py-32">
+        <div className="mobile-card-center rounded-3xl bg-petrol p-6 text-bone md:p-14 md:text-left">
           <p className="eyebrow !text-white/70 mb-4">[ The offer ]</p>
           <div className="grid grid-cols-12 items-end gap-6">
             <div className="col-span-12 md:col-span-8">
-              <h2 className="font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
+              <h2 className="mobile-subheading font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
                 Bring us the metric.<br />
                 <span className="display-italic">We bring the build plan.</span>
               </h2>
-              <p className="mobile-clamp-3 mt-6 max-w-2xl text-bone/76">
+              <p className="mobile-copy-measure mt-5 max-w-2xl text-bone/76 md:mt-6 md:mx-0">
                 In one working session, we map the workflow, commercial upside, risk controls and first deployable AI product worth building.
               </p>
             </div>
-            <div className="col-span-12 flex gap-3 md:col-span-4 md:justify-end">
+            <div className="mobile-center-row col-span-12 flex flex-col gap-3 sm:flex-row md:col-span-4 md:justify-end">
               <button
                 onClick={() => onNavigate(PageType.CONTACT)}
-                className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-bone px-7 py-4 text-sm font-medium text-petrol transition-colors hover:bg-parchment"
+                className="mobile-action inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-bone px-7 py-4 text-sm font-medium text-petrol transition-colors hover:bg-parchment sm:w-auto"
               >
                 Book a call <Sparkles className="h-4 w-4" />
               </button>
               <button
                 onClick={() => onNavigate(PageType.SERVICE_DIGITAL_PRESENCE_STUDIO)}
-                className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-white/15 bg-white/10 px-7 py-4 text-sm font-medium text-bone transition-colors hover:bg-white/15"
+                className="mobile-action inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-white/15 bg-white/10 px-7 py-4 text-sm font-medium text-bone transition-colors hover:bg-white/15 sm:w-auto"
               >
                 View services <Layers className="h-4 w-4" />
               </button>

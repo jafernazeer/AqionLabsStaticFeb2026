@@ -178,12 +178,56 @@
       }
 
       @media (max-width: 767px) {
+        html {
+          scroll-padding-top: 4rem;
+        }
+        body {
+          overscroll-behavior-x: none;
+        }
         .mobile-section-tight {
-          padding-top: 3.5rem !important;
-          padding-bottom: 3.5rem !important;
+          padding-top: 3rem !important;
+          padding-bottom: 3rem !important;
         }
         .mobile-section-tight-top {
           padding-top: 2.5rem !important;
+        }
+        .mobile-page-center {
+          box-sizing: border-box;
+          min-width: 0 !important;
+          width: 100% !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+          max-width: calc(100vw - 2.5rem) !important;
+          text-align: center !important;
+        }
+        .mobile-page-center .eyebrow {
+          text-align: center !important;
+        }
+        .mobile-center-row {
+          align-items: center !important;
+          justify-content: center !important;
+          text-align: center !important;
+        }
+        .mobile-center-icon {
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+        .mobile-copy-measure {
+          margin-left: auto !important;
+          margin-right: auto !important;
+          max-width: 22rem !important;
+        }
+        .mobile-heading {
+          max-width: 100% !important;
+          font-size: clamp(2.15rem, 10vw, 2.85rem) !important;
+          line-height: 1 !important;
+          overflow-wrap: anywhere;
+        }
+        .mobile-subheading {
+          max-width: 100% !important;
+          font-size: clamp(1.85rem, 8vw, 2.35rem) !important;
+          line-height: 1.04 !important;
+          overflow-wrap: anywhere;
         }
         .mobile-text-compact {
           font-size: 0.95rem !important;
@@ -205,15 +249,44 @@
           row-gap: 0.75rem;
         }
         .mobile-visual-reduce {
-          opacity: 0.42 !important;
+          opacity: 0.3 !important;
           filter: saturate(0.9);
         }
         .mobile-visual-hide {
           opacity: 0.96;
         }
+        .mobile-decorative-hide {
+          display: none !important;
+        }
         .mobile-card-compact {
           border-radius: 1.25rem !important;
           padding: 1rem !important;
+        }
+        .mobile-card-center {
+          box-sizing: border-box;
+          min-width: 0 !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          text-align: center !important;
+        }
+        .mobile-card-center * {
+          min-width: 0;
+        }
+        .mobile-card-center > .flex,
+        .mobile-card-center > div > .flex {
+          justify-content: center;
+        }
+        .mobile-action {
+          min-height: 48px !important;
+          width: 100% !important;
+          touch-action: manipulation;
+        }
+        .mobile-form-control {
+          min-height: 48px !important;
+          font-size: 16px !important;
+        }
+        .mobile-hide {
+          display: none !important;
         }
         .mobile-no-overlap {
           overflow-wrap: anywhere;

@@ -143,10 +143,11 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
     context: data.context,
     signal: 'Designed for measurable growth, stronger operations and clearer visibility.',
   };
+  const compactContext = copy.context.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim() || copy.context;
 
   return (
     <div className="mesh-bg min-h-screen overflow-x-hidden pt-20 font-sans text-ink">
-      <section className="mobile-section-tight relative z-10 flex min-h-[calc(100vh-5rem)] items-center overflow-hidden border-b border-hairline mesh-bg py-20">
+      <section className="mobile-section-tight relative z-10 flex min-h-0 items-center overflow-hidden border-b border-hairline mesh-bg py-20 md:min-h-[calc(100vh-5rem)]">
         {useServiceMotion ? (
           <ServiceMotionBackdrop className="opacity-70 mobile-visual-reduce" />
         ) : (
@@ -155,34 +156,35 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
         <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-bone/88 via-bone/72 to-bone/94" />
         <div aria-hidden className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-petrol/10 blur-[110px]" />
 
-        <div className="relative mx-auto grid max-w-7xl grid-cols-12 items-center gap-10 px-6">
-          <div className="col-span-12 lg:col-span-7">
+        <div className="relative mx-auto flex w-full min-w-0 max-w-7xl flex-col items-center px-5 sm:px-6 md:grid md:grid-cols-12 md:gap-10">
+          <div className="mobile-page-center col-span-12 lg:col-span-7 lg:text-left">
             <p className="eyebrow mb-5">[ Industry playbook ]</p>
-            <h1 className="font-display text-[2.7rem] leading-[0.98] tracking-tight text-ink md:text-7xl">
+            <h1 className="mobile-heading font-display text-[2.7rem] leading-[0.98] tracking-tight text-ink md:text-7xl">
               {data.title}<br />
               <span className="display-italic text-petrol">AI operating model.</span>
             </h1>
-            <p className="mobile-clamp-3 mt-6 max-w-2xl font-display text-xl leading-[1.18] tracking-tight text-graphite md:mt-7 md:text-3xl">
+            <p className="mobile-copy-measure mt-5 max-w-2xl font-display text-lg leading-[1.22] tracking-tight text-graphite md:mt-7 md:text-3xl lg:mx-0">
               {copy.headline}
             </p>
-            <p className="mobile-clamp-3 mt-5 max-w-2xl text-base leading-relaxed text-taupe md:mt-6 md:text-lg">{copy.context}</p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <p className="mobile-copy-measure mt-4 text-[15px] leading-relaxed text-taupe md:hidden">{compactContext}</p>
+            <p className="mt-6 hidden max-w-2xl text-lg leading-relaxed text-taupe md:block">{copy.context}</p>
+            <div className="mobile-center-row mt-7 flex flex-col gap-3 sm:flex-row md:mt-8 lg:justify-start">
               <button
                 onClick={() => onNavigate(PageType.CONTACT)}
-                className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-ink px-7 py-4 text-sm font-medium text-bone transition-colors hover:bg-petrolDeep"
+                className="mobile-action inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-ink px-7 py-4 text-sm font-medium text-bone transition-colors hover:bg-petrolDeep sm:w-auto"
               >
                 Discuss this vertical <ArrowRight className="h-4 w-4" />
               </button>
               <button
                 onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX, true)}
-                className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-hairline bg-paper px-7 py-4 text-sm font-medium text-ink transition-colors hover:border-ink/30"
+                className="mobile-action inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-hairline bg-paper px-7 py-4 text-sm font-medium text-ink transition-colors hover:border-ink/30 sm:w-auto"
               >
                 Try AqionVox demo
               </button>
             </div>
           </div>
 
-          <div className="mobile-visual-hide col-span-12 lg:col-span-5">
+          <div className="mobile-decorative-hide col-span-12 lg:col-span-5 md:block">
             <div className="relative mx-auto flex h-72 w-72 items-center justify-center rounded-[36px] border border-hairline bg-white/72 shadow-[0_28px_80px_-36px_rgba(28,25,23,0.35)] backdrop-blur-md md:h-96 md:w-96">
               <div className="absolute inset-4 rounded-[28px] border border-white/70 bg-gradient-to-br from-white via-[#f7f4ef] to-[#ece7dc]" />
               <div className="absolute -inset-8 rounded-full bg-petrol/12 blur-3xl" />
@@ -196,28 +198,31 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
         </div>
       </section>
 
-      <section className="mobile-section-tight relative z-10 mx-auto max-w-7xl px-6 py-20 md:py-28">
+      <section className="mobile-section-tight relative z-10 mx-auto max-w-7xl px-5 py-20 sm:px-6 md:py-28">
         <div className="grid grid-cols-12 gap-6">
-          <div className="col-span-12 md:col-span-5">
+          <div className="mobile-page-center col-span-12 md:col-span-5 md:text-left">
             <p className="eyebrow mb-4">[ Market pressure ]</p>
-            <h2 className="font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
+            <h2 className="mobile-subheading font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
               Where growth<br />
               <span className="display-italic">leaks today.</span>
             </h2>
           </div>
-          <div className="col-span-12 md:col-span-6 md:col-start-7 md:pt-4">
-            <p className="mobile-clamp-3 text-lg leading-relaxed text-graphite">
+          <div className="mobile-page-center col-span-12 md:col-span-6 md:col-start-7 md:pt-4 md:text-left">
+            <p className="mobile-copy-measure text-[15px] leading-relaxed text-graphite md:hidden">
+              We remove the response, conversion and operating gaps that hold growth back.
+            </p>
+            <p className="hidden text-lg leading-relaxed text-graphite md:block">
               AI works when it improves the operating rhythm: faster response, clearer conversion, lower cost-to-serve and cleaner data visibility. These are the pressure points we remove first.
             </p>
           </div>
         </div>
 
-        <div className="mt-12 rounded-[28px] border border-hairline bg-paper/86 p-5 shadow-[0_28px_80px_-50px_rgba(28,25,23,0.32)] backdrop-blur md:p-7">
+        <div className="mt-9 rounded-[28px] border border-hairline bg-paper/86 p-4 shadow-[0_28px_80px_-50px_rgba(28,25,23,0.32)] backdrop-blur md:mt-12 md:p-7">
           <div className="mobile-priority-grid grid gap-3 md:grid-cols-2 lg:grid-cols-3">
           {data.challenges.map((challenge, idx) => (
-            <div key={challenge} className="mobile-card-compact rounded-2xl border border-hairline bg-bone/72 p-5">
+            <div key={challenge} className="mobile-card-center mobile-card-compact rounded-2xl border border-hairline bg-bone/72 p-5 md:text-left">
               <span className="font-mono text-xs text-petrol">{String(idx + 1).padStart(2, '0')} /</span>
-              <p className="mt-4 font-display text-xl leading-tight text-ink">{challenge}</p>
+              <p className="mt-3 font-display text-xl leading-tight text-ink md:mt-4">{challenge}</p>
             </div>
           ))}
           </div>
@@ -225,11 +230,11 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
       </section>
 
       <section className="mobile-section-tight relative z-10 bg-[#0d0d10] py-20 text-bone md:py-28">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <div className="mb-12 grid grid-cols-12 gap-6">
-            <div className="col-span-12 md:col-span-6">
+            <div className="mobile-page-center col-span-12 md:col-span-6 md:text-left">
               <p className="eyebrow mb-4">[ Deployment stack ]</p>
-              <h2 className="font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
+              <h2 className="mobile-subheading font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
                 The AI layer<br />
                 <span className="display-italic text-white">behind the outcome.</span>
               </h2>
@@ -241,8 +246,8 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
               const items = data.solutions[key];
               if (!items?.length) return null;
               return (
-                <div key={key} className="mobile-card-compact rounded-3xl border border-white/10 bg-white/[0.05] p-7">
-                  <div className="mb-6 flex items-center gap-3">
+                <div key={key} className="mobile-card-center mobile-card-compact rounded-3xl border border-white/10 bg-white/[0.05] p-7 md:text-left">
+                  <div className="mobile-center-row mb-5 flex items-center gap-3 md:mb-6 md:justify-start md:text-left">
                     <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-[#4f46e5] to-[#9333ea] text-white shadow-[0_0_28px_rgba(79,70,229,0.24)]">
                       <Icon className="h-5 w-5" strokeWidth={1.5} />
                     </span>
@@ -250,8 +255,8 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
                   </div>
                   <div className="mobile-priority-two grid gap-3">
                     {items.map((item) => (
-                      <div key={item} className="flex gap-3 text-sm leading-relaxed text-bone/76">
-                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-petrol" />
+                      <div key={item} className="mobile-center-row flex items-center gap-2 text-sm leading-relaxed text-bone/76 md:items-start md:justify-start md:text-left">
+                        <Check className="h-4 w-4 shrink-0 text-petrol md:mt-0.5" />
                         <span>{item}</span>
                       </div>
                     ))}
@@ -263,11 +268,11 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
         </div>
       </section>
 
-      <section className="mobile-section-tight relative z-10 mx-auto max-w-7xl px-6 py-20 md:py-28">
+      <section className="mobile-section-tight relative z-10 mx-auto max-w-7xl px-5 py-20 sm:px-6 md:py-28">
         <div className="grid grid-cols-12 gap-6">
-          <div className="col-span-12 md:col-span-5">
+          <div className="mobile-page-center col-span-12 md:col-span-5 md:text-left">
             <p className="eyebrow mb-4">[ Operating outcomes ]</p>
-            <h2 className="font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
+            <h2 className="mobile-subheading font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
               What changes<br />
               <span className="display-italic">after deployment.</span>
             </h2>
@@ -275,13 +280,13 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
           <div className="col-span-12 md:col-span-7">
             <div className="mobile-priority-two grid gap-px overflow-hidden rounded-2xl border border-hairline bg-hairline sm:grid-cols-2">
               {data.outcome.map((outcome) => (
-                <div key={outcome} className="bg-paper p-6">
-                  <CheckCircle className="mb-5 h-7 w-7 text-petrol" strokeWidth={1.5} />
+                <div key={outcome} className="mobile-card-center bg-paper p-6 md:text-left">
+                  <CheckCircle className="mobile-center-icon mb-4 h-7 w-7 text-petrol md:mb-5 md:ml-0" strokeWidth={1.5} />
                   <p className="font-display text-xl leading-tight text-ink">{outcome}</p>
                 </div>
               ))}
-              <div className="bg-petrol p-6 text-bone">
-                <TrendingUp className="mb-5 h-7 w-7" strokeWidth={1.5} />
+              <div className="mobile-card-center bg-petrol p-6 text-bone md:text-left">
+                <TrendingUp className="mobile-center-icon mb-4 h-7 w-7 md:mb-5 md:ml-0" strokeWidth={1.5} />
                 <p className="font-display text-xl leading-tight">{data.ctaText}</p>
               </div>
             </div>
@@ -289,18 +294,18 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
         </div>
       </section>
 
-      <section className="mobile-section-tight relative z-10 mx-auto max-w-7xl px-6 pb-24">
-        <div className="rounded-3xl bg-petrol p-6 text-bone md:p-14">
+      <section className="mobile-section-tight relative z-10 mx-auto max-w-7xl px-5 pb-24 sm:px-6">
+        <div className="mobile-card-center rounded-3xl bg-petrol p-6 text-bone md:p-14 md:text-left">
           <p className="eyebrow !text-white/70 mb-4">[ Next step ]</p>
           <div className="grid grid-cols-12 gap-6 items-end">
-            <h2 className="col-span-12 font-display text-4xl leading-[1.02] tracking-tight md:col-span-7 md:text-6xl">
+            <h2 className="mobile-subheading col-span-12 font-display text-4xl leading-[1.02] tracking-tight md:col-span-7 md:text-6xl">
               Build the operating case for<br />
               <span className="display-italic">AI in {data.title}.</span>
             </h2>
             <div className="col-span-12 md:col-span-5 md:flex md:justify-end">
               <button
                 onClick={() => onNavigate(PageType.CONTACT)}
-                className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-bone px-7 py-4 text-sm font-medium text-petrol transition-colors hover:bg-parchment"
+                className="mobile-action inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-bone px-7 py-4 text-sm font-medium text-petrol transition-colors hover:bg-parchment md:w-auto"
               >
                 Request strategy session <ArrowRight className="h-4 w-4" />
               </button>

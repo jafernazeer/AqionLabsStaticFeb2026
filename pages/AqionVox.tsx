@@ -5,8 +5,7 @@ import LiveDemoSection from '../components/LiveDemoSection';
 import OptimizedHeroMotion from '../components/OptimizedHeroMotion';
 import {
   ArrowUpRight, Check, Play, BarChart3, Users, MessageSquare, Video, Smartphone,
-  Building, Stethoscope, Landmark, Briefcase, Search, GraduationCap, Coffee, Truck,
-  Tickets, Layers, ShieldCheck, Languages, Headphones, Workflow, X
+  ShieldCheck, Languages, Headphones, Workflow, X
 } from 'lucide-react';
 
 interface AqionVoxProps {
@@ -91,21 +90,6 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
     },
   ];
 
-  const industries = [
-    { name: 'Healthcare', icon: Stethoscope, desc: 'Triage, claims, appointment booking.', page: PageType.INDUSTRY_HEALTHCARE },
-    { name: 'Real Estate', icon: Building, desc: 'Off-plan qualification, viewing scheduling.', page: PageType.INDUSTRY_REAL_ESTATE },
-    { name: 'Financial Services', icon: Landmark, desc: 'Account servicing, KYC routing.', page: PageType.INDUSTRY_FINANCE },
-    { name: 'Government', icon: Briefcase, desc: 'Multilingual citizen services.', page: PageType.INDUSTRY_GOVERNMENT },
-    { name: 'Retail', icon: Search, desc: 'Order tracking, returns, FAQ.', page: PageType.INDUSTRY_RETAIL },
-    { name: 'Education', icon: GraduationCap, desc: 'Admissions, fee, advising.', page: PageType.INDUSTRY_EDUCATION },
-    { name: 'Hospitality', icon: Coffee, desc: 'Reservations, concierge, post-stay.', page: PageType.INDUSTRY_HOSPITALITY },
-    { name: 'Logistics', icon: Truck, desc: 'Shipment tracking, exceptions.', page: PageType.INDUSTRY_LOGISTICS },
-    { name: 'Legal', icon: Briefcase, desc: 'Client onboarding, matter intake.', page: PageType.INDUSTRY_PROFESSIONAL },
-    { name: 'Media & Events', icon: Tickets, desc: 'Ticketing, attendee comms.', page: PageType.INDUSTRY_MEDIA_EVENTS },
-    { name: 'Architecture', icon: Building, desc: 'RFP intake, project briefs.', page: PageType.INDUSTRY_ARCHITECTURE },
-    { name: 'Marketing', icon: Layers, desc: 'Campaign ideation, content ops.', page: PageType.INDUSTRY_MARKETING_DESIGN },
-  ];
-
   return (
     <div className="mesh-bg text-ink overflow-x-hidden font-sans relative min-h-screen">
       {/* HERO — centered, inspired by V1 */}
@@ -113,7 +97,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
         <OptimizedHeroMotion
           kind="image"
           src="/Aqionvoxhero1.svg"
-          className="hero-video-bg absolute left-1/2 top-[54%] z-[1] h-[150vw] max-h-[1820px] w-[150vw] max-w-[1820px] -translate-x-1/2 -translate-y-1/2 pointer-events-none overflow-hidden opacity-[0.68] md:top-[59%] md:h-[94vw] md:max-h-[920px] md:w-[94vw] md:max-w-[920px] lg:top-[60%] lg:h-[66vw] lg:max-h-[940px] lg:w-[66vw] lg:max-w-[940px]"
+          className="hero-video-bg absolute left-1/2 top-[44%] z-[1] h-[150vw] max-h-[1820px] w-[150vw] max-w-[1820px] -translate-x-1/2 -translate-y-1/2 pointer-events-none overflow-hidden opacity-[0.68] md:top-[59%] md:h-[94vw] md:max-h-[920px] md:w-[94vw] md:max-w-[920px] lg:top-[60%] lg:h-[66vw] lg:max-h-[940px] lg:w-[66vw] lg:max-w-[940px]"
           mediaClassName="h-full w-full object-contain"
         />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-bone/84 via-bone/58 to-bone/92" />
@@ -319,42 +303,6 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* INDUSTRIES */}
-      <section className="mobile-section-tight py-24 md:py-32 max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-12 gap-6 mb-12">
-          <div className="col-span-12 md:col-span-6">
-            <p className="eyebrow mb-4">[ Vertical playbooks ]</p>
-            <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-[1.02]">
-              One agent.<br /><span className="display-italic">Twelve industries.</span>
-            </h2>
-          </div>
-          <div className="col-span-12 md:col-span-5 md:col-start-8 md:pt-4">
-            <p className="mobile-clamp-3 text-graphite text-lg leading-relaxed">
-              Each deployment ships with a pre-built ontology of intents, KPIs and flows for your sector — so day-one performance looks like a senior agent's, not a generic chatbot's.
-            </p>
-          </div>
-        </div>
-
-        <div className="mobile-priority-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-          {industries.map((i) => (
-            <button
-              key={i.name}
-              onClick={() => onNavigate(i.page)}
-              className="mobile-card-compact group text-left rounded-2xl border border-hairline bg-paper p-6 hover:border-ink/30 transition-colors cursor-pointer"
-            >
-              <div className="flex items-start justify-between mb-5">
-                <span className="w-10 h-10 rounded-lg bg-parchment border border-hairline flex items-center justify-center text-petrol">
-                  <i.icon strokeWidth={1.5} className="w-5 h-5" />
-                </span>
-                <ArrowUpRight className="w-4 h-4 text-ash group-hover:text-petrol group-hover:rotate-12 transition-transform" />
-              </div>
-              <h3 className="font-display text-xl text-ink">{i.name}</h3>
-              <p className="mobile-clamp-2 text-sm text-taupe mt-1.5 leading-snug">{i.desc}</p>
-            </button>
-          ))}
         </div>
       </section>
 

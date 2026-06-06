@@ -11,6 +11,11 @@ interface ServiceDetailProps {
 
 const ServiceDetail: React.FC<ServiceDetailProps> = ({ data, onNavigate }) => {
   const Icon = data.icon;
+
+  const compactCopy = (content: string | string[]) => {
+    const text = Array.isArray(content) ? content[0] : content;
+    return text.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim() || text;
+  };
   
   // Scroll to top on mount
   useEffect(() => {
@@ -54,26 +59,27 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ data, onNavigate }) => {
       <div className="fixed inset-0 pointer-events-none z-0 bg-hairline-grid opacity-80"></div>
       
       {/* Header */}
-      <div className="mobile-section-tight mesh-bg py-20 min-h-[calc(100vh-5rem)] border-b border-hairline relative z-10 overflow-hidden flex items-center">
+      <div className="mobile-section-tight mesh-bg relative z-10 flex min-h-0 items-center overflow-hidden border-b border-hairline py-20 md:min-h-[calc(100vh-5rem)]">
         <ServiceMotionBackdrop className="opacity-70 mobile-visual-reduce" />
         <div className="absolute inset-0 bg-gradient-to-b from-bone/82 via-bone/70 to-bone/92" aria-hidden />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-petrol/10 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-                <div className="flex-1 text-center lg:text-left">
+        <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
+            <div className="flex min-w-0 flex-col items-center gap-12 lg:flex-row lg:gap-20">
+                <div className="mobile-page-center min-w-0 flex-1 text-center lg:text-left">
                     <span className="bg-petrol/30 text-petrol px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide mb-6 inline-block border border-petrol/30">
                         AI Service
                     </span>
-                    <h1 className="font-display text-[2.65rem] md:text-6xl tracking-tight leading-[1.02] text-ink mb-6">
+                    <h1 className="mobile-heading mb-5 font-display text-[2.65rem] leading-[1.02] tracking-tight text-ink md:mb-6 md:text-6xl">
                         {renderTitle(data.title)}
                     </h1>
-                    <p className="mobile-clamp-3 text-lg md:text-xl text-taupe max-w-2xl mx-auto lg:mx-0 leading-relaxed">{data.subtitle}</p>
+                    <p className="mobile-copy-measure text-base leading-relaxed text-taupe md:hidden">{compactCopy(data.subtitle)}</p>
+                    <p className="mx-auto hidden max-w-2xl text-xl leading-relaxed text-taupe md:block lg:mx-0">{data.subtitle}</p>
                 </div>
                 
                 {/* 3D Image Title Card */}
                 {Icon && (
-                    <div className="mobile-visual-hide relative group perspective-1000">
+                    <div className="mobile-decorative-hide relative group perspective-1000 md:block">
                          <div className="absolute inset-0 bg-petrol blur-[80px] opacity-20 rounded-full"></div>
                          <div className="relative w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-petrol/20 to-bone/80 backdrop-blur-xl border border-hairline rounded-3xl shadow-[0_20px_50px_-12px_rgba(79,70,229,0.18)] transform rotate-y-12 rotate-x-12 group-hover:rotate-0 transition-all duration-700 ease-out flex items-center justify-center">
                             <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent rounded-3xl pointer-events-none"></div>
@@ -91,33 +97,38 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ data, onNavigate }) => {
       </div>
 
       {/* Main Content */}
-      <div className="mobile-section-tight relative z-10 mx-auto max-w-7xl px-6 py-20 md:py-28">
+      <div className="mobile-section-tight relative z-10 mx-auto max-w-7xl px-5 py-20 sm:px-6 md:py-28">
         <div className="grid grid-cols-12 gap-8 lg:gap-12">
             <div className="col-span-12 lg:col-span-7">
+                <div className="mobile-page-center">
                 <p className="eyebrow mb-4">[ Delivery model ]</p>
-                <h2 className="font-display text-4xl leading-[1.02] tracking-tight text-ink md:text-6xl">
+                <h2 className="mobile-subheading font-display text-4xl leading-[1.02] tracking-tight text-ink md:text-6xl">
                     What this service<br />
                     <span className="display-italic text-petrol">changes.</span>
                 </h2>
+                </div>
                 <div className="mobile-priority-two mt-8 grid gap-4 md:mt-10 md:gap-5">
                     {data.sections.map((section, idx) => (
-                        <article key={idx} className="mobile-card-compact rounded-[28px] border border-hairline bg-paper/82 p-6 shadow-[0_24px_70px_-45px_rgba(28,25,23,0.28)] backdrop-blur md:p-8">
-                            <div className="mb-5 flex items-center gap-3">
+                        <article key={idx} className="mobile-card-center mobile-card-compact rounded-[28px] border border-hairline bg-paper/82 p-6 shadow-[0_24px_70px_-45px_rgba(28,25,23,0.28)] backdrop-blur md:p-8 md:text-left">
+                            <div className="mobile-center-row mb-4 flex items-center gap-3 md:mb-5 md:justify-start md:text-left">
                                 <span className="font-mono text-xs text-petrol">{String(idx + 1).padStart(2, '0')} /</span>
                                 <h3 className="font-display text-2xl leading-tight text-ink md:text-3xl">{section.title}</h3>
                             </div>
+                            <p className="mobile-copy-measure text-[15px] leading-relaxed text-taupe md:hidden">{compactCopy(section.content)}</p>
+                            <div className="hidden md:block">
                             {Array.isArray(section.content) ? (
                                 section.content.map((p, pIdx) => (
-                                    <p key={pIdx} className="mobile-clamp-3 mb-4 text-base leading-relaxed text-taupe md:text-lg">{p}</p>
+                                    <p key={pIdx} className="mb-4 text-lg leading-relaxed text-taupe">{p}</p>
                                 ))
                             ) : (
-                                <p className="mobile-clamp-3 mb-4 text-base leading-relaxed text-taupe md:text-lg">{section.content}</p>
+                                <p className="mb-4 text-lg leading-relaxed text-taupe">{section.content}</p>
                             )}
+                            </div>
                             {section.bullets && (
                                 <ul className="mobile-priority-two mt-5 grid gap-3 sm:grid-cols-2 md:mt-6">
                                     {section.bullets.map((b, bIdx) => (
-                                        <li key={bIdx} className="flex items-start gap-3 rounded-2xl border border-hairline bg-bone/70 p-4 text-sm leading-relaxed text-graphite">
-                                            <Check className="mt-0.5 h-4 w-4 shrink-0 text-petrol" />
+                                        <li key={bIdx} className="mobile-center-row flex items-center gap-2 rounded-2xl border border-hairline bg-bone/70 p-4 text-sm leading-relaxed text-graphite md:items-start md:justify-start md:text-left">
+                                            <Check className="h-4 w-4 shrink-0 text-petrol md:mt-0.5" />
                                             <span>{b}</span>
                                         </li>
                                     ))}
@@ -130,30 +141,30 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ data, onNavigate }) => {
 
             <div className="col-span-12 lg:col-span-5">
                 {(data.features || data.process) && (
-                    <aside className="sticky top-28 overflow-hidden rounded-[32px] border border-white/10 bg-[#0d0d10] p-7 text-bone shadow-[0_30px_100px_-50px_rgba(28,25,23,0.7)] md:p-9">
+                    <aside className="mobile-card-center sticky top-28 overflow-hidden rounded-[32px] border border-white/10 bg-[#0d0d10] p-7 text-bone shadow-[0_30px_100px_-50px_rgba(28,25,23,0.7)] md:p-9 md:text-left">
                         <div aria-hidden className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-petrol/24 blur-[70px]" />
                         <div aria-hidden className="absolute -bottom-28 left-8 h-64 w-64 rounded-full bg-[#9333ea]/18 blur-[80px]" />
                         <div className="relative">
                             <p className="eyebrow mb-4 !text-white/55">[ Operating layer ]</p>
-                            <h3 className="font-display text-3xl leading-tight text-bone md:text-4xl">
+                            <h3 className="mobile-subheading font-display text-3xl leading-tight text-bone md:text-4xl">
                                 {data.featuresTitle || data.processTitle || "Key details"}
                             </h3>
                             <div className="mt-8 space-y-5">
                                 {(data.features || data.process)?.map((item, idx) => (
-                                    <div key={idx} className="mobile-card-compact group rounded-2xl border border-white/10 bg-white/[0.05] p-5">
-                                        <h4 className="mb-2 flex items-center gap-3 font-display text-xl leading-tight text-bone transition-colors group-hover:text-white">
+                                    <div key={idx} className="mobile-card-center mobile-card-compact group rounded-2xl border border-white/10 bg-white/[0.05] p-5 md:text-left">
+                                        <h4 className="mobile-center-row mb-2 flex items-center gap-3 font-display text-xl leading-tight text-bone transition-colors group-hover:text-white md:justify-start md:text-left">
                                             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#4f46e5] to-[#9333ea] text-white">
                                                 <Check className="h-4 w-4" />
                                             </span>
                                             {item.title}
                                         </h4>
-                                        <p className="mobile-clamp-3 text-sm leading-relaxed text-bone/68">{item.description}</p>
+                                        <p className="mobile-copy-measure text-sm leading-relaxed text-bone/68 md:mx-0">{item.description}</p>
                                     </div>
                                 ))}
                             </div>
                             <button 
                                 onClick={() => onNavigate(PageType.CONTACT)}
-                                className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-bone px-7 py-4 text-sm font-medium text-petrol transition-colors hover:bg-parchment"
+                                className="mobile-action mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-bone px-7 py-4 text-sm font-medium text-petrol transition-colors hover:bg-parchment"
                             >
                                 Book consultation <ArrowRight className="h-4 w-4" />
                             </button>
