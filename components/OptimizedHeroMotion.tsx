@@ -9,6 +9,7 @@ interface OptimizedHeroMotionProps {
   mediaClassName?: string;
   mediaStyle?: React.CSSProperties;
   reducedMotionSrc?: string;
+  keepMotionOnMobile?: boolean;
 }
 
 const shouldSkipDecorativeMotion = () => {
@@ -23,8 +24,13 @@ const OptimizedHeroMotion: React.FC<OptimizedHeroMotionProps> = ({
   mediaClassName,
   mediaStyle,
   reducedMotionSrc,
+  keepMotionOnMobile = false,
 }) => {
-  if (shouldSkipDecorativeMotion()) {
+  const useReducedMotionFallback =
+    shouldSkipDecorativeMotion() &&
+    !(keepMotionOnMobile && window.matchMedia('(max-width: 767px)').matches);
+
+  if (useReducedMotionFallback) {
     if (!reducedMotionSrc) return null;
 
     return (

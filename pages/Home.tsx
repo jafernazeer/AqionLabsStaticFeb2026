@@ -101,6 +101,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           kind="image"
           src="/Aqionlabshero.svg?v=20260607"
           reducedMotionSrc="/Aqionlabshero-static.png?v=20260607"
+          keepMotionOnMobile
           className="hero-video-bg absolute inset-0 pointer-events-none overflow-hidden opacity-[0.38]"
           mediaClassName="h-full w-full object-cover [transform:translateY(-8%)_scale(1.16)] sm:[transform:translateY(-6%)_scale(1.12)] md:[transform:translateY(2%)_scale(1.1)] lg:[transform:translateY(10%)_scale(1.08)]"
         />
