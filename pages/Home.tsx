@@ -99,7 +99,8 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         <div className="absolute inset-0 -z-10 mesh-bg" aria-hidden />
         <OptimizedHeroMotion
           kind="image"
-          src="/Aqionlabshero.svg"
+          src="/Aqionlabshero.svg?v=20260607"
+          reducedMotionSrc="/Aqionlabshero-static.png?v=20260607"
           className="hero-video-bg absolute inset-0 pointer-events-none overflow-hidden opacity-[0.38]"
           mediaClassName="h-full w-full object-cover [transform:translateY(-8%)_scale(1.16)] sm:[transform:translateY(-6%)_scale(1.12)] md:[transform:translateY(2%)_scale(1.1)] lg:[transform:translateY(10%)_scale(1.08)]"
         />
@@ -111,7 +112,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           }
         `}</style>
         <img
-          src="/aqionlabsrobo.svg"
+          src="/aqionlabsrobo.svg?v=20260607"
           alt=""
           aria-hidden="true"
           className="pointer-events-none absolute left-1/2 top-[27.5rem] z-[2] h-[320px] w-auto max-w-none object-contain opacity-48 drop-shadow-[0_42px_42px_rgba(20,20,15,0.18)] sm:top-[28.75rem] sm:h-[360px] md:top-[30.5rem] md:h-[400px] lg:hidden"

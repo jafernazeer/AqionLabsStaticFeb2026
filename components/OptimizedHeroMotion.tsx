@@ -8,6 +8,7 @@ interface OptimizedHeroMotionProps {
   className: string;
   mediaClassName?: string;
   mediaStyle?: React.CSSProperties;
+  reducedMotionSrc?: string;
 }
 
 const shouldSkipDecorativeMotion = () => {
@@ -21,8 +22,24 @@ const OptimizedHeroMotion: React.FC<OptimizedHeroMotionProps> = ({
   className,
   mediaClassName,
   mediaStyle,
+  reducedMotionSrc,
 }) => {
-  if (shouldSkipDecorativeMotion()) return null;
+  if (shouldSkipDecorativeMotion()) {
+    if (!reducedMotionSrc) return null;
+
+    return (
+      <div className={className} aria-hidden="true">
+        <img
+          src={reducedMotionSrc}
+          alt=""
+          loading="eager"
+          decoding="async"
+          className={mediaClassName}
+          style={mediaStyle}
+        />
+      </div>
+    );
+  }
 
   if (kind === 'video') {
     return (

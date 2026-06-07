@@ -73,7 +73,7 @@ const ArabRobotHero: React.FC = () => {
             className="absolute bottom-[7%] left-1/2 -z-10 h-12 w-[62%] -translate-x-1/2 rounded-full bg-ink/18 blur-2xl"
           />
           <img
-            src="/aqionlabsrobo.svg"
+            src="/aqionlabsrobo.svg?v=20260607"
             alt="AqionLabs animated AI robot"
             className="aqion-hero-robot h-[min(44vh,430px)] min-h-[330px] w-auto max-w-full object-contain drop-shadow-[0_48px_44px_rgba(20,20,15,0.16)] sm:h-[min(46vh,480px)] sm:min-h-[350px] lg:h-[min(54vh,576px)] lg:min-h-[340px]"
             style={{ animation: 'aqionRobotEnter 900ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both' }}
