@@ -1,7 +1,8 @@
-import React, { Suspense, lazy, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { PageType } from '../types';
 import LiveDemoSection from '../components/LiveDemoSection';
 import OptimizedHeroMotion from '../components/OptimizedHeroMotion';
+import { RobotHero } from '../components/ui/robot-hero';
 import {
   ArrowUpRight, ShieldCheck, TrendingUp, Sparkles, Globe, Cpu
 } from 'lucide-react';
@@ -12,8 +13,6 @@ interface HomeProps {
 
 const trustLogos = ['DUBAI HEALTH', 'MAJID AL FUTTAIM', 'EMAAR', 'ADGM', 'EMIRATES NBD', 'DEWA', 'TALABAT', 'ETIHAD'];
 
-const ArabRobotHero = lazy(() => import('../components/ArabRobotHero'));
-
 const aqionVoxMetrics = [
   { k: '680ms', l: 'Avg Response', s: 'target under 800ms' },
   { k: '2', l: 'Languages', s: 'English + Arabic' },
@@ -22,14 +21,6 @@ const aqionVoxMetrics = [
   { k: '93%', l: 'self-serve resolution', s: 'across deployments' },
   { k: 'AED 1.40', l: 'cost per call', s: 'vs. AED 28 human avg' },
 ];
-
-const RobotHeroFallback = () => (
-  <div className="animate-entry">
-    <div className="relative flex h-[54vh] min-h-[360px] items-center justify-center">
-      <div className="h-10 w-10 rounded-full border border-ink/10 border-t-[#4f46e5] animate-spin" />
-    </div>
-  </div>
-);
 
 const services = [
   {
@@ -99,28 +90,15 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         <div className="absolute inset-0 -z-10 mesh-bg" aria-hidden />
         <OptimizedHeroMotion
           kind="image"
-          src="/Aqionlabshero.svg?v=20260607"
-          reducedMotionSrc="/Aqionlabshero-static.png?v=20260607"
-          keepMotionOnMobile
+          src="/Aqionlabshero.svg"
           className="hero-video-bg absolute inset-0 pointer-events-none overflow-hidden opacity-[0.38]"
           mediaClassName="h-full w-full object-cover [transform:translateY(-8%)_scale(1.16)] sm:[transform:translateY(-6%)_scale(1.12)] md:[transform:translateY(2%)_scale(1.1)] lg:[transform:translateY(10%)_scale(1.08)]"
+          onLoad={() => document.getElementById('hero-wave-prepaint')?.remove()}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-bone/82 via-bone/66 to-bone/92" aria-hidden />
-        <style>{`
-          @keyframes aqionHomeMobileRobot {
-            0%, 100% { transform: translate3d(calc(-50% - 14px), 0, 0); }
-            50% { transform: translate3d(calc(-50% + 14px), 0, 0); }
-          }
-        `}</style>
-        <img
-          src="/aqionlabsrobo.svg?v=20260607"
-          alt=""
-          aria-hidden="true"
-          className="pointer-events-none absolute left-1/2 top-[27.5rem] z-[2] h-[320px] w-auto max-w-none object-contain opacity-48 drop-shadow-[0_42px_42px_rgba(20,20,15,0.18)] sm:top-[28.75rem] sm:h-[360px] md:top-[30.5rem] md:h-[400px] lg:hidden"
-          style={{ animation: 'aqionHomeMobileRobot 10s ease-in-out infinite' }}
-          loading="eager"
-          decoding="async"
-        />
+        <div className="absolute inset-x-0 top-[24.5rem] z-[2] h-[420px] sm:top-[25.5rem] sm:h-[460px] md:top-[27rem] md:h-[500px] lg:inset-y-16 lg:left-auto lg:right-0 lg:h-auto lg:w-[52%] xl:right-[2vw] xl:w-[50%]">
+          <RobotHero height="100%" className="animate-entry" />
+        </div>
 
         <div className="relative z-10 mx-auto grid min-h-[690px] w-full max-w-7xl items-start gap-0 sm:min-h-[730px] md:min-h-[760px] lg:min-h-[calc(100vh-14rem)] lg:grid-cols-[minmax(0,1fr)_minmax(380px,0.9fr)] lg:items-center lg:gap-10">
           <div className="relative z-20 order-1 flex w-full max-w-[660px] flex-col items-center pt-[7.25rem] text-center sm:pt-[8rem] md:pt-[8.75rem] lg:items-start lg:pt-0 lg:text-left">
@@ -133,7 +111,10 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               <span className="block font-serif text-[clamp(2.3rem,10.1vw,2.67rem)] italic tracking-[-0.015em] text-[#71717a] sm:text-[clamp(2.55rem,5.2vw,5.2rem)]">
                 Intelligence That
               </span>
-              <span className="mt-2 block max-w-full bg-gradient-to-r from-[#4f46e5] to-[#9333ea] bg-clip-text pb-2 font-hero text-[clamp(2rem,8.3vw,2.32rem)] font-bold tracking-[-0.025em] text-transparent drop-shadow-[0_8px_24px_rgba(79,70,229,0.18)] sm:mt-3 sm:whitespace-nowrap sm:text-[clamp(3rem,5.6vw,6rem)] sm:tracking-[-0.04em]">
+              <span
+                className="mt-2 block max-w-full bg-clip-text pb-2 font-hero text-[clamp(2rem,8.3vw,2.32rem)] font-bold tracking-[-0.025em] text-transparent drop-shadow-[0_8px_24px_rgba(79,70,229,0.18)] sm:mt-3 sm:whitespace-nowrap sm:text-[clamp(3rem,5.6vw,6rem)] sm:tracking-[-0.04em]"
+                style={{ backgroundImage: 'linear-gradient(90deg, #4f46e5, #9333ea)' }}
+              >
                 Delivers Growth
               </span>
             </h1>
@@ -160,11 +141,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          <div className="hidden animate-entry lg:static lg:order-2 lg:-mr-8 lg:block">
-            <Suspense fallback={<RobotHeroFallback />}>
-              <ArabRobotHero />
-            </Suspense>
-          </div>
+          <div className="hidden lg:order-2 lg:block" aria-hidden="true" />
         </div>
 
         <div className="absolute inset-x-10 bottom-7 z-10 mx-auto hidden max-w-7xl items-center justify-between gap-6 font-mono text-[11px] uppercase tracking-[0.06em] text-[#71717a] lg:flex">

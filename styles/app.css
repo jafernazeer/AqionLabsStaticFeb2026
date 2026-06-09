@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Fraunces", serif;
+  --font-serif: "Instrument Serif", serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-hero: "Bricolage Grotesque", sans-serif;
+  --font-bricolage: "Bricolage Grotesque", sans-serif;
+  --font-instrument: "Instrument Serif", serif;
+  --font-geist: "Geist", sans-serif;
+
+  --color-bone: #faf7f2;
+  --color-paper: #ffffff;
+  --color-parchment: #f1ece2;
+  --color-sand: #e8e2d5;
+  --color-dune: #d9d1c0;
+  --color-ink: #1c1917;
+  --color-graphite: #3a332c;
+  --color-taupe: #6b6357;
+  --color-ash: #8a8378;
+  --color-hairline: #e8e2d5;
+  --color-petrol: #4f46e5;
+  --color-petrol-deep: #9333ea;
+  --color-brass: #b8945f;
+  --color-clay: #c26b4a;
+  --color-sage: #4f46e5;
+  --color-navy-950: #faf7f2;
+  --color-navy-900: #ffffff;
+  --color-navy-800: #f1ece2;
+  --color-navy-700: #e8e2d5;
+  --color-slate-850: #f1ece2;
+  --color-slate-900: #ffffff;
+  --color-slate-950: #faf7f2;
+
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}

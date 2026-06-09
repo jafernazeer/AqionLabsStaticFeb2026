@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preload" href="/Aqionlabshero.svg" as="image" type="image/svg+xml" fetchpriority="high" />
+    <link rel="preconnect" href="https://prod.spline.design" crossorigin />
 
     <!-- Primary Meta Tags -->
     <title>AqionLabs | Intelligence That Delivers Growth</title>
@@ -139,6 +141,12 @@
         transform: translateZ(0);
         backface-visibility: hidden;
         contain: layout paint size;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .hero-video-bg {
+          display: none;
+        }
       }
 
       .animate-entry { animation: fadeInUpBlur 0.9s cubic-bezier(0.2,0.8,0.2,1) both; }

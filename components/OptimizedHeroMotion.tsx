@@ -8,8 +8,7 @@ interface OptimizedHeroMotionProps {
   className: string;
   mediaClassName?: string;
   mediaStyle?: React.CSSProperties;
-  reducedMotionSrc?: string;
-  keepMotionOnMobile?: boolean;
+  onLoad?: () => void;
 }
 
 const shouldSkipDecorativeMotion = () => {
@@ -23,29 +22,9 @@ const OptimizedHeroMotion: React.FC<OptimizedHeroMotionProps> = ({
   className,
   mediaClassName,
   mediaStyle,
-  reducedMotionSrc,
-  keepMotionOnMobile = false,
+  onLoad,
 }) => {
-  const useReducedMotionFallback =
-    shouldSkipDecorativeMotion() &&
-    !(keepMotionOnMobile && window.matchMedia('(max-width: 767px)').matches);
-
-  if (useReducedMotionFallback) {
-    if (!reducedMotionSrc) return null;
-
-    return (
-      <div className={className} aria-hidden="true">
-        <img
-          src={reducedMotionSrc}
-          alt=""
-          loading="eager"
-          decoding="async"
-          className={mediaClassName}
-          style={mediaStyle}
-        />
-      </div>
-    );
-  }
+  if (shouldSkipDecorativeMotion()) return null;
 
   if (kind === 'video') {
     return (
@@ -71,6 +50,8 @@ const OptimizedHeroMotion: React.FC<OptimizedHeroMotionProps> = ({
         alt=""
         loading="eager"
         decoding="async"
+        fetchPriority="high"
+        onLoad={onLoad}
         className={mediaClassName}
         style={mediaStyle}
       />
