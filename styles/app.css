@@ -193,8 +193,33 @@
 }
 
 @media (min-width: 1024px) {
+  .home-mobile-hero {
+    min-height: 820px !important;
+    padding-top: 3.75rem !important;
+    padding-bottom: 0 !important;
+  }
+
+  .home-desktop-grid {
+    min-height: 590px !important;
+    align-items: center !important;
+  }
+
+  .home-mobile-content {
+    transform: translateY(2.4rem);
+  }
+
+  .home-mobile-robot {
+    top: 2.4rem !important;
+    bottom: 1.2rem !important;
+    height: auto !important;
+  }
+
+  .home-desktop-status-row {
+    bottom: 0.45rem !important;
+  }
+
   .home-robot-scene {
-    transform: translateX(18%) translateY(-7.2%) scale(1.25);
+    transform: translateX(18%) translateY(-5.5%) scale(1.18);
     transform-origin: center center;
   }
 }

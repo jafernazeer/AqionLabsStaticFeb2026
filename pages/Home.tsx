@@ -108,7 +108,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           <RobotHero height="100%" className="animate-entry" />
         </div>
 
-        <div className="pointer-events-none relative z-10 mx-auto grid min-h-[690px] w-full max-w-7xl items-start gap-0 sm:min-h-[730px] md:min-h-[760px] lg:min-h-[calc(100vh-14rem)] lg:grid-cols-[minmax(0,1fr)_minmax(380px,0.9fr)] lg:items-center lg:gap-10">
+        <div className="home-desktop-grid pointer-events-none relative z-10 mx-auto grid min-h-[690px] w-full max-w-7xl items-start gap-0 sm:min-h-[730px] md:min-h-[760px] lg:min-h-[calc(100vh-14rem)] lg:grid-cols-[minmax(0,1fr)_minmax(380px,0.9fr)] lg:items-center lg:gap-10">
           <div className="home-mobile-content relative z-20 order-1 flex w-full max-w-[660px] flex-col items-center pt-[7.25rem] text-center sm:pt-[8rem] md:pt-[8.75rem] lg:items-start lg:pt-0 lg:text-left">
             <div className="mb-5 inline-flex max-w-full animate-entry items-center justify-center gap-2 rounded-full border border-ink/[0.08] bg-white/60 px-3 py-1.5 text-center font-mono text-[8.5px] uppercase leading-[1.25] tracking-[0.075em] text-graphite backdrop-blur-md sm:px-3.5 sm:py-2 sm:text-[11px] sm:tracking-[0.14em] lg:mb-7">
               <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-br from-[#4f46e5] to-[#9333ea] shadow-[0_0_0_5px_rgba(79,70,229,0.12)]" />
@@ -152,7 +152,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           <div className="hidden lg:order-2 lg:block" aria-hidden="true" />
         </div>
 
-        <div className="absolute inset-x-10 bottom-7 z-10 mx-auto hidden max-w-7xl items-center justify-between gap-6 font-mono text-[11px] uppercase tracking-[0.06em] text-[#71717a] lg:flex">
+        <div className="home-desktop-status-row absolute inset-x-10 bottom-7 z-10 mx-auto hidden max-w-7xl items-center justify-between gap-6 font-mono text-[11px] uppercase tracking-[0.06em] text-[#71717a] lg:flex">
           <div className="flex items-center gap-2">
             <span className="text-[#a1a1aa]">System</span>
             <span>AqionVox v1.0</span>
