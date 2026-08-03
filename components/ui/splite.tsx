@@ -30,7 +30,6 @@ export function SplineScene({
       <Suspense fallback={<SceneLoader />}>
         <Spline
           scene={scene}
-          renderOnDemand
           className={`${className} transition-opacity duration-500 ${
             isLoaded ? 'opacity-100' : 'opacity-0'
           }`}

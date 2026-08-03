@@ -58,8 +58,12 @@
 
 @media (max-width: 767px) {
   .home-mobile-hero {
-    min-height: 1030px;
-    padding-top: calc(5rem + env(safe-area-inset-top));
+    min-height: 1008px;
+    padding-top: calc(3.75rem + env(safe-area-inset-top));
+  }
+
+  .home-mobile-content {
+    padding-top: 5.35rem !important;
   }
 
   .home-mobile-copy {
@@ -69,18 +73,18 @@
   }
 
   .home-mobile-robot {
-    top: 24.9rem !important;
-    height: 470px !important;
+    top: 23.9rem !important;
+    height: 610px !important;
     pointer-events: auto;
   }
 
   .home-robot-scene {
-    transform: translateX(-7%) translateY(-22%) scale(1.55);
+    transform: translateX(-7%) translateY(-13%) scale(1.32);
     transform-origin: center top;
   }
 
   .home-mobile-cta {
-    margin-top: 24.75rem !important;
+    margin-top: 23.9rem !important;
   }
 
   .home-mobile-cta > button,
@@ -88,6 +92,8 @@
     min-height: 52px !important;
     width: min(100%, 18.5rem) !important;
     border-radius: 999px !important;
+    background-color: rgba(255, 255, 255, 0.94) !important;
+    backdrop-filter: blur(18px);
   }
 
   .mobile-section-tight {
@@ -182,13 +188,13 @@
 
 @media (max-width: 767px) and (prefers-reduced-motion: reduce) {
   .home-robot-scene {
-    transform: translateX(-5%) translateY(-16%) scale(1.28);
+    transform: translateX(-5%) translateY(-10%) scale(1.12);
   }
 }
 
 @media (min-width: 1024px) {
   .home-robot-scene {
-    transform: translateY(-7.2%) scale(1.25);
+    transform: translateX(18%) translateY(-7.2%) scale(1.25);
     transform-origin: center center;
   }
 }

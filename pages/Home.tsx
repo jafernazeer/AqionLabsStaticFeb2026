@@ -103,13 +103,13 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           mediaClassName="h-full w-full object-cover [transform:translateY(-8%)_scale(1.16)] sm:[transform:translateY(-6%)_scale(1.12)] md:[transform:translateY(2%)_scale(1.1)] lg:[transform:translateY(10%)_scale(1.08)]"
           onLoad={() => document.getElementById('hero-wave-prepaint')?.remove()}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-bone/82 via-bone/66 to-bone/92" aria-hidden />
-        <div className="home-mobile-robot absolute inset-x-0 top-[24.5rem] z-[2] h-[420px] sm:top-[25.5rem] sm:h-[460px] md:top-[27rem] md:h-[500px] lg:inset-y-16 lg:left-auto lg:right-0 lg:h-auto lg:w-[52%] xl:right-[2vw] xl:w-[50%]">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bone/82 via-bone/66 to-bone/92" aria-hidden />
+        <div className="home-mobile-robot absolute inset-x-0 top-[24.5rem] z-[2] h-[420px] sm:top-[25.5rem] sm:h-[460px] md:top-[27rem] md:h-[500px] lg:inset-y-16 lg:left-0 lg:right-0 lg:h-auto lg:w-full">
           <RobotHero height="100%" className="animate-entry" />
         </div>
 
-        <div className="relative z-10 mx-auto grid min-h-[690px] w-full max-w-7xl items-start gap-0 sm:min-h-[730px] md:min-h-[760px] lg:min-h-[calc(100vh-14rem)] lg:grid-cols-[minmax(0,1fr)_minmax(380px,0.9fr)] lg:items-center lg:gap-10">
-          <div className="relative z-20 order-1 flex w-full max-w-[660px] flex-col items-center pt-[7.25rem] text-center sm:pt-[8rem] md:pt-[8.75rem] lg:items-start lg:pt-0 lg:text-left">
+        <div className="pointer-events-none relative z-10 mx-auto grid min-h-[690px] w-full max-w-7xl items-start gap-0 sm:min-h-[730px] md:min-h-[760px] lg:min-h-[calc(100vh-14rem)] lg:grid-cols-[minmax(0,1fr)_minmax(380px,0.9fr)] lg:items-center lg:gap-10">
+          <div className="home-mobile-content relative z-20 order-1 flex w-full max-w-[660px] flex-col items-center pt-[7.25rem] text-center sm:pt-[8rem] md:pt-[8.75rem] lg:items-start lg:pt-0 lg:text-left">
             <div className="mb-5 inline-flex max-w-full animate-entry items-center justify-center gap-2 rounded-full border border-ink/[0.08] bg-white/60 px-3 py-1.5 text-center font-mono text-[8.5px] uppercase leading-[1.25] tracking-[0.075em] text-graphite backdrop-blur-md sm:px-3.5 sm:py-2 sm:text-[11px] sm:tracking-[0.14em] lg:mb-7">
               <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-br from-[#4f46e5] to-[#9333ea] shadow-[0_0_0_5px_rgba(79,70,229,0.12)]" />
               UAE's Premier AI Dev House
@@ -131,7 +131,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               Empowering UAE Businesses with AI That Delivers Measurable Revenue Growth, Operational Efficiency, And Sustainable Competitive Advantage.
             </p>
 
-            <div className="home-mobile-cta relative z-30 mt-[10rem] flex w-full animate-entry flex-col items-center gap-3 sm:mt-[10.5rem] sm:w-auto sm:flex-row md:mt-[11.5rem] lg:mt-9">
+            <div className="home-mobile-cta pointer-events-auto relative z-30 mt-[10rem] flex w-full animate-entry flex-col items-center gap-3 sm:mt-[10.5rem] sm:w-auto sm:flex-row md:mt-[11.5rem] lg:mt-9">
               <button
                 onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX)}
                 className="group inline-flex min-h-11 w-auto cursor-pointer items-center justify-center gap-2.5 rounded-full border border-ink/10 bg-white/90 px-5 py-3 text-sm font-medium text-ink backdrop-blur-md transition-all duration-200 hover:-translate-y-px hover:bg-white/95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4f46e5] lg:min-h-12 lg:bg-ink/[0.04] lg:px-6 lg:py-3.5 lg:hover:bg-ink/[0.09]"
