@@ -148,7 +148,7 @@ const Contact: React.FC = () => {
                            { icon: Phone, label: 'Call', value: '+971 58 849 9663' },
                        ].map(({ icon: Icon, label, value }) => (
                            <div key={label} className="mobile-center-row flex flex-col items-center gap-3 rounded-2xl border border-hairline bg-bone/70 p-4 md:flex-row md:gap-4 md:p-5 md:text-left">
-                               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#4f46e5] to-[#9333ea] text-white md:h-11 md:w-11">
+                               <span className="mobile-contact-icon flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#4f46e5] to-[#9333ea] text-white md:h-11 md:w-11">
                                    <Icon className="h-5 w-5" />
                                </span>
                                <div className="min-w-0">
@@ -158,7 +158,7 @@ const Contact: React.FC = () => {
                            </div>
                        ))}
                        <div className="mobile-center-row flex flex-col items-center gap-3 rounded-2xl border border-hairline bg-bone/70 p-4 md:flex-row md:items-start md:gap-4 md:p-5 md:text-left">
-                           <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#4f46e5] to-[#9333ea] text-white md:h-11 md:w-11">
+                           <span className="mobile-contact-icon flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#4f46e5] to-[#9333ea] text-white md:h-11 md:w-11">
                                <MapPin className="h-5 w-5" />
                            </span>
                            <div className="min-w-0">

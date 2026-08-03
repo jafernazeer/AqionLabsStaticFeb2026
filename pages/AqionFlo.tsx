@@ -38,7 +38,7 @@ const AqionFlo: React.FC<AqionFloProps> = ({ onNavigate }) => {
   }, []);
 
   return (
-    <div className="mesh-bg min-h-screen text-ink pt-20 font-sans relative overflow-x-hidden">
+    <div className="aqionflo-mobile mesh-bg min-h-screen text-ink pt-20 font-sans relative overflow-x-hidden">
       <div className="fixed inset-0 pointer-events-none z-0 bg-hairline-grid opacity-80"></div>
 
       {/* Hero Section */}
@@ -68,12 +68,12 @@ const AqionFlo: React.FC<AqionFloProps> = ({ onNavigate }) => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button 
                       onClick={() => onNavigate(PageType.CONTACT)}
-                      className="bg-petrol text-bone px-8 py-4 rounded-full font-bold hover:bg-petrolDeep transition-all shadow-lg shadow-petrol/25 flex items-center justify-center gap-2"
+                      className="mobile-action bg-petrol text-bone px-8 py-4 rounded-full font-bold hover:bg-petrolDeep transition-all shadow-lg shadow-petrol/25 flex items-center justify-center gap-2"
                   >
                       <Sparkles className="w-5 h-5" />
                       Request AI Demo
                   </button>
-                  <button className="px-8 py-4 rounded-full bg-paper border border-dune text-ink font-semibold hover:bg-parchment transition-all flex items-center justify-center gap-2">
+                  <button className="mobile-action px-8 py-4 rounded-full bg-paper border border-dune text-ink font-semibold hover:bg-parchment transition-all flex items-center justify-center gap-2">
                       View Architecture <ArrowRight className="w-4 h-4" />
                   </button>
               </div>

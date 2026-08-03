@@ -128,6 +128,7 @@ const AppContent: React.FC = () => {
             {/* Products */}
             <Route path="/products/aqionvox-ai" element={<AqionVox onNavigate={handleNavigate} />} />
             <Route path="/products/aqionflo" element={<AqionFlo onNavigate={handleNavigate} />} />
+            <Route path="/products/aqionflo-ai" element={<Navigate to="/products/aqionflo" replace />} />
             
             {/* Agentic AI Services */}
             <Route path="/services/digital-presence-studio" element={<ServiceDetail data={SERVICE_DATA[PageType.SERVICE_DIGITAL_PRESENCE_STUDIO]} onNavigate={handleNavigate} />} />

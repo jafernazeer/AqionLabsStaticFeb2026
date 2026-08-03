@@ -9,7 +9,7 @@ interface RobotHeroProps {
   className?: string;
 }
 
-const DEFAULT_SCENE = 'https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode';
+const DEFAULT_SCENE = '/3d/nexbot-robot-v2.splinecode';
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -39,7 +39,7 @@ export function RobotHero({
       aria-label="Interactive 3D robot"
       role="img"
     >
-      <SplineScene scene={scene} className="h-full w-full touch-pan-y" />
+      <SplineScene scene={scene} className="home-robot-scene h-full w-full touch-pan-y" />
     </div>
   );
 }

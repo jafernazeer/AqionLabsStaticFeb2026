@@ -123,22 +123,22 @@ const Industries: React.FC<IndustriesProps> = ({ onNavigate }) => {
 
   return (
     <div className="mesh-bg min-h-screen overflow-x-hidden pt-20 font-sans text-ink">
-      <section className="mesh-bg relative flex min-h-[74vh] items-center overflow-hidden border-b border-hairline px-6 py-20 md:min-h-[82vh] md:py-28">
+      <section className="mobile-section-tight mesh-bg relative flex min-h-0 items-center overflow-hidden border-b border-hairline px-5 py-16 sm:px-6 md:min-h-[82vh] md:py-28">
         <ServiceMotionBackdrop className="mobile-visual-reduce opacity-70" />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-bone/84 via-bone/66 to-bone/92" />
         <div aria-hidden className="absolute inset-0 bg-hairline-grid opacity-25" />
         <div aria-hidden className="absolute left-1/2 top-1/2 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-petrol/10 blur-[130px]" />
 
         <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-12 items-end gap-8">
-          <div className="col-span-12 lg:col-span-7">
+          <div className="mobile-page-center col-span-12 lg:col-span-7 lg:text-left">
             <p className="eyebrow mb-5">[ Industries ]</p>
-            <h1 className="font-display text-[3rem] leading-[0.98] tracking-tight text-ink md:text-7xl">
+            <h1 className="mobile-heading font-display text-[3rem] leading-[0.98] tracking-tight text-ink md:text-7xl">
               Twelve verticals.<br />
               <span className="display-italic text-petrol">One AI operating layer.</span>
             </h1>
           </div>
-          <div className="col-span-12 lg:col-span-5 lg:pb-2">
-            <p className="max-w-xl text-base leading-relaxed text-graphite md:text-lg">
+          <div className="mobile-page-center col-span-12 lg:col-span-5 lg:pb-2 lg:text-left">
+            <p className="mobile-copy-measure max-w-xl text-base leading-relaxed text-graphite md:text-lg">
               Explore the sectors where AqionLabs builds AI products, automation layers and customer operations that respond faster, convert cleaner and scale with control.
             </p>
           </div>
@@ -147,37 +147,37 @@ const Industries: React.FC<IndustriesProps> = ({ onNavigate }) => {
 
       <section className="mobile-section-tight mx-auto max-w-7xl px-6 py-20 md:py-28">
         <div className="mb-10 flex flex-col gap-4 md:mb-14 md:flex-row md:items-end md:justify-between">
-          <div>
+          <div className="mobile-page-center md:mx-0 md:text-left">
             <p className="eyebrow mb-3">[ Directory ]</p>
-            <h2 className="font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
+            <h2 className="mobile-subheading font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
               Choose a vertical.
             </h2>
           </div>
-          <p className="max-w-md text-sm leading-relaxed text-taupe md:text-base">
+          <p className="mobile-copy-measure max-w-md text-sm leading-relaxed text-taupe md:text-base md:mx-0 md:text-left">
             Each page maps the use case, pressure points, AI stack and outcomes for that industry.
           </p>
         </div>
 
-        <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mobile-priority-grid grid gap-3 md:grid-cols-2 lg:grid-cols-3">
           {industries.map((industry, index) => (
             <button
               key={industry.name}
               type="button"
               onClick={() => onNavigate(industry.page)}
-              className="group mobile-card-compact min-h-[210px] cursor-pointer rounded-[26px] border border-hairline bg-paper p-6 text-left shadow-[0_18px_60px_-48px_rgba(28,25,23,0.35)] transition-colors duration-200 hover:border-ink/30 hover:bg-white focus:outline-none focus:ring-2 focus:ring-[#4f46e5]/35"
+              className="group mobile-card-center mobile-card-compact min-h-[190px] cursor-pointer rounded-[26px] border border-hairline bg-paper p-6 text-left shadow-[0_18px_60px_-48px_rgba(28,25,23,0.35)] transition-colors duration-200 hover:border-ink/30 hover:bg-white focus:outline-none focus:ring-2 focus:ring-[#4f46e5]/35 md:min-h-[210px] md:text-left"
             >
-              <div className="mb-8 flex items-start justify-between gap-4">
+              <div className="mb-6 flex items-start justify-between gap-4 md:mb-8">
                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-hairline bg-parchment text-petrol transition-colors group-hover:border-[#4f46e5]/30 group-hover:bg-[#4f46e5]/10">
                   <industry.icon className="h-5 w-5" strokeWidth={1.5} />
                 </span>
                 <span className="font-mono text-xs text-ash">{String(index + 1).padStart(2, '0')}</span>
               </div>
               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#4f46e5]">{industry.eyebrow}</p>
-              <div className="mt-3 flex items-start justify-between gap-4">
+              <div className="mobile-center-row mt-3 flex items-start justify-between gap-4 md:justify-between md:text-left">
                 <h3 className="font-display text-2xl leading-tight text-ink md:text-3xl">{industry.name}</h3>
                 <ArrowRight className="mt-1 h-5 w-5 shrink-0 text-ash transition-transform duration-200 group-hover:translate-x-1 group-hover:text-petrol" />
               </div>
-              <p className="mt-4 text-sm leading-relaxed text-taupe md:text-[15px]">{industry.description}</p>
+              <p className="mobile-copy-measure mt-4 text-sm leading-relaxed text-taupe md:text-[15px] md:mx-0 md:text-left">{industry.description}</p>
             </button>
           ))}
         </div>

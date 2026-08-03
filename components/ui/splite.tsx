@@ -25,7 +25,7 @@ export function SplineScene({
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
-    <div className="relative h-full w-full overflow-hidden [contain:strict]">
+    <div className="relative h-full w-full overflow-visible [contain:layout_paint]">
       {!isLoaded && <SceneLoader />}
       <Suspense fallback={<SceneLoader />}>
         <Spline

@@ -11,7 +11,15 @@ interface HomeProps {
   onNavigate: (page: PageType) => void;
 }
 
-const trustLogos = ['DUBAI HEALTH', 'MAJID AL FUTTAIM', 'EMAAR', 'ADGM', 'EMIRATES NBD', 'DEWA', 'TALABAT', 'ETIHAD'];
+const agenticServiceNames = [
+  'Digital Presence Studio',
+  'Marketing Agent',
+  'Sales Agent',
+  'Customer Support Agent',
+  'Operations Agent',
+  'Internal Knowledge Agent',
+  'Sovereign AI Foundation',
+];
 
 const aqionVoxMetrics = [
   { k: '680ms', l: 'Avg Response', s: 'target under 800ms' },
@@ -86,7 +94,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   return (
     <div className="mesh-bg text-ink overflow-x-hidden font-sans relative">
       {/* HERO */}
-      <section className="relative isolate min-h-[820px] overflow-hidden px-6 pt-20 pb-12 sm:min-h-[860px] md:min-h-[900px] md:pt-28 lg:min-h-screen lg:px-10 lg:pt-32 lg:pb-10">
+      <section className="home-mobile-hero relative isolate min-h-[820px] overflow-hidden px-6 pt-20 pb-12 sm:min-h-[860px] md:min-h-[900px] md:pt-28 lg:min-h-screen lg:px-10 lg:pt-32 lg:pb-10">
         <div className="absolute inset-0 -z-10 mesh-bg" aria-hidden />
         <OptimizedHeroMotion
           kind="image"
@@ -96,7 +104,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           onLoad={() => document.getElementById('hero-wave-prepaint')?.remove()}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-bone/82 via-bone/66 to-bone/92" aria-hidden />
-        <div className="absolute inset-x-0 top-[24.5rem] z-[2] h-[420px] sm:top-[25.5rem] sm:h-[460px] md:top-[27rem] md:h-[500px] lg:inset-y-16 lg:left-auto lg:right-0 lg:h-auto lg:w-[52%] xl:right-[2vw] xl:w-[50%]">
+        <div className="home-mobile-robot absolute inset-x-0 top-[24.5rem] z-[2] h-[420px] sm:top-[25.5rem] sm:h-[460px] md:top-[27rem] md:h-[500px] lg:inset-y-16 lg:left-auto lg:right-0 lg:h-auto lg:w-[52%] xl:right-[2vw] xl:w-[50%]">
           <RobotHero height="100%" className="animate-entry" />
         </div>
 
@@ -119,11 +127,11 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               </span>
             </h1>
 
-            <p className="relative z-30 mx-auto mt-5 max-w-[312px] animate-entry text-[13.5px] leading-[1.55] tracking-[0.005em] text-[#52525b] sm:max-w-[540px] sm:text-[15px] md:text-lg lg:mx-0">
+            <p className="home-mobile-copy relative z-30 mx-auto mt-5 max-w-[312px] animate-entry text-[13.5px] leading-[1.55] tracking-[0.005em] text-[#52525b] sm:max-w-[540px] sm:text-[15px] md:text-lg lg:mx-0">
               Empowering UAE Businesses with AI That Delivers Measurable Revenue Growth, Operational Efficiency, And Sustainable Competitive Advantage.
             </p>
 
-            <div className="relative z-30 mt-[10rem] flex w-full animate-entry flex-col items-center gap-3 sm:mt-[10.5rem] sm:w-auto sm:flex-row md:mt-[11.5rem] lg:mt-9">
+            <div className="home-mobile-cta relative z-30 mt-[10rem] flex w-full animate-entry flex-col items-center gap-3 sm:mt-[10.5rem] sm:w-auto sm:flex-row md:mt-[11.5rem] lg:mt-9">
               <button
                 onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX)}
                 className="group inline-flex min-h-11 w-auto cursor-pointer items-center justify-center gap-2.5 rounded-full border border-ink/10 bg-white/90 px-5 py-3 text-sm font-medium text-ink backdrop-blur-md transition-all duration-200 hover:-translate-y-px hover:bg-white/95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4f46e5] lg:min-h-12 lg:bg-ink/[0.04] lg:px-6 lg:py-3.5 lg:hover:bg-ink/[0.09]"
@@ -161,10 +169,10 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       {/* TRUST MARQUEE */}
       <section className="border-y border-hairline bg-paper/40 overflow-hidden">
         <div className="py-6 flex items-center gap-6">
-          <span className="eyebrow shrink-0 pl-6">Built with operators at</span>
+          <span className="eyebrow shrink-0 pl-6">Agentic AI services</span>
           <div className="relative flex-1 overflow-hidden">
             <div className="flex gap-12 animate-marquee whitespace-nowrap">
-              {[...trustLogos, ...trustLogos].map((l, i) => (
+              {[...agenticServiceNames, ...agenticServiceNames].map((l, i) => (
                 <span key={i} className="font-display text-lg tracking-tight text-graphite/70 hover:text-ink transition-colors">{l}</span>
               ))}
             </div>

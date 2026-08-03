@@ -97,8 +97,9 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
         <OptimizedHeroMotion
           kind="image"
           src="/Aqionvoxhero1.svg"
-          className="hero-video-bg absolute left-1/2 top-[44%] z-[1] h-[150vw] max-h-[1820px] w-[150vw] max-w-[1820px] -translate-x-1/2 -translate-y-1/2 pointer-events-none overflow-hidden opacity-[0.68] md:top-[59%] md:h-[94vw] md:max-h-[920px] md:w-[94vw] md:max-w-[920px] lg:top-[60%] lg:h-[66vw] lg:max-h-[940px] lg:w-[66vw] lg:max-w-[940px]"
+          className="absolute left-1/2 top-[44%] z-[1] h-[164vw] max-h-[1820px] w-[164vw] max-w-[1820px] pointer-events-none overflow-hidden opacity-[0.68] [transform:translate(-50%,-50%)] [translate:none] [backface-visibility:hidden] [contain:layout_paint_size] md:top-[59%] md:h-[98vw] md:max-h-[980px] md:w-[98vw] md:max-w-[980px] lg:top-[60%] lg:h-[69vw] lg:max-h-[980px] lg:w-[69vw] lg:max-w-[980px]"
           mediaClassName="h-full w-full object-contain"
+          mediaStyle={{ transform: 'translateZ(0)' }}
         />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-bone/84 via-bone/58 to-bone/92" />
         <div aria-hidden className="absolute inset-0 bg-hairline-grid opacity-24" />
@@ -112,7 +113,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
 
           {/* Main headline */}
           <h1 className="display-xxl text-[16.5vw] leading-[0.9] tracking-[-0.04em] text-ink md:text-[11.8vw] lg:text-[10.5rem]">
-            <span className="block md:inline">Meet</span>{' '}
+            <span className="mb-2 block md:mb-0 md:mr-[0.08em] md:inline">Meet</span>
             <span className="display-italic block text-petrol md:inline">AqionVox</span>
           </h1>
 
