@@ -39,3 +39,24 @@ Then run the cPanel deployment again.
 4. Preserves the generated `.htaccess` rules for React routing, HTTPS, static caching, and `.splinecode` assets.
 
 The copy step is intentionally non-destructive because this Git checkout is under `public_html` on Namecheap. It overwrites the generated site files without deleting the repository folder.
+
+## Manual File Manager deployment
+
+Do not copy the full repository into `/home/aqioqfvg/public_html/aqionlabs.ai`. The domain folder should contain the production build output, not source files such as `components`, `pages`, `package.json`, and `vite.config.ts`.
+
+For manual upload:
+
+1. Build a clean upload package:
+
+```bash
+/bin/bash scripts/package-cpanel-upload.sh
+```
+
+2. Upload `aqionlabs-ai-cpanel-upload.zip` to:
+
+```bash
+/home/aqioqfvg/public_html/aqionlabs.ai
+```
+
+3. Extract the zip inside that folder.
+4. Confirm the folder contains production files such as `index.html`, `assets/`, `3d/`, and `.htaccess`.
