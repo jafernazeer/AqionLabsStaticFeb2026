@@ -1,4 +1,4 @@
 ---
 deployment:
   tasks:
-    - CPANEL_DEPLOY_PATH=/home/aqioqfvg/public_html/aqionlabs.ai /bin/bash scripts/cpanel-deploy.sh
+    - CPANEL_DEPLOY_PATH=/home/aqioqfvg/public_html /bin/bash scripts/cpanel-deploy.sh

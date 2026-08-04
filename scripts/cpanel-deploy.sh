@@ -3,7 +3,7 @@ set -euo pipefail
 
 APP_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 APP_PARENT="$(dirname "$APP_ROOT")"
-DOMAIN_DEPLOY_PATH="$APP_PARENT/aqionlabs.ai"
+DOMAIN_DEPLOY_PATH="$HOME/public_html"
 
 if [ -n "${CPANEL_DEPLOY_PATH:-}" ]; then
   DEPLOY_PATH="$CPANEL_DEPLOY_PATH"

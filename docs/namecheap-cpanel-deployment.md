@@ -20,7 +20,7 @@ The Namecheap Git checkout is expected at:
 The cPanel deployment file currently publishes the production Vite build into the `aqionlabs.ai` document root shown in Namecheap:
 
 ```bash
-/home/aqioqfvg/public_html/aqionlabs.ai
+/home/aqioqfvg/public_html
 ```
 
 If Namecheap shows a different document root later, update `.cpanel.yml` or set this before deployment in cPanel Terminal:
@@ -42,7 +42,7 @@ The copy step is intentionally non-destructive because this Git checkout is unde
 
 ## Manual File Manager deployment
 
-Do not copy the full repository into `/home/aqioqfvg/public_html/aqionlabs.ai`. The domain folder should contain the production build output, not source files such as `components`, `pages`, `package.json`, and `vite.config.ts`.
+Do not copy the full repository into `/home/aqioqfvg/public_html`. The domain folder should contain the production build output, not source files such as `components`, `pages`, `package.json`, and `vite.config.ts`.
 
 For manual upload:
 
@@ -55,7 +55,7 @@ For manual upload:
 2. Upload `aqionlabs-ai-cpanel-upload.zip` to:
 
 ```bash
-/home/aqioqfvg/public_html/aqionlabs.ai
+/home/aqioqfvg/public_html
 ```
 
 3. Extract the zip inside that folder.
