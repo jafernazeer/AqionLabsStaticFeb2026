@@ -118,6 +118,10 @@ dist
 # Hostinger deploy zip
 hostinger_deploy.zip
 
+# cPanel manual deployment artifacts
+aqionlabs-ai-cpanel-upload.zip
+aqionlabs-ai-cpanel-upload/
+
 # OS metadata
 .DS_Store
 Thumbs.db
