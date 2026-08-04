@@ -2,12 +2,17 @@
 set -euo pipefail
 
 APP_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+APP_PARENT="$(dirname "$APP_ROOT")"
+DOMAIN_DEPLOY_PATH="$APP_PARENT/aqionlabs.ai"
+
 if [ -n "${CPANEL_DEPLOY_PATH:-}" ]; then
   DEPLOY_PATH="$CPANEL_DEPLOY_PATH"
 elif [ -n "${DEPLOYPATH:-}" ]; then
   DEPLOY_PATH="$DEPLOYPATH"
+elif [[ "$APP_ROOT" == */public_html/AqionlabsAiRoboLite ]]; then
+  DEPLOY_PATH="$DOMAIN_DEPLOY_PATH"
 elif [[ "$APP_ROOT" == */public_html/* ]]; then
-  DEPLOY_PATH="$(dirname "$APP_ROOT")"
+  DEPLOY_PATH="$APP_PARENT"
 else
   DEPLOY_PATH="$HOME/public_html"
 fi

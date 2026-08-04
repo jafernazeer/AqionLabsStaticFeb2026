@@ -2,6 +2,12 @@
 
 This repo is prepared for Namecheap/cPanel Git deployment using `.cpanel.yml`.
 
+The Namecheap Git checkout is expected at:
+
+```bash
+/home/aqioqfvg/public_html/AqionlabsAiRoboLite
+```
+
 ## cPanel setup
 
 1. Open Namecheap hosting cPanel for `aqionlabs.ai`.
@@ -32,4 +38,4 @@ Then run the cPanel deployment again.
 3. Copies `dist/` into the cPanel document root.
 4. Preserves the generated `.htaccess` rules for React routing, HTTPS, static caching, and `.splinecode` assets.
 
-The copy step is intentionally non-destructive because this Git checkout is inside the web root on Namecheap. It overwrites the generated site files without deleting the repository folder.
+The copy step is intentionally non-destructive because this Git checkout is under `public_html` on Namecheap. It overwrites the generated site files without deleting the repository folder.
