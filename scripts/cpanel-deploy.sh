@@ -2,7 +2,15 @@
 set -euo pipefail
 
 APP_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-DEPLOY_PATH="${CPANEL_DEPLOY_PATH:-${DEPLOYPATH:-$HOME/public_html}}"
+if [ -n "${CPANEL_DEPLOY_PATH:-}" ]; then
+  DEPLOY_PATH="$CPANEL_DEPLOY_PATH"
+elif [ -n "${DEPLOYPATH:-}" ]; then
+  DEPLOY_PATH="$DEPLOYPATH"
+elif [[ "$APP_ROOT" == */public_html/* ]]; then
+  DEPLOY_PATH="$(dirname "$APP_ROOT")"
+else
+  DEPLOY_PATH="$HOME/public_html"
+fi
 DEPLOY_PATH="${DEPLOY_PATH%/}"
 
 cd "$APP_ROOT"
@@ -29,7 +37,7 @@ npm run build
 mkdir -p "$DEPLOY_PATH"
 
 if command -v rsync >/dev/null 2>&1; then
-  rsync -a --delete dist/ "$DEPLOY_PATH"/
+  rsync -a dist/ "$DEPLOY_PATH"/
 else
   cp -a dist/. "$DEPLOY_PATH"/
 fi

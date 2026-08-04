@@ -11,13 +11,13 @@ This repo is prepared for Namecheap/cPanel Git deployment using `.cpanel.yml`.
 
 ## Deploy target
 
-The deployment script publishes the production Vite build into:
+The cPanel deployment file currently publishes the production Vite build into the `aqionlabs.ai` document root shown in Namecheap:
 
 ```bash
-$HOME/public_html
+/home/aqioqfvg/public_html/aqionlabs.ai
 ```
 
-If `aqionlabs.ai` is configured as an addon domain or has a different document root, set this before deployment in cPanel Terminal:
+If Namecheap shows a different document root later, update `.cpanel.yml` or set this before deployment in cPanel Terminal:
 
 ```bash
 export CPANEL_DEPLOY_PATH="$HOME/path-to-aqionlabs-document-root"
@@ -31,3 +31,5 @@ Then run the cPanel deployment again.
 2. Builds the production site with `npm run build`.
 3. Copies `dist/` into the cPanel document root.
 4. Preserves the generated `.htaccess` rules for React routing, HTTPS, static caching, and `.splinecode` assets.
+
+The copy step is intentionally non-destructive because this Git checkout is inside the web root on Namecheap. It overwrites the generated site files without deleting the repository folder.
