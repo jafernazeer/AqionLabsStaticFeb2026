@@ -11,7 +11,7 @@ interface OptimizedHeroMotionProps {
   onLoad?: () => void;
 }
 
-const shouldSkipDecorativeMotion = () => {
+const shouldReduceMotion = () => {
   if (typeof window === 'undefined') return false;
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 };
@@ -24,7 +24,9 @@ const OptimizedHeroMotion: React.FC<OptimizedHeroMotionProps> = ({
   mediaStyle,
   onLoad,
 }) => {
-  if (shouldSkipDecorativeMotion()) return null;
+  // Keep static image/SVG artwork visible for reduced-motion users. Only
+  // autoplay video is omitted because it has no equivalent static frame here.
+  if (kind === 'video' && shouldReduceMotion()) return null;
 
   if (kind === 'video') {
     return (
