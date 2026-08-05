@@ -14,7 +14,7 @@
     "@react-three/fiber": "^9.6.1",
     "@splinetool/react-spline": "^4.1.0",
     "@splinetool/runtime": "^1.12.97",
-    "@vapi-ai/web": "^2.5.2",
+    "@vapi-ai/web": "^2.6.1",
     "lucide-react": "^0.562.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",

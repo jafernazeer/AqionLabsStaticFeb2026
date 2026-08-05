@@ -138,7 +138,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX)}
                 className="group inline-flex min-h-11 w-auto cursor-pointer items-center justify-center gap-2.5 rounded-full border border-ink/10 bg-white/90 px-5 py-3 text-sm font-medium text-ink backdrop-blur-md transition-all duration-200 hover:-translate-y-px hover:bg-white/95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4f46e5] lg:min-h-12 lg:bg-ink/[0.04] lg:px-6 lg:py-3.5 lg:hover:bg-ink/[0.09]"
               >
-                Explore AqionVox
+                Explore Aqion Voice
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
               <button
@@ -157,7 +157,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         <div className="home-desktop-status-row absolute inset-x-10 bottom-7 z-10 mx-auto hidden max-w-7xl items-center justify-between gap-6 font-mono text-[11px] uppercase tracking-[0.06em] text-[#71717a] lg:flex">
           <div className="flex items-center gap-2">
             <span className="text-[#a1a1aa]">System</span>
-            <span>AqionVox v1.0</span>
+            <span>Aqion Voice v1.0</span>
             <span className="h-1 w-1 rounded-full bg-[#a1a1aa]" />
             <span>Operational</span>
           </div>
@@ -171,7 +171,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       {/* AQIONVOX CAPABILITY MARQUEE */}
       <section className="border-y border-hairline bg-paper/40 overflow-hidden">
         <div className="py-6 flex items-center gap-6">
-          <span className="eyebrow shrink-0 pl-6">AqionVox AI Voice Agent</span>
+          <span className="eyebrow shrink-0 pl-6">Aqion Voice · AI Voice Agent</span>
           <div className="relative flex-1 overflow-hidden">
             <div className="flex gap-12 animate-marquee whitespace-nowrap">
               {[...aqionVoxFeatures, ...aqionVoxFeatures].map((l, i) => (
@@ -231,14 +231,14 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             <div className="col-span-12 md:col-span-6">
               <p className="eyebrow !text-bone/70 mb-4">[ Featured product ]</p>
               <h2 className="font-display text-[2.65rem] md:text-7xl tracking-tight leading-[0.98] text-bone">
-                AqionVox — the<br />
+                Aqion Voice — the<br />
                 <span className="display-italic text-bone/90">voice agent</span> your call<br />
                 centre wishes it hired.
               </h2>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-bone/75 md:text-[17px]">
                 A real-time voice AI for UAE enterprises. Arabic and English. Sub-700ms turn latency. Answers like a senior agent on day one.
                 <span className="mt-3 block">
-                  AqionVox learns your products and processes, then answers calls and WhatsApp messages with the same tone, timing and handoff quality as your strongest team member.
+                  Aqion Voice learns your products and processes, then answers calls and WhatsApp messages with the same tone, timing and handoff quality as your strongest team member.
                 </span>
               </p>
             </div>

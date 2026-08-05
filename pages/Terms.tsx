@@ -11,7 +11,7 @@ const Terms: React.FC = () => {
       <div className="fixed inset-0 pointer-events-none z-0 bg-hairline-grid opacity-80"></div>
       
       <div className="max-w-4xl mx-auto px-6 relative z-10">
-        <h1 className="text-3xl md:text-4xl font-bold mb-2">AQIONLABS and AQIONVOX.AI</h1>
+        <h1 className="text-3xl md:text-4xl font-bold mb-2">AQIONLABS and AQION VOICE</h1>
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-petrol display-italic">MASTER SUBSCRIPTION AGREEMENT (MSA)</h2>
         
         <div className="prose prose-lg prose-invert text-taupe max-w-none space-y-8">

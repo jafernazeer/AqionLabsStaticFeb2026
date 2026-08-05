@@ -35,7 +35,7 @@ const AppContent: React.FC = () => {
     if (path === '/terms') return PageType.TERMS;
     
     // Products
-    if (path === '/products/aqionvox-ai') return PageType.PRODUCT_AQIONVOX;
+    if (path === '/products/aqion-voice' || path === '/products/aqionvox-ai') return PageType.PRODUCT_AQIONVOX;
     if (path === '/products/aqionflo') return PageType.PRODUCT_AQIONFLO;
     
     // Agentic AI Services
@@ -77,7 +77,7 @@ const AppContent: React.FC = () => {
       [PageType.TERMS]: '/terms',
       [PageType.INDUSTRIES]: '/industries',
       
-      [PageType.PRODUCT_AQIONVOX]: '/products/aqionvox-ai',
+      [PageType.PRODUCT_AQIONVOX]: '/products/aqion-voice',
       [PageType.PRODUCT_AQIONFLO]: '/products/aqionflo',
       
       [PageType.SERVICE_DIGITAL_PRESENCE_STUDIO]: '/services/digital-presence-studio',
@@ -126,7 +126,8 @@ const AppContent: React.FC = () => {
             <Route path="/terms" element={<Terms />} />
             
             {/* Products */}
-            <Route path="/products/aqionvox-ai" element={<AqionVox onNavigate={handleNavigate} />} />
+            <Route path="/products/aqion-voice" element={<AqionVox onNavigate={handleNavigate} />} />
+            <Route path="/products/aqionvox-ai" element={<Navigate to="/products/aqion-voice" replace />} />
             <Route path="/products/aqionflo" element={<AqionFlo onNavigate={handleNavigate} />} />
             <Route path="/products/aqionflo-ai" element={<Navigate to="/products/aqionflo" replace />} />
             

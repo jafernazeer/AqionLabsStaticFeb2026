@@ -1,5 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import Vapi from '@vapi-ai/web';
 import {
+  ArrowUpRight,
   Building2,
   Check,
   Clapperboard,
@@ -56,6 +58,32 @@ const complianceItems = [
   'UAE Data Residency',
 ];
 
+const vapiConfig = {
+  publicKey: '6dbefa7a-7a06-416f-a207-4702d564c97f',
+  assistantId: 'e2eaf5e0-2335-475d-b915-a2261fa0d197',
+};
+
+const voiceCrmDashboardUrl = 'https://aqionvoice.aqionlabs.com';
+
+type CallStatus = 'Ready' | 'Connecting' | 'Connected' | 'Call Ended' | 'Error';
+
+function getCallErrorMessage(error: unknown) {
+  if (error instanceof Error) return error.message;
+  if (typeof error === 'string') return error;
+
+  if (error && typeof error === 'object') {
+    const details = error as { message?: unknown; error?: unknown };
+    if (typeof details.message === 'string') return details.message;
+    if (typeof details.error === 'string') return details.error;
+    if (details.error && typeof details.error === 'object' && 'message' in details.error) {
+      const nestedMessage = (details.error as { message?: unknown }).message;
+      if (typeof nestedMessage === 'string') return nestedMessage;
+    }
+  }
+
+  return 'The live call could not connect.';
+}
+
 function IndustryIcon({ Icon, active }: { Icon: LucideIcon; active: boolean }) {
   return (
     <span
@@ -84,70 +112,149 @@ function IndustryIcon({ Icon, active }: { Icon: LucideIcon; active: boolean }) {
 }
 
 export default function LiveDemoSection() {
-  const [currentScenario, setCurrentScenario] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isConnecting, setIsConnecting] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [speakerOn, setSpeakerOn] = useState(true);
-  const [callStatus, setCallStatus] = useState<'Ready' | 'Connected' | 'Call Ended'>('Ready');
+  const [callStatus, setCallStatus] = useState<CallStatus>('Ready');
   const [callSeconds, setCallSeconds] = useState(0);
-  const [showOutcome, setShowOutcome] = useState(false);
+  const [callError, setCallError] = useState('');
+  const [assistantVolume, setAssistantVolume] = useState(0);
 
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const endTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const phoneRef = useRef<HTMLDivElement | null>(null);
-
-  const scenario = scenarios[currentScenario];
+  const vapiRef = useRef<Vapi | null>(null);
+  const mountedRef = useRef(false);
 
   const clearTimers = () => {
     if (timerRef.current) clearInterval(timerRef.current);
-    if (endTimerRef.current) clearTimeout(endTimerRef.current);
     timerRef.current = null;
-    endTimerRef.current = null;
   };
 
-  const resetState = () => {
+  const startCallTimer = useCallback(() => {
     clearTimers();
-    setIsPlaying(false);
-    setCallStatus('Ready');
-    setCallSeconds(0);
-    setShowOutcome(false);
-  };
-
-  const changeScenario = (idx: number, scrollToPhone = false) => {
-    resetState();
-    setCurrentScenario(idx);
-    if (scrollToPhone && typeof window !== 'undefined') {
-      window.setTimeout(() => {
-        phoneRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 80);
-    }
-  };
-
-  const startDemo = () => {
-    resetState();
-    setIsPlaying(true);
-    setCallStatus('Connected');
-
     timerRef.current = setInterval(() => {
       setCallSeconds((seconds) => seconds + 1);
     }, 1000);
+  }, []);
 
-    endTimerRef.current = setTimeout(() => {
-      clearTimers();
-      setIsPlaying(false);
-      setCallStatus('Call Ended');
-      setShowOutcome(true);
-    }, 7800);
+  const getVapi = () => {
+    if (!vapiRef.current) {
+      vapiRef.current = new Vapi(vapiConfig.publicKey);
+    }
+
+    return vapiRef.current;
   };
 
-  const stopDemo = () => {
+  const startDemo = async () => {
+    if (isConnecting || isPlaying) return;
+
     clearTimers();
-    setIsPlaying(false);
-    setCallStatus('Ready');
     setCallSeconds(0);
+    setCallError('');
+    setIsConnecting(true);
+    setIsPlaying(false);
+    setCallStatus('Connecting');
+
+    try {
+      await getVapi().start(vapiConfig.assistantId);
+    } catch (error) {
+      setIsConnecting(false);
+      setIsPlaying(false);
+      setCallStatus('Error');
+      setCallError(getCallErrorMessage(error));
+    }
   };
 
-  useEffect(() => () => clearTimers(), []);
+  const endActiveCall = async (nextStatus: CallStatus = 'Call Ended') => {
+    clearTimers();
+    setIsConnecting(false);
+    setIsPlaying(false);
+
+    try {
+      await vapiRef.current?.stop();
+    } catch {
+      // The SDK may already have closed the room after a call-end event.
+    }
+
+    setCallStatus(nextStatus);
+    setAssistantVolume(0);
+  };
+
+  const toggleMute = () => {
+    const nextMuted = !isMuted;
+    setIsMuted(nextMuted);
+    vapiRef.current?.setMuted(nextMuted);
+  };
+
+  const toggleSpeaker = () => {
+    const nextSpeakerOn = !speakerOn;
+    setSpeakerOn(nextSpeakerOn);
+
+    try {
+      vapiRef.current?.send({
+        type: 'control',
+        control: nextSpeakerOn ? 'unmute-assistant' : 'mute-assistant',
+      });
+    } catch {
+      // Speaker control is only available once the live call is connected.
+    }
+  };
+
+  useEffect(() => {
+    mountedRef.current = true;
+    const vapi = getVapi();
+
+    const handleCallStart = () => {
+      if (!mountedRef.current) return;
+      setIsConnecting(false);
+      setIsPlaying(true);
+      setCallStatus('Connected');
+      setCallError('');
+      startCallTimer();
+    };
+
+    const handleCallEnd = () => {
+      if (!mountedRef.current) return;
+      clearTimers();
+      setIsConnecting(false);
+      setIsPlaying(false);
+      setAssistantVolume(0);
+
+      setCallStatus('Call Ended');
+    };
+
+    const handleVolume = (volume: number) => {
+      if (!mountedRef.current) return;
+      setAssistantVolume(Math.max(0, Math.min(1, volume)));
+    };
+
+    const handleError = (error: unknown) => {
+      if (!mountedRef.current) return;
+      clearTimers();
+      setIsConnecting(false);
+      setIsPlaying(false);
+      setCallStatus('Error');
+      setCallError(getCallErrorMessage(error));
+      setAssistantVolume(0);
+    };
+
+    vapi.on('call-start', handleCallStart);
+    vapi.on('call-end', handleCallEnd);
+    vapi.on('volume-level', handleVolume);
+    vapi.on('error', handleError);
+    vapi.on('call-start-failed', handleError);
+
+    return () => {
+      mountedRef.current = false;
+      clearTimers();
+      vapi.removeListener('call-start', handleCallStart);
+      vapi.removeListener('call-end', handleCallEnd);
+      vapi.removeListener('volume-level', handleVolume);
+      vapi.removeListener('error', handleError);
+      vapi.removeListener('call-start-failed', handleError);
+      void vapi.stop();
+    };
+  }, [startCallTimer]);
 
   const formatTime = (seconds: number) => `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
 
@@ -155,42 +262,20 @@ export default function LiveDemoSection() {
     <section id="live-demo" className="mesh-bg mobile-section-tight relative z-10 scroll-mt-24 overflow-hidden px-5 pb-14 pt-12 font-sans text-[#1C1917] sm:px-6 md:pb-20 md:pt-16">
       <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-8">
         <div className="max-w-3xl">
-          <p className="eyebrow mb-4 text-[#4F46E5]">[ See AqionVox in Action ]</p>
+          <p className="eyebrow mb-4 text-[#4F46E5]">[ See Aqion Voice in Action ]</p>
           <p className="max-w-2xl text-[16px] font-medium leading-[1.6] text-[#6B6357] md:text-[18px]">
-            Select any industry below to test the agent live:
+            Start a live call. Aqion Voice will ask about your industry and use case, then adapt the conversation in real time.
           </p>
-          <div className="mt-6 rounded-[22px] border border-hairline bg-paper/88 p-4 shadow-[0_16px_48px_-32px_rgba(28,25,23,0.35)] lg:hidden">
-            <label htmlFor="mobile-industry-select" className="eyebrow mb-2 block">
-              Industry Selection
-            </label>
-            <div className="relative">
-              <select
-                id="mobile-industry-select"
-                value={currentScenario}
-                onChange={(event) => changeScenario(Number(event.target.value), true)}
-                className="min-h-12 w-full cursor-pointer appearance-none rounded-2xl border border-[#4F46E5]/25 bg-[#FAF7F2] px-4 py-3 pr-11 text-[15px] font-semibold text-ink outline-none transition-colors duration-200 focus:border-[#4F46E5]/45 focus:ring-2 focus:ring-[#4F46E5]/20"
-              >
-                {scenarios.map((item, idx) => (
-                  <option key={item.id} value={idx}>
-                    {item.label}
-                  </option>
-                ))}
-              </select>
-              <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#4F46E5]" aria-hidden="true">
-                ▾
-              </span>
-            </div>
-          </div>
         </div>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_390px] lg:items-stretch lg:gap-x-12 lg:gap-y-8">
-          <div className="order-1 flex flex-col gap-6 lg:order-none">
-            <div className="hidden min-h-0 flex-col rounded-[28px] border border-hairline bg-paper/88 p-5 shadow-[0_20px_70px_-35px_rgba(28,25,23,0.28)] lg:flex lg:h-[696px]">
+          <div className="order-2 flex flex-col gap-6 lg:order-none">
+            <div className="flex min-h-0 flex-col rounded-[28px] border border-hairline bg-paper/88 p-5 shadow-[0_20px_70px_-35px_rgba(28,25,23,0.28)] lg:h-[696px]">
               <div>
                 <div className="mb-4 flex items-end justify-between gap-4">
                   <div>
-                    <p className="eyebrow mb-2">Industry Selection</p>
-                    <h3 className="font-display text-2xl leading-tight text-ink">Choose a live use case</h3>
+                    <p className="eyebrow mb-2">Industry coverage</p>
+                    <h3 className="font-display text-2xl leading-tight text-ink">Industries Aqion Voice serves</h3>
                   </div>
                   <span className="hidden rounded-full bg-[#4F46E5]/10 px-3 py-1 text-xs font-semibold text-[#4F46E5] sm:inline-flex">
                     12 industries
@@ -198,50 +283,22 @@ export default function LiveDemoSection() {
                 </div>
               </div>
 
-              <div className="grid flex-1 grid-cols-2 grid-rows-6 gap-2.5">
-                {scenarios.map((item, idx) => (
-                  <button
+              <div className="grid flex-1 grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-2 lg:grid-rows-6">
+                {scenarios.map((item) => (
+                  <div
                     key={item.id}
-                    type="button"
-                    onClick={() => changeScenario(idx)}
-                    className={`group flex min-h-0 flex-col items-center justify-center rounded-2xl border p-2.5 text-center transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/35 ${
-                      idx === currentScenario
-                        ? 'border-[#4F46E5]/35 bg-[#4F46E5]/10 text-[#4F46E5]'
-                        : 'border-hairline bg-[#FAF7F2] text-[#6B6357] hover:border-[#4F46E5]/25 hover:text-ink'
-                    }`}
+                    className="group flex min-h-[92px] flex-col items-center justify-center rounded-2xl border border-hairline bg-[#FAF7F2] p-2.5 text-center text-[#6B6357] transition-colors duration-200 hover:border-[#4F46E5]/25 hover:text-ink lg:min-h-0"
                   >
-                    <IndustryIcon Icon={item.Icon} active={idx === currentScenario} />
+                    <IndustryIcon Icon={item.Icon} active={false} />
                     <span className="block text-[12px] font-semibold leading-tight">{item.label}</span>
-                  </button>
+                  </div>
                 ))}
               </div>
-
-              {showOutcome && (
-                <div className="rounded-2xl border border-[#4F46E5]/20 bg-[#4F46E5]/8 p-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
-                  <div className="mb-3 flex items-center gap-3">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#4F46E5] text-white">
-                      <Check size={18} />
-                    </div>
-                    <div>
-                      <div className="text-sm font-bold text-ink">{scenario.outcome.title}</div>
-                      <div className="text-xs text-[#6B6357]">{scenario.outcome.sub}</div>
-                    </div>
-                  </div>
-                  <div className="grid gap-2 sm:grid-cols-3">
-                    {scenario.outcome.steps.map((step) => (
-                      <div key={step.n} className="rounded-xl border border-hairline bg-[#FAF7F2] p-3">
-                        <div className="mb-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#4F46E5]/10 text-[10px] font-bold text-[#4F46E5]">{step.n}</div>
-                        <div className="text-[11px] leading-snug text-[#6B6357]">{step.t}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
           </div>
 
-          <div className="order-2 flex flex-col gap-4 lg:order-none lg:gap-6">
-            <div ref={phoneRef} className="order-2 mx-auto w-full max-w-[390px] scroll-mt-6 rounded-[32px] bg-gradient-to-b from-[#777981] to-[#42434a] p-1.5 shadow-[0_28px_80px_-30px_rgba(8,8,12,0.5)] lg:max-w-none lg:rounded-[38px]">
+          <div className="order-1 flex flex-col gap-4 lg:order-none lg:gap-6">
+            <div className="mx-auto w-full max-w-[390px] rounded-[32px] bg-gradient-to-b from-[#777981] to-[#42434a] p-1.5 shadow-[0_28px_80px_-30px_rgba(8,8,12,0.5)] lg:max-w-none lg:rounded-[38px]">
               <div className="relative flex min-h-[510px] flex-col overflow-hidden rounded-[26px] border border-white/10 bg-[#07080d] px-4 pb-4 pt-9 text-white sm:min-h-[586px] sm:rounded-[32px] sm:px-5 sm:pb-5 sm:pt-10 lg:min-h-[684px]">
                 <div className="absolute left-1/2 top-0 h-12 w-36 -translate-x-1/2 rounded-b-[28px] bg-black" />
                 <div className="absolute left-1/2 top-5 h-2 w-14 -translate-x-1/2 rounded-full bg-white/10" />
@@ -251,17 +308,21 @@ export default function LiveDemoSection() {
                 <div className="relative z-10 flex items-center justify-between gap-3">
                   <div className="flex min-w-0 items-center gap-2.5">
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05]">
-                      <img src="/AqionVoxLogoIcon-clean.png" alt="AqionVox" className="h-7 w-7 object-contain" />
+                      <img src="/AqionVoxLogoIcon-clean.png" alt="Aqion Voice" className="h-7 w-7 object-contain" />
                     </span>
                     <div className="min-w-0">
-                      <div className="truncate text-[15px] font-semibold tracking-tight">AqionVox</div>
-                      <div className="truncate text-[9px] uppercase tracking-[0.14em] text-white/38 sm:text-[10px]">AqionVox agent console</div>
+                      <div className="truncate text-[15px] font-semibold tracking-tight">Aqion Voice</div>
+                      <div className="truncate text-[9px] uppercase tracking-[0.14em] text-white/38 sm:text-[10px]">Aqion Voice agent console</div>
                     </div>
                   </div>
                   <div className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-2.5 py-1.5 font-mono text-[9px] font-bold uppercase tracking-[0.14em] sm:text-[10px] ${
-                    isPlaying ? 'border-[#7C7CFF]/55 bg-[#34316F]/70 text-[#B8BCFF]' : 'border-[#4B4A91]/70 bg-[#191931] text-[#9FA5FF]'
+                    isPlaying
+                      ? 'border-[#7C7CFF]/55 bg-[#34316F]/70 text-[#B8BCFF]'
+                      : callStatus === 'Error'
+                        ? 'border-red-400/45 bg-red-500/10 text-red-200'
+                        : 'border-[#4B4A91]/70 bg-[#191931] text-[#9FA5FF]'
                   }`}>
-                    <span className={`h-1.5 w-1.5 rounded-full ${isPlaying ? 'animate-pulse bg-[#7C7CFF]' : 'bg-[#8E94FF]'}`} />
+                    <span className={`h-1.5 w-1.5 rounded-full ${isPlaying || isConnecting ? 'animate-pulse bg-[#7C7CFF]' : callStatus === 'Error' ? 'bg-red-300' : 'bg-[#8E94FF]'}`} />
                     {callStatus}
                   </div>
                 </div>
@@ -276,29 +337,40 @@ export default function LiveDemoSection() {
                           <span
                             key={idx}
                             className={`w-1 rounded-full bg-gradient-to-t from-[#818CF8] to-[#C4B5FD] ${isPlaying ? 'animate-pulse' : 'opacity-55'}`}
-                            style={{ height: `${height}px`, animationDelay: `${idx * 90}ms` }}
+                            style={{
+                              height: `${isPlaying ? Math.max(height * 0.58, height * assistantVolume + 12) : height}px`,
+                              animationDelay: `${idx * 90}ms`,
+                            }}
                           />
                         ))}
                       </div>
                     </div>
                   </div>
-                  <p className="mt-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/35">{scenario.label} voice workflow</p>
+                  <p className="mt-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/35">Adaptive voice workflow</p>
                   <p className="mt-2 font-mono text-2xl font-semibold tracking-[0.1em] text-white/75">{formatTime(callSeconds)}</p>
                   <p className="mt-2 max-w-[240px] text-xs leading-relaxed text-white/38">
-                    {isPlaying ? 'Listening and responding in real time' : callStatus === 'Call Ended' ? 'Call completed successfully' : 'Ready for a live conversation'}
+                    {callStatus === 'Connecting'
+                      ? 'Connecting to Aqion Voice. Allow microphone access when prompted.'
+                      : callStatus === 'Error'
+                        ? callError || 'The live call could not connect.'
+                        : isPlaying
+                          ? 'Listening and responding in real time'
+                          : callStatus === 'Call Ended'
+                            ? 'Call completed successfully'
+                            : 'Ready for a live conversation'}
                   </p>
                 </div>
 
                 <div className="relative z-10 rounded-[22px] border border-white/10 bg-white/[0.045] p-3 backdrop-blur-sm sm:p-4">
                   <button
                     type="button"
-                    onClick={isPlaying ? stopDemo : startDemo}
+                    onClick={isPlaying || isConnecting ? () => void endActiveCall(isConnecting ? 'Ready' : 'Call Ended') : () => void startDemo()}
                     className={`mb-3 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-xl text-sm font-semibold text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#7C7CFF]/50 ${
-                      isPlaying ? 'bg-red-500/80 hover:bg-red-500' : 'bg-[#4F46E5] hover:bg-[#4338CA]'
+                      isPlaying || isConnecting ? 'bg-red-500/80 hover:bg-red-500' : 'bg-[#4F46E5] hover:bg-[#4338CA]'
                     }`}
                   >
-                    {isPlaying ? <Square size={16} className="fill-current" /> : <Play size={17} className="fill-current" />}
-                    {isPlaying ? 'Stop call' : callStatus === 'Call Ended' ? 'Replay call' : 'Start call'}
+                    {isPlaying || isConnecting ? <Square size={16} className="fill-current" /> : <Play size={17} className="fill-current" />}
+                    {isPlaying || isConnecting ? 'Stop call' : 'Start call'}
                   </button>
                   <div className="flex justify-center gap-5">
                     <button
@@ -306,12 +378,12 @@ export default function LiveDemoSection() {
                       aria-label="Mute microphone"
                       aria-pressed={isMuted}
                       title="Mute microphone"
-                      onClick={() => setIsMuted((muted) => !muted)}
+                      onClick={toggleMute}
                       className={`flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border transition-colors focus:outline-none focus:ring-2 focus:ring-[#7C7CFF]/50 ${isMuted ? 'border-[#7C7CFF]/45 bg-[#7C7CFF]/20 text-[#C7D2FE]' : 'border-white/10 bg-black/18 text-white/58 hover:text-white'}`}
                     >
                       <MicOff size={18} />
                     </button>
-                    <button type="button" aria-label="Disconnect call" title="Disconnect call" onClick={stopDemo} className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-red-500/28 bg-red-500/10 text-red-400 transition-colors hover:bg-red-500/20 focus:outline-none focus:ring-2 focus:ring-red-400/50">
+                    <button type="button" aria-label="Disconnect call" title="Disconnect call" onClick={() => void endActiveCall()} className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-red-500/28 bg-red-500/10 text-red-400 transition-colors hover:bg-red-500/20 focus:outline-none focus:ring-2 focus:ring-red-400/50">
                       <PhoneOff size={18} />
                     </button>
                     <button
@@ -319,7 +391,7 @@ export default function LiveDemoSection() {
                       aria-label="Speaker volume"
                       aria-pressed={speakerOn}
                       title="Speaker volume"
-                      onClick={() => setSpeakerOn((enabled) => !enabled)}
+                      onClick={toggleSpeaker}
                       className={`flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border transition-colors focus:outline-none focus:ring-2 focus:ring-[#7C7CFF]/50 ${speakerOn ? 'border-[#7C7CFF]/45 bg-[#7C7CFF]/20 text-[#C7D2FE]' : 'border-white/10 bg-black/18 text-white/45 hover:text-white'}`}
                     >
                       <Volume2 size={18} />
@@ -328,6 +400,29 @@ export default function LiveDemoSection() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-[#0d0d10] px-6 py-7 text-bone shadow-[0_24px_70px_-38px_rgba(28,25,23,0.72)] sm:px-8 sm:py-8 lg:flex lg:items-center lg:justify-between lg:gap-12 lg:px-10">
+          <div aria-hidden className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(rgba(129,140,248,0.8)_1px,transparent_1px)] bg-[length:20px_20px]" />
+          <div aria-hidden className="absolute -right-20 top-1/2 h-56 w-56 -translate-y-1/2 rounded-full bg-[#4F46E5]/20 blur-3xl" />
+          <div className="relative max-w-3xl">
+            <p className="eyebrow mb-3 !text-[#4F46E5]">[ Aqion Voice CRM ]</p>
+            <h3 className="font-display text-[2rem] leading-[1.04] tracking-tight text-bone sm:text-4xl">
+              See what happens <span className="display-italic text-[#4F46E5]">after every call.</span>
+            </h3>
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-bone/62 sm:text-base">
+              Explore the live Voice CRM for analytics, call transcripts, captured leads, meeting management and automated email summaries.
+            </p>
+          </div>
+          <div className="relative mt-6 flex shrink-0 flex-col items-start gap-2 lg:mt-0 lg:items-end">
+            <a
+              href={voiceCrmDashboardUrl}
+              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-bone px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-[#EDE9FE] focus:outline-none focus:ring-2 focus:ring-[#A5B4FC]/60"
+            >
+              Experience Voice CRM
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
           </div>
         </div>
 

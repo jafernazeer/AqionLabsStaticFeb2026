@@ -8,6 +8,16 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+  const agenticServices = [
+    { label: 'AI Creative Suite', page: PageType.SERVICE_DIGITAL_PRESENCE_STUDIO },
+    { label: 'Marketing Automation', page: PageType.SERVICE_MARKETING_AGENT },
+    { label: 'Sales Copilot', page: PageType.SERVICE_SALES_AGENT },
+    { label: 'Multilingual AI Customer Support', page: PageType.SERVICE_CUSTOMER_CONVERSATION_AGENT },
+    { label: 'Process & Workflow Automation', page: PageType.SERVICE_OPERATIONS_AGENT },
+    { label: 'Enterprise RAG assistant', page: PageType.SERVICE_INTERNAL_KNOWLEDGE_AGENT },
+    { label: 'On Prem & Private LLM deployment', page: PageType.SERVICE_SOVEREIGN_AI_FOUNDATION },
+  ];
+
   const handleNav = (e: React.MouseEvent, page: PageType) => {
     e.preventDefault();
     if (onNavigate) onNavigate(page);
@@ -16,13 +26,13 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="relative w-full overflow-hidden mesh-bg text-ink font-sans pt-14 md:pt-24 z-10 border-t border-hairline">
       {/* Oversized wordmark */}
-      <div aria-hidden className="select-none pointer-events-none absolute -bottom-6 left-1/2 -translate-x-1/2 font-display text-[28vw] leading-none tracking-[-0.06em] text-ink/[0.045] whitespace-nowrap">
+      <div aria-hidden className="pointer-events-none absolute -bottom-3 left-0 w-full select-none whitespace-nowrap text-center font-display text-[27vw] leading-none tracking-[-0.055em] text-ink/[0.045] md:-bottom-8 md:text-[27vw]">
         aqionlabs
       </div>
 
       <div className="max-w-7xl mx-auto px-6 pb-20 md:pb-32 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20">
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-5">
             <p className="eyebrow mb-4">[ The next chapter ]</p>
             <h2 className="font-display text-[2.65rem] md:text-6xl tracking-tight text-ink leading-[0.95]">
               Let's build something <span className="display-italic">unmistakably yours</span>.
@@ -59,7 +69,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          <div className="lg:col-span-6 grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-10">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:col-span-7 xl:grid-cols-4 xl:gap-8">
             <div>
               <h3 className="eyebrow mb-5">Company</h3>
               <ul className="space-y-3 text-graphite text-sm">
@@ -71,7 +81,19 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <div>
               <h3 className="eyebrow mb-5">Products</h3>
               <ul className="space-y-3 text-graphite text-sm">
-                <li><a href="#" onClick={(e) => handleNav(e, PageType.PRODUCT_AQIONVOX)} className="hover:text-petrol transition-colors">AqionVox</a></li>
+                <li><a href="#" onClick={(e) => handleNav(e, PageType.PRODUCT_AQIONVOX)} className="hover:text-petrol transition-colors">Aqion Voice</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="eyebrow mb-5">Agentic AI</h3>
+              <ul className="space-y-3 text-sm text-graphite">
+                {agenticServices.map(({ label, page }) => (
+                  <li key={page}>
+                    <a href="#" onClick={(e) => handleNav(e, page)} className="transition-colors hover:text-petrol">
+                      {label}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
             <div>

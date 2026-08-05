@@ -13,7 +13,7 @@ const navItems: NavItem[] = [
   {
     label: 'Products',
     children: [
-      { label: 'AqionVox', page: PageType.PRODUCT_AQIONVOX },
+      { label: 'Aqion Voice', page: PageType.PRODUCT_AQIONVOX },
     ],
   },
   {
@@ -198,12 +198,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                                 const childContent = (
                                   <>
                                     <span className="flex items-center gap-2.5">
-                                      {child.label === 'AqionVox' && <Bot className="w-4 h-4 text-petrol" />}
+                                      {child.label === 'Aqion Voice' && <Bot className="w-4 h-4 text-petrol" />}
                                       {child.label === 'AqionFlo' && <Activity className="w-4 h-4 text-petrol" />}
                                       <span className={
                                         child.label === 'Explore All'
                                           ? 'bg-gradient-to-r from-[#4f46e5] to-[#9333ea] bg-clip-text font-semibold text-transparent'
-                                          : (child.label === 'AqionVox' || child.label === 'AqionFlo') ? 'font-medium text-ink' : ''
+                                          : (child.label === 'Aqion Voice' || child.label === 'AqionFlo') ? 'font-medium text-ink' : ''
                                       }>
                                         {child.label}
                                       </span>
@@ -345,7 +345,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                             <span className={`${
                               child.label === 'Explore All'
                                 ? 'bg-gradient-to-r from-[#4f46e5] to-[#9333ea] bg-clip-text font-semibold text-transparent'
-                                : child.label === 'AqionVox' || child.label === 'AqionFlo' ? 'font-medium text-ink' : 'text-graphite'
+                                : child.label === 'Aqion Voice' || child.label === 'AqionFlo' ? 'font-medium text-ink' : 'text-graphite'
                             }`}>
                               {child.label}
                             </span>

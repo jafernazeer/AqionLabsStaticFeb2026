@@ -71,7 +71,7 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
                 onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX)}
                 className="mobile-action inline-flex min-h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-hairline bg-paper px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-ink/30 sm:w-auto md:px-7 md:py-4"
               >
-                Explore AqionVox
+                Explore Aqion Voice
               </button>
             </div>
           </div>

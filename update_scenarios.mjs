@@ -13,7 +13,7 @@ const scenarios = [
       { n:"5", t:"WhatsApp confirmation sent with calendar link" },
     ]},
     linesEn: [
-      { spk: "agent", isAr: false, text: "Hello, welcome to AqionVox. How can I help you today?", t: 600 },
+      { spk: "agent", isAr: false, text: "Hello, welcome to Aqion Voice. How can I help you today?", t: 600 },
       { spk: "customer", isAr: false, text: "Hi, I'm Omar from Al-Fayed Clinic. I'd like to know about your appointment booking system.", t: 2800 },
       { spk: "agent", isAr: false, text: "Welcome Omar! Our system can answer calls and book appointments automatically in English and Arabic 24/7.", t: 4400 },
       { spk: "customer", isAr: false, text: "How much does it cost? And does it integrate with our clinic system?", t: 7200 },
@@ -42,7 +42,7 @@ const scenarios = [
       { n:"5", t:"Demo booked for Thursday afternoon" },
     ]},
     linesEn: [
-      { spk: "agent", isAr: false, text: "Good afternoon, James from AqionVox. Am I speaking with Sara Al-Rashid?", t: 600 },
+      { spk: "agent", isAr: false, text: "Good afternoon, James from Aqion Voice. Am I speaking with Sara Al-Rashid?", t: 600 },
       { spk: "customer", isAr: false, text: "Yes, that's me — I think I missed a call?", t: 2600 },
       { spk: "agent", isAr: false, text: "That's right Sara. You'd reached out about our AI platform for WhatsApp. We handle hundreds of enquiries automatically — qualifying leads and booking viewings without any manual effort.", t: 4200 },
       { spk: "customer", isAr: false, text: "That sounds brilliant. We get hundreds of messages daily from Bayut and Property Finder — it's becoming impossible to manage.", t: 7400 },
@@ -71,7 +71,7 @@ const scenarios = [
       { n:"5", t:"Technical demo scheduled" },
     ]},
     linesEn: [
-      { spk: "agent", isAr: false, text: "Hello! AqionVox customer service, Raj speaking. How may I assist you today?", t: 600 },
+      { spk: "agent", isAr: false, text: "Hello! Aqion Voice customer service, Raj speaking. How may I assist you today?", t: 600 },
       { spk: "customer", isAr: false, text: "Hi Raj, I'm from Emirates Finance. We need an AI system for customer service — thousands of calls daily about loan applications.", t: 2800 },
       { spk: "agent", isAr: false, text: "Welcome! We can handle those routine inquiries very efficiently. For financial services, we have DIFC-compliant features with full call recording and UAE data residency.", t: 5000 },
       { spk: "customer", isAr: false, text: "Data residency is critical for us. Can it handle Arabic as well?", t: 8200 },
@@ -100,7 +100,7 @@ const scenarios = [
       { n:"5", t:"Personalised proposal sent via WhatsApp" },
     ]},
     linesEn: [
-      { spk: "agent", isAr: false, text: "Hello Adaeze, good afternoon! This is Amara calling from AqionVox. You visited our website about restaurant booking automation.", t: 600 },
+      { spk: "agent", isAr: false, text: "Hello Adaeze, good afternoon! This is Amara calling from Aqion Voice. You visited our website about restaurant booking automation.", t: 600 },
       { spk: "customer", isAr: false, text: "Oh yes! I run a chain of restaurants in Dubai. We get so many reservation calls especially during peak hours and weekends.", t: 3000 },
       { spk: "agent", isAr: false, text: "I understand perfectly! Our AI handles all reservation calls automatically — checks table availability in real-time, books the slot, even handles special requests like birthday setups!", t: 5400 },
       { spk: "customer", isAr: false, text: "Wow that would save us so much time! How quickly can you set it up?", t: 8600 },
@@ -129,7 +129,7 @@ const scenarios = [
       { n:"5", t:"Sunday meeting confirmed — email + WhatsApp" },
     ]},
     linesEn: [
-      { spk: "agent", isAr: false, text: "Welcome! Maryam from AqionVox speaking. How may I be of assistance?", t: 600 },
+      { spk: "agent", isAr: false, text: "Welcome! Maryam from Aqion Voice speaking. How may I be of assistance?", t: 600 },
       { spk: "customer", isAr: false, text: "Hi Maryam. I'm Hassan from the Ministry of Services. We need a solution for our citizen services line, we receive over 1000 calls per day.", t: 2800 },
       { spk: "agent", isAr: false, text: "Hello Hassan! We have a comprehensive solution for government entities. Our system automatically answers repetitive inquiries and routes complex cases to human agents.", t: 5000 },
       { spk: "customer", isAr: false, text: "We'll need an official meeting to go over our procurement procedures.", t: 8400 },

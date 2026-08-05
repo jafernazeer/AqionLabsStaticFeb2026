@@ -8,8 +8,8 @@ content = content.replace(
 );
 
 content = content.replace(
-  /Select a scenario below and hear how AqionVox handles real customer conversations —\s*across dialects, industries, and languages — with human-like clarity and sub-800ms response time\./g,
-  `AqionVox learns your products, your processes, and your tone — then answers every call, message, and enquiry exactly as your best team member would 24/7, in Arabic, English and Hindi.</p>\n                    <p className="text-[17px] text-[#7a93b8] leading-[1.65] max-w-[560px] md:max-w-[800px] mb-12">\n                        Select a scenario to hear how AqionVox handles real customer conversations — across dialects, industries, and languages — with human-like clarity and sub-800ms response time.`
+  /Select a scenario below and hear how Aqion Voice handles real customer conversations —\s*across dialects, industries, and languages — with human-like clarity and sub-800ms response time\./g,
+  `Aqion Voice learns your products, your processes, and your tone — then answers every call, message, and enquiry exactly as your best team member would 24/7, in Arabic, English and Hindi.</p>\n                    <p className="text-[17px] text-[#7a93b8] leading-[1.65] max-w-[560px] md:max-w-[800px] mb-12">\n                        Select a scenario to hear how Aqion Voice handles real customer conversations — across dialects, industries, and languages — with human-like clarity and sub-800ms response time.`
 );
 
 // 4. replace the integration bottom banner, and replace it with all the relevant UAE compliances.
