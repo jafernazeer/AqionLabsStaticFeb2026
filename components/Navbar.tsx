@@ -19,13 +19,13 @@ const navItems: NavItem[] = [
   {
     label: 'Agentic AI',
     children: [
-      { label: 'Digital Presence Studio', page: PageType.SERVICE_DIGITAL_PRESENCE_STUDIO, href: '/services/digital-presence-studio' },
-      { label: 'Marketing Agent', page: PageType.SERVICE_MARKETING_AGENT, href: '/services/marketing-agent' },
-      { label: 'Sales Agent', page: PageType.SERVICE_SALES_AGENT, href: '/services/sales-agent' },
-      { label: 'Customer Conversation Agent', page: PageType.SERVICE_CUSTOMER_CONVERSATION_AGENT, href: '/services/customer-conversation-agent' },
-      { label: 'Operations Agent', page: PageType.SERVICE_OPERATIONS_AGENT, href: '/services/operations-agent' },
-      { label: 'Internal Knowledge Agent', page: PageType.SERVICE_INTERNAL_KNOWLEDGE_AGENT, href: '/services/internal-knowledge-agent' },
-      { label: 'Sovereign AI Foundation', page: PageType.SERVICE_SOVEREIGN_AI_FOUNDATION, href: '/services/sovereign-ai-foundation' },
+      { label: 'AI Creative Suite', page: PageType.SERVICE_DIGITAL_PRESENCE_STUDIO, href: '/services/digital-presence-studio' },
+      { label: 'Marketing Automation', page: PageType.SERVICE_MARKETING_AGENT, href: '/services/marketing-agent' },
+      { label: 'Sales Copilot', page: PageType.SERVICE_SALES_AGENT, href: '/services/sales-agent' },
+      { label: 'Multilingual AI Customer Support', page: PageType.SERVICE_CUSTOMER_CONVERSATION_AGENT, href: '/services/customer-conversation-agent' },
+      { label: 'Process & Workflow Automation', page: PageType.SERVICE_OPERATIONS_AGENT, href: '/services/operations-agent' },
+      { label: 'Enterprise RAG assistant', page: PageType.SERVICE_INTERNAL_KNOWLEDGE_AGENT, href: '/services/internal-knowledge-agent' },
+      { label: 'On Prem & Private LLM deployment', page: PageType.SERVICE_SOVEREIGN_AI_FOUNDATION, href: '/services/sovereign-ai-foundation' },
     ],
   },
   {

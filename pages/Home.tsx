@@ -11,14 +11,16 @@ interface HomeProps {
   onNavigate: (page: PageType) => void;
 }
 
-const agenticServiceNames = [
-  'Digital Presence Studio',
-  'Marketing Agent',
-  'Sales Agent',
-  'Customer Support Agent',
-  'Operations Agent',
-  'Internal Knowledge Agent',
-  'Sovereign AI Foundation',
+const aqionVoxFeatures = [
+  'Gulf Arabic + English',
+  'Sub-700ms Response',
+  '24/7 Voice Calls',
+  'WhatsApp Automation',
+  'Lead Qualification',
+  'Appointment Booking',
+  'Smart Human Handoffs',
+  'CRM Sync',
+  'UAE Data Residency',
 ];
 
 const aqionVoxMetrics = [
@@ -33,49 +35,49 @@ const aqionVoxMetrics = [
 const services = [
   {
     no: '01',
-    title: 'Digital Presence Studio',
+    title: 'AI Creative Suite',
     body: 'Web and mobile, designed and built to ship in weeks. Then agents that keep improving them — long after launch.',
     page: PageType.SERVICE_DIGITAL_PRESENCE_STUDIO,
     href: '/services/digital-presence-studio',
   },
   {
     no: '02',
-    title: 'Marketing Agent',
+    title: 'Marketing Automation',
     body: 'A marketing department that runs itself. Plans, writes, publishes, tests, and reallocates — in English and Arabic.',
     page: PageType.SERVICE_MARKETING_AGENT,
     href: '/services/marketing-agent',
   },
   {
     no: '03',
-    title: 'Sales Agent',
+    title: 'Sales Copilot',
     body: 'Every lead caught, qualified, and followed up. Meetings booked while you sleep. Pipeline that builds itself.',
     page: PageType.SERVICE_SALES_AGENT,
     href: '/services/sales-agent',
   },
   {
     no: '04',
-    title: 'Customer Support Agent',
+    title: 'Multilingual AI Customer Support',
     body: 'Voice, chat, and WhatsApp, 24/7, fluent in Gulf Arabic and English. Answers, books, escalates — never sleeps.',
     page: PageType.SERVICE_CUSTOMER_CONVERSATION_AGENT,
     href: '/services/customer-conversation-agent',
   },
   {
     no: '05',
-    title: 'Operations Agent',
+    title: 'Process & Workflow Automation',
     body: 'The back office, automated. Invoices, contracts, onboarding, approvals — handled by agents that document themselves.',
     page: PageType.SERVICE_OPERATIONS_AGENT,
     href: '/services/operations-agent',
   },
   {
     no: '06',
-    title: 'Internal Knowledge Agent',
+    title: 'Enterprise RAG assistant',
     body: "Your company's memory, instant. Every policy, SOP, and document — answered in seconds, not three emails.",
     page: PageType.SERVICE_INTERNAL_KNOWLEDGE_AGENT,
     href: '/services/internal-knowledge-agent',
   },
   {
     no: '07',
-    title: 'Sovereign AI Foundation',
+    title: 'On Prem & Private LLM deployment',
     body: 'Private LLMs, retrieval, and observability inside your VPC. UAE data residency by default. The ground the others stand on.',
     page: PageType.SERVICE_SOVEREIGN_AI_FOUNDATION,
     href: '/services/sovereign-ai-foundation',
@@ -105,7 +107,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bone/82 via-bone/66 to-bone/92" aria-hidden />
         <div className="home-mobile-robot absolute inset-x-0 top-[24.5rem] z-[2] h-[420px] sm:top-[25.5rem] sm:h-[460px] md:top-[27rem] md:h-[500px] lg:inset-y-16 lg:left-0 lg:right-0 lg:h-auto lg:w-full">
-          <RobotHero height="100%" className="animate-entry" />
+          <RobotHero height="100%" />
         </div>
 
         <div className="home-desktop-grid pointer-events-none relative z-10 mx-auto grid min-h-[690px] w-full max-w-7xl items-start gap-0 sm:min-h-[730px] md:min-h-[760px] lg:min-h-[calc(100vh-14rem)] lg:grid-cols-[minmax(0,1fr)_minmax(380px,0.9fr)] lg:items-center lg:gap-10">
@@ -166,13 +168,13 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* TRUST MARQUEE */}
+      {/* AQIONVOX CAPABILITY MARQUEE */}
       <section className="border-y border-hairline bg-paper/40 overflow-hidden">
         <div className="py-6 flex items-center gap-6">
-          <span className="eyebrow shrink-0 pl-6">Agentic AI services</span>
+          <span className="eyebrow shrink-0 pl-6">AqionVox AI Voice Agent</span>
           <div className="relative flex-1 overflow-hidden">
             <div className="flex gap-12 animate-marquee whitespace-nowrap">
-              {[...agenticServiceNames, ...agenticServiceNames].map((l, i) => (
+              {[...aqionVoxFeatures, ...aqionVoxFeatures].map((l, i) => (
                 <span key={i} className="font-display text-lg tracking-tight text-graphite/70 hover:text-ink transition-colors">{l}</span>
               ))}
             </div>

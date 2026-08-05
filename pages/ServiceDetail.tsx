@@ -31,13 +31,13 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ data, onNavigate }) => {
         "AI Governance & Security": "Security",
         "Human AI Avatars": "Avatars",
         // Agentic AI Services
-        "Digital Presence Studio": "Presence Studio",
-        "Marketing Agent": "Agent",
-        "Sales Agent": "Agent",
-        "Customer Conversation Agent": "Conversation Agent",
-        "Operations Agent": "Agent",
-        "Internal Knowledge Agent": "Knowledge Agent",
-        "Sovereign AI Foundation": "AI Foundation"
+        "AI Creative Suite": "Creative Suite",
+        "Marketing Automation": "Automation",
+        "Sales Copilot": "Copilot",
+        "Multilingual AI Customer Support": "Customer Support",
+        "Process & Workflow Automation": "Workflow Automation",
+        "Enterprise RAG assistant": "RAG assistant",
+        "On Prem & Private LLM deployment": "Private LLM deployment"
     };
 
     const highlight = highlights[title];

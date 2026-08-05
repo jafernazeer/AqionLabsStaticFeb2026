@@ -21,14 +21,6 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 
-type Agent = {
-  lang: 'en' | 'ar';
-  name: string;
-  role: string;
-  gender: string;
-  tone: string;
-};
-
 type Scenario = {
   id: number;
   label: string;
@@ -55,37 +47,6 @@ const scenarios: Scenario[] = [
   { id: 9, label: 'Media & Events', code: 'ME', Icon: Clapperboard, latency: 725, outcome: { title: 'Event inquiry converted', sub: 'Brief sent to production team', steps: [{ n: '1', t: 'Date and venue captured' }, { n: '2', t: 'Budget range logged' }, { n: '3', t: 'Proposal task created' }] } },
   { id: 10, label: 'Architecture', code: 'AR', Icon: DraftingCompass, latency: 745, outcome: { title: 'Project lead organized', sub: 'Scope routed to design team', steps: [{ n: '1', t: 'Project type captured' }, { n: '2', t: 'Site location noted' }, { n: '3', t: 'Discovery call booked' }] } },
   { id: 11, label: 'Marketing & Design', code: 'MD', Icon: Megaphone, latency: 700, outcome: { title: 'Campaign brief captured', sub: 'Strategy consult booked', steps: [{ n: '1', t: 'Campaign goal captured' }, { n: '2', t: 'Channels identified' }, { n: '3', t: 'Audit call scheduled' }] } },
-];
-
-const agents: Agent[] = [
-  {
-    lang: 'en',
-    name: 'Isha',
-    role: 'English',
-    gender: 'Female',
-    tone: 'Consultative',
-  },
-  {
-    lang: 'en',
-    name: 'Dev',
-    role: 'English',
-    gender: 'Male',
-    tone: 'Direct',
-  },
-  {
-    lang: 'ar',
-    name: 'Amina',
-    role: 'Arabic',
-    gender: 'Female',
-    tone: 'Gulf Arabic',
-  },
-  {
-    lang: 'ar',
-    name: 'Nazeer',
-    role: 'Arabic',
-    gender: 'Male',
-    tone: 'Gulf Arabic',
-  },
 ];
 
 const complianceItems = [
@@ -124,8 +85,9 @@ function IndustryIcon({ Icon, active }: { Icon: LucideIcon; active: boolean }) {
 
 export default function LiveDemoSection() {
   const [currentScenario, setCurrentScenario] = useState(0);
-  const [selectedAgent, setSelectedAgent] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const [speakerOn, setSpeakerOn] = useState(true);
   const [callStatus, setCallStatus] = useState<'Ready' | 'Connected' | 'Call Ended'>('Ready');
   const [callSeconds, setCallSeconds] = useState(0);
   const [showOutcome, setShowOutcome] = useState(false);
@@ -135,7 +97,6 @@ export default function LiveDemoSection() {
   const phoneRef = useRef<HTMLDivElement | null>(null);
 
   const scenario = scenarios[currentScenario];
-  const agent = agents[selectedAgent];
 
   const clearTimers = () => {
     if (timerRef.current) clearInterval(timerRef.current);
@@ -155,7 +116,6 @@ export default function LiveDemoSection() {
   const changeScenario = (idx: number, scrollToPhone = false) => {
     resetState();
     setCurrentScenario(idx);
-    setSelectedAgent(0);
     if (scrollToPhone && typeof window !== 'undefined') {
       window.setTimeout(() => {
         phoneRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -281,107 +241,93 @@ export default function LiveDemoSection() {
           </div>
 
           <div className="order-2 flex flex-col gap-4 lg:order-none lg:gap-6">
-            <div ref={phoneRef} className="order-2 mx-auto w-full max-w-[390px] scroll-mt-6 rounded-[30px] bg-[#5F6067] p-1.5 shadow-[0_24px_74px_-32px_rgba(8,8,12,0.45)] lg:max-w-none lg:rounded-[38px]">
-              <div className="relative min-h-[500px] overflow-hidden rounded-[24px] border border-white/10 bg-[#07080d] px-4 pb-4 pt-9 text-white sm:min-h-[586px] sm:rounded-[32px] sm:px-5 sm:pb-5 sm:pt-10 lg:min-h-[684px]">
+            <div ref={phoneRef} className="order-2 mx-auto w-full max-w-[390px] scroll-mt-6 rounded-[32px] bg-gradient-to-b from-[#777981] to-[#42434a] p-1.5 shadow-[0_28px_80px_-30px_rgba(8,8,12,0.5)] lg:max-w-none lg:rounded-[38px]">
+              <div className="relative flex min-h-[510px] flex-col overflow-hidden rounded-[26px] border border-white/10 bg-[#07080d] px-4 pb-4 pt-9 text-white sm:min-h-[586px] sm:rounded-[32px] sm:px-5 sm:pb-5 sm:pt-10 lg:min-h-[684px]">
                 <div className="absolute left-1/2 top-0 h-12 w-36 -translate-x-1/2 rounded-b-[28px] bg-black" />
                 <div className="absolute left-1/2 top-5 h-2 w-14 -translate-x-1/2 rounded-full bg-white/10" />
                 <div className="absolute left-1/2 top-5 h-2 w-2 -translate-x-[48px] rounded-full bg-white/10" />
+                <div aria-hidden className="absolute inset-x-0 top-28 h-56 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.2),transparent_68%)]" />
 
-                <div className="relative z-10 flex items-start justify-between gap-4">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="flex h-8 w-8 items-center justify-center overflow-visible">
-                        <img
-                          src="/AqionVoxLogoIcon-clean.png"
-                          alt=""
-                          className="h-7 w-7 object-contain"
-                          aria-hidden="true"
-                        />
-                      </span>
-                      <div>
-                        <div className="text-[15px] font-semibold tracking-tight">AqionVox</div>
-                        <div className="text-[10px] uppercase tracking-[0.16em] text-white/35">agent console</div>
+                <div className="relative z-10 flex items-center justify-between gap-3">
+                  <div className="flex min-w-0 items-center gap-2.5">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05]">
+                      <img src="/AqionVoxLogoIcon-clean.png" alt="AqionVox" className="h-7 w-7 object-contain" />
+                    </span>
+                    <div className="min-w-0">
+                      <div className="truncate text-[15px] font-semibold tracking-tight">AqionVox</div>
+                      <div className="truncate text-[9px] uppercase tracking-[0.14em] text-white/38 sm:text-[10px]">AqionVox agent console</div>
+                    </div>
+                  </div>
+                  <div className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-2.5 py-1.5 font-mono text-[9px] font-bold uppercase tracking-[0.14em] sm:text-[10px] ${
+                    isPlaying ? 'border-[#7C7CFF]/55 bg-[#34316F]/70 text-[#B8BCFF]' : 'border-[#4B4A91]/70 bg-[#191931] text-[#9FA5FF]'
+                  }`}>
+                    <span className={`h-1.5 w-1.5 rounded-full ${isPlaying ? 'animate-pulse bg-[#7C7CFF]' : 'bg-[#8E94FF]'}`} />
+                    {callStatus}
+                  </div>
+                </div>
+
+                <div className="relative z-10 flex flex-1 flex-col items-center justify-center py-7 text-center sm:py-10">
+                  <div className="relative flex h-40 w-40 items-center justify-center sm:h-48 sm:w-48">
+                    <span className={`absolute inset-0 rounded-full border border-[#7477ff]/20 ${isPlaying ? 'animate-ping' : ''}`} />
+                    <span className={`absolute inset-5 rounded-full border border-[#7477ff]/25 bg-[#7477ff]/[0.04] ${isPlaying ? 'animate-pulse' : ''}`} />
+                    <div className="relative flex h-24 w-24 items-center justify-center rounded-full border border-white/10 bg-gradient-to-br from-[#232449] via-[#15162c] to-[#0c0d16] shadow-[0_24px_60px_-20px_rgba(99,102,241,0.85)] sm:h-28 sm:w-28">
+                      <div className="flex h-10 items-center gap-1" aria-hidden="true">
+                        {[18, 30, 22, 38, 26, 34, 20].map((height, idx) => (
+                          <span
+                            key={idx}
+                            className={`w-1 rounded-full bg-gradient-to-t from-[#818CF8] to-[#C4B5FD] ${isPlaying ? 'animate-pulse' : 'opacity-55'}`}
+                            style={{ height: `${height}px`, animationDelay: `${idx * 90}ms` }}
+                          />
+                        ))}
                       </div>
                     </div>
                   </div>
-
-                  <div className="pt-1 text-right">
-                    <div className={`inline-flex items-center gap-2 rounded-lg border px-2.5 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.16em] ${
-                      isPlaying ? 'border-[#7C7CFF]/55 bg-[#34316F]/70 text-[#B8BCFF]' : 'border-[#4B4A91]/70 bg-[#191931] text-[#9FA5FF]'
-                    }`}>
-                      <span className={`h-1.5 w-1.5 rounded-full ${isPlaying ? 'bg-[#7C7CFF] animate-pulse' : 'bg-[#8E94FF]'}`} />
-                      {callStatus}
-                    </div>
-                    <div className="mt-3 font-mono text-base font-bold tracking-[0.16em] text-white/45">{formatTime(callSeconds)}</div>
-                  </div>
+                  <p className="mt-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/35">{scenario.label} voice workflow</p>
+                  <p className="mt-2 font-mono text-2xl font-semibold tracking-[0.1em] text-white/75">{formatTime(callSeconds)}</p>
+                  <p className="mt-2 max-w-[240px] text-xs leading-relaxed text-white/38">
+                    {isPlaying ? 'Listening and responding in real time' : callStatus === 'Call Ended' ? 'Call completed successfully' : 'Ready for a live conversation'}
+                  </p>
                 </div>
 
-                <div className="relative z-10 mt-7 sm:mt-12">
-                  <div className="mb-4 flex items-center justify-between">
-                    <div>
-                      <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-white/36">Select agent</div>
-                      <div className="mt-1 text-xs text-white/35">English and Arabic call agents</div>
-                    </div>
-                    <span className="rounded-full border border-white/10 px-2.5 py-1 text-[10px] font-medium text-white/45">
-                      4 voices
-                    </span>
-                  </div>
-
-                  <div className="space-y-2">
-                    {agents.map((option, idx) => (
-                      <button
-                        key={`${option.lang}-${option.gender}`}
-                        type="button"
-                        onClick={() => !isPlaying && setSelectedAgent(idx)}
-                        className={`relative flex min-h-[50px] w-full items-center justify-between rounded-xl border px-3.5 py-2 text-left transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#7C7CFF]/50 sm:min-h-[58px] sm:px-4 sm:py-2.5 ${
-                          idx === selectedAgent
-                            ? 'border-[#4F46E5]/70 bg-[#17162d]'
-                            : 'border-white/10 bg-white/[0.035] hover:border-white/20'
-                        } ${isPlaying ? 'cursor-default' : 'cursor-pointer'}`}
-                        disabled={isPlaying}
-                      >
-                        <div>
-                          <div className="truncate text-[14px] font-semibold leading-tight text-white">{option.name}</div>
-                          <div className="mt-1 text-[11px] text-white/38">{option.role} · {option.gender}</div>
-                        </div>
-                        {idx === selectedAgent ? (
-                          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#6868FF] text-white">
-                            <Check size={14} strokeWidth={3} />
-                          </span>
-                        ) : (
-                          <span className="h-6 w-6 shrink-0 rounded-full border border-white/10" />
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="relative z-10 mt-4 rounded-[22px] border border-white/10 bg-white/[0.045] p-3">
+                <div className="relative z-10 rounded-[22px] border border-white/10 bg-white/[0.045] p-3 backdrop-blur-sm sm:p-4">
                   <button
                     type="button"
                     onClick={isPlaying ? stopDemo : startDemo}
-                    className={`mb-3 flex h-11 w-full items-center justify-center gap-2 rounded-xl text-sm font-semibold text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#7C7CFF]/50 ${
+                    className={`mb-3 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-xl text-sm font-semibold text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#7C7CFF]/50 ${
                       isPlaying ? 'bg-red-500/80 hover:bg-red-500' : 'bg-[#4F46E5] hover:bg-[#4338CA]'
                     }`}
                   >
                     {isPlaying ? <Square size={16} className="fill-current" /> : <Play size={17} className="fill-current" />}
                     {isPlaying ? 'Stop call' : callStatus === 'Call Ended' ? 'Replay call' : 'Start call'}
                   </button>
-                  <div className="flex justify-center gap-4">
-                    <button type="button" aria-label="Mute microphone" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/18 text-white/58">
+                  <div className="flex justify-center gap-5">
+                    <button
+                      type="button"
+                      aria-label="Mute microphone"
+                      aria-pressed={isMuted}
+                      title="Mute microphone"
+                      onClick={() => setIsMuted((muted) => !muted)}
+                      className={`flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border transition-colors focus:outline-none focus:ring-2 focus:ring-[#7C7CFF]/50 ${isMuted ? 'border-[#7C7CFF]/45 bg-[#7C7CFF]/20 text-[#C7D2FE]' : 'border-white/10 bg-black/18 text-white/58 hover:text-white'}`}
+                    >
                       <MicOff size={18} />
                     </button>
-                    <button type="button" aria-label="End call" onClick={stopDemo} className="flex h-11 w-11 items-center justify-center rounded-full border border-red-500/28 bg-red-500/10 text-red-400">
+                    <button type="button" aria-label="Disconnect call" title="Disconnect call" onClick={stopDemo} className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-red-500/28 bg-red-500/10 text-red-400 transition-colors hover:bg-red-500/20 focus:outline-none focus:ring-2 focus:ring-red-400/50">
                       <PhoneOff size={18} />
                     </button>
-                    <button type="button" aria-label="Speaker volume" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/18 text-white/58">
+                    <button
+                      type="button"
+                      aria-label="Speaker volume"
+                      aria-pressed={speakerOn}
+                      title="Speaker volume"
+                      onClick={() => setSpeakerOn((enabled) => !enabled)}
+                      className={`flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border transition-colors focus:outline-none focus:ring-2 focus:ring-[#7C7CFF]/50 ${speakerOn ? 'border-[#7C7CFF]/45 bg-[#7C7CFF]/20 text-[#C7D2FE]' : 'border-white/10 bg-black/18 text-white/45 hover:text-white'}`}
+                    >
                       <Volume2 size={18} />
                     </button>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
 

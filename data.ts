@@ -7,7 +7,7 @@ import {
 // Agentic AI Services Data
 export const SERVICE_DATA: Record<string, DetailPageData> = {
   [PageType.SERVICE_DIGITAL_PRESENCE_STUDIO]: {
-    title: "Digital Presence Studio",
+    title: "AI Creative Suite",
     subtitle: "Production-grade web and mobile, shipped in weeks — not quarters. AI woven into the spine, not bolted on top.",
     icon: Globe,
     sections: [
@@ -33,7 +33,7 @@ export const SERVICE_DATA: Record<string, DetailPageData> = {
     ]
   },
   [PageType.SERVICE_MARKETING_AGENT]: {
-    title: "Marketing Agent",
+    title: "Marketing Automation",
     subtitle: "A full marketing operator that plans campaigns, generates content, publishes, tests, and reallocates spend to what works.",
     icon: Megaphone,
     sections: [
@@ -59,7 +59,7 @@ export const SERVICE_DATA: Record<string, DetailPageData> = {
     ]
   },
   [PageType.SERVICE_SALES_AGENT]: {
-    title: "Sales Agent",
+    title: "Sales Copilot",
     subtitle: "An autonomous SDR that catches every inquiry, qualifies demand, books meetings, and updates the CRM itself.",
     icon: Handshake,
     sections: [
@@ -85,7 +85,7 @@ export const SERVICE_DATA: Record<string, DetailPageData> = {
     ]
   },
   [PageType.SERVICE_CUSTOMER_CONVERSATION_AGENT]: {
-    title: "Customer Conversation Agent",
+    title: "Multilingual AI Customer Support",
     subtitle: "Voice and chat agents fluent in English and Gulf Arabic, built for regulated contact centers.",
     icon: Headphones,
     sections: [
@@ -111,7 +111,7 @@ export const SERVICE_DATA: Record<string, DetailPageData> = {
     ]
   },
   [PageType.SERVICE_OPERATIONS_AGENT]: {
-    title: "Operations Agent",
+    title: "Process & Workflow Automation",
     subtitle: "The back office, automated. Invoices, contracts, onboarding, approvals — handled by agents that document themselves.",
     icon: Workflow,
     sections: [
@@ -155,7 +155,7 @@ export const SERVICE_DATA: Record<string, DetailPageData> = {
     ]
   },
   [PageType.SERVICE_INTERNAL_KNOWLEDGE_AGENT]: {
-    title: "Internal Knowledge Agent",
+    title: "Enterprise RAG assistant",
     subtitle: "Your policies, SOPs, and documents, turned into an agent your team can simply ask.",
     icon: BookOpen,
     sections: [
@@ -181,7 +181,7 @@ export const SERVICE_DATA: Record<string, DetailPageData> = {
     ]
   },
   [PageType.SERVICE_SOVEREIGN_AI_FOUNDATION]: {
-    title: "Sovereign AI Foundation",
+    title: "On Prem & Private LLM deployment",
     subtitle: "Private LLMs, retrieval, evals, and observability — inside your VPC, with UAE data residency by default.",
     icon: Server,
     sections: [

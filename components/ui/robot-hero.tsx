@@ -30,8 +30,6 @@ export function RobotHero({
     return () => media.removeEventListener('change', syncPreference);
   }, []);
 
-  if (reduceMotion) return null;
-
   return (
     <div
       className={`relative w-full ${className}`}
@@ -39,7 +37,11 @@ export function RobotHero({
       aria-label="Interactive 3D robot"
       role="img"
     >
-      <SplineScene scene={scene} className="home-robot-scene h-full w-full touch-pan-y" />
+      <SplineScene
+        scene={scene}
+        className="home-robot-scene h-full w-full touch-pan-y"
+        staticOnly={reduceMotion}
+      />
     </div>
   );
 }
