@@ -12,14 +12,14 @@ interface HomeProps {
 }
 
 const aqionVoxFeatures = [
-  'Gulf Arabic + English',
-  'Sub-700ms Response',
-  '24/7 Voice Calls',
-  'WhatsApp Automation',
-  'Lead Qualification',
+  'Arabic + English + Hindi + Malayalam',
+  'Picks Up Calls 24/7',
+  'Inbuilt Voice CRM',
+  'Saves Client Details as Leads',
+  'Live Call Transcripts',
   'Appointment Booking',
-  'Smart Human Handoffs',
-  'CRM Sync',
+  'Human Handoff',
+  'Email Updates',
   'UAE Data Residency',
 ];
 
@@ -96,17 +96,17 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   return (
     <div className="mesh-bg text-ink overflow-x-hidden font-sans relative">
       {/* HERO */}
-      <section className="home-mobile-hero relative isolate min-h-[820px] overflow-hidden px-6 pt-20 pb-12 sm:min-h-[860px] md:min-h-[900px] md:pt-28 lg:min-h-screen lg:px-10 lg:pt-32 lg:pb-10">
+      <section className="home-mobile-hero relative isolate z-20 min-h-[820px] overflow-hidden px-6 pt-20 pb-12 sm:min-h-[860px] md:min-h-[900px] md:pt-28 lg:min-h-screen lg:overflow-visible lg:px-10 lg:pt-32 lg:pb-10">
         <div className="absolute inset-0 -z-10 mesh-bg" aria-hidden />
         <OptimizedHeroMotion
           kind="image"
-          src="/Aqionlabshero.svg"
-          className="hero-video-bg absolute inset-0 pointer-events-none overflow-hidden opacity-[0.38]"
-          mediaClassName="h-full w-full object-cover [transform:translateY(-8%)_scale(1.16)] sm:[transform:translateY(-6%)_scale(1.12)] md:[transform:translateY(2%)_scale(1.1)] lg:[transform:translateY(10%)_scale(1.08)]"
+          src="/service-motion.svg"
+          className="hero-video-bg absolute inset-0 pointer-events-none overflow-hidden opacity-[0.42]"
+          mediaClassName="h-full w-full object-cover object-center [transform:translateY(-4%)_scale(1.04)] sm:[transform:translateY(-2%)_scale(1.02)] md:[transform:translateY(2%)_scale(1.02)] lg:[transform:translateY(6%)_scale(1.02)]"
           onLoad={() => document.getElementById('hero-wave-prepaint')?.remove()}
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bone/82 via-bone/66 to-bone/92" aria-hidden />
-        <div className="home-mobile-robot absolute inset-x-0 top-[24.5rem] z-[2] h-[420px] sm:top-[25.5rem] sm:h-[460px] md:top-[27rem] md:h-[500px] lg:inset-y-16 lg:left-0 lg:right-0 lg:h-auto lg:w-full">
+        <div className="home-mobile-robot absolute inset-x-0 top-[24.5rem] z-[2] h-[420px] sm:top-[25.5rem] sm:h-[460px] md:top-[27rem] md:h-[500px] lg:top-16 lg:bottom-[-140px] lg:left-0 lg:right-0 lg:z-30 lg:h-auto lg:w-full">
           <RobotHero height="100%" />
         </div>
 
@@ -161,7 +161,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             <span className="h-1 w-1 rounded-full bg-[#a1a1aa]" />
             <span>Operational</span>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 lg:translate-x-6">
             <span className="text-[#a1a1aa]">Region</span>
             <span>United Arab Emirates</span>
           </div>
@@ -171,7 +171,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       {/* AQIONVOX CAPABILITY MARQUEE */}
       <section className="border-y border-hairline bg-paper/40 overflow-hidden">
         <div className="py-6 flex items-center gap-6">
-          <span className="eyebrow shrink-0 pl-6">Aqion Voice · AI Voice Agent</span>
+          <span className="eyebrow shrink-0 pl-6">Voice AI Agent for SMEs</span>
           <div className="relative flex-1 overflow-hidden">
             <div className="flex gap-12 animate-marquee whitespace-nowrap">
               {[...aqionVoxFeatures, ...aqionVoxFeatures].map((l, i) => (
@@ -210,7 +210,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 className="group grid w-full cursor-pointer grid-cols-12 items-baseline gap-4 rounded-md border-b border-bone/15 px-2 py-6 text-left transition-colors hover:bg-white/[0.04] md:gap-6 md:py-8"
               >
                 <span className="col-span-12 font-mono text-xs text-bone/50 transition-colors group-hover:text-[#7c7cff] md:col-span-1 md:pt-2">{s.no}</span>
-                <h3 className="col-span-12 min-w-0 whitespace-normal break-words bg-gradient-to-r from-[#4f46e5] to-[#9333ea] bg-[length:0%_100%] bg-clip-text font-display text-[1.45rem] leading-tight tracking-tight text-bone transition-[color,background-size] duration-200 group-hover:bg-[length:100%_100%] group-hover:text-transparent md:col-span-5 md:text-4xl">
+                <h3 className="col-span-12 min-w-0 whitespace-normal break-words font-display text-[1.45rem] leading-tight tracking-tight text-bone transition-colors duration-200 group-hover:text-[#4F46E5] md:col-span-5 md:text-4xl">
                   {s.title}
                 </h3>
                 <p className="mobile-clamp-2 col-span-12 min-w-0 break-words text-sm leading-relaxed text-bone/70 transition-colors group-hover:text-[#c7d2fe] md:col-span-5 md:text-base">{s.body}</p>

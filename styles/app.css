@@ -34,7 +34,7 @@
   --color-slate-950: #faf7f2;
 
   --animate-float: float 8s ease-in-out infinite;
-  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee: marquee 20s linear infinite;
 
   @keyframes float {
     0%,

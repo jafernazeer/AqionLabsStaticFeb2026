@@ -98,6 +98,65 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
         </div>
       </section>
 
+      {/* FOUNDER */}
+      <section className="mobile-section-tight mx-auto max-w-7xl px-5 py-24 sm:px-6 md:py-32">
+        <div className="grid grid-cols-12 items-start gap-10 md:gap-14">
+          <div className="col-span-12 md:col-span-5">
+            <div className="relative rounded-[34px] border border-hairline bg-white/74 p-4 shadow-[0_28px_90px_-42px_rgba(28,25,23,0.35)] backdrop-blur-md">
+              <img
+                src="/founder-jafer.jpg"
+                alt="Jafer Mohammed, Founder of AqionLabs"
+                loading="lazy"
+                className="aspect-[4/5] w-full rounded-[24px] object-cover object-top"
+              />
+              <div className="absolute -bottom-5 left-8 right-8 rounded-2xl border border-hairline bg-paper/95 px-5 py-3 shadow-[0_18px_40px_-24px_rgba(28,25,23,0.4)] backdrop-blur-md">
+                <p className="font-display text-lg leading-tight text-ink">Jafer Mohammed</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-taupe">Founder · AqionLabs</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mobile-page-center col-span-12 md:col-span-6 md:col-start-7 md:text-left">
+            <p className="eyebrow mb-4">[ The founder ]</p>
+            <h2 className="mobile-subheading font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
+              No safety net.<br />
+              <span className="display-italic">No playbook.</span>
+            </h2>
+
+            <div className="mobile-copy-measure mt-6 space-y-4 text-[15px] leading-relaxed text-graphite md:mt-8 md:text-lg">
+              <p>
+                Almost a year ago I walked away from a stable career and started building AqionLabs — with no safety net and no playbook, just a problem I couldn't stop thinking about.
+              </p>
+              <p>
+                Ten-plus years across enterprise communications, cloud infrastructure, contact centres and large-scale digital transformation — with organisations including Tesla, Disney, UPS and Bank of America. After all of that, one thing became impossible to ignore.
+              </p>
+            </div>
+
+            <figure className="mt-8 rounded-2xl border border-hairline bg-parchment/70 p-6 md:mt-10">
+              <blockquote className="font-display text-2xl leading-snug tracking-tight text-ink md:text-3xl">
+                Large enterprises have access to world-class AI.{' '}
+                <span className="display-italic">Most SMBs don't.</span>
+              </blockquote>
+              <figcaption className="mt-4 text-sm leading-relaxed text-taupe">
+                Not because they don't need it — because the cost, complexity and infrastructure have always been out of reach.
+              </figcaption>
+            </figure>
+
+            <div className="mobile-copy-measure mt-8 space-y-4 text-[15px] leading-relaxed text-graphite md:text-lg">
+              <p>
+                That's why I started AqionLabs: to build Agentic AI platforms that let everyday businesses use enterprise-grade AI without enterprise-level costs. Our first solution, Aqion Voice, answers, qualifies, converts and follows up with customers 24/7 — with multilingual regional language support.
+              </p>
+              <p>
+                The real turning point was realising AI can become a real-time mentor if you're curious enough — something you can ask anything, explore any technical challenge with, and get clear, judgment-free guidance from instantly. Not just a productivity tool, but a true problem-solving partner.
+              </p>
+              <p className="text-ink">
+                The future belongs to people who combine human experience with AI effectively under pressure. And honestly, we're only getting started.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="mobile-section-tight mx-auto max-w-7xl px-5 py-24 sm:px-6 md:py-32">
         <div className="mb-14 grid grid-cols-12 gap-6">
           <div className="mobile-page-center col-span-12 md:col-span-6 md:text-left">
