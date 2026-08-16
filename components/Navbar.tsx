@@ -14,11 +14,27 @@ const navItems: NavItem[] = [
     label: 'Agentic AI',
     page: PageType.AGENTIC_AI,
     href: '/agentic-ai',
+    children: [
+      { label: 'All seven agents', page: PageType.AGENTIC_AI, href: '/agentic-ai' },
+      { label: 'Aqion Vox — Customer', page: PageType.PRODUCT_AQIONVOX, href: '/products/aqion-voice' },
+      { label: 'Aqion Brain — Knowledge', page: PageType.AGENTIC_AI, href: '/agentic-ai' },
+      { label: 'Aqion Chief — Executive', page: PageType.AGENTIC_AI, href: '/agentic-ai' },
+      { label: 'Aqion Desk — Workforce', page: PageType.AGENTIC_AI, href: '/agentic-ai' },
+      { label: 'Aqion Procure — Procurement', page: PageType.AGENTIC_AI, href: '/agentic-ai' },
+      { label: 'Aqion Ledger — Finance', page: PageType.AGENTIC_AI, href: '/agentic-ai' },
+      { label: 'Aqion Social — Content', page: PageType.AGENTIC_AI, href: '/agentic-ai' },
+    ],
   },
   {
     label: 'Services',
     page: PageType.SERVICES,
     href: '/services',
+    children: [
+      { label: 'All services', page: PageType.SERVICES, href: '/services' },
+      { label: 'AI-Ready Web Studio', page: PageType.SERVICES, href: '/services' },
+      { label: 'Sovereign Infrastructure Deployment', page: PageType.SERVICES, href: '/services' },
+      { label: 'AI Strategy & Discovery', page: PageType.SERVICES, href: '/services' },
+    ],
   },
   {
     label: 'Industries',
@@ -190,12 +206,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                                 const childContent = (
                                   <>
                                     <span className="flex items-center gap-2.5">
-                                      {child.label === 'Aqion Engage' && <Bot className="w-4 h-4 text-petrol" />}
+                                      {child.label === 'Aqion Vox' && <Bot className="w-4 h-4 text-petrol" />}
                                       {child.label === 'AqionFlo' && <Activity className="w-4 h-4 text-petrol" />}
                                       <span className={
                                         child.label === 'Explore All'
                                           ? 'bg-gradient-to-r from-[#4f46e5] to-[#9333ea] bg-clip-text font-semibold text-transparent'
-                                          : (child.label === 'Aqion Engage' || child.label === 'AqionFlo') ? 'font-medium text-ink' : ''
+                                          : (child.label === 'Aqion Vox' || child.label === 'AqionFlo') ? 'font-medium text-ink' : ''
                                       }>
                                         {child.label}
                                       </span>
@@ -337,7 +353,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                             <span className={`${
                               child.label === 'Explore All'
                                 ? 'bg-gradient-to-r from-[#4f46e5] to-[#9333ea] bg-clip-text font-semibold text-transparent'
-                                : child.label === 'Aqion Engage' || child.label === 'AqionFlo' ? 'font-medium text-ink' : 'text-graphite'
+                                : child.label === 'Aqion Vox' || child.label === 'AqionFlo' ? 'font-medium text-ink' : 'text-graphite'
                             }`}>
                               {child.label}
                             </span>

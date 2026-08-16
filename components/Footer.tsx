@@ -9,13 +9,19 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const agenticServices = [
-    { label: 'AI Creative Suite', page: PageType.SERVICE_DIGITAL_PRESENCE_STUDIO },
-    { label: 'Marketing Automation', page: PageType.SERVICE_MARKETING_AGENT },
-    { label: 'Sales Copilot', page: PageType.SERVICE_SALES_AGENT },
-    { label: 'Multilingual AI Customer Support', page: PageType.SERVICE_CUSTOMER_CONVERSATION_AGENT },
-    { label: 'Process & Workflow Automation', page: PageType.SERVICE_OPERATIONS_AGENT },
-    { label: 'Enterprise RAG assistant', page: PageType.SERVICE_INTERNAL_KNOWLEDGE_AGENT },
-    { label: 'On Prem & Private LLM deployment', page: PageType.SERVICE_SOVEREIGN_AI_FOUNDATION },
+    { label: 'Aqion Vox', page: PageType.PRODUCT_AQIONVOX },
+    { label: 'Aqion Brain', page: PageType.AGENTIC_AI },
+    { label: 'Aqion Chief', page: PageType.AGENTIC_AI },
+    { label: 'Aqion Desk', page: PageType.AGENTIC_AI },
+    { label: 'Aqion Procure', page: PageType.AGENTIC_AI },
+    { label: 'Aqion Ledger', page: PageType.AGENTIC_AI },
+    { label: 'Aqion Social', page: PageType.AGENTIC_AI },
+  ];
+
+  const platformServices = [
+    { label: 'AI-Ready Web Studio', page: PageType.SERVICES },
+    { label: 'Sovereign Infrastructure Deployment', page: PageType.SERVICES },
+    { label: 'AI Strategy & Discovery', page: PageType.SERVICES },
   ];
 
   const handleNav = (e: React.MouseEvent, page: PageType) => {
@@ -79,16 +85,22 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </ul>
             </div>
             <div>
-              <h3 className="eyebrow mb-5">Products</h3>
+              <h3 className="eyebrow mb-5">Services</h3>
               <ul className="space-y-3 text-graphite text-sm">
-                <li><a href="#" onClick={(e) => handleNav(e, PageType.PRODUCT_AQIONVOX)} className="hover:text-petrol transition-colors">Aqion Engage</a></li>
+                {platformServices.map(({ label, page }) => (
+                  <li key={label}>
+                    <a href="#" onClick={(e) => handleNav(e, page)} className="transition-colors hover:text-petrol">
+                      {label}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
             <div>
               <h3 className="eyebrow mb-5">Agentic AI</h3>
               <ul className="space-y-3 text-sm text-graphite">
                 {agenticServices.map(({ label, page }) => (
-                  <li key={page}>
+                  <li key={label}>
                     <a href="#" onClick={(e) => handleNav(e, page)} className="transition-colors hover:text-petrol">
                       {label}
                     </a>

@@ -19,7 +19,7 @@ const agents = [
   {
     no: '01',
     category: 'Customer Agents',
-    name: 'Aqion Engage',
+    name: 'Aqion Vox',
     body: 'Voice, WhatsApp and web — in Arabic and English. Answers every call, qualifies the lead and books the meeting, around the clock.',
     icon: Headphones,
     href: '/products/aqion-voice',
@@ -163,7 +163,7 @@ const AgenticAI: React.FC<AgenticAIProps> = ({ onNavigate }) => {
         <div className="mobile-page-center rounded-[34px] border border-hairline bg-white/74 p-10 shadow-[0_28px_90px_-42px_rgba(28,25,23,0.35)] backdrop-blur-md md:p-16 md:text-left">
           <p className="eyebrow mb-4">[ Start somewhere real ]</p>
           <h2 className="mobile-subheading font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
-            Talk to Aqion Engage<br />
+            Talk to Aqion Vox<br />
             <span className="display-italic">before you buy anything.</span>
           </h2>
           <p className="mobile-copy-measure mt-5 max-w-2xl text-[15px] leading-relaxed text-graphite md:text-lg">
@@ -174,7 +174,7 @@ const AgenticAI: React.FC<AgenticAIProps> = ({ onNavigate }) => {
               onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX)}
               className="group inline-flex min-h-12 cursor-pointer items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#4f46e5] to-[#9333ea] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(79,70,229,0.35)] transition-all duration-200 hover:-translate-y-px focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4f46e5]"
             >
-              Try Aqion Engage
+              Try Aqion Vox
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </button>
             <button

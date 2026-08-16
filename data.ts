@@ -323,7 +323,7 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
         "Upsell automation"
       ],
       aiAutomation: [
-        "Aqion Engage Inventory enquiry",
+        "Aqion Vox Inventory enquiry",
         "Internal staff assistants"
       ]
     },
@@ -344,7 +344,7 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
     ],
     solutions: {
       aqionVox: [
-        "Aqion Engage Citizen enquiry automation"
+        "Aqion Vox Citizen enquiry automation"
       ],
       enterpriseAi: [
         "Private GPT deployment",
@@ -385,7 +385,7 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
       "Enhanced security",
       "Improved customer experience"
     ],
-    ctaText: "Infographic showing how Aqion Engage will help the Financial sector industry to deal with customer enquiries"
+    ctaText: "Infographic showing how Aqion Vox will help the Financial sector industry to deal with customer enquiries"
   },
   [PageType.INDUSTRY_HOSPITALITY]: {
     title: "Hospitality",
@@ -408,7 +408,7 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
       "Improved guest satisfaction",
       "Reduced front desk workload"
     ],
-    ctaText: "Infographic showing how Aqion Engage will help the hospitality industry to deal with customer enquiries"
+    ctaText: "Infographic showing how Aqion Vox will help the hospitality industry to deal with customer enquiries"
   },
   [PageType.INDUSTRY_LOGISTICS]: {
     title: "Logistics",
@@ -432,7 +432,7 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
       "Improved operational efficiency",
       "Reduced support costs"
     ],
-    ctaText: "Infographic showing how Aqion Engage will help the Logistics & Transportation Firms to deal with customer service"
+    ctaText: "Infographic showing how Aqion Vox will help the Logistics & Transportation Firms to deal with customer service"
   },
   [PageType.INDUSTRY_PROFESSIONAL]: {
     title: "Legal Services",
@@ -586,13 +586,13 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
 // Keeping Product Data for Flagship and legacy references if needed
 export const PRODUCT_DATA: Record<string, DetailPageData> = {
   [PageType.PRODUCT_AQIONVOX]: {
-    title: "Aqion Engage",
+    title: "Aqion Vox",
     subtitle: "The AI customer support agent that answers, qualifies, and converts. Generating Revenue 24/7.",
     icon: Bot,
     sections: [
         {
             title: "What It Is",
-            content: "Aqion Engage is a flagship all-in-one AI workforce platform. It combines voice capabilities, WhatsApp automation, and CRM intelligence into a single entity that acts as your best employee—one that never sleeps."
+            content: "Aqion Vox is a flagship all-in-one AI workforce platform. It combines voice capabilities, WhatsApp automation, and CRM intelligence into a single entity that acts as your best employee—one that never sleeps."
         }
     ],
     howAiIsLeveraged: [
