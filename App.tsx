@@ -80,7 +80,9 @@ const AppContent: React.FC = () => {
       [PageType.PRIVACY]: '/privacy',
       [PageType.TERMS]: '/terms',
       [PageType.INDUSTRIES]: '/industries',
-      
+      [PageType.AGENTIC_AI]: '/agentic-ai',
+      [PageType.SERVICES]: '/services',
+
       [PageType.PRODUCT_AQIONVOX]: '/products/aqion-voice',
       [PageType.PRODUCT_AQIONFLO]: '/products/aqionflo',
       

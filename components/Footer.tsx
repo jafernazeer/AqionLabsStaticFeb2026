@@ -81,7 +81,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <div>
               <h3 className="eyebrow mb-5">Products</h3>
               <ul className="space-y-3 text-graphite text-sm">
-                <li><a href="#" onClick={(e) => handleNav(e, PageType.PRODUCT_AQIONVOX)} className="hover:text-petrol transition-colors">Aqion Voice</a></li>
+                <li><a href="#" onClick={(e) => handleNav(e, PageType.PRODUCT_AQIONVOX)} className="hover:text-petrol transition-colors">Aqion Engage</a></li>
               </ul>
             </div>
             <div>

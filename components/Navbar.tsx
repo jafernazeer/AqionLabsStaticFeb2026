@@ -11,22 +11,14 @@ interface NavbarProps {
 const navItems: NavItem[] = [
   { label: 'Home', page: PageType.HOME },
   {
-    label: 'Products',
-    children: [
-      { label: 'Aqion Voice', page: PageType.PRODUCT_AQIONVOX },
-    ],
+    label: 'Agentic AI',
+    page: PageType.AGENTIC_AI,
+    href: '/agentic-ai',
   },
   {
-    label: 'Agentic AI',
-    children: [
-      { label: 'AI Creative Suite', page: PageType.SERVICE_DIGITAL_PRESENCE_STUDIO, href: '/services/digital-presence-studio' },
-      { label: 'Marketing Automation', page: PageType.SERVICE_MARKETING_AGENT, href: '/services/marketing-agent' },
-      { label: 'Sales Copilot', page: PageType.SERVICE_SALES_AGENT, href: '/services/sales-agent' },
-      { label: 'Multilingual AI Customer Support', page: PageType.SERVICE_CUSTOMER_CONVERSATION_AGENT, href: '/services/customer-conversation-agent' },
-      { label: 'Process & Workflow Automation', page: PageType.SERVICE_OPERATIONS_AGENT, href: '/services/operations-agent' },
-      { label: 'Enterprise RAG assistant', page: PageType.SERVICE_INTERNAL_KNOWLEDGE_AGENT, href: '/services/internal-knowledge-agent' },
-      { label: 'On Prem & Private LLM deployment', page: PageType.SERVICE_SOVEREIGN_AI_FOUNDATION, href: '/services/sovereign-ai-foundation' },
-    ],
+    label: 'Services',
+    page: PageType.SERVICES,
+    href: '/services',
   },
   {
     label: 'Industries',
@@ -198,12 +190,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                                 const childContent = (
                                   <>
                                     <span className="flex items-center gap-2.5">
-                                      {child.label === 'Aqion Voice' && <Bot className="w-4 h-4 text-petrol" />}
+                                      {child.label === 'Aqion Engage' && <Bot className="w-4 h-4 text-petrol" />}
                                       {child.label === 'AqionFlo' && <Activity className="w-4 h-4 text-petrol" />}
                                       <span className={
                                         child.label === 'Explore All'
                                           ? 'bg-gradient-to-r from-[#4f46e5] to-[#9333ea] bg-clip-text font-semibold text-transparent'
-                                          : (child.label === 'Aqion Voice' || child.label === 'AqionFlo') ? 'font-medium text-ink' : ''
+                                          : (child.label === 'Aqion Engage' || child.label === 'AqionFlo') ? 'font-medium text-ink' : ''
                                       }>
                                         {child.label}
                                       </span>
@@ -345,7 +337,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                             <span className={`${
                               child.label === 'Explore All'
                                 ? 'bg-gradient-to-r from-[#4f46e5] to-[#9333ea] bg-clip-text font-semibold text-transparent'
-                                : child.label === 'Aqion Voice' || child.label === 'AqionFlo' ? 'font-medium text-ink' : 'text-graphite'
+                                : child.label === 'Aqion Engage' || child.label === 'AqionFlo' ? 'font-medium text-ink' : 'text-graphite'
                             }`}>
                               {child.label}
                             </span>

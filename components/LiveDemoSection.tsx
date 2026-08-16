@@ -262,9 +262,9 @@ export default function LiveDemoSection() {
     <section id="live-demo" className="mesh-bg mobile-section-tight relative z-10 scroll-mt-24 overflow-hidden px-5 pb-14 pt-12 font-sans text-[#1C1917] sm:px-6 md:pb-20 md:pt-16">
       <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-8">
         <div className="max-w-3xl">
-          <p className="eyebrow mb-4 text-[#4F46E5]">[ See Aqion Voice in Action ]</p>
+          <p className="eyebrow mb-4 text-[#4F46E5]">[ See Aqion Engage in Action ]</p>
           <p className="max-w-2xl text-[16px] font-medium leading-[1.6] text-[#6B6357] md:text-[18px]">
-            Start a live call. Aqion Voice will ask about your industry and use case, then adapt the conversation in real time.
+            Start a live call. Aqion Engage will ask about your industry and use case, then adapt the conversation in real time.
           </p>
         </div>
 
@@ -275,7 +275,7 @@ export default function LiveDemoSection() {
                 <div className="mb-4 flex items-end justify-between gap-4">
                   <div>
                     <p className="eyebrow mb-2">Industry coverage</p>
-                    <h3 className="font-display text-2xl leading-tight text-ink">Industries Aqion Voice serves</h3>
+                    <h3 className="font-display text-2xl leading-tight text-ink">Industries Aqion Engage serves</h3>
                   </div>
                   <span className="hidden rounded-full bg-[#4F46E5]/10 px-3 py-1 text-xs font-semibold text-[#4F46E5] sm:inline-flex">
                     12 industries
@@ -308,11 +308,11 @@ export default function LiveDemoSection() {
                 <div className="relative z-10 flex items-center justify-between gap-3">
                   <div className="flex min-w-0 items-center gap-2.5">
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05]">
-                      <img src="/AqionVoxLogoIcon-clean.png" alt="Aqion Voice" className="h-7 w-7 object-contain" />
+                      <img src="/AqionVoxLogoIcon-clean.png" alt="Aqion Engage" className="h-7 w-7 object-contain" />
                     </span>
                     <div className="min-w-0">
-                      <div className="truncate text-[15px] font-semibold tracking-tight">Aqion Voice</div>
-                      <div className="truncate text-[9px] uppercase tracking-[0.14em] text-white/38 sm:text-[10px]">Aqion Voice agent console</div>
+                      <div className="truncate text-[15px] font-semibold tracking-tight">Aqion Engage</div>
+                      <div className="truncate text-[9px] uppercase tracking-[0.14em] text-white/38 sm:text-[10px]">Aqion Engage agent console</div>
                     </div>
                   </div>
                   <div className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-2.5 py-1.5 font-mono text-[9px] font-bold uppercase tracking-[0.14em] sm:text-[10px] ${
@@ -350,7 +350,7 @@ export default function LiveDemoSection() {
                   <p className="mt-2 font-mono text-2xl font-semibold tracking-[0.1em] text-white/75">{formatTime(callSeconds)}</p>
                   <p className="mt-2 max-w-[240px] text-xs leading-relaxed text-white/38">
                     {callStatus === 'Connecting'
-                      ? 'Connecting to Aqion Voice. Allow microphone access when prompted.'
+                      ? 'Connecting to Aqion Engage. Allow microphone access when prompted.'
                       : callStatus === 'Error'
                         ? callError || 'The live call could not connect.'
                         : isPlaying
@@ -407,7 +407,7 @@ export default function LiveDemoSection() {
           <div aria-hidden className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(rgba(129,140,248,0.8)_1px,transparent_1px)] bg-[length:20px_20px]" />
           <div aria-hidden className="absolute -right-20 top-1/2 h-56 w-56 -translate-y-1/2 rounded-full bg-[#4F46E5]/20 blur-3xl" />
           <div className="relative max-w-3xl">
-            <p className="eyebrow mb-3 !text-[#4F46E5]">[ Aqion Voice CRM ]</p>
+            <p className="eyebrow mb-3 !text-[#4F46E5]">[ Aqion Engage CRM ]</p>
             <h3 className="font-display text-[2rem] leading-[1.04] tracking-tight text-bone sm:text-4xl">
               See what happens <span className="display-italic text-[#4F46E5]">after every call.</span>
             </h3>

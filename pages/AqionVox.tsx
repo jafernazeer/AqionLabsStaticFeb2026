@@ -74,7 +74,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
       no: '04',
       title: 'Booking, payments & follow-through',
       description:
-        'Aqion Voice doesn\'t just talk — it acts. Confirms appointments, takes deposits, sends Emirates ID requests, books site visits, and writes the calendar event for your team.',
+        'Aqion Engage doesn\'t just talk — it acts. Confirms appointments, takes deposits, sends Emirates ID requests, books site visits, and writes the calendar event for your team.',
       icon: Video,
       bullets: ['Calendar + payment gateway integrations', 'Document & ID capture', 'Automatic post-call summaries'],
       image: '/aqion-voice-dashboard-meetings.png',
@@ -83,7 +83,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
       no: '05',
       title: 'Email updates after every call',
       description:
-        'Add recipients inside Aqion Voice CRM and automatically send call transcripts, AI-generated summaries, lead details and daily performance reports to the right inboxes.',
+        'Add recipients inside Aqion Engage CRM and automatically send call transcripts, AI-generated summaries, lead details and daily performance reports to the right inboxes.',
       icon: Mail,
       bullets: ['Instant transcript + call-summary emails', 'Recipients configured by team', 'Daily analytics and hot-lead alerts'],
       image: '/aqion-voice-dashboard-email-updates.png',
@@ -114,7 +114,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
           {/* Main headline */}
           <h1 className="display-xxl text-[16.5vw] leading-[0.9] tracking-[-0.04em] text-ink md:text-[11.8vw] lg:text-[10.5rem]">
             <span className="mb-2 block md:mb-0 md:mr-[0.08em] md:inline">Meet</span>
-            <span className="display-italic block text-petrol md:inline">Aqion Voice</span>
+            <span className="display-italic block text-petrol md:inline">Aqion Engage</span>
           </h1>
 
           {/* Subtitle */}
@@ -124,7 +124,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
 
           {/* Feature line */}
           <p className="mt-5 max-w-[312px] text-[15px] leading-relaxed text-taupe md:mt-7 md:max-w-3xl md:text-xl">
-            <span className="block">Aqion Voice includes a built-in Voice CRM for</span>
+            <span className="block">Aqion Engage includes a built-in Voice CRM for</span>
             <strong className="mt-3 block font-semibold text-ink">Voice analytics · Call transcriptions · Lead capture · Meeting management · Email summaries</strong>
           </p>
 
@@ -135,7 +135,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
               className="group inline-flex min-h-14 min-w-[240px] items-center justify-center gap-3 rounded-full border border-ink bg-ink px-8 py-4 text-base font-medium text-bone shadow-[0_18px_40px_-24px_rgba(28,25,23,0.8)] transition-colors hover:bg-petrolDeep"
             >
               <Play className="h-4 w-4 fill-current" />
-              Test Aqion Voice Now
+              Test Aqion Engage Now
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </div>
@@ -147,13 +147,13 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
         <div aria-hidden className="absolute inset-0 opacity-[0.07] bg-[radial-gradient(rgba(250,247,242,0.6)_1px,transparent_1px)] bg-[length:22px_22px]" />
         <div className="relative mx-auto grid max-w-7xl grid-cols-12 items-center gap-8 px-6 md:gap-10">
           <div className="col-span-12 md:col-span-6">
-            <p className="eyebrow !text-bone/70 mb-4">[ Aqion Voice Live ]</p>
+            <p className="eyebrow !text-bone/70 mb-4">[ Aqion Engage Live ]</p>
             <h2 className="font-display text-[2.65rem] leading-[0.98] tracking-tight text-bone md:text-6xl">
               Your <span className="display-italic text-bone/90">best agent</span>,<br />
               cloned 10,000 times.
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-bone/75 md:text-[17px]">
-              Aqion Voice learns your products and processes, then answers calls and WhatsApp messages with the same tone, timing and handoff quality as your strongest team member.
+              Aqion Engage learns your products and processes, then answers calls and WhatsApp messages with the same tone, timing and handoff quality as your strongest team member.
             </p>
           </div>
           <div className="col-span-12 grid grid-cols-2 gap-3 md:col-span-6 md:grid-cols-3 md:gap-3">
@@ -188,8 +188,8 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
             </div>
             <div className="col-span-12 md:col-span-6 md:col-start-7 md:pt-4">
               <p className="mobile-clamp-3 text-bone/70 text-lg leading-relaxed">
-                <span className="md:hidden">Aqion Voice replaces the patchwork of IVR, contact-centre, helpdesk and CRM tooling with one AI-native operating layer.</span>
-                <span className="hidden md:inline">Aqion Voice replaces the patchwork of IVR, contact-centre, helpdesk and CRM tooling with one AI-native operating layer — and gives your COO a single number to defend in the boardroom.</span>
+                <span className="md:hidden">Aqion Engage replaces the patchwork of IVR, contact-centre, helpdesk and CRM tooling with one AI-native operating layer.</span>
+                <span className="hidden md:inline">Aqion Engage replaces the patchwork of IVR, contact-centre, helpdesk and CRM tooling with one AI-native operating layer — and gives your COO a single number to defend in the boardroom.</span>
               </p>
             </div>
           </div>
@@ -276,7 +276,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-12 gap-6 mb-12">
             <div className="col-span-12 md:col-span-7">
-              <p className="eyebrow mb-4">[ Why UAE enterprises trust Aqion Voice ]</p>
+              <p className="eyebrow mb-4">[ Why UAE enterprises trust Aqion Engage ]</p>
               <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-[1.02]">
                 Built for <span className="display-italic">regulated</span><br />industries — by default.
               </h2>
@@ -308,7 +308,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
           <div className="col-span-12 md:col-span-7 relative">
             <p className="eyebrow !text-bone/70 mb-4">[ Pilot in 21 days ]</p>
             <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-[1.02] text-bone">
-              Hear Aqion Voice<br /><span className="display-italic text-bone/90">handle your toughest call.</span>
+              Hear Aqion Engage<br /><span className="display-italic text-bone/90">handle your toughest call.</span>
             </h2>
             <p className="mobile-clamp-3 mt-5 text-bone/75 text-base max-w-xl md:mt-6 md:text-lg">
               Send us 30 of your real (anonymised) transcripts. In three weeks we'll come back with a live voice agent answering those exact calls — at a fixed price, on your numbers.

@@ -83,7 +83,7 @@ const AIChatbots: React.FC<AIChatbotsProps> = ({ onNavigate }) => {
         </button>
       </div>
 
-      {/* UPSELL SECTION: Aqion Voice */}
+      {/* UPSELL SECTION: Aqion Engage */}
       <section className="mobile-section-tight py-24 relative border-t border-hairline bg-gradient-to-b from-bone to-petrol/20">
         <div className="max-w-7xl mx-auto px-6">
           
@@ -93,16 +93,16 @@ const AIChatbots: React.FC<AIChatbotsProps> = ({ onNavigate }) => {
                 <Zap className="w-3 h-3 fill-current" />
                 ENTERPRISE UPGRADE
               </div>
-              <h2 className="text-[2.45rem] leading-tight md:text-4xl font-bold text-ink mb-6">Need More Than Just Text? Upgrade to <span className="text-petrol display-italic">Aqion Voice</span></h2>
+              <h2 className="text-[2.45rem] leading-tight md:text-4xl font-bold text-ink mb-6">Need More Than Just Text? Upgrade to <span className="text-petrol display-italic">Aqion Engage</span></h2>
               <p className="mobile-clamp-3 text-base md:text-lg text-graphite leading-relaxed mb-8">
-                Conventional chatbots are reactive—they wait for customers to type. <strong className="text-petrol display-italic">Aqion Voice</strong> is a proactive AI workforce. It speaks, it texts on WhatsApp, and it closes deals autonomously.
+                Conventional chatbots are reactive—they wait for customers to type. <strong className="text-petrol display-italic">Aqion Engage</strong> is a proactive AI workforce. It speaks, it texts on WhatsApp, and it closes deals autonomously.
               </p>
               
               <button 
                 onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX)}
                 className="group flex items-center gap-2 px-8 py-4 rounded-full bg-petrol text-bone font-bold hover:bg-petrolDeep transition-all shadow-xl shadow-petrol/40"
               >
-                Explore Aqion Voice Capabilities <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                Explore Aqion Engage Capabilities <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
 
@@ -113,7 +113,7 @@ const AIChatbots: React.FC<AIChatbotsProps> = ({ onNavigate }) => {
                   Conventional Chatbot
                 </div>
                 <div className="p-6 bg-petrol/20 text-petrol font-bold text-sm uppercase tracking-wider relative">
-                  Aqion Voice
+                  Aqion Engage
                   <div className="absolute top-0 right-0 w-full h-1 bg-petrol"></div>
                 </div>
               </div>

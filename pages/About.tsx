@@ -71,7 +71,7 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
                 onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX)}
                 className="mobile-action inline-flex min-h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-hairline bg-paper px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-ink/30 sm:w-auto md:px-7 md:py-4"
               >
-                Explore Aqion Voice
+                Explore Aqion Engage
               </button>
             </div>
           </div>
@@ -144,7 +144,7 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
 
             <div className="mobile-copy-measure mt-8 space-y-4 text-[15px] leading-relaxed text-graphite md:text-lg">
               <p>
-                That's why I started AqionLabs: to build Agentic AI platforms that let everyday businesses use enterprise-grade AI without enterprise-level costs. Our first solution, Aqion Voice, answers, qualifies, converts and follows up with customers 24/7 — with multilingual regional language support.
+                That's why I started AqionLabs: to build Agentic AI platforms that let everyday businesses use enterprise-grade AI without enterprise-level costs. Our first solution, Aqion Engage, answers, qualifies, converts and follows up with customers 24/7 — with multilingual regional language support.
               </p>
               <p>
                 The real turning point was realising AI can become a real-time mentor if you're curious enough — something you can ask anything, explore any technical challenge with, and get clear, judgment-free guidance from instantly. Not just a productivity tool, but a true problem-solving partner.
