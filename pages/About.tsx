@@ -49,17 +49,27 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
         <div className="relative mx-auto grid w-full min-w-0 max-w-7xl grid-cols-12 items-center gap-8 px-5 sm:px-6 md:gap-10">
           <div className="mobile-page-center col-span-12 min-w-0 lg:col-span-7 lg:text-left">
             <p className="eyebrow mb-4 md:mb-5">[ About AqionLabs ]</p>
-            <h1 className="mobile-heading max-w-full font-display text-[2.35rem] leading-[1] tracking-tight text-ink md:text-7xl md:leading-[0.98]">
-              UAE's Premier<br />
-              <span className="display-italic block break-words text-petrol md:inline">AI Product Development</span>
-              <span className="display-italic block text-petrol md:inline"> House.</span>
+            <h1 className="mobile-heading max-w-full font-display text-[2.35rem] leading-[1] tracking-tight text-ink md:text-6xl md:leading-[1]">
+              Autonomous Agentic Infrastructure<br />
+              <span className="display-italic block break-words text-petrol md:inline">for the UAE Enterprise.</span>
             </h1>
-            <p className="mobile-copy-measure mt-5 max-w-[21rem] break-words font-display text-lg leading-[1.24] tracking-tight text-graphite md:mt-7 md:max-w-2xl md:text-3xl md:leading-[1.18] lg:mx-0">
-              We build production AI that improves revenue, service and operations for UAE companies.
+            <p className="mobile-copy-measure mt-5 max-w-[21rem] break-words text-base leading-relaxed text-graphite md:mt-7 md:max-w-2xl md:text-xl md:leading-[1.5] lg:mx-0">
+              Deploy production-grade, multi-agent systems that autonomously reason, use tools, and execute end-to-end workflows across revenue, customer experience, and field operations. Sovereign by design.
             </p>
-            <p className="mt-5 hidden max-w-2xl text-base leading-relaxed text-taupe md:mt-6 md:block md:text-lg">
-              AqionLabs is not a slideware consultancy and not a generic dev shop. We work like a senior AI product team embedded inside your business, combining strategy, software engineering, workflow automation and enterprise governance into one accountable delivery model.
-            </p>
+            <ul className="mt-7 hidden max-w-2xl space-y-4 md:mt-8 md:block">
+              {[
+                { k: 'Not a Slideware Advisory', v: "We don't deliver speculative roadmaps or theoretical strategy decks; we ship production agents that execute real API actions and mutate system state." },
+                { k: 'Not a Wrapper Dev Shop', v: 'We architect full-stack multi-agent systems — complete with persistent memory, tool sandboxing, state machine determinism, and real-time observability.' },
+                { k: 'Embedded Agentic Engineering', v: 'We operate as your dedicated AI Systems team, taking full accountability for orchestration, system evaluation, edge-case hardening, and sovereign UAE data compliance.' },
+              ].map((item) => (
+                <li key={item.k} className="flex gap-3 text-left">
+                  <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-[#4f46e5] to-[#9333ea]" />
+                  <p className="text-base leading-relaxed text-taupe">
+                    <span className="font-medium text-ink">{item.k}:</span> {item.v}
+                  </p>
+                </li>
+              ))}
+            </ul>
             <div className="mobile-center-row mt-7 flex max-w-full flex-col gap-3 sm:flex-row md:mt-9 lg:justify-start">
               <button
                 onClick={() => onNavigate(PageType.CONTACT)}

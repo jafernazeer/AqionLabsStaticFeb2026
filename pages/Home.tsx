@@ -35,59 +35,59 @@ const aqionVoxMetrics = [
 const services = [
   {
     no: '01',
-    category: 'Customer Agents',
-    title: 'Aqion Vox',
+    category: 'Aqion Vox',
+    title: 'Customer Support Agents',
     body: 'Voice, WhatsApp and web — in Arabic and English. Answers every call, qualifies the lead and books the meeting, around the clock.',
-    page: PageType.PRODUCT_AQIONVOX,
-    href: '/products/aqion-voice',
+    page: PageType.AGENT_CUSTOMER_SUPPORT,
+    href: '/agents/customer-support',
   },
   {
     no: '02',
-    category: 'Knowledge Agents',
-    title: 'Aqion Brain',
+    category: 'Aqion Brain',
+    title: 'Knowledge Agents',
     body: 'Your company chatbot and knowledge base. Every policy, SOP and document — answered in seconds, not three emails.',
-    page: PageType.AGENTIC_AI,
-    href: '/agentic-ai',
+    page: PageType.AGENT_KNOWLEDGE,
+    href: '/agents/knowledge',
   },
   {
     no: '03',
-    category: 'Executive AI',
-    title: 'Aqion Chief',
+    category: 'Aqion Chief',
+    title: 'Executive AI Agents',
     body: 'An assistant for owners and senior management. Briefings, decisions and follow-through, with the full business behind it.',
-    page: PageType.AGENTIC_AI,
-    href: '/agentic-ai',
+    page: PageType.AGENT_EXECUTIVE,
+    href: '/agents/executive',
   },
   {
     no: '04',
-    category: 'Workforce Agents',
-    title: 'Aqion Desk',
+    category: 'Aqion Desk',
+    title: 'Workforce Agents',
     body: 'Internal tickets, job confirmations and site operations — routed, chased and closed without anyone rekeying a thing.',
-    page: PageType.AGENTIC_AI,
-    href: '/agentic-ai',
+    page: PageType.AGENT_WORKFORCE,
+    href: '/agents/workforce',
   },
   {
     no: '05',
-    category: 'Procurement Agents',
-    title: 'Aqion Procure',
+    category: 'Aqion Procure',
+    title: 'Revenue Agents',
     body: 'Sell side: respond to RFQs and tenders. Buy side: supplier sourcing and PO routing. Both directions, same agent.',
-    page: PageType.AGENTIC_AI,
-    href: '/agentic-ai',
+    page: PageType.AGENT_REVENUE,
+    href: '/agents/revenue',
   },
   {
     no: '06',
-    category: 'Finance & Back-Office',
-    title: 'Aqion Ledger',
+    category: 'Aqion Ledger',
+    title: 'Finance & Back-Office Agents',
     body: 'Collections, document handling and e-invoicing readiness — the back office that reconciles itself.',
-    page: PageType.AGENTIC_AI,
-    href: '/agentic-ai',
+    page: PageType.AGENT_FINANCE,
+    href: '/agents/finance',
   },
   {
     no: '07',
-    category: 'Content Agents',
-    title: 'Aqion Social',
+    category: 'Aqion Social',
+    title: 'Growth Agents',
     body: 'Social, video and LinkedIn automation — with a human approval loop before anything ships.',
-    page: PageType.AGENTIC_AI,
-    href: '/agentic-ai',
+    page: PageType.AGENT_GROWTH,
+    href: '/agents/growth',
   },
 ];
 
@@ -126,18 +126,18 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
             <h1 className="relative z-30 flex w-full max-w-[calc(100vw-3rem)] flex-col items-center leading-none lg:max-w-none lg:items-start">
               <span className="block font-serif text-[clamp(2.3rem,10.1vw,2.67rem)] italic tracking-[-0.015em] text-[#71717a] sm:text-[clamp(2.55rem,5.2vw,5.2rem)]">
-                Intelligence That
+                Agents That
               </span>
               <span
                 className="mt-2 block max-w-full bg-clip-text pb-2 font-hero text-[clamp(2rem,8.3vw,2.32rem)] font-bold tracking-[-0.025em] text-transparent drop-shadow-[0_8px_24px_rgba(79,70,229,0.18)] sm:mt-3 sm:whitespace-nowrap sm:text-[clamp(3rem,5.6vw,6rem)] sm:tracking-[-0.04em]"
                 style={{ backgroundImage: 'linear-gradient(90deg, #4f46e5, #9333ea)' }}
               >
-                Delivers Growth
+                Run The Business
               </span>
             </h1>
 
             <p className="home-mobile-copy relative z-30 mx-auto mt-5 max-w-[312px] animate-entry text-[13.5px] leading-[1.55] tracking-[0.005em] text-[#52525b] sm:max-w-[540px] sm:text-[15px] md:text-lg lg:mx-0">
-              Empowering UAE Businesses with AI That Delivers Measurable Revenue Growth, Operational Efficiency, And Sustainable Competitive Advantage.
+              Production multi-agent systems that answer, qualify, dispatch, collect and follow through — across voice, WhatsApp and web. Deployed in the UAE, sovereign by design.
             </p>
 
             <div className="home-mobile-cta pointer-events-auto relative z-30 mt-[10rem] flex w-full animate-entry flex-col items-center gap-3 sm:mt-[10.5rem] sm:w-auto sm:flex-row md:mt-[11.5rem] lg:mt-9">

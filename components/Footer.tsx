@@ -9,19 +9,19 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const agenticServices = [
-    { label: 'Aqion Vox', page: PageType.PRODUCT_AQIONVOX },
-    { label: 'Aqion Brain', page: PageType.AGENTIC_AI },
-    { label: 'Aqion Chief', page: PageType.AGENTIC_AI },
-    { label: 'Aqion Desk', page: PageType.AGENTIC_AI },
-    { label: 'Aqion Procure', page: PageType.AGENTIC_AI },
-    { label: 'Aqion Ledger', page: PageType.AGENTIC_AI },
-    { label: 'Aqion Social', page: PageType.AGENTIC_AI },
+    { label: 'Customer Support Agents', page: PageType.AGENT_CUSTOMER_SUPPORT },
+    { label: 'Knowledge Agents', page: PageType.AGENT_KNOWLEDGE },
+    { label: 'Workforce Agents', page: PageType.AGENT_WORKFORCE },
+    { label: 'Finance & Back-Office Agents', page: PageType.AGENT_FINANCE },
+    { label: 'Revenue Agents', page: PageType.AGENT_REVENUE },
+    { label: 'Executive AI Agents', page: PageType.AGENT_EXECUTIVE },
+    { label: 'Growth Agents', page: PageType.AGENT_GROWTH },
   ];
 
   const platformServices = [
-    { label: 'AI-Ready Web Studio', page: PageType.SERVICES },
-    { label: 'Sovereign Infrastructure Deployment', page: PageType.SERVICES },
-    { label: 'AI Strategy & Discovery', page: PageType.SERVICES },
+    { label: 'AI-Ready Web Studio', page: PageType.SERVICE_WEB_STUDIO },
+    { label: 'Sovereign Infrastructure Deployment', page: PageType.SERVICE_SOVEREIGN_INFRA },
+    { label: 'AI Strategy & Discovery', page: PageType.SERVICE_AI_STRATEGY },
   ];
 
   const handleNav = (e: React.MouseEvent, page: PageType) => {

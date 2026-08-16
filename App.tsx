@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import PageLoader from './components/PageLoader';
 import { PageType } from './types';
-import { SERVICE_DATA, INDUSTRY_DATA } from './data';
+import { SERVICE_DATA, INDUSTRY_DATA, AGENT_DATA, PLATFORM_SERVICE_DATA } from './data';
 
 // Lazy load pages
 const Home = lazy(() => import('./pages/Home'));
@@ -19,8 +19,6 @@ const Careers = lazy(() => import('./pages/Careers'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 const Terms = lazy(() => import('./pages/Terms'));
 const AqionFlo = lazy(() => import('./pages/AqionFlo'));
-const AgenticAI = lazy(() => import('./pages/AgenticAI'));
-const Services = lazy(() => import('./pages/Services'));
 
 // Helper to sync PageType with URL if needed, but we'll mostly use Routes
 const AppContent: React.FC = () => {
@@ -35,8 +33,16 @@ const AppContent: React.FC = () => {
     if (path === '/careers') return PageType.CAREERS;
     if (path === '/privacy') return PageType.PRIVACY;
     if (path === '/terms') return PageType.TERMS;
-    if (path === '/agentic-ai') return PageType.AGENTIC_AI;
-    if (path === '/services') return PageType.SERVICES;
+    if (path === '/agents/customer-support') return PageType.AGENT_CUSTOMER_SUPPORT;
+    if (path === '/agents/knowledge') return PageType.AGENT_KNOWLEDGE;
+    if (path === '/agents/workforce') return PageType.AGENT_WORKFORCE;
+    if (path === '/agents/finance') return PageType.AGENT_FINANCE;
+    if (path === '/agents/revenue') return PageType.AGENT_REVENUE;
+    if (path === '/agents/executive') return PageType.AGENT_EXECUTIVE;
+    if (path === '/agents/growth') return PageType.AGENT_GROWTH;
+    if (path === '/services/web-studio') return PageType.SERVICE_WEB_STUDIO;
+    if (path === '/services/sovereign-infrastructure') return PageType.SERVICE_SOVEREIGN_INFRA;
+    if (path === '/services/ai-strategy') return PageType.SERVICE_AI_STRATEGY;
 
     // Products
     if (path === '/products/aqion-voice' || path === '/products/aqionvox-ai') return PageType.PRODUCT_AQIONVOX;
@@ -80,8 +86,16 @@ const AppContent: React.FC = () => {
       [PageType.PRIVACY]: '/privacy',
       [PageType.TERMS]: '/terms',
       [PageType.INDUSTRIES]: '/industries',
-      [PageType.AGENTIC_AI]: '/agentic-ai',
-      [PageType.SERVICES]: '/services',
+      [PageType.AGENT_CUSTOMER_SUPPORT]: '/agents/customer-support',
+      [PageType.AGENT_KNOWLEDGE]: '/agents/knowledge',
+      [PageType.AGENT_WORKFORCE]: '/agents/workforce',
+      [PageType.AGENT_FINANCE]: '/agents/finance',
+      [PageType.AGENT_REVENUE]: '/agents/revenue',
+      [PageType.AGENT_EXECUTIVE]: '/agents/executive',
+      [PageType.AGENT_GROWTH]: '/agents/growth',
+      [PageType.SERVICE_WEB_STUDIO]: '/services/web-studio',
+      [PageType.SERVICE_SOVEREIGN_INFRA]: '/services/sovereign-infrastructure',
+      [PageType.SERVICE_AI_STRATEGY]: '/services/ai-strategy',
 
       [PageType.PRODUCT_AQIONVOX]: '/products/aqion-voice',
       [PageType.PRODUCT_AQIONFLO]: '/products/aqionflo',
@@ -130,8 +144,23 @@ const AppContent: React.FC = () => {
             <Route path="/careers" element={<Careers />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
-            <Route path="/agentic-ai" element={<AgenticAI onNavigate={handleNavigate} />} />
-            <Route path="/services" element={<Services onNavigate={handleNavigate} />} />
+            {/* Agent families */}
+            <Route path="/agents/customer-support" element={<ServiceDetail data={AGENT_DATA[PageType.AGENT_CUSTOMER_SUPPORT]} onNavigate={handleNavigate} />} />
+            <Route path="/agents/knowledge" element={<ServiceDetail data={AGENT_DATA[PageType.AGENT_KNOWLEDGE]} onNavigate={handleNavigate} />} />
+            <Route path="/agents/workforce" element={<ServiceDetail data={AGENT_DATA[PageType.AGENT_WORKFORCE]} onNavigate={handleNavigate} />} />
+            <Route path="/agents/finance" element={<ServiceDetail data={AGENT_DATA[PageType.AGENT_FINANCE]} onNavigate={handleNavigate} />} />
+            <Route path="/agents/revenue" element={<ServiceDetail data={AGENT_DATA[PageType.AGENT_REVENUE]} onNavigate={handleNavigate} />} />
+            <Route path="/agents/executive" element={<ServiceDetail data={AGENT_DATA[PageType.AGENT_EXECUTIVE]} onNavigate={handleNavigate} />} />
+            <Route path="/agents/growth" element={<ServiceDetail data={AGENT_DATA[PageType.AGENT_GROWTH]} onNavigate={handleNavigate} />} />
+
+            {/* Platform services */}
+            <Route path="/services/web-studio" element={<ServiceDetail data={PLATFORM_SERVICE_DATA[PageType.SERVICE_WEB_STUDIO]} onNavigate={handleNavigate} />} />
+            <Route path="/services/sovereign-infrastructure" element={<ServiceDetail data={PLATFORM_SERVICE_DATA[PageType.SERVICE_SOVEREIGN_INFRA]} onNavigate={handleNavigate} />} />
+            <Route path="/services/ai-strategy" element={<ServiceDetail data={PLATFORM_SERVICE_DATA[PageType.SERVICE_AI_STRATEGY]} onNavigate={handleNavigate} />} />
+
+            {/* Retired index pages redirect to their first child */}
+            <Route path="/agentic-ai" element={<Navigate to="/agents/customer-support" replace />} />
+            <Route path="/services" element={<Navigate to="/services/web-studio" replace />} />
 
             {/* Products */}
             <Route path="/products/aqion-voice" element={<AqionVox onNavigate={handleNavigate} />} />
