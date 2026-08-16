@@ -35,52 +35,59 @@ const aqionVoxMetrics = [
 const services = [
   {
     no: '01',
-    title: 'AI Creative Suite',
-    body: 'Web and mobile, designed and built to ship in weeks. Then agents that keep improving them — long after launch.',
-    page: PageType.SERVICE_DIGITAL_PRESENCE_STUDIO,
-    href: '/services/digital-presence-studio',
+    category: 'Customer Agents',
+    title: 'Aqion Engage',
+    body: 'Voice, WhatsApp and web — in Arabic and English. Answers every call, qualifies the lead and books the meeting, around the clock.',
+    page: PageType.PRODUCT_AQIONVOX,
+    href: '/products/aqion-voice',
   },
   {
     no: '02',
-    title: 'Marketing Automation',
-    body: 'A marketing department that runs itself. Plans, writes, publishes, tests, and reallocates — in English and Arabic.',
-    page: PageType.SERVICE_MARKETING_AGENT,
-    href: '/services/marketing-agent',
+    category: 'Knowledge Agents',
+    title: 'Aqion Brain',
+    body: 'Your company chatbot and knowledge base. Every policy, SOP and document — answered in seconds, not three emails.',
+    page: PageType.AGENTIC_AI,
+    href: '/agentic-ai',
   },
   {
     no: '03',
-    title: 'Sales Copilot',
-    body: 'Every lead caught, qualified, and followed up. Meetings booked while you sleep. Pipeline that builds itself.',
-    page: PageType.SERVICE_SALES_AGENT,
-    href: '/services/sales-agent',
+    category: 'Executive AI',
+    title: 'Aqion Chief',
+    body: 'An assistant for owners and senior management. Briefings, decisions and follow-through, with the full business behind it.',
+    page: PageType.AGENTIC_AI,
+    href: '/agentic-ai',
   },
   {
     no: '04',
-    title: 'Multilingual AI Customer Support',
-    body: 'Voice, chat, and WhatsApp, 24/7, fluent in Gulf Arabic and English. Answers, books, escalates — never sleeps.',
-    page: PageType.SERVICE_CUSTOMER_CONVERSATION_AGENT,
-    href: '/services/customer-conversation-agent',
+    category: 'Workforce Agents',
+    title: 'Aqion Desk',
+    body: 'Internal tickets, job confirmations and site operations — routed, chased and closed without anyone rekeying a thing.',
+    page: PageType.AGENTIC_AI,
+    href: '/agentic-ai',
   },
   {
     no: '05',
-    title: 'Process & Workflow Automation',
-    body: 'The back office, automated. Invoices, contracts, onboarding, approvals — handled by agents that document themselves.',
-    page: PageType.SERVICE_OPERATIONS_AGENT,
-    href: '/services/operations-agent',
+    category: 'Procurement Agents',
+    title: 'Aqion Procure',
+    body: 'Sell side: respond to RFQs and tenders. Buy side: supplier sourcing and PO routing. Both directions, same agent.',
+    page: PageType.AGENTIC_AI,
+    href: '/agentic-ai',
   },
   {
     no: '06',
-    title: 'Enterprise RAG assistant',
-    body: "Your company's memory, instant. Every policy, SOP, and document — answered in seconds, not three emails.",
-    page: PageType.SERVICE_INTERNAL_KNOWLEDGE_AGENT,
-    href: '/services/internal-knowledge-agent',
+    category: 'Finance & Back-Office',
+    title: 'Aqion Ledger',
+    body: 'Collections, document handling and e-invoicing readiness — the back office that reconciles itself.',
+    page: PageType.AGENTIC_AI,
+    href: '/agentic-ai',
   },
   {
     no: '07',
-    title: 'On Prem & Private LLM deployment',
-    body: 'Private LLMs, retrieval, and observability inside your VPC. UAE data residency by default. The ground the others stand on.',
-    page: PageType.SERVICE_SOVEREIGN_AI_FOUNDATION,
-    href: '/services/sovereign-ai-foundation',
+    category: 'Content Agents',
+    title: 'Aqion Social',
+    body: 'Social, video and LinkedIn automation — with a human approval loop before anything ships.',
+    page: PageType.AGENTIC_AI,
+    href: '/agentic-ai',
   },
 ];
 
@@ -189,9 +196,9 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="grid grid-cols-12 gap-6 mb-16">
             <div className="col-span-12 md:col-span-6">
-              <p className="eyebrow !text-[#4F46E5] mb-4">[ 01 — What we ship ]</p>
+              <p className="eyebrow !text-[#4F46E5] mb-4">[ 01 — Agentic AI ]</p>
               <h2 className="font-display text-[clamp(1.65rem,7.4vw,2.25rem)] tracking-tight leading-[1.02] text-bone md:text-6xl">
-                <span className="block whitespace-nowrap">7 Agentic AI services</span>
+                <span className="block whitespace-nowrap">Seven agents.</span>
                 <span className="display-italic text-bone/90">One operating partner.</span>
               </h2>
             </div>
@@ -210,9 +217,12 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 className="group grid w-full cursor-pointer grid-cols-12 items-baseline gap-4 rounded-md border-b border-bone/15 px-2 py-6 text-left transition-colors hover:bg-white/[0.04] md:gap-6 md:py-8"
               >
                 <span className="col-span-12 font-mono text-xs text-bone/50 transition-colors group-hover:text-[#7c7cff] md:col-span-1 md:pt-2">{s.no}</span>
-                <h3 className="col-span-12 min-w-0 whitespace-normal break-words font-display text-[1.45rem] leading-tight tracking-tight text-bone transition-colors duration-200 group-hover:text-[#4F46E5] md:col-span-5 md:text-4xl">
-                  {s.title}
-                </h3>
+                <div className="col-span-12 min-w-0 md:col-span-5">
+                  <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-bone/45">{s.category}</p>
+                  <h3 className="whitespace-normal break-words font-display text-[1.45rem] leading-tight tracking-tight text-bone transition-colors duration-200 group-hover:text-[#4F46E5] md:text-4xl">
+                    {s.title}
+                  </h3>
+                </div>
                 <p className="mobile-clamp-2 col-span-12 min-w-0 break-words text-sm leading-relaxed text-bone/70 transition-colors group-hover:text-[#c7d2fe] md:col-span-5 md:text-base">{s.body}</p>
                 <span className="col-span-12 md:col-span-1 flex md:justify-end pt-2">
                   <ArrowUpRight className="w-5 h-5 text-bone/60 transition-all group-hover:text-[#7c7cff] group-hover:rotate-12" />
