@@ -19,6 +19,8 @@ const Careers = lazy(() => import('./pages/Careers'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 const Terms = lazy(() => import('./pages/Terms'));
 const AqionFlo = lazy(() => import('./pages/AqionFlo'));
+const AgenticAI = lazy(() => import('./pages/AgenticAI'));
+const Services = lazy(() => import('./pages/Services'));
 
 // Helper to sync PageType with URL if needed, but we'll mostly use Routes
 const AppContent: React.FC = () => {
@@ -33,7 +35,9 @@ const AppContent: React.FC = () => {
     if (path === '/careers') return PageType.CAREERS;
     if (path === '/privacy') return PageType.PRIVACY;
     if (path === '/terms') return PageType.TERMS;
-    
+    if (path === '/agentic-ai') return PageType.AGENTIC_AI;
+    if (path === '/services') return PageType.SERVICES;
+
     // Products
     if (path === '/products/aqion-voice' || path === '/products/aqionvox-ai') return PageType.PRODUCT_AQIONVOX;
     if (path === '/products/aqionflo') return PageType.PRODUCT_AQIONFLO;
@@ -124,7 +128,9 @@ const AppContent: React.FC = () => {
             <Route path="/careers" element={<Careers />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
-            
+            <Route path="/agentic-ai" element={<AgenticAI onNavigate={handleNavigate} />} />
+            <Route path="/services" element={<Services onNavigate={handleNavigate} />} />
+
             {/* Products */}
             <Route path="/products/aqion-voice" element={<AqionVox onNavigate={handleNavigate} />} />
             <Route path="/products/aqionvox-ai" element={<Navigate to="/products/aqion-voice" replace />} />

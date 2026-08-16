@@ -3,7 +3,11 @@ import { LucideIcon } from 'lucide-react';
 
 export enum PageType {
   HOME = 'HOME',
-  
+
+  // Primary sections
+  AGENTIC_AI = 'AGENTIC_AI',
+  SERVICES = 'SERVICES',
+
   // Agentic AI Services
   SERVICE_DIGITAL_PRESENCE_STUDIO = 'SERVICE_DIGITAL_PRESENCE_STUDIO',
   SERVICE_MARKETING_AGENT = 'SERVICE_MARKETING_AGENT',
