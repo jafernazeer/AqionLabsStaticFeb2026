@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { DetailPageData, PageType } from '../types';
 import { ArrowRight, Check } from 'lucide-react';
 import { ServiceMotionBackdrop } from '../components/OptimizedHeroMotion';
+import AgentShowcase from '../components/AgentShowcase';
 
 interface ServiceDetailProps {
   data: DetailPageData;
@@ -174,6 +175,8 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ data, onNavigate }) => {
             </div>
         </div>
       </div>
+
+      {data.showcase && <AgentShowcase data={data.showcase} />}
 
       {/* Pricing Section - 3D Cards */}
       {data.pricing && data.pricing.length > 0 && (

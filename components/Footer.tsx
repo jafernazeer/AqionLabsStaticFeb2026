@@ -9,7 +9,7 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const agenticServices = [
-    { label: 'Customer Support Agents', page: PageType.AGENT_CUSTOMER_SUPPORT },
+    { label: 'CX Agents', page: PageType.AGENT_CUSTOMER_SUPPORT },
     { label: 'Knowledge Agents', page: PageType.AGENT_KNOWLEDGE },
     { label: 'Workforce Agents', page: PageType.AGENT_WORKFORCE },
     { label: 'Finance & Back-Office Agents', page: PageType.AGENT_FINANCE },

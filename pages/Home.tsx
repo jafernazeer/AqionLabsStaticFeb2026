@@ -36,7 +36,7 @@ const services = [
   {
     no: '01',
     category: 'Aqion Vox',
-    title: 'Customer Support Agents',
+    title: 'CX Agents',
     body: 'Voice, WhatsApp and web — in Arabic and English. Answers every call, qualifies the lead and books the meeting, around the clock.',
     page: PageType.AGENT_CUSTOMER_SUPPORT,
     href: '/agents/customer-support',
@@ -121,23 +121,23 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           <div className="home-mobile-content relative z-20 order-1 flex w-full max-w-[660px] flex-col items-center pt-[7.25rem] text-center sm:pt-[8rem] md:pt-[8.75rem] lg:items-start lg:pt-0 lg:text-left">
             <div className="mb-5 inline-flex max-w-full animate-entry items-center justify-center gap-2 rounded-full border border-ink/[0.08] bg-white/60 px-3 py-1.5 text-center font-mono text-[8.5px] uppercase leading-[1.25] tracking-[0.075em] text-graphite backdrop-blur-md sm:px-3.5 sm:py-2 sm:text-[11px] sm:tracking-[0.14em] lg:mb-7">
               <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-br from-[#4f46e5] to-[#9333ea] shadow-[0_0_0_5px_rgba(79,70,229,0.12)]" />
-              UAE's Premier AI Dev House
+              Agentic AI · Built In The UAE
             </div>
 
             <h1 className="relative z-30 flex w-full max-w-[calc(100vw-3rem)] flex-col items-center leading-none lg:max-w-none lg:items-start">
               <span className="block font-serif text-[clamp(2.3rem,10.1vw,2.67rem)] italic tracking-[-0.015em] text-[#71717a] sm:text-[clamp(2.55rem,5.2vw,5.2rem)]">
-                Agents That
+                Deploy Agents.
               </span>
               <span
                 className="mt-2 block max-w-full bg-clip-text pb-2 font-hero text-[clamp(2rem,8.3vw,2.32rem)] font-bold tracking-[-0.025em] text-transparent drop-shadow-[0_8px_24px_rgba(79,70,229,0.18)] sm:mt-3 sm:whitespace-nowrap sm:text-[clamp(3rem,5.6vw,6rem)] sm:tracking-[-0.04em]"
                 style={{ backgroundImage: 'linear-gradient(90deg, #4f46e5, #9333ea)' }}
               >
-                Run The Business
+                Not Chatbots.
               </span>
             </h1>
 
             <p className="home-mobile-copy relative z-30 mx-auto mt-5 max-w-[312px] animate-entry text-[13.5px] leading-[1.55] tracking-[0.005em] text-[#52525b] sm:max-w-[540px] sm:text-[15px] md:text-lg lg:mx-0">
-              Production multi-agent systems that answer, qualify, dispatch, collect and follow through — across voice, WhatsApp and web. Deployed in the UAE, sovereign by design.
+              Agents that take real actions in your systems. Booking the job, updating the CRM, chasing the invoice. Not a chatbot that replies and forgets. Arabic and English, 24/7, hosted in the UAE.
             </p>
 
             <div className="home-mobile-cta pointer-events-auto relative z-30 mt-[10rem] flex w-full animate-entry flex-col items-center gap-3 sm:mt-[10.5rem] sm:w-auto sm:flex-row md:mt-[11.5rem] lg:mt-9">

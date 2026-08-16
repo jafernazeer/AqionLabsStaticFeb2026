@@ -15,7 +15,7 @@ const navItems: NavItem[] = [
     page: PageType.AGENTIC_AI,
     href: '/agentic-ai',
     children: [
-      { label: 'Customer Support Agents', page: PageType.AGENT_CUSTOMER_SUPPORT, href: '/agents/customer-support' },
+      { label: 'CX Agents', page: PageType.AGENT_CUSTOMER_SUPPORT, href: '/agents/customer-support' },
       { label: 'Knowledge Agents', page: PageType.AGENT_KNOWLEDGE, href: '/agents/knowledge' },
       { label: 'Workforce Agents', page: PageType.AGENT_WORKFORCE, href: '/agents/workforce' },
       { label: 'Finance & Back-Office Agents', page: PageType.AGENT_FINANCE, href: '/agents/finance' },

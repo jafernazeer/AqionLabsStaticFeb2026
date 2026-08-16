@@ -628,9 +628,23 @@ export const PRODUCT_DATA: Record<string, DetailPageData> = {
 
 export const AGENT_DATA: Record<string, DetailPageData> = {
   [PageType.AGENT_CUSTOMER_SUPPORT]: {
-    title: "Customer Support Agents",
+    title: "CX Agents",
     subtitle: "Voice, WhatsApp and web — one agent across every channel a customer actually uses, in Arabic and English.",
     icon: Headphones,
+    showcase: {
+      kind: 'screenshots',
+      eyebrow: 'Inside the product',
+      title: 'Aqion Vox, running live.',
+      body: 'Every call the agent takes lands here: the lead it captured, the meeting it booked, the transcript it kept and the summary it emailed you. These are captures from the deployed product, not concept art.',
+      cta: { label: 'See the full Aqion Vox product', href: '/products/aqion-voice' },
+      images: [
+        { src: '/aqion-voice-dashboard-overview.png', caption: 'Overview' },
+        { src: '/aqion-voice-dashboard-leads.png', caption: 'Leads' },
+        { src: '/aqion-voice-dashboard-meetings.png', caption: 'Meetings' },
+        { src: '/aqion-voice-dashboard-transcripts.png', caption: 'Transcripts' },
+        { src: '/aqion-voice-dashboard-email-updates.png', caption: 'Email updates' },
+      ],
+    },
     sections: [
       {
         title: "Every channel, one brain",
@@ -658,6 +672,18 @@ export const AGENT_DATA: Record<string, DetailPageData> = {
     title: "Knowledge Agents",
     subtitle: "Company brain and internal chatbots — every policy, SOP and contract answered in seconds, not three emails.",
     icon: Brain,
+    showcase: {
+      kind: 'flow',
+      eyebrow: 'How it runs',
+      title: 'From question to cited answer.',
+      body: 'Staff ask in plain language. The agent retrieves from your own documents, checks permission, and answers with the source attached.',
+      steps: [
+        { label: 'Question asked', detail: 'Plain language, Arabic or English, from chat or the intranet.' },
+        { label: 'Scope checked', detail: 'Access is matched to the person’s role before anything is read.' },
+        { label: 'Grounded retrieval', detail: 'The answer is assembled from your documents, not from open training data.' },
+        { label: 'Answer with source', detail: 'Delivered in seconds, with the file and version it came from.' },
+      ],
+    },
     sections: [
       {
         title: "Your documents, actually usable",
@@ -685,6 +711,18 @@ export const AGENT_DATA: Record<string, DetailPageData> = {
     title: "Workforce Agents",
     subtitle: "Job dispatch, tickets and site operations — routed, chased and closed without anyone rekeying a thing.",
     icon: Wrench,
+    showcase: {
+      kind: 'flow',
+      eyebrow: 'How it runs',
+      title: 'From request to signed-off job.',
+      body: 'A request arrives on any channel and leaves as a closed job, with the confirmations and chasing handled in between.',
+      steps: [
+        { label: 'Request lands', detail: 'Call, WhatsApp, form or email, classified by urgency and service type.' },
+        { label: 'Job created', detail: 'Matched to the technician by skill, load and proximity, then scheduled.' },
+        { label: 'Confirmed and chased', detail: 'Customer and crew reminded, with no-show flagged before the slot is lost.' },
+        { label: 'Closed out', detail: 'Completion notes, photos and sign-off captured, then passed to invoicing.' },
+      ],
+    },
     sections: [
       {
         title: "From request to dispatched job",
@@ -712,6 +750,18 @@ export const AGENT_DATA: Record<string, DetailPageData> = {
     title: "Finance & Back-Office Agents",
     subtitle: "Collections, document handling and UAE e-invoicing readiness — the back office that reconciles itself.",
     icon: Receipt,
+    showcase: {
+      kind: 'flow',
+      eyebrow: 'How it runs',
+      title: 'From document to reconciled ledger.',
+      body: 'Invoices and receipts arrive as PDFs and photos. They leave as matched, filed and chased records.',
+      steps: [
+        { label: 'Document in', detail: 'Invoice, PO or delivery note, from email or a photo on the site.' },
+        { label: 'Fields extracted', detail: 'Line items, totals, dates and party details read and structured.' },
+        { label: 'Matched', detail: 'Checked three ways against the order and the receipt; mismatches flagged.' },
+        { label: 'Chased to paid', detail: 'Tiered bilingual reminders, escalating to a human before the relationship strains.' },
+      ],
+    },
     sections: [
       {
         title: "Collections without the awkwardness",
@@ -739,6 +789,18 @@ export const AGENT_DATA: Record<string, DetailPageData> = {
     title: "Revenue Agents",
     subtitle: "Speed-to-lead, RFQ-to-quote and procurement — both sides of the deal, handled at machine speed.",
     icon: TrendingUp,
+    showcase: {
+      kind: 'flow',
+      eyebrow: 'How it runs',
+      title: 'From enquiry to quote, in minutes.',
+      body: 'Speed decides who wins the deal. The agent answers while intent is still high, then does the paperwork.',
+      steps: [
+        { label: 'Lead lands', detail: 'Any channel, any hour, answered in seconds rather than the next morning.' },
+        { label: 'Qualified', detail: 'Budget, timeline, scope and authority captured in the conversation.' },
+        { label: 'Quote drafted', detail: 'RFQ or tender parsed, priced from catalogue and past deals, routed for approval.' },
+        { label: 'Meeting booked', detail: 'Placed in the calendar with context, and the CRM updated behind it.' },
+      ],
+    },
     sections: [
       {
         title: "Speed-to-lead",
@@ -766,6 +828,18 @@ export const AGENT_DATA: Record<string, DetailPageData> = {
     title: "Executive AI Agents",
     subtitle: "A Jarvis-style agent for owners and senior management — briefings, decisions and follow-through with the whole business behind it.",
     icon: Briefcase,
+    showcase: {
+      kind: 'flow',
+      eyebrow: 'How it runs',
+      title: 'From scattered systems to one brief.',
+      body: 'The agent reads across the business overnight and tells you what actually needs you.',
+      steps: [
+        { label: 'Systems read', detail: 'Sales, operations, finance and support, pulled together without you asking.' },
+        { label: 'Exceptions surfaced', detail: 'What broke pattern, rather than a dashboard of everything that is fine.' },
+        { label: 'Brief delivered', detail: 'The short version before the day starts, with the detail one question away.' },
+        { label: 'Chased to done', detail: 'Decisions captured, assigned, and followed up until they close.' },
+      ],
+    },
     sections: [
       {
         title: "The morning brief",
@@ -793,6 +867,18 @@ export const AGENT_DATA: Record<string, DetailPageData> = {
     title: "Growth Agents",
     subtitle: "Omnichannel copy, video and distribution — with a human approval loop before anything ships.",
     icon: Share2,
+    showcase: {
+      kind: 'flow',
+      eyebrow: 'How it runs',
+      title: 'From brief to published, with you in the loop.',
+      body: 'The agent drafts across channels and schedules the calendar. Nothing goes public without a human approving it.',
+      steps: [
+        { label: 'Brief in', detail: 'Positioning, tone and proof points learned from what you have already published.' },
+        { label: 'Drafts generated', detail: 'Social, email, landing and ad variants, in Arabic and English.' },
+        { label: 'You approve', detail: 'Every asset waits for a human click. The agent proposes; you decide.' },
+        { label: 'Published', detail: 'Scheduled per channel, with performance fed back into the next round.' },
+      ],
+    },
     sections: [
       {
         title: "Copy that sounds like you",

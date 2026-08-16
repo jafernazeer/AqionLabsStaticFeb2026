@@ -103,11 +103,26 @@ export interface UseCase {
   items: string[];
 }
 
+export interface AgentShowcase {
+  /** 'screenshots' renders real product captures; 'flow' renders an animated workflow schematic. */
+  kind: 'screenshots' | 'flow';
+  eyebrow: string;
+  title: string;
+  body: string;
+  /** kind: 'screenshots' */
+  images?: { src: string; caption: string }[];
+  /** kind: 'flow' */
+  steps?: { label: string; detail: string }[];
+  /** Optional link out to a live product page. */
+  cta?: { label: string; href: string };
+}
+
 export interface DetailPageData {
   title: string;
   subtitle: string;
   icon?: LucideIcon;
   heroImage?: string;
+  showcase?: AgentShowcase;
   sections: ContentSection[];
   
   // Service/Solution specific
