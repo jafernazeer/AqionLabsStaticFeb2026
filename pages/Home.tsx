@@ -121,19 +121,19 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             </div>
 
             <h1 className="relative z-30 flex w-full max-w-[calc(100vw-3rem)] flex-col items-center leading-none lg:max-w-none lg:items-start">
-              <span className="block font-serif text-[clamp(2.3rem,10.1vw,2.67rem)] italic tracking-[-0.015em] text-[#71717a] sm:text-[clamp(2.55rem,5.2vw,5.2rem)]">
-                Your Business,
+              <span className="block font-serif text-[clamp(1.7rem,7.4vw,2.05rem)] italic tracking-[-0.015em] text-[#71717a] sm:text-[clamp(1.9rem,3.5vw,3.3rem)]">
+                Autonomous Workflow Execution
               </span>
               <span
-                className="mt-2 block max-w-full bg-clip-text pb-2 font-hero text-[clamp(2rem,8.3vw,2.32rem)] font-bold tracking-[-0.025em] text-transparent drop-shadow-[0_8px_24px_rgba(79,70,229,0.18)] sm:mt-3 sm:whitespace-nowrap sm:text-[clamp(3rem,5.6vw,6rem)] sm:tracking-[-0.04em]"
+                className="mt-2 block max-w-full bg-clip-text pb-2 font-hero text-[clamp(1.85rem,7.6vw,2.15rem)] font-bold tracking-[-0.025em] text-transparent drop-shadow-[0_8px_24px_rgba(79,70,229,0.18)] sm:mt-3 sm:whitespace-nowrap sm:text-[clamp(2.2rem,4.4vw,4.4rem)] sm:tracking-[-0.035em]"
                 style={{ backgroundImage: 'linear-gradient(90deg, #4f46e5, #9333ea)' }}
               >
-                Run by AI Agents.
+                Sovereign by Default.
               </span>
             </h1>
 
             <p className="home-mobile-copy relative z-30 mx-auto mt-5 max-w-[312px] animate-entry text-[13.5px] leading-[1.55] tracking-[0.005em] text-[#52525b] sm:max-w-[540px] sm:text-[15px] md:text-lg lg:mx-0">
-              Aqion AI agents pick up the phone 24/7, book appointments, update your CRM, follow up on invoices, and keep every request moving. In Arabic and English. Around the clock. Hosted in the UAE. With you in control.
+              AI agents built for execution, not idle replies. From dispatching jobs and updating CRMs to chasing invoices — deploy 24/7 bilingual digital workers hosted securely in the UAE.
             </p>
 
                       </div>
