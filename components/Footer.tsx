@@ -9,13 +9,13 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const agenticServices = [
-    { label: 'CX Agents', page: PageType.AGENT_CUSTOMER_SUPPORT },
-    { label: 'Knowledge Agents', page: PageType.AGENT_KNOWLEDGE },
-    { label: 'Workforce Agents', page: PageType.AGENT_WORKFORCE },
-    { label: 'Finance & Back-Office Agents', page: PageType.AGENT_FINANCE },
-    { label: 'Revenue Agents', page: PageType.AGENT_REVENUE },
-    { label: 'Executive AI Agents', page: PageType.AGENT_EXECUTIVE },
-    { label: 'Growth Agents', page: PageType.AGENT_GROWTH },
+    { label: 'Aqion Vox', page: PageType.AGENT_CUSTOMER_SUPPORT },
+    { label: 'Aqion Brain', page: PageType.AGENT_KNOWLEDGE },
+    { label: 'Aqion Desk', page: PageType.AGENT_WORKFORCE },
+    { label: 'Aqion Ledger', page: PageType.AGENT_FINANCE },
+    { label: 'Aqion Procure', page: PageType.AGENT_REVENUE },
+    { label: 'Aqion Chief', page: PageType.AGENT_EXECUTIVE },
+    { label: 'Aqion Studio', page: PageType.AGENT_GROWTH },
   ];
 
   const platformServices = [

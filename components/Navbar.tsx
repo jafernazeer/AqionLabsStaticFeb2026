@@ -15,13 +15,13 @@ const navItems: NavItem[] = [
     page: PageType.AGENTIC_AI,
     href: '/agentic-ai',
     children: [
-      { label: 'CX Agents', page: PageType.AGENT_CUSTOMER_SUPPORT, href: '/agents/customer-support' },
-      { label: 'Knowledge Agents', page: PageType.AGENT_KNOWLEDGE, href: '/agents/knowledge' },
-      { label: 'Workforce Agents', page: PageType.AGENT_WORKFORCE, href: '/agents/workforce' },
-      { label: 'Finance & Back-Office Agents', page: PageType.AGENT_FINANCE, href: '/agents/finance' },
-      { label: 'Revenue Agents', page: PageType.AGENT_REVENUE, href: '/agents/revenue' },
-      { label: 'Executive AI Agents', page: PageType.AGENT_EXECUTIVE, href: '/agents/executive' },
-      { label: 'Growth Agents', page: PageType.AGENT_GROWTH, href: '/agents/growth' },
+      { label: 'Aqion Vox', page: PageType.AGENT_CUSTOMER_SUPPORT, href: '/agents/customer-support' },
+      { label: 'Aqion Brain', page: PageType.AGENT_KNOWLEDGE, href: '/agents/knowledge' },
+      { label: 'Aqion Desk', page: PageType.AGENT_WORKFORCE, href: '/agents/workforce' },
+      { label: 'Aqion Ledger', page: PageType.AGENT_FINANCE, href: '/agents/finance' },
+      { label: 'Aqion Procure', page: PageType.AGENT_REVENUE, href: '/agents/revenue' },
+      { label: 'Aqion Chief', page: PageType.AGENT_EXECUTIVE, href: '/agents/executive' },
+      { label: 'Aqion Studio', page: PageType.AGENT_GROWTH, href: '/agents/growth' },
     ],
   },
   {
@@ -34,7 +34,14 @@ const navItems: NavItem[] = [
   },
   {
     label: 'Industries',
-    page: PageType.INDUSTRIES,
+    children: [
+      { label: 'Healthcare', page: PageType.INDUSTRY_HEALTHCARE, href: '/industries/healthcare' },
+      { label: 'Real Estate', page: PageType.INDUSTRY_REAL_ESTATE, href: '/industries/real-estate' },
+      { label: 'Financial Services', page: PageType.INDUSTRY_FINANCE, href: '/industries/financial-services' },
+      { label: 'Legal & Professional', page: PageType.INDUSTRY_PROFESSIONAL, href: '/industries/professional-services' },
+      { label: 'Hospitality', page: PageType.INDUSTRY_HOSPITALITY, href: '/industries/hospitality' },
+      { label: 'Education', page: PageType.INDUSTRY_EDUCATION, href: '/industries/education' },
+    ],
   },
   { label: 'About', page: PageType.ABOUT },
   { label: 'Contact', page: PageType.CONTACT },
@@ -43,16 +50,10 @@ const navItems: NavItem[] = [
 const industryItems = [
   { label: 'Healthcare', page: PageType.INDUSTRY_HEALTHCARE },
   { label: 'Real Estate', page: PageType.INDUSTRY_REAL_ESTATE },
-  { label: 'Education', page: PageType.INDUSTRY_EDUCATION },
-  { label: 'Retail', page: PageType.INDUSTRY_RETAIL },
-  { label: 'Government', page: PageType.INDUSTRY_GOVERNMENT },
   { label: 'Financial Services', page: PageType.INDUSTRY_FINANCE },
+  { label: 'Legal & Professional', page: PageType.INDUSTRY_PROFESSIONAL },
   { label: 'Hospitality', page: PageType.INDUSTRY_HOSPITALITY },
-  { label: 'Logistics', page: PageType.INDUSTRY_LOGISTICS },
-  { label: 'Legal Services', page: PageType.INDUSTRY_PROFESSIONAL },
-  { label: 'Media & Events', page: PageType.INDUSTRY_MEDIA_EVENTS },
-  { label: 'Marketing & Design', page: PageType.INDUSTRY_MARKETING_DESIGN },
-  { label: 'Architecture & Planning', page: PageType.INDUSTRY_ARCHITECTURE },
+  { label: 'Education', page: PageType.INDUSTRY_EDUCATION },
 ];
 
 const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
@@ -183,7 +184,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                       className="relative h-full flex items-center"
                     >
                       <button
-                        className={`px-3 py-2 rounded-md text-[13px] font-medium flex items-center gap-1 focus:outline-none transition-colors cursor-pointer ${
+                        className={`px-3.5 py-2 rounded-full text-[13.5px] font-medium tracking-[-0.01em] flex items-center gap-1 focus:outline-none transition-colors cursor-pointer ${
                           desktopHover === item.label ? 'text-ink' : 'text-graphite hover:text-ink'
                         }`}
                       >
@@ -192,12 +193,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                       </button>
 
                       {desktopHover === item.label && (
-                        <div className="absolute left-0 top-full pt-3 w-80 z-50">
-                          <div className="rounded-xl bg-paper border border-hairline shadow-[0_24px_60px_-20px_rgba(28,25,23,0.18)] overflow-hidden">
-                            <div className="p-2">
+                        <div className="absolute left-0 top-full z-50 w-[19rem] pt-3">
+                          <div className="overflow-hidden rounded-[22px] border border-white/70 bg-white/95 shadow-[0_30px_80px_-32px_rgba(28,25,23,0.45)] backdrop-blur-2xl">
+                            <div className="p-2.5">
                               {item.children.map(child => {
-                                const childClassName = `w-full text-left px-3 py-2.5 text-sm rounded-md transition-colors flex items-center justify-between group cursor-pointer ${
-                                  currentPage === child.page ? 'bg-parchment text-ink' : 'text-graphite hover:bg-parchment hover:text-ink'
+                                const childClassName = `group flex w-full cursor-pointer items-center justify-between rounded-2xl px-3.5 py-3 text-left text-[14px] font-medium tracking-[-0.01em] transition-colors ${
+                                  currentPage === child.page ? 'bg-gradient-to-r from-[#4f46e5]/12 to-[#9333ea]/10 text-ink' : 'text-graphite hover:bg-parchment/80 hover:text-ink'
                                 }`;
                                 const childContent = (
                                   <>
@@ -238,7 +239,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                   ) : (
                     <button
                       onClick={() => item.page && handleNavigate(item.page)}
-                      className={`px-3 py-2 rounded-md text-[13px] font-medium transition-colors cursor-pointer ${
+                      className={`px-3.5 py-2 rounded-full text-[13.5px] font-medium tracking-[-0.01em] transition-colors cursor-pointer ${
                         isCurrentPage(item.page) ? 'text-ink' : 'text-graphite hover:text-ink'
                       }`}
                     >
@@ -248,13 +249,6 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                 </div>
               ))}
 
-              <button
-                onClick={() => handleNavigate(PageType.CONTACT)}
-                className="ml-4 inline-flex items-center gap-1.5 bg-ink text-bone text-[13px] font-medium px-4 py-2 rounded-full hover:bg-petrolDeep transition-colors cursor-pointer"
-              >
-                Book a call
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </button>
             </div>
           </div>
 

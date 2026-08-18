@@ -35,57 +35,57 @@ const aqionVoxMetrics = [
 const services = [
   {
     no: '01',
-    category: 'Aqion Vox',
-    title: 'CX Agents',
+    category: 'Customer support agents',
+    title: 'AQION VOX',
     body: 'Voice, WhatsApp and web — in Arabic and English. Answers every call, qualifies the lead and books the meeting, around the clock.',
     page: PageType.AGENT_CUSTOMER_SUPPORT,
     href: '/agents/customer-support',
   },
   {
     no: '02',
-    category: 'Aqion Brain',
-    title: 'Knowledge Agents',
+    category: 'Knowledge agents',
+    title: 'AQION BRAIN',
     body: 'Your company chatbot and knowledge base. Every policy, SOP and document — answered in seconds, not three emails.',
     page: PageType.AGENT_KNOWLEDGE,
     href: '/agents/knowledge',
   },
   {
     no: '03',
-    category: 'Aqion Chief',
-    title: 'Executive AI Agents',
+    category: 'Executive AI agents',
+    title: 'AQION CHIEF',
     body: 'An assistant for owners and senior management. Briefings, decisions and follow-through, with the full business behind it.',
     page: PageType.AGENT_EXECUTIVE,
     href: '/agents/executive',
   },
   {
     no: '04',
-    category: 'Aqion Desk',
-    title: 'Workforce Agents',
+    category: 'Workforce agents',
+    title: 'AQION DESK',
     body: 'Internal tickets, job confirmations and site operations — routed, chased and closed without anyone rekeying a thing.',
     page: PageType.AGENT_WORKFORCE,
     href: '/agents/workforce',
   },
   {
     no: '05',
-    category: 'Aqion Procure',
-    title: 'Revenue Agents',
+    category: 'Procurement agents',
+    title: 'AQION PROCURE',
     body: 'Sell side: respond to RFQs and tenders. Buy side: supplier sourcing and PO routing. Both directions, same agent.',
     page: PageType.AGENT_REVENUE,
     href: '/agents/revenue',
   },
   {
     no: '06',
-    category: 'Aqion Ledger',
-    title: 'Finance & Back-Office Agents',
+    category: 'Finance & back-office agents',
+    title: 'AQION LEDGER',
     body: 'Collections, document handling and e-invoicing readiness — the back office that reconciles itself.',
     page: PageType.AGENT_FINANCE,
     href: '/agents/finance',
   },
   {
     no: '07',
-    category: 'Aqion Social',
-    title: 'Growth Agents',
-    body: 'Social, video and LinkedIn automation — with a human approval loop before anything ships.',
+    category: 'Content generation agents',
+    title: 'AQION STUDIO',
+    body: 'Social media, video and LinkedIn automation — with a human approval loop before anything ships.',
     page: PageType.AGENT_GROWTH,
     href: '/agents/growth',
   },
@@ -95,10 +95,6 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const scrollToServices = () => {
-    document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <div className="mesh-bg text-ink overflow-x-hidden font-sans relative">
@@ -126,37 +122,21 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
             <h1 className="relative z-30 flex w-full max-w-[calc(100vw-3rem)] flex-col items-center leading-none lg:max-w-none lg:items-start">
               <span className="block font-serif text-[clamp(2.3rem,10.1vw,2.67rem)] italic tracking-[-0.015em] text-[#71717a] sm:text-[clamp(2.55rem,5.2vw,5.2rem)]">
-                Deploy Agents.
+                Your Business,
               </span>
               <span
                 className="mt-2 block max-w-full bg-clip-text pb-2 font-hero text-[clamp(2rem,8.3vw,2.32rem)] font-bold tracking-[-0.025em] text-transparent drop-shadow-[0_8px_24px_rgba(79,70,229,0.18)] sm:mt-3 sm:whitespace-nowrap sm:text-[clamp(3rem,5.6vw,6rem)] sm:tracking-[-0.04em]"
                 style={{ backgroundImage: 'linear-gradient(90deg, #4f46e5, #9333ea)' }}
               >
-                Not Chatbots.
+                Run by AI Agents.
               </span>
             </h1>
 
             <p className="home-mobile-copy relative z-30 mx-auto mt-5 max-w-[312px] animate-entry text-[13.5px] leading-[1.55] tracking-[0.005em] text-[#52525b] sm:max-w-[540px] sm:text-[15px] md:text-lg lg:mx-0">
-              Agents that take real actions in your systems. Booking the job, updating the CRM, chasing the invoice. Not a chatbot that replies and forgets. Arabic and English, 24/7, hosted in the UAE.
+              Aqion AI agents pick up the phone 24/7, book appointments, update your CRM, follow up on invoices, and keep every request moving. In Arabic and English. Around the clock. Hosted in the UAE. With you in control.
             </p>
 
-            <div className="home-mobile-cta pointer-events-auto relative z-30 mt-[10rem] flex w-full animate-entry flex-col items-center gap-3 sm:mt-[10.5rem] sm:w-auto sm:flex-row md:mt-[11.5rem] lg:mt-9">
-              <button
-                onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX)}
-                className="group inline-flex min-h-11 w-auto cursor-pointer items-center justify-center gap-2.5 rounded-full border border-ink/10 bg-white/90 px-5 py-3 text-sm font-medium text-ink backdrop-blur-md transition-all duration-200 hover:-translate-y-px hover:bg-white/95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4f46e5] lg:min-h-12 lg:bg-ink/[0.04] lg:px-6 lg:py-3.5 lg:hover:bg-ink/[0.09]"
-              >
-                Explore Aqion Vox
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </button>
-              <button
-                onClick={scrollToServices}
-                className="group inline-flex min-h-11 w-auto cursor-pointer items-center justify-center gap-2.5 rounded-full border border-ink/10 bg-white/82 px-5 py-3 text-sm font-medium text-[#52525b] backdrop-blur-md transition-all duration-200 hover:-translate-y-px hover:bg-white/90 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4f46e5] lg:min-h-12 lg:bg-transparent lg:px-6 lg:py-3.5 lg:backdrop-blur-0 lg:hover:bg-ink/[0.04]"
-              >
-                Explore Agentic AI
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </button>
-            </div>
-          </div>
+                      </div>
 
           <div className="hidden lg:order-2 lg:block" aria-hidden="true" />
         </div>

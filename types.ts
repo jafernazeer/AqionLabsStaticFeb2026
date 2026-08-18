@@ -122,6 +122,8 @@ export interface DetailPageData {
   subtitle: string;
   icon?: LucideIcon;
   heroImage?: string;
+  kicker?: string;
+  accent?: string;
   showcase?: AgentShowcase;
   sections: ContentSection[];
   

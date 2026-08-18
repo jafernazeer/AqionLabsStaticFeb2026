@@ -12,6 +12,7 @@ interface ServiceDetailProps {
 
 const ServiceDetail: React.FC<ServiceDetailProps> = ({ data, onNavigate }) => {
   const Icon = data.icon;
+  const accent = data.accent || '#4F46E5';
 
   const compactCopy = (content: string | string[]) => {
     const text = Array.isArray(content) ? content[0] : content;
@@ -63,15 +64,27 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ data, onNavigate }) => {
       <div className="mobile-section-tight mesh-bg relative z-10 flex min-h-0 items-center overflow-hidden border-b border-hairline py-20 md:min-h-[calc(100vh-5rem)]">
         <ServiceMotionBackdrop className="opacity-70 mobile-visual-reduce" />
         <div className="absolute inset-0 bg-gradient-to-b from-bone/82 via-bone/70 to-bone/92" aria-hidden />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-petrol/10 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
+        <div
+          aria-hidden
+          className="absolute top-0 right-0 h-[500px] w-[500px] translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px]"
+          style={{ backgroundColor: accent, opacity: 0.16 }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{ background: `linear-gradient(135deg, ${accent}1F 0%, transparent 45%, ${accent}14 100%)` }}
+        />
 
         <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
             <div className="flex min-w-0 flex-col items-center gap-12 lg:flex-row lg:gap-20">
                 <div className="mobile-page-center min-w-0 flex-1 text-center lg:text-left">
-                    <span className="bg-petrol/30 text-petrol px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide mb-6 inline-block border border-petrol/30">
-                        AI Service
+                    <span
+                        className="mb-6 inline-block rounded-full px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em]"
+                        style={{ backgroundColor: `${accent}1A`, color: accent, border: `1px solid ${accent}40` }}
+                    >
+                        {data.kicker || 'AI Service'}
                     </span>
-                    <h1 className="mobile-heading mb-5 font-display text-[2.65rem] leading-[1.02] tracking-tight text-ink md:mb-6 md:text-6xl">
+                    <h1 className="mobile-heading mb-5 font-display text-[2.65rem] leading-[1.02] tracking-tight md:mb-6 md:text-6xl" style={{ color: accent }}>
                         {renderTitle(data.title)}
                     </h1>
                     <p className="mobile-copy-measure text-base leading-relaxed text-taupe md:hidden">{compactCopy(data.subtitle)}</p>

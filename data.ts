@@ -219,7 +219,7 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
   [PageType.INDUSTRY_HEALTHCARE]: {
     title: "Healthcare",
     headline: "AI-Powered Patient Engagement & Operational Efficiency",
-    context: "Hospitals and clinics face high call volumes, appointment delays, and administrative overload.",
+    context: "Best fit for voice agents, booking, follow-ups, multilingual support, knowledge retrieval, approvals, and personal assistant workflows. Hospitals and clinics face high call volumes, appointment delays, and administrative overload.",
     challenges: [
       "Missed patient calls",
       "Long booking wait times",
@@ -254,7 +254,7 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
   [PageType.INDUSTRY_REAL_ESTATE]: {
     title: "Real Estate",
     headline: "Convert Property Enquiries into Qualified Buyers — Automatically",
-    context: "Real Estate Firms & Builders face high volume of unqualified leads and missed enquiries.",
+    context: "Strong for lead qualification, WhatsApp follow-up, viewing scheduling, CRM-style routing, document handling, and agent support. Real Estate Firms & Builders face high volume of unqualified leads and missed enquiries.",
     challenges: [
       "High volume of unqualified leads",
       "Missed WhatsApp enquiries",
@@ -284,7 +284,7 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
   [PageType.INDUSTRY_EDUCATION]: {
     title: "Education",
     headline: "Automate Student Enquiries & Admissions with AI",
-    context: "The Education Sector faces high admission enquiry volume and manual tracking issues.",
+    context: "Useful for admissions, student enquiries, programme qualification, scheduling, follow-up, support assistants, and knowledge-base access. The Education Sector faces high admission enquiry volume and manual tracking issues.",
     challenges: [
       "High admission enquiry volume",
       "Manual application tracking",
@@ -365,7 +365,7 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
   [PageType.INDUSTRY_FINANCE]: {
     title: "Financial Services",
     headline: "Secure & Compliant AI for Financial Services",
-    context: "Financial institutions require high-security AI solutions for customer onboarding and advisory.",
+    context: "High-value fit for secure onboarding, compliant knowledge access, advisory workflows, approvals, document support, and service automation. Financial institutions require high-security AI solutions for customer onboarding and advisory.",
     challenges: [
       "Complex compliance requirements",
       "High volume of customer queries",
@@ -391,7 +391,7 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
   [PageType.INDUSTRY_HOSPITALITY]: {
     title: "Hospitality",
     headline: "Elevate Guest Experience with AI Automation",
-    context: "The Hospitality industry needs 24/7 guest support and booking automation.",
+    context: "Strong for booking support, guest requests, concierge workflows, multilingual calls, updates, and direct reservation automation. The Hospitality industry needs 24/7 guest support and booking automation.",
     challenges: [
       "24/7 guest enquiry handling",
       "Booking management",
@@ -438,7 +438,7 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
   [PageType.INDUSTRY_PROFESSIONAL]: {
     title: "Legal Services",
     headline: "AI for Legal and Consulting",
-    context: "Legal services firms need efficient client communication and knowledge management.",
+    context: "Good for client intake, consultation booking, matter screening, document retrieval, approval workflows, and assistant-led follow-up. Legal services firms need efficient client communication and knowledge management.",
     challenges: [
       "Client communication management",
       "Knowledge retrieval",
@@ -628,7 +628,9 @@ export const PRODUCT_DATA: Record<string, DetailPageData> = {
 
 export const AGENT_DATA: Record<string, DetailPageData> = {
   [PageType.AGENT_CUSTOMER_SUPPORT]: {
-    title: "CX Agents",
+    title: "Aqion Vox",
+    kicker: "Customer support agents",
+    accent: "#4F46E5",
     subtitle: "Voice, WhatsApp and web — one agent across every channel a customer actually uses, in Arabic and English.",
     icon: Headphones,
     showcase: {
@@ -669,7 +671,9 @@ export const AGENT_DATA: Record<string, DetailPageData> = {
   },
 
   [PageType.AGENT_KNOWLEDGE]: {
-    title: "Knowledge Agents",
+    title: "Aqion Brain",
+    kicker: "Knowledge agents",
+    accent: "#0EA5E9",
     subtitle: "Company brain and internal chatbots — every policy, SOP and contract answered in seconds, not three emails.",
     icon: Brain,
     showcase: {
@@ -708,7 +712,9 @@ export const AGENT_DATA: Record<string, DetailPageData> = {
   },
 
   [PageType.AGENT_WORKFORCE]: {
-    title: "Workforce Agents",
+    title: "Aqion Desk",
+    kicker: "Workforce agents",
+    accent: "#F59E0B",
     subtitle: "Job dispatch, tickets and site operations — routed, chased and closed without anyone rekeying a thing.",
     icon: Wrench,
     showcase: {
@@ -747,7 +753,9 @@ export const AGENT_DATA: Record<string, DetailPageData> = {
   },
 
   [PageType.AGENT_FINANCE]: {
-    title: "Finance & Back-Office Agents",
+    title: "Aqion Ledger",
+    kicker: "Finance & back-office agents",
+    accent: "#10B981",
     subtitle: "Collections, document handling and UAE e-invoicing readiness — the back office that reconciles itself.",
     icon: Receipt,
     showcase: {
@@ -786,7 +794,9 @@ export const AGENT_DATA: Record<string, DetailPageData> = {
   },
 
   [PageType.AGENT_REVENUE]: {
-    title: "Revenue Agents",
+    title: "Aqion Procure",
+    kicker: "Procurement agents",
+    accent: "#EC4899",
     subtitle: "Speed-to-lead, RFQ-to-quote and procurement — both sides of the deal, handled at machine speed.",
     icon: TrendingUp,
     showcase: {
@@ -825,7 +835,9 @@ export const AGENT_DATA: Record<string, DetailPageData> = {
   },
 
   [PageType.AGENT_EXECUTIVE]: {
-    title: "Executive AI Agents",
+    title: "Aqion Chief",
+    kicker: "Executive AI agents",
+    accent: "#8B5CF6",
     subtitle: "A Jarvis-style agent for owners and senior management — briefings, decisions and follow-through with the whole business behind it.",
     icon: Briefcase,
     showcase: {
@@ -864,7 +876,9 @@ export const AGENT_DATA: Record<string, DetailPageData> = {
   },
 
   [PageType.AGENT_GROWTH]: {
-    title: "Growth Agents",
+    title: "Aqion Studio",
+    kicker: "Content generation agents",
+    accent: "#F43F5E",
     subtitle: "Omnichannel copy, video and distribution — with a human approval loop before anything ships.",
     icon: Share2,
     showcase: {
@@ -882,7 +896,7 @@ export const AGENT_DATA: Record<string, DetailPageData> = {
     sections: [
       {
         title: "Copy that sounds like you",
-        content: "Aqion Social learns your positioning, tone and proof points, then drafts across channels — social, email, landing pages, ad variants — in Arabic and English. The output is a first draft good enough to edit, not a blank page."
+        content: "Aqion Studio learns your positioning, tone and proof points, then drafts across channels — social, email, landing pages, ad variants — in Arabic and English. The output is a first draft good enough to edit, not a blank page."
       },
       {
         title: "Video and distribution",
@@ -895,7 +909,7 @@ export const AGENT_DATA: Record<string, DetailPageData> = {
     ],
     featuresTitle: "What it handles",
     features: [
-      { title: "Multichannel drafting", description: "Social, email, landing and ad copy, bilingual." },
+      { title: "Multichannel drafting", description: "Social media, email, landing and ad copy, bilingual." },
       { title: "Video repurposing", description: "Long-form cut to short-form with hooks and captions." },
       { title: "Scheduling", description: "Channel-appropriate timing and cadence." },
       { title: "Human approval loop", description: "Nothing ships without explicit sign-off." }

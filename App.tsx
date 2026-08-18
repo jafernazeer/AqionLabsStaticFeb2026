@@ -145,7 +145,7 @@ const AppContent: React.FC = () => {
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
             {/* Agent families */}
-            <Route path="/agents/customer-support" element={<ServiceDetail data={AGENT_DATA[PageType.AGENT_CUSTOMER_SUPPORT]} onNavigate={handleNavigate} />} />
+            <Route path="/agents/customer-support" element={<AqionVox onNavigate={handleNavigate} />} />
             <Route path="/agents/knowledge" element={<ServiceDetail data={AGENT_DATA[PageType.AGENT_KNOWLEDGE]} onNavigate={handleNavigate} />} />
             <Route path="/agents/workforce" element={<ServiceDetail data={AGENT_DATA[PageType.AGENT_WORKFORCE]} onNavigate={handleNavigate} />} />
             <Route path="/agents/finance" element={<ServiceDetail data={AGENT_DATA[PageType.AGENT_FINANCE]} onNavigate={handleNavigate} />} />
