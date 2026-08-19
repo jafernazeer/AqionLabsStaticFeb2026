@@ -208,7 +208,7 @@ const Contact: React.FC = () => {
                <div className="col-span-12 lg:col-span-7">
                    <div className="relative min-w-0">
                        <div className="absolute -inset-8 rounded-full bg-[#4f46e5]/16 blur-3xl"></div>
-                       <form className="relative grid gap-4 rounded-[24px] border border-white/15 bg-white/[0.06] p-4 text-left shadow-[0_30px_100px_-40px_rgba(0,0,0,0.7)] backdrop-blur-2xl md:gap-5 md:rounded-[34px] md:p-9">
+                       <form className="relative grid gap-4 rounded-[24px] border border-white/15 bg-black/35 p-4 text-left shadow-[0_30px_100px_-40px_rgba(0,0,0,0.7)] backdrop-blur-2xl md:gap-5 md:rounded-[34px] md:p-9">
                             <div className="grid gap-5 md:grid-cols-2">
                                 <div>
                                     <label htmlFor="contact-name" className="mb-2 block text-sm font-medium text-bone/80">Name*</label>
@@ -256,7 +256,7 @@ const Contact: React.FC = () => {
                                 <textarea id="contact-brief" name="brief" className="mobile-form-control min-h-28 w-full resize-none rounded-2xl border border-white/15 bg-white/[0.05] px-5 py-4 text-bone placeholder-bone/35 backdrop-blur-sm transition-colors focus:border-[#7C6BFF]/60 focus:bg-white/[0.08] focus:outline-none md:min-h-32" placeholder="Tell us about the product, process or AI workflow." />
                             </div>
 
-                            <button type="submit" className="mobile-action inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink px-7 py-4 text-sm font-medium text-bone shadow-lg shadow-ink/10 transition-colors hover:bg-petrolDeep">
+                            <button type="submit" className="mobile-action group inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink px-7 py-4 text-sm font-medium text-bone shadow-lg shadow-ink/10 transition-all duration-300 hover:bg-[linear-gradient(90deg,#4f46e5,#9333ea)] hover:shadow-[0_16px_40px_-14px_rgba(79,70,229,0.55)]">
                                 Book a consultation <ArrowRight className="h-4 w-4" />
                             </button>
                        </form>

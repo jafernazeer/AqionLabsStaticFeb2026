@@ -243,12 +243,9 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
                   const items = data.solutions[key];
                   if (!items?.length) return null;
                   return (
-                    <div key={key} className="mobile-card-center mobile-card-compact rounded-3xl border border-hairline bg-white/70 p-6 shadow-[0_20px_60px_-42px_rgba(28,25,23,0.3)] backdrop-blur md:text-left">
+                    <div key={key} className="mobile-card-center mobile-card-compact rounded-[28px] border border-hairline bg-paper/82 p-6 shadow-[0_24px_70px_-45px_rgba(28,25,23,0.28)] backdrop-blur md:text-left">
                       <div className="mobile-center-row mb-4 flex items-center gap-3 md:justify-start md:text-left">
-                        <span
-                          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/40 text-white shadow-[0_0_28px_rgba(79,70,229,0.24)]"
-                          style={{ background: 'linear-gradient(135deg, #4f46e5, #9333ea)' }}
-                        >
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-hairline bg-parchment text-petrol">
                           <Icon className="h-5 w-5" strokeWidth={1.5} />
                         </span>
                         <h3 className="font-display text-xl text-ink">{title}</h3>
@@ -274,10 +271,10 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
                 <span className="display-italic text-petrol">after deployment.</span>
               </h2>
 
-              <div className="mobile-priority-two mt-8 flex flex-wrap justify-center gap-px overflow-hidden rounded-2xl border border-hairline bg-hairline">
+              <div className="mt-8 divide-y divide-hairline/70 border-t border-hairline/70">
                 {data.outcome.map((outcome) => (
-                  <div key={outcome} className="mobile-card-center w-full bg-white/80 p-6 sm:w-[calc(50%-0.5px)] md:text-left">
-                    <CheckCircle className="mobile-center-icon mb-4 h-7 w-7 text-petrol md:mb-5 md:ml-0" strokeWidth={1.5} />
+                  <div key={outcome} className="mobile-center-row flex items-center gap-4 py-5 md:justify-start md:text-left">
+                    <CheckCircle className="h-6 w-6 shrink-0 text-petrol" strokeWidth={1.5} />
                     <p className="font-display text-xl leading-tight text-ink">{outcome}</p>
                   </div>
                 ))}

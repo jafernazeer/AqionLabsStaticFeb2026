@@ -121,7 +121,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             </div>
 
             <h1 className="relative z-30 flex w-full max-w-[calc(100vw-3rem)] flex-col items-center leading-[1.05] lg:max-w-none lg:items-start">
-              <span className="block max-w-full font-hero text-[clamp(1.85rem,7.6vw,2.15rem)] font-bold tracking-[-0.025em] text-ink sm:text-[clamp(2.2rem,4.4vw,4.4rem)] sm:tracking-[-0.035em]">
+              <span className="block font-serif text-[clamp(1.7rem,7.4vw,2.05rem)] italic tracking-[-0.015em] text-[#71717a] sm:text-[clamp(1.9rem,3.5vw,3.3rem)]">
                 AI agents built for Real
               </span>
               <span
