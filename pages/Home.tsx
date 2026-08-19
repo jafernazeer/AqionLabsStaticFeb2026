@@ -122,18 +122,18 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
             <h1 className="relative z-30 flex w-full max-w-[calc(100vw-3rem)] flex-col items-center leading-none lg:max-w-none lg:items-start">
               <span className="block font-serif text-[clamp(1.7rem,7.4vw,2.05rem)] italic tracking-[-0.015em] text-[#71717a] sm:text-[clamp(1.9rem,3.5vw,3.3rem)]">
-                Autonomous Workflow Execution
+                AI agents built for
               </span>
               <span
                 className="mt-2 block max-w-full bg-clip-text pb-2 font-hero text-[clamp(1.85rem,7.6vw,2.15rem)] font-bold tracking-[-0.025em] text-transparent drop-shadow-[0_8px_24px_rgba(79,70,229,0.18)] sm:mt-3 sm:whitespace-nowrap sm:text-[clamp(2.2rem,4.4vw,4.4rem)] sm:tracking-[-0.035em]"
                 style={{ backgroundImage: 'linear-gradient(90deg, #4f46e5, #9333ea)' }}
               >
-                Sovereign by Default.
+                Real Enterprise Work.
               </span>
             </h1>
 
             <p className="home-mobile-copy relative z-30 mx-auto mt-5 max-w-[312px] animate-entry text-[13.5px] leading-[1.55] tracking-[0.005em] text-[#52525b] sm:max-w-[540px] sm:text-[15px] md:text-lg lg:mx-0">
-              AI agents built for execution, not idle replies. From dispatching jobs and updating CRMs to chasing invoices — deploy 24/7 bilingual digital workers hosted securely in the UAE.
+              From picking up calls, dispatching jobs and updating CRMs to chasing invoices — deploy 24/7 bilingual AI agents hosted securely in the UAE.
             </p>
 
                       </div>

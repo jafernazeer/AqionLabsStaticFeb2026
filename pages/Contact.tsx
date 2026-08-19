@@ -174,26 +174,30 @@ const Contact: React.FC = () => {
            </div>
        </section>
 
-       <section className="mobile-section-tight relative z-10 px-5 py-20 sm:px-6 md:py-28">
-           <div className="mx-auto flex max-w-7xl flex-col gap-8 lg:grid lg:grid-cols-12">
+       <section className="mobile-section-tight relative z-10 overflow-hidden bg-[#0d0d10] px-5 py-20 text-bone sm:px-6 md:py-28">
+           <div
+             aria-hidden
+             className="pointer-events-none absolute bottom-0 left-1/2 h-[420px] w-[640px] -translate-x-1/2 translate-y-1/3 rounded-full bg-[#9333ea]/10 blur-[110px]"
+           />
+           <div className="relative mx-auto flex max-w-7xl flex-col gap-8 lg:grid lg:grid-cols-12">
                <div className="mobile-page-center col-span-12 lg:col-span-5 lg:text-left">
-                   <p className="eyebrow mb-4">[ Start a build conversation ]</p>
-                   <h2 className="mobile-subheading font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
+                   <p className="eyebrow mb-4 !text-[#a5b4fc]">[ Start a build conversation ]</p>
+                   <h2 className="mobile-subheading font-display text-4xl leading-[1.02] tracking-tight text-bone md:text-6xl">
                        From idea to<br />
-                       <span className="display-italic text-petrol">operating product.</span>
+                       <span className="display-italic bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(90deg, #4f46e5, #9333ea)' }}>operating product.</span>
                    </h2>
-                   <p className="mobile-copy-measure mt-5 text-[15px] leading-relaxed text-graphite md:hidden">
+                   <p className="mobile-copy-measure mt-5 text-[15px] leading-relaxed text-bone/72 md:hidden">
                        Share the workflow or product. Our build team will scope the next step.
                    </p>
-                   <p className="mt-6 hidden text-lg leading-relaxed text-graphite md:block">
+                   <p className="mt-6 hidden text-lg leading-relaxed text-bone/72 md:block">
                        Use the form for new products, Aqion Vox demos, AI automation briefs, enterprise pilots or partnership conversations. The first response is handled by the team that scopes the work.
                    </p>
-                   <div className="mobile-decorative-hide mt-8 rounded-[26px] border border-white/10 bg-[#0d0d10] p-6 text-bone md:block">
+                   <div className="mobile-decorative-hide mt-8 rounded-[26px] border border-white/10 bg-white/[0.04] p-6 text-bone md:block">
                        <p className="font-display text-2xl leading-tight">What helps us move quickly</p>
                        <div className="mt-5 grid gap-3 text-sm leading-relaxed text-bone/70">
                            {['The workflow or product you want to improve', 'The systems your team already uses', 'The decision timeline and deployment region'].map((item) => (
                                <div key={item} className="flex gap-3">
-                                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-petrol" />
+                                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#a5b4fc]" />
                                    <span>{item}</span>
                                </div>
                            ))}
@@ -203,8 +207,8 @@ const Contact: React.FC = () => {
 
                <div className="col-span-12 lg:col-span-7">
                    <div className="relative min-w-0">
-                       <div className="absolute -inset-8 rounded-full bg-petrol/12 blur-3xl"></div>
-                       <form className="relative grid gap-4 rounded-[24px] border border-hairline bg-paper/88 p-4 text-left shadow-[0_30px_100px_-55px_rgba(28,25,23,0.45)] backdrop-blur md:gap-5 md:rounded-[34px] md:p-9">
+                       <div className="absolute -inset-8 rounded-full bg-[#4f46e5]/16 blur-3xl"></div>
+                       <form className="relative grid gap-4 rounded-[24px] border border-white/10 bg-paper/95 p-4 text-left shadow-[0_30px_100px_-40px_rgba(0,0,0,0.6)] backdrop-blur md:gap-5 md:rounded-[34px] md:p-9">
                             <div className="grid gap-5 md:grid-cols-2">
                                 <div>
                                     <label htmlFor="contact-name" className="mb-2 block text-sm font-medium text-graphite">Name*</label>

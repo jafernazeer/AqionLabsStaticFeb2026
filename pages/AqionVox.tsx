@@ -17,7 +17,7 @@ const firstSentence = (text: string) => text.match(/.*?[.!?](?:\s|$)/)?.[0].trim
 const demoCapabilities = [
   { k: '680ms', l: 'Avg Response', s: 'target under 800ms' },
   { k: '2', l: 'Languages', s: 'English + Arabic' },
-  { k: '12', l: 'Industries', s: 'ready-made playbooks' },
+  { k: '6', l: 'Industries', s: 'ready-made playbooks' },
   { k: '24/7', l: 'Availability', s: 'voice + WhatsApp' },
   { k: '93%', l: 'self-serve resolution', s: 'across deployments' },
   { k: 'AED 1.40', l: 'cost per call', s: 'vs. AED 28 human avg' },
@@ -106,7 +106,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
 
         <div className="relative z-10 flex w-full max-w-6xl flex-col items-center px-6 py-20 pt-32 text-center md:py-32 md:pt-40">
           {/* Badge */}
-          <div className="mb-5 inline-flex -translate-y-5 items-center gap-2 rounded-full border border-petrol/30 bg-petrol/8 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-petrol md:mb-10 md:translate-y-0 md:text-[12px] md:tracking-[0.18em]">
+          <div className="mb-5 -translate-y-8 inline-flex items-center gap-2 rounded-full border border-petrol/30 bg-petrol/8 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-petrol md:mb-10 md:-translate-y-3 md:text-[12px] md:tracking-[0.18em]">
             <span className="w-1.5 h-1.5 rounded-full bg-petrol" />
             Now in Public Beta
           </div>

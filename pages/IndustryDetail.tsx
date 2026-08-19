@@ -18,7 +18,6 @@ import {
   Shield,
   ShoppingBag,
   Stethoscope,
-  TrendingUp,
   Truck,
   Workflow,
   type LucideIcon,
@@ -189,105 +188,96 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
               <div className="absolute inset-4 rounded-[28px] border border-white/70 bg-gradient-to-br from-white via-[#f7f4ef] to-[#ece7dc]" />
               <div className="absolute -inset-8 rounded-full bg-petrol/12 blur-3xl" />
               <HeroIcon className="relative h-32 w-32 text-petrol drop-shadow-[0_18px_24px_rgba(79,70,229,0.18)] md:h-40 md:w-40" strokeWidth={1.1} />
-              <div className="absolute bottom-7 left-7 right-7 rounded-2xl border border-hairline bg-paper/82 p-4 text-left backdrop-blur">
-                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-petrol">Use case signal</p>
-                <p className="mt-1 text-sm leading-snug text-graphite">{copy.signal}</p>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="mobile-section-tight relative z-10 mx-auto max-w-7xl px-5 py-20 sm:px-6 md:py-28">
-        <div className="grid grid-cols-12 gap-6">
-          <div className="mobile-page-center col-span-12 md:col-span-5 md:text-left">
-            <p className="eyebrow mb-4">[ Market pressure ]</p>
-            <h2 className="mobile-subheading font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
-              Where growth<br />
-              <span className="display-italic">leaks today.</span>
-            </h2>
-          </div>
-          <div className="mobile-page-center col-span-12 md:col-span-6 md:col-start-7 md:pt-4 md:text-left">
-            <p className="mobile-copy-measure text-[15px] leading-relaxed text-graphite md:hidden">
-              We remove the response, conversion and operating gaps that hold growth back.
-            </p>
-            <p className="hidden text-lg leading-relaxed text-graphite md:block">
-              AI works when it improves the operating rhythm: faster response, clearer conversion, lower cost-to-serve and cleaner data visibility. These are the pressure points we remove first.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-9 rounded-[28px] border border-hairline bg-paper/86 p-4 shadow-[0_28px_80px_-50px_rgba(28,25,23,0.32)] backdrop-blur md:mt-12 md:p-7">
-          <div className="mobile-priority-grid grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-          {data.challenges.map((challenge, idx) => (
-            <div key={challenge} className="mobile-card-center mobile-card-compact rounded-2xl border border-hairline bg-bone/72 p-5 md:text-left">
-              <span className="font-mono text-xs text-petrol">{String(idx + 1).padStart(2, '0')} /</span>
-              <p className="mt-3 font-display text-xl leading-tight text-ink md:mt-4">{challenge}</p>
-            </div>
-          ))}
-          </div>
-        </div>
-      </section>
-
+      {/* Item 10: market-pressure section on black */}
       <section className="mobile-section-tight relative z-10 bg-[#0d0d10] py-20 text-bone md:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
-          <div className="mb-12 grid grid-cols-12 gap-6">
-            <div className="mobile-page-center col-span-12 md:col-span-6 md:text-left">
-              <p className="eyebrow mb-4">[ Deployment stack ]</p>
-              <h2 className="mobile-subheading font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
-                The AI layer<br />
-                <span className="display-italic text-white">behind the outcome.</span>
+          <div className="grid grid-cols-12 gap-6">
+            <div className="mobile-page-center col-span-12 md:col-span-5 md:text-left">
+              <p className="eyebrow mb-4 !text-[#a5b4fc]">[ Market pressure ]</p>
+              <h2 className="mobile-subheading font-display text-4xl leading-[1.02] tracking-tight text-bone md:text-6xl">
+                Where growth<br />
+                <span className="display-italic text-bone/90">leaks today.</span>
               </h2>
+            </div>
+            <div className="mobile-page-center col-span-12 md:col-span-6 md:col-start-7 md:pt-4 md:text-left">
+              <p className="mobile-copy-measure text-[15px] leading-relaxed text-bone/72 md:hidden">
+                We remove the response, conversion and operating gaps that hold growth back.
+              </p>
+              <p className="hidden text-lg leading-relaxed text-bone/72 md:block">
+                AI works when it improves the operating rhythm: faster response, clearer conversion, lower cost-to-serve and cleaner data visibility. These are the pressure points we remove first.
+              </p>
             </div>
           </div>
 
-          <div className="mobile-priority-two grid gap-4 md:grid-cols-2">
-            {solutionGroups.map(({ key, title, icon: Icon }) => {
-              const items = data.solutions[key];
-              if (!items?.length) return null;
-              return (
-                <div key={key} className="mobile-card-center mobile-card-compact rounded-3xl border border-white/10 bg-white/[0.05] p-7 md:text-left">
-                  <div className="mobile-center-row mb-5 flex items-center gap-3 md:mb-6 md:justify-start md:text-left">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-[#4f46e5] to-[#9333ea] text-white shadow-[0_0_28px_rgba(79,70,229,0.24)]">
-                      <Icon className="h-5 w-5" strokeWidth={1.5} />
-                    </span>
-                    <h3 className="font-display text-2xl text-bone">{title}</h3>
-                  </div>
-                  <div className="mobile-priority-two grid gap-3">
-                    {items.map((item) => (
-                      <div key={item} className="mobile-center-row flex items-center gap-2 text-sm leading-relaxed text-bone/76 md:items-start md:justify-start md:text-left">
-                        <Check className="h-4 w-4 shrink-0 text-petrol md:mt-0.5" />
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
+          <div className="mt-9 rounded-[28px] border border-white/10 bg-white/[0.04] p-4 md:mt-12 md:p-7">
+            <div className="mobile-priority-grid grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+            {data.challenges.map((challenge, idx) => (
+              <div key={challenge} className="mobile-card-center mobile-card-compact rounded-2xl border border-white/10 bg-white/[0.05] p-5 md:text-left">
+                <span className="font-mono text-xs text-[#a5b4fc]">{String(idx + 1).padStart(2, '0')} /</span>
+                <p className="mt-3 font-display text-xl leading-tight text-bone md:mt-4">{challenge}</p>
+              </div>
+            ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="mobile-section-tight relative z-10 mx-auto max-w-7xl px-5 py-20 sm:px-6 md:py-28">
-        <div className="grid grid-cols-12 gap-6">
-          <div className="mobile-page-center col-span-12 md:col-span-5 md:text-left">
-            <p className="eyebrow mb-4">[ Operating outcomes ]</p>
-            <h2 className="mobile-subheading font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
-              What changes<br />
-              <span className="display-italic">after deployment.</span>
-            </h2>
-          </div>
-          <div className="col-span-12 md:col-span-7">
-            <div className="mobile-priority-two grid gap-px overflow-hidden rounded-2xl border border-hairline bg-hairline sm:grid-cols-2">
-              {data.outcome.map((outcome) => (
-                <div key={outcome} className="mobile-card-center bg-paper p-6 md:text-left">
-                  <CheckCircle className="mobile-center-icon mb-4 h-7 w-7 text-petrol md:mb-5 md:ml-0" strokeWidth={1.5} />
-                  <p className="font-display text-xl leading-tight text-ink">{outcome}</p>
-                </div>
-              ))}
-              <div className="mobile-card-center bg-petrol p-6 text-bone md:text-left">
-                <TrendingUp className="mobile-center-icon mb-4 h-7 w-7 md:mb-5 md:ml-0" strokeWidth={1.5} />
-                <p className="font-display text-xl leading-tight">{data.ctaText}</p>
+      {/* Item 11: AI layer + outcomes combined, side by side, beige background */}
+      <section className="mobile-section-tight relative z-10 bg-parchment/60 py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+          <div className="grid grid-cols-12 gap-10 lg:gap-8">
+            <div className="col-span-12 lg:col-span-6">
+              <p className="eyebrow mb-4">[ Deployment stack ]</p>
+              <h2 className="mobile-subheading font-display text-4xl leading-[1.02] tracking-tight text-ink md:text-5xl">
+                The AI layer<br />
+                <span className="display-italic text-petrol">behind the outcome.</span>
+              </h2>
+
+              <div className="mobile-priority-two mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+                {solutionGroups.map(({ key, title, icon: Icon }) => {
+                  const items = data.solutions[key];
+                  if (!items?.length) return null;
+                  return (
+                    <div key={key} className="mobile-card-center mobile-card-compact rounded-3xl border border-hairline bg-white/70 p-6 shadow-[0_20px_60px_-42px_rgba(28,25,23,0.3)] backdrop-blur md:text-left">
+                      <div className="mobile-center-row mb-4 flex items-center gap-3 md:justify-start md:text-left">
+                        <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/40 bg-gradient-to-br from-[#4f46e5] to-[#9333ea] text-white shadow-[0_0_28px_rgba(79,70,229,0.24)]">
+                          <Icon className="h-5 w-5" strokeWidth={1.5} />
+                        </span>
+                        <h3 className="font-display text-xl text-ink">{title}</h3>
+                      </div>
+                      <div className="mobile-priority-two grid gap-2.5">
+                        {items.map((item) => (
+                          <div key={item} className="mobile-center-row flex items-center gap-2 text-sm leading-relaxed text-graphite md:items-start md:justify-start md:text-left">
+                            <Check className="h-4 w-4 shrink-0 text-petrol md:mt-0.5" />
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="col-span-12 lg:col-span-6">
+              <p className="eyebrow mb-4">[ Operating outcomes ]</p>
+              <h2 className="mobile-subheading font-display text-4xl leading-[1.02] tracking-tight text-ink md:text-5xl">
+                What changes<br />
+                <span className="display-italic text-petrol">after deployment.</span>
+              </h2>
+
+              <div className="mobile-priority-two mt-8 grid gap-px overflow-hidden rounded-2xl border border-hairline bg-hairline sm:grid-cols-2">
+                {data.outcome.map((outcome) => (
+                  <div key={outcome} className="mobile-card-center bg-white/80 p-6 md:text-left">
+                    <CheckCircle className="mobile-center-icon mb-4 h-7 w-7 text-petrol md:mb-5 md:ml-0" strokeWidth={1.5} />
+                    <p className="font-display text-xl leading-tight text-ink">{outcome}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

@@ -12,7 +12,8 @@ interface ServiceDetailProps {
 
 const ServiceDetail: React.FC<ServiceDetailProps> = ({ data, onNavigate }) => {
   const Icon = data.icon;
-  const accent = data.accent || '#4F46E5';
+
+  const BRAND_GRADIENT = 'linear-gradient(90deg, #4f46e5, #9333ea)';
 
   const compactCopy = (content: string | string[]) => {
     const text = Array.isArray(content) ? content[0] : content;
@@ -56,6 +57,36 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ data, onNavigate }) => {
     );
   };
 
+  const renderPageTitle = () => {
+    // Agent pages (Aqion Vox, Aqion Brain, ...): "AQION" stays ink, the product
+    // word after it carries the brand gradient — matches "changes." below.
+    if (data.kicker) {
+      const words = data.title.trim().split(' ');
+      const lead = words.slice(0, -1).join(' ');
+      const tail = words[words.length - 1];
+      return (
+        <>
+          {lead ? `${lead} ` : ''}
+          <span className="bg-clip-text text-transparent" style={{ backgroundImage: BRAND_GRADIENT }}>
+            {tail}
+          </span>
+        </>
+      );
+    }
+    // Platform service pages: an explicit lead phrase rendered in ink, the
+    // remainder in brand indigo.
+    if (data.titleBlackPart && data.title.startsWith(data.titleBlackPart)) {
+      const rest = data.title.slice(data.titleBlackPart.length);
+      return (
+        <>
+          <span className="text-ink">{data.titleBlackPart}</span>
+          <span style={{ color: '#4F46E5' }}>{rest}</span>
+        </>
+      );
+    }
+    return renderTitle(data.title);
+  };
+
   return (
     <div className="pt-20 mesh-bg min-h-screen text-ink relative overflow-x-hidden">
       <div className="fixed inset-0 pointer-events-none z-0 bg-hairline-grid opacity-80"></div>
@@ -66,26 +97,17 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ data, onNavigate }) => {
         <div className="absolute inset-0 bg-gradient-to-b from-bone/82 via-bone/70 to-bone/92" aria-hidden />
         <div
           aria-hidden
-          className="absolute top-0 right-0 h-[500px] w-[500px] translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px]"
-          style={{ backgroundColor: accent, opacity: 0.16 }}
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{ background: `linear-gradient(135deg, ${accent}1F 0%, transparent 45%, ${accent}14 100%)` }}
+          className="pointer-events-none absolute bottom-0 left-1/2 h-[420px] w-[640px] -translate-x-1/2 translate-y-1/3 rounded-full bg-[#9333ea]/10 blur-[110px]"
         />
 
         <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
             <div className="flex min-w-0 flex-col items-center gap-12 lg:flex-row lg:gap-20">
                 <div className="mobile-page-center min-w-0 flex-1 text-center lg:text-left">
-                    <span
-                        className="mb-6 inline-block rounded-full px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em]"
-                        style={{ backgroundColor: `${accent}1A`, color: accent, border: `1px solid ${accent}40` }}
-                    >
+                    <span className="mb-6 inline-block rounded-full border border-petrol/30 bg-petrol/8 px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-petrol">
                         {data.kicker || 'AI Service'}
                     </span>
-                    <h1 className="mobile-heading mb-5 font-display text-[2.65rem] leading-[1.02] tracking-tight md:mb-6 md:text-6xl" style={{ color: accent }}>
-                        {renderTitle(data.title)}
+                    <h1 className="mobile-heading mb-5 font-display text-[2.65rem] leading-[1.02] tracking-tight text-ink md:mb-6 md:text-6xl">
+                        {renderPageTitle()}
                     </h1>
                     <p className="mobile-copy-measure text-base leading-relaxed text-taupe md:hidden">{compactCopy(data.subtitle)}</p>
                     <p className="mx-auto hidden max-w-2xl text-xl leading-relaxed text-taupe md:block lg:mx-0">{data.subtitle}</p>
@@ -118,7 +140,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ data, onNavigate }) => {
                 <p className="eyebrow mb-4">[ Delivery model ]</p>
                 <h2 className="mobile-subheading font-display text-4xl leading-[1.02] tracking-tight text-ink md:text-6xl">
                     What this service<br />
-                    <span className="display-italic text-petrol">changes.</span>
+                    <span className="display-italic bg-clip-text text-transparent" style={{ backgroundImage: BRAND_GRADIENT }}>changes.</span>
                 </h2>
                 </div>
                 <div className="mobile-priority-two mt-8 grid gap-4 md:mt-10 md:gap-5">

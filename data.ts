@@ -920,6 +920,7 @@ export const AGENT_DATA: Record<string, DetailPageData> = {
 export const PLATFORM_SERVICE_DATA: Record<string, DetailPageData> = {
   [PageType.SERVICE_WEB_STUDIO]: {
     title: "AI-Ready Web Studio",
+    titleBlackPart: "AI-Ready",
     subtitle: "Web and mobile designed and built to ship in weeks — and structured so agents can read, update and act on them from day one.",
     icon: LayoutTemplate,
     sections: [
@@ -947,6 +948,7 @@ export const PLATFORM_SERVICE_DATA: Record<string, DetailPageData> = {
 
   [PageType.SERVICE_SOVEREIGN_INFRA]: {
     title: "Sovereign Infrastructure Deployment",
+    titleBlackPart: "Sovereign Infrastructure",
     subtitle: "The ground your agents stand on. Private models, retrieval and observability inside your own boundary — with UAE data residency by default.",
     icon: Server,
     sections: [
@@ -974,6 +976,7 @@ export const PLATFORM_SERVICE_DATA: Record<string, DetailPageData> = {
 
   [PageType.SERVICE_AI_STRATEGY]: {
     title: "AI Strategy & Discovery",
+    titleBlackPart: "AI Strategy",
     subtitle: "A one-week diagnostic that ends in a deployment plan, not a slide deck — including what is not worth doing yet.",
     icon: Compass,
     sections: [

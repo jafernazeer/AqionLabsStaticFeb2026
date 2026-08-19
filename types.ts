@@ -124,6 +124,7 @@ export interface DetailPageData {
   heroImage?: string;
   kicker?: string;
   accent?: string;
+  titleBlackPart?: string;
   showcase?: AgentShowcase;
   sections: ContentSection[];
   
