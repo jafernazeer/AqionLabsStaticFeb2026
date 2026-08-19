@@ -139,7 +139,7 @@ const Industries: React.FC<IndustriesProps> = ({ onNavigate }) => {
           </div>
           <div className="mobile-page-center col-span-12 lg:col-span-5 lg:pb-2 lg:text-left">
             <p className="mobile-copy-measure max-w-xl text-base leading-relaxed text-graphite md:text-lg">
-              Explore the sectors where AqionLabs builds AI products, automation layers and customer operations that respond faster, convert cleaner and scale with control.
+              Explore the sectors where AQION deploys AI employees and industry workflows that respond faster, convert cleaner and scale with control — connected to the systems your teams already use.
             </p>
           </div>
         </div>

@@ -15,12 +15,12 @@ interface AqionVoxProps {
 const firstSentence = (text: string) => text.match(/.*?[.!?](?:\s|$)/)?.[0].trim() ?? text;
 
 const demoCapabilities = [
-  { k: '680ms', l: 'Avg Response', s: 'target under 800ms' },
-  { k: '2', l: 'Languages', s: 'English + Arabic' },
-  { k: '6', l: 'Industries', s: 'ready-made playbooks' },
-  { k: '24/7', l: 'Availability', s: 'voice + WhatsApp' },
-  { k: '93%', l: 'self-serve resolution', s: 'across deployments' },
-  { k: 'AED 1.40', l: 'cost per call', s: 'vs. AED 28 human avg' },
+  { k: '24/7', l: 'Call handling', s: 'inbound workflows' },
+  { k: 'EN + AR', l: 'Languages', s: 'regional support' },
+  { k: 'CRM', l: 'Lead capture', s: 'structured records' },
+  { k: 'Human', l: 'Escalation', s: 'clean handoff' },
+  { k: 'Email', l: 'Summaries', s: 'after calls' },
+  { k: 'UAE', l: 'Options', s: 'supported workloads' },
 ];
 
 const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
@@ -45,47 +45,47 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
   const capabilities = [
     {
       no: '01',
-      title: 'Boardroom-grade analytics',
+      title: 'Conversation analytics',
       description:
-        'A single pane for volume, sentiment, latency, conversion and cost-per-resolution across every agent and channel. Drill from a CFO dashboard to a single utterance in two clicks.',
+        'Managers can see call volume, captured leads, booked meetings and follow-through from one operating view.',
       icon: BarChart3,
-      bullets: ['Cost-per-resolution by intent', 'Sentiment & escalation triggers', 'Exportable executive views'],
+      bullets: ['Call volume and outcomes', 'Lead and booking visibility', 'Exportable management views'],
       image: '/aqion-voice-dashboard-overview.png',
     },
     {
       no: '02',
-      title: 'Lead qualification that earns its seat',
+      title: 'Lead qualification',
       description:
-        'Every conversation is automatically scored, categorised and routed. Sales sees pre-qualified, context-rich leads with full transcripts attached — no copy-paste from a contact form.',
+        'Every conversation can be categorized, routed and saved with context so sales teams start with a cleaner record.',
       icon: Users,
-      bullets: ['Intent + budget scoring', 'CRM hand-off (Salesforce, HubSpot, Zoho)', 'Recovery flows for cold leads'],
+      bullets: ['Intent and contact capture', 'CRM-ready handoff', 'Follow-up context retained'],
       image: '/aqion-voice-dashboard-leads.png',
     },
     {
       no: '03',
-      title: 'Real-time conversation oversight',
+      title: 'Call transcripts and oversight',
       description:
-        'Live transcripts, on-screen whisper coaching, and one-click human takeover. Audit any call in seconds — useful for compliance, useful for QA, indispensable for the regulator.',
+        'Transcripts, summaries and handoff context help teams audit calls, improve service quality and escalate when needed.',
       icon: MessageSquare,
-      bullets: ['Live transcript + sentiment', 'Whisper coaching', 'Single-click human takeover'],
+      bullets: ['Transcript history', 'AI call summaries', 'Human escalation context'],
       image: '/aqion-voice-dashboard-transcripts.png',
     },
     {
       no: '04',
-      title: 'Booking, payments & follow-through',
+      title: 'Bookings and follow-through',
       description:
-        'Aqion Vox doesn\'t just talk — it acts. Confirms appointments, takes deposits, sends Emirates ID requests, books site visits, and writes the calendar event for your team.',
+        'AQION VOX can move from conversation to action by booking meetings, confirming next steps and notifying your team.',
       icon: Video,
-      bullets: ['Calendar + payment gateway integrations', 'Document & ID capture', 'Automatic post-call summaries'],
+      bullets: ['Calendar coordination', 'Next-step reminders', 'Automatic post-call summaries'],
       image: '/aqion-voice-dashboard-meetings.png',
     },
     {
       no: '05',
-      title: 'Email updates after every call',
+      title: 'Email updates',
       description:
-        'Add recipients inside Aqion Vox CRM and automatically send call transcripts, AI-generated summaries, lead details and daily performance reports to the right inboxes.',
+        'Add recipients in the dashboard so call summaries, transcripts and lead details reach the right team after a conversation.',
       icon: Mail,
-      bullets: ['Instant transcript + call-summary emails', 'Recipients configured by team', 'Daily analytics and hot-lead alerts'],
+      bullets: ['Call-summary emails', 'Team recipients', 'Daily performance digests'],
       image: '/aqion-voice-dashboard-email-updates.png',
     },
   ];
@@ -113,18 +113,18 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
 
           {/* Main headline */}
           <h1 className="display-xxl text-[16.5vw] leading-[0.9] tracking-[-0.04em] text-ink md:text-[11.8vw] lg:text-[10.5rem]">
-            <span className="mb-2 block md:mb-0 md:mr-[0.08em] md:inline">Meet</span>
-            <span className="display-italic block text-petrol md:inline">Aqion Vox</span>
+            <span className="mb-2 block md:mb-0 md:mr-[0.08em] md:inline">Never miss</span>
+            <span className="display-italic block text-petrol md:inline">another call.</span>
           </h1>
 
           {/* Subtitle */}
           <p className="mt-5 max-w-[310px] font-display text-lg leading-[1.25] tracking-tight text-graphite md:mt-7 md:max-w-none md:text-[2.1rem] lg:text-[2.75rem]">
-            Every call answered. <span className="font-display text-ink">Every opportunity captured.</span>
+            AQION VOX is an AI voice employee that answers, qualifies and moves customer conversations to the next business action.
           </p>
 
           {/* Feature line */}
           <p className="mt-5 max-w-[312px] text-[15px] leading-relaxed text-taupe md:mt-7 md:max-w-3xl md:text-xl">
-            <span className="block">Aqion Vox includes a built-in Voice CRM for</span>
+            <span className="block">AQION VOX includes a built-in Voice CRM for</span>
             <strong className="mt-3 block font-semibold text-ink">Voice analytics · Call transcriptions · Lead capture · Meeting management · Email summaries</strong>
           </p>
 
@@ -135,7 +135,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
               className="group inline-flex min-h-14 min-w-[240px] items-center justify-center gap-3 rounded-full border border-ink bg-ink px-8 py-4 text-base font-medium text-bone shadow-[0_18px_40px_-24px_rgba(28,25,23,0.8)] transition-colors hover:bg-petrolDeep"
             >
               <Play className="h-4 w-4 fill-current" />
-              Test Aqion Vox Now
+              Call AQION VOX Now
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </div>
@@ -147,13 +147,13 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
         <div aria-hidden className="absolute inset-0 opacity-[0.07] bg-[radial-gradient(rgba(250,247,242,0.6)_1px,transparent_1px)] bg-[length:22px_22px]" />
         <div className="relative mx-auto grid max-w-7xl grid-cols-12 items-center gap-8 px-6 md:gap-10">
           <div className="col-span-12 md:col-span-6">
-            <p className="eyebrow !text-bone/70 mb-4">[ Aqion Vox Live ]</p>
+            <p className="eyebrow !text-bone/70 mb-4">[ AQION VOX Live ]</p>
             <h2 className="font-display text-[2.65rem] leading-[0.98] tracking-tight text-bone md:text-6xl">
-              Your <span className="display-italic text-bone/90">best agent</span>,<br />
-              cloned 10,000 times.
+              From <span className="display-italic text-bone/90">hello</span><br />
+              to next step.
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-bone/75 md:text-[17px]">
-              Aqion Vox learns your products and processes, then answers calls and WhatsApp messages with the same tone, timing and handoff quality as your strongest team member.
+              AQION VOX can capture structured information during the conversation and trigger what should happen next: create a lead, schedule an appointment, notify a team member, update a system or escalate to a person.
             </p>
           </div>
           <div className="col-span-12 grid grid-cols-2 gap-3 md:col-span-6 md:grid-cols-3 md:gap-3">
@@ -183,13 +183,13 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
               <p className="eyebrow mb-4">[ Inside the platform ]</p>
               <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-[1.02] text-bone">
                 Not a chatbot.<br />
-                <span className="display-italic text-white">A revenue engine.</span>
+                <span className="display-italic text-white">An AI employee that acts.</span>
               </h2>
             </div>
             <div className="col-span-12 md:col-span-6 md:col-start-7 md:pt-4">
               <p className="mobile-clamp-3 text-bone/70 text-lg leading-relaxed">
-                <span className="md:hidden">Aqion Vox replaces the patchwork of IVR, contact-centre, helpdesk and CRM tooling with one AI-native operating layer.</span>
-                <span className="hidden md:inline">Aqion Vox replaces the patchwork of IVR, contact-centre, helpdesk and CRM tooling with one AI-native operating layer — and gives your COO a single number to defend in the boardroom.</span>
+                <span className="md:hidden">AQION VOX turns customer calls into qualified leads, booked meetings, summaries and workflow actions.</span>
+                <span className="hidden md:inline">AQION VOX turns customer calls into qualified leads, booked meetings, summaries and workflow actions — with the visibility managers need to improve service and conversion.</span>
               </p>
             </div>
           </div>
@@ -276,7 +276,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-12 gap-6 mb-12">
             <div className="col-span-12 md:col-span-7">
-              <p className="eyebrow mb-4">[ Why UAE enterprises trust Aqion Vox ]</p>
+              <p className="eyebrow mb-4">[ Why UAE enterprises trust AQION VOX ]</p>
               <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-[1.02]">
                 Built for <span className="display-italic">regulated</span><br />industries — by default.
               </h2>
@@ -284,9 +284,9 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
           </div>
           <div className="mobile-priority-two grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-hairline rounded-2xl overflow-hidden border border-hairline">
             {[
-              { icon: ShieldCheck, t: 'UAE data residency', b: 'Hosted in AWS Bahrain / Azure UAE Central. No data leaves the GCC.' },
-              { icon: Languages, t: 'Arabic-first models', b: 'Tuned for Khaleeji, MSA, Levantine and Egyptian. Code-switching native.' },
-              { icon: Workflow, t: 'Outcome-tied pricing', b: 'A share of our fees moves only when your CSAT, AHT or conversion does.' },
+              { icon: ShieldCheck, t: 'UAE data-residency options', b: 'UAE deployment options for supported workloads, enterprise controls and a sovereign-AI roadmap.' },
+              { icon: Languages, t: 'Arabic and English workflows', b: 'Designed for regional conversations, multilingual intake and clear escalation rules.' },
+              { icon: Workflow, t: 'Human oversight by default', b: 'Define approvals, escalation rules and boundaries for sensitive decisions.' },
               { icon: Headphones, t: 'White-glove ops', b: 'Named UAE-based engineers run 24/7 alongside your team.' },
             ].map((f) => (
               <div key={f.t} className="bg-bone p-6 md:p-8">
@@ -306,12 +306,12 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
         <div className="rounded-3xl bg-petrol text-bone p-6 md:p-16 grid grid-cols-12 gap-6 items-end relative overflow-hidden">
           <div aria-hidden className="absolute -bottom-32 -left-20 w-[28rem] h-[28rem] rounded-full bg-bone/10 blur-3xl" />
           <div className="col-span-12 md:col-span-7 relative">
-            <p className="eyebrow !text-bone/70 mb-4">[ Pilot in 21 days ]</p>
+            <p className="eyebrow !text-bone/70 mb-4">[ Start with one workflow ]</p>
             <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-[1.02] text-bone">
-              Hear Aqion Vox<br /><span className="display-italic text-bone/90">handle your toughest call.</span>
+              Hear AQION VOX<br /><span className="display-italic text-bone/90">handle your first workflow.</span>
             </h2>
             <p className="mobile-clamp-3 mt-5 text-bone/75 text-base max-w-xl md:mt-6 md:text-lg">
-              Send us 30 of your real (anonymised) transcripts. In three weeks we'll come back with a live voice agent answering those exact calls — at a fixed price, on your numbers.
+              Start with one high-volume customer conversation. We scope the knowledge, integrations, handoff rules and dashboard view needed before production launch.
             </p>
           </div>
           <div className="col-span-12 md:col-span-5 md:flex md:justify-end flex flex-col sm:flex-row gap-3 relative">
@@ -319,7 +319,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
               onClick={() => onNavigate(PageType.CONTACT)}
               className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#4f46e5] to-[#9333ea] px-7 py-4 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(79,70,229,0.35)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_14px_36px_rgba(79,70,229,0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
-              Start a 21-day pilot
+              Book a VOX demo
               <ArrowUpRight className="w-4 h-4" />
             </button>
           </div>

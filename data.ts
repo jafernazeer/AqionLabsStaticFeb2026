@@ -183,7 +183,7 @@ export const SERVICE_DATA: Record<string, DetailPageData> = {
   },
   [PageType.SERVICE_SOVEREIGN_AI_FOUNDATION]: {
     title: "On Prem & Private LLM deployment",
-    subtitle: "Private LLMs, retrieval, evals, and observability — inside your VPC, with UAE data residency by default.",
+    subtitle: "Private LLMs, retrieval, evals, and observability — with UAE data-residency options for supported workloads.",
     icon: Server,
     sections: [
       {
@@ -197,8 +197,8 @@ export const SERVICE_DATA: Record<string, DetailPageData> = {
         ]
       },
       {
-        title: "UAE data residency by default",
-        content: "We design for UAE and GCC hosting patterns, VPC deployments, strict data boundaries, and operational controls that account for UAE PDPL, the UAE AI Charter, UAE IA expectations, and NCEMA business-continuity standards."
+        title: "UAE deployment options",
+        content: "We design for UAE and GCC hosting patterns, VPC deployment paths, strict data boundaries and operational controls. Exact residency and processing requirements are reviewed per workload before launch."
       },
       {
         title: "Governance that lets teams say yes",
@@ -324,7 +324,7 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
         "Upsell automation"
       ],
       aiAutomation: [
-        "Aqion Vox Inventory enquiry",
+        "AQION VOX inventory enquiry",
         "Internal staff assistants"
       ]
     },
@@ -345,7 +345,7 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
     ],
     solutions: {
       aqionVox: [
-        "Aqion Vox Citizen enquiry automation"
+        "AQION VOX citizen enquiry automation"
       ],
       enterpriseAi: [
         "Private GPT deployment",
@@ -386,7 +386,7 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
       "Enhanced security",
       "Improved customer experience"
     ],
-    ctaText: "Infographic showing how Aqion Vox will help the Financial sector industry to deal with customer enquiries"
+    ctaText: "See AQION for financial-services customer workflows"
   },
   [PageType.INDUSTRY_HOSPITALITY]: {
     title: "Hospitality",
@@ -409,7 +409,7 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
       "Improved guest satisfaction",
       "Reduced front desk workload"
     ],
-    ctaText: "Infographic showing how Aqion Vox will help the hospitality industry to deal with customer enquiries"
+    ctaText: "See AQION for hospitality customer workflows"
   },
   [PageType.INDUSTRY_LOGISTICS]: {
     title: "Logistics",
@@ -433,7 +433,7 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
       "Improved operational efficiency",
       "Reduced support costs"
     ],
-    ctaText: "Infographic showing how Aqion Vox will help the Logistics & Transportation Firms to deal with customer service"
+    ctaText: "See AQION for logistics customer-service workflows"
   },
   [PageType.INDUSTRY_PROFESSIONAL]: {
     title: "Legal Services",
@@ -466,7 +466,7 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
     context: "Marketing and creative agencies operate in fast-paced environments where response speed, lead management, and operational efficiency directly impact revenue. From handling client enquiries to managing campaigns and internal coordination, AI can reduce delays and improve performance across the entire workflow.",
     challenges: [
       "High volume of inbound enquiries",
-      "Missed client calls and WhatsApp messages",
+      "Missed client calls and slow enquiry response",
       "Delayed proposal follow-ups",
       "Manual campaign coordination",
       "Repetitive client reporting tasks",
@@ -587,25 +587,25 @@ export const INDUSTRY_DATA: Record<string, IndustryPageData> = {
 // Keeping Product Data for Flagship and legacy references if needed
 export const PRODUCT_DATA: Record<string, DetailPageData> = {
   [PageType.PRODUCT_AQIONVOX]: {
-    title: "Aqion Vox",
-    subtitle: "The AI customer support agent that answers, qualifies, and converts. Generating Revenue 24/7.",
+    title: "AQION VOX",
+    subtitle: "The AI voice employee that answers calls, qualifies opportunities, supports customers and moves conversations to the next business action.",
     icon: Bot,
     sections: [
         {
             title: "What It Is",
-            content: "Aqion Vox is a flagship all-in-one AI workforce platform. It combines voice capabilities, WhatsApp automation, and CRM intelligence into a single entity that acts as your best employee—one that never sleeps."
+            content: "AQION VOX is the first visible AI employee on AQION Cloud. It handles customer conversations, captures structured information and triggers approved workflows across your existing systems."
         }
     ],
     howAiIsLeveraged: [
-        "End-to-end autonomous conversation handling",
-        "Real-time voice synthesis with <500ms latency",
-        "Deep CRM injection of conversation data",
-        "Predictive lead scoring based on voice tone and text sentiment"
+        "Inbound and outbound conversation handling",
+        "Approved company-knowledge answers",
+        "CRM-ready call data capture",
+        "Human handoff when judgment is needed"
     ],
     differentiation: [
-        "Unified Platform: Voice + Text + CRM in one.",
-        "UAE Optimized: Dialect-aware Arabic processing.",
-        "Revenue Focused: Built to close deals, not just chat."
+        "Conversation to action: calls become leads, bookings, summaries or escalations.",
+        "Regional workflows: Arabic and English customer conversations.",
+        "Shared platform: VOX runs on the same AQION Cloud foundation as the rest of the AI workforce."
     ],
     useCases: [
         { title: "Real Estate", items: ["Lead qualification", "Viewing scheduling"] },
@@ -613,9 +613,9 @@ export const PRODUCT_DATA: Record<string, DetailPageData> = {
         { title: "Logistics", items: ["Delivery coordination", "Driver support"] }
     ],
     pricing: [
-        { name: "Start", price: "Custom", features: ["WhatsApp AI", "Basic CRM"] },
-        { name: "Growth", price: "Custom", features: ["Voice Agent", "Full CRM", "Calendar Booking"], highlight: true },
-        { name: "Enterprise", price: "Custom", features: ["Dedicated Instances", "Custom API Integrations"] }
+        { name: "Start", price: "Custom", features: ["Voice call workflows", "Lead capture", "Call summaries"] },
+        { name: "Growth", price: "Custom", features: ["Voice CRM", "Calendar booking", "Email updates"], highlight: true },
+        { name: "Enterprise", price: "Custom", features: ["Integration review", "Custom workflows", "Deployment controls"] }
     ]
   },
   // Legacy Data retained for fallback types
@@ -628,17 +628,17 @@ export const PRODUCT_DATA: Record<string, DetailPageData> = {
 
 export const AGENT_DATA: Record<string, DetailPageData> = {
   [PageType.AGENT_CUSTOMER_SUPPORT]: {
-    title: "Aqion Vox",
-    kicker: "Customer support agents",
+    title: "AQION VOX",
+    kicker: "Customer conversations",
     accent: "#4F46E5",
-    subtitle: "Voice, WhatsApp and web — one agent across every channel a customer actually uses, in Arabic and English.",
+    subtitle: "An AI voice employee that answers calls, qualifies opportunities, supports customers and moves conversations to the next business action — 24/7.",
     icon: Headphones,
     showcase: {
       kind: 'screenshots',
       eyebrow: 'Inside the product',
-      title: 'Aqion Vox, running live.',
-      body: 'Every call the agent takes lands here: the lead it captured, the meeting it booked, the transcript it kept and the summary it emailed you. These are captures from the deployed product, not concept art.',
-      cta: { label: 'See the full Aqion Vox product', href: '/products/aqion-voice' },
+      title: 'AQION VOX, running live.',
+      body: 'Every call can land here: the lead captured, the meeting booked, the transcript retained and the summary emailed to the right team.',
+      cta: { label: 'See the full AQION VOX product', href: '/products/aqion-voice' },
       images: [
         { src: '/aqion-voice-dashboard-overview.png', caption: 'Overview' },
         { src: '/aqion-voice-dashboard-leads.png', caption: 'Leads' },
@@ -649,32 +649,32 @@ export const AGENT_DATA: Record<string, DetailPageData> = {
     },
     sections: [
       {
-        title: "Every channel, one brain",
-        content: "Aqion Vox answers the phone, replies on WhatsApp and handles web chat from a single knowledge base and a single set of rules. A customer who calls, then messages an hour later, is not starting over — the agent already knows the conversation."
+        title: "From hello to next step",
+        content: "AQION VOX is an AI voice employee that answers calls, qualifies opportunities, supports customers and moves the conversation to the next business action — 24/7. Inbound and outbound workflows run from approved knowledge, defined rules and clear escalation boundaries."
       },
       {
-        title: "Answer, qualify, book, follow up",
-        content: "It does not just deflect tickets. It qualifies the enquiry, books the appointment straight into the calendar, captures the lead into CRM, and follows up if the customer goes quiet. Missed calls stop being lost revenue."
+        title: "Make every call useful",
+        content: "Vox captures structured information during the conversation and triggers the workflow that should follow: create a lead, schedule an appointment, notify a team member, update a system or escalate to a person. Missed calls stop being lost opportunities."
       },
       {
-        title: "Escalation that respects the customer",
-        content: "When the agent hits the edge of what it should decide, it hands to a human with the full transcript and context attached — no repeating, no re-explaining. Your team picks up mid-conversation instead of cold."
+        title: "Know when to hand over",
+        content: "Define when Vox should resolve a conversation, ask another question, trigger an action or transfer to a human. AI handles the repeatable work; your team stays available for judgment, negotiation and high-value conversations."
       }
     ],
     featuresTitle: "What it handles",
     features: [
-      { title: "Inbound voice", description: "Picks up 24/7, in Gulf Arabic or English, with sub-second turn latency." },
-      { title: "WhatsApp", description: "Two-way conversation, media, and booking links on the channel the UAE actually uses." },
-      { title: "Web chat", description: "Same agent embedded on the site, with full session and CRM context." },
-      { title: "Human handoff", description: "Escalates with transcript, intent and customer record attached." }
+      { title: "24/7 call handling", description: "Inbound and outbound calling workflows in Gulf Arabic or English." },
+      { title: "Qualify & book", description: "Lead qualification, appointment and meeting booking captured in the call." },
+      { title: "Knowledge answers", description: "Company-knowledge responses and CRM/customer-data capture." },
+      { title: "Human handoff", description: "Transfer and escalation with transcript, intent and record attached." }
     ]
   },
 
   [PageType.AGENT_KNOWLEDGE]: {
-    title: "Aqion Brain",
-    kicker: "Knowledge agents",
+    title: "AQION BRAIN",
+    kicker: "Business knowledge",
     accent: "#0EA5E9",
-    subtitle: "Company brain and internal chatbots — every policy, SOP and contract answered in seconds, not three emails.",
+    subtitle: "Turn company documents, policies, product information and operational knowledge into trusted answers available across your organization.",
     icon: Brain,
     showcase: {
       kind: 'flow',
@@ -690,155 +690,155 @@ export const AGENT_DATA: Record<string, DetailPageData> = {
     },
     sections: [
       {
-        title: "Your documents, actually usable",
-        content: "Aqion Brain ingests the policies, SOPs, contracts, price lists and past project files scattered across drives and inboxes, and turns them into something staff can simply ask a question of. Retrieval is grounded, so answers cite the source document rather than inventing one."
+        title: "Your company knowledge, ready to work",
+        content: "AQION BRAIN turns the policies, SOPs, contracts, product information and operational knowledge scattered across drives and inboxes into trusted answers your team and other AI employees can simply ask for. Retrieval is grounded, so answers cite the source document rather than inventing one."
       },
       {
-        title: "Built for what staff actually ask",
-        content: "\"What is the leave policy for a probation employee?\" \"What did we quote this client last year?\" \"Which supplier has the shorter lead time?\" These are the questions that quietly consume senior people's days. The agent absorbs them."
+        title: "Stop searching. Start asking.",
+        content: "Instead of hunting through folders, messages and old documents, employees can ask Brain directly and get an answer grounded in approved company sources. The questions that quietly consume senior people's days get absorbed."
       },
       {
-        title: "Permissions that hold",
-        content: "Access mirrors your existing structure. Finance documents answer to finance, HR to HR. The agent will decline rather than leak, and every answer is traceable back to the document and the version it came from."
+        title: "Permission-aware by design",
+        content: "Access mirrors your existing structure. Finance documents answer to finance, HR to HR. The agent declines rather than leaks, and every answer is traceable back to the document and the version it came from — a trusted knowledge source for the rest of your AI workforce."
       }
     ],
     featuresTitle: "What it handles",
     features: [
-      { title: "Grounded retrieval", description: "Answers cite source documents; no ungrounded generation." },
-      { title: "Role-aware access", description: "Respects existing permission boundaries per department." },
-      { title: "Multi-format ingest", description: "PDFs, spreadsheets, decks, email threads and wiki pages." },
-      { title: "Freshness", description: "Re-indexes as documents change, so answers do not go stale." }
+      { title: "Document ingestion", description: "PDFs, SOPs, policies, decks and product and service knowledge." },
+      { title: "Source-linked answers", description: "Contextual responses with the file and version attached." },
+      { title: "Permission-aware access", description: "Respects existing permission boundaries per department." },
+      { title: "Content lifecycle", description: "Knowledge updates and re-indexing so answers do not go stale." }
     ]
   },
 
   [PageType.AGENT_WORKFORCE]: {
-    title: "Aqion Desk",
-    kicker: "Workforce agents",
+    title: "AQION OPS",
+    kicker: "Operations",
     accent: "#F59E0B",
-    subtitle: "Job dispatch, tickets and site operations — routed, chased and closed without anyone rekeying a thing.",
+    subtitle: "Coordinate routine operational work across requests, tickets, assignments, approvals and follow-ups — so nothing stalls waiting on a chase.",
     icon: Wrench,
     showcase: {
       kind: 'flow',
       eyebrow: 'How it runs',
-      title: 'From request to signed-off job.',
-      body: 'A request arrives on any channel and leaves as a closed job, with the confirmations and chasing handled in between.',
+      title: 'From request to closed-out work.',
+      body: 'A request arrives on any channel and leaves as closed work, with the triage, routing and chasing handled in between.',
       steps: [
         { label: 'Request lands', detail: 'Call, WhatsApp, form or email, classified by urgency and service type.' },
-        { label: 'Job created', detail: 'Matched to the technician by skill, load and proximity, then scheduled.' },
-        { label: 'Confirmed and chased', detail: 'Customer and crew reminded, with no-show flagged before the slot is lost.' },
-        { label: 'Closed out', detail: 'Completion notes, photos and sign-off captured, then passed to invoicing.' },
+        { label: 'Triaged and routed', detail: 'A work order is created and assigned by skill, load and proximity.' },
+        { label: 'Confirmed and chased', detail: 'Status collected, SLA and escalation workflows triggered before a slot is lost.' },
+        { label: 'Closed out', detail: 'Completion captured and signed off, then passed to the next system.' },
       ],
     },
     sections: [
       {
-        title: "From request to dispatched job",
-        content: "Aqion Desk takes an inbound request — call, WhatsApp, form or email — and turns it into a scheduled job with the right technician, the right slot and the right parts noted. The coordinator stops being a routing switchboard."
+        title: "AI coordination for everyday operations",
+        content: "AQION OPS takes an inbound request — call, form or email — triages it, creates the work order, and routes it to the right owner with the right priority. The coordinator stops being a routing switchboard."
       },
       {
-        title: "Confirmation and chasing",
-        content: "It confirms with the customer, reminds the crew, re-confirms the morning of, and flags no-shows before they cost you the slot. The follow-up work that gets skipped when the office is busy simply happens."
+        title: "Reduce the follow-up tax",
+        content: "Ops tracks the repetitive coordination work that consumes managers' time: who owns the task, what is waiting, what is overdue and what should happen next. Confirmations, reminders and escalations that get skipped when the office is busy simply happen."
       },
       {
-        title: "Site operations closure",
-        content: "After the visit it collects completion notes, photos and sign-off, updates the job record, and triggers invoicing. Jobs stop sitting half-closed in someone's notebook for a fortnight."
+        title: "Standardize the routine",
+        content: "SLA workflows, approval coordination and operational summaries run the same way every time. Manual handoffs drop, response times improve, and every step leaves a visible trail."
       }
     ],
     featuresTitle: "What it handles",
     features: [
-      { title: "Intake and triage", description: "Classifies urgency, service type and location from a free-text request." },
-      { title: "Dispatch", description: "Matches job to technician by skill, load and proximity." },
-      { title: "Confirmations", description: "Customer and crew reminders, with no-show detection." },
-      { title: "Closure", description: "Completion capture, sign-off and handoff to invoicing." }
+      { title: "Intake and triage", description: "Classifies urgency and service type from a free-text request." },
+      { title: "Assignment and routing", description: "Work-order creation matched to the right owner." },
+      { title: "SLA and escalation", description: "Status collection with escalation before a deadline slips." },
+      { title: "Approval coordination", description: "Operational alerts, summaries and sign-off tracking." }
     ]
   },
 
   [PageType.AGENT_FINANCE]: {
-    title: "Aqion Ledger",
-    kicker: "Finance & back-office agents",
+    title: "AQION FIN",
+    kicker: "Finance operations",
     accent: "#10B981",
-    subtitle: "Collections, document handling and UAE e-invoicing readiness — the back office that reconciles itself.",
+    subtitle: "Automate repetitive finance administration, collections follow-up and document workflows — so finance teams can focus on judgment and control.",
     icon: Receipt,
     showcase: {
       kind: 'flow',
       eyebrow: 'How it runs',
       title: 'From document to reconciled ledger.',
-      body: 'Invoices and receipts arrive as PDFs and photos. They leave as matched, filed and chased records.',
+      body: 'Invoices and receipts arrive as PDFs and photos. They leave as matched, filed and chased records — with people approving what matters.',
       steps: [
         { label: 'Document in', detail: 'Invoice, PO or delivery note, from email or a photo on the site.' },
         { label: 'Fields extracted', detail: 'Line items, totals, dates and party details read and structured.' },
-        { label: 'Matched', detail: 'Checked three ways against the order and the receipt; mismatches flagged.' },
-        { label: 'Chased to paid', detail: 'Tiered bilingual reminders, escalating to a human before the relationship strains.' },
+        { label: 'Matched and flagged', detail: 'Checked against the order and receipt; exceptions surfaced for review.' },
+        { label: 'Chased and routed', detail: 'Tiered bilingual reminders and approval routing, with people in control.' },
       ],
     },
     sections: [
       {
-        title: "Collections without the awkwardness",
-        content: "Aqion Ledger tracks what is owed, when it aged, and who to chase. It sends the polite reminder on day seven and the firmer one on day thirty, in the customer's language, and escalates to a human before the relationship is at risk. Cash comes in earlier without anyone having to make the uncomfortable call."
+        title: "Let AI handle the repetitive finance workload",
+        content: "AQION FIN handles invoice and document capture, accounts-receivable follow-up, payment-status reminders and document extraction. It tracks what is owed, when it aged and who to chase, so cash comes in earlier without anyone making the uncomfortable call."
       },
       {
-        title: "Documents that file themselves",
-        content: "Invoices, purchase orders, delivery notes and receipts arrive as PDFs and photos. The agent extracts the fields, matches them against the order, flags mismatches, and files them where finance expects. Three-way matching stops being a manual afternoon."
+        title: "Built around review and approval",
+        content: "High-impact financial decisions stay under appropriate human controls. Fin prepares, routes, follows up and highlights exceptions rather than silently making material financial decisions."
       },
       {
-        title: "UAE e-invoicing readiness",
-        content: "The UAE's e-invoicing mandate changes how invoices must be structured, transmitted and archived. We build the pipeline so your invoice data is already in the shape the regime expects — schema, validation and archival — rather than scrambling at the deadline."
+        title: "Synced to your systems",
+        content: "Documents match against the order, mismatches are flagged, and records sync to your ERP and accounting systems where finance expects them. Three-way matching stops being a manual afternoon."
       }
     ],
     featuresTitle: "What it handles",
     features: [
-      { title: "Receivables chasing", description: "Aged-debt tracking with tiered, bilingual reminder sequences." },
-      { title: "Document extraction", description: "Field-level capture from invoices, POs and delivery notes." },
-      { title: "Matching and exceptions", description: "Three-way matching with mismatches flagged for review." },
-      { title: "E-invoicing readiness", description: "Schema, validation and archival aligned to the UAE mandate." }
+      { title: "Document capture", description: "Field-level extraction from invoices, POs and delivery notes." },
+      { title: "Receivables follow-up", description: "Aged-debt tracking with tiered, bilingual reminders." },
+      { title: "Exception flagging", description: "Mismatches surfaced for human review and approval routing." },
+      { title: "ERP synchronization", description: "Records synced to accounting and ERP systems." }
     ]
   },
 
   [PageType.AGENT_REVENUE]: {
-    title: "Aqion Procure",
-    kicker: "Procurement agents",
+    title: "AQION PROCURE",
+    kicker: "Procurement",
     accent: "#EC4899",
-    subtitle: "Speed-to-lead, RFQ-to-quote and procurement — both sides of the deal, handled at machine speed.",
+    subtitle: "Automate repetitive procurement administration from request and RFQ through approval and supplier follow-up — while keeping commercial decisions with people.",
     icon: TrendingUp,
     showcase: {
       kind: 'flow',
       eyebrow: 'How it runs',
-      title: 'From enquiry to quote, in minutes.',
-      body: 'Speed decides who wins the deal. The agent answers while intent is still high, then does the paperwork.',
+      title: 'From request to purchase, faster.',
+      body: 'The agent prepares information and coordinates suppliers while people keep control of selection and commitments.',
       steps: [
-        { label: 'Lead lands', detail: 'Any channel, any hour, answered in seconds rather than the next morning.' },
-        { label: 'Qualified', detail: 'Budget, timeline, scope and authority captured in the conversation.' },
-        { label: 'Quote drafted', detail: 'RFQ or tender parsed, priced from catalogue and past deals, routed for approval.' },
-        { label: 'Meeting booked', detail: 'Placed in the calendar with context, and the CRM updated behind it.' },
+        { label: 'Request in', detail: 'Purchase-request intake captured and structured from any channel.' },
+        { label: 'RFQ prepared', detail: 'Requirements extracted, suppliers contacted, quotes gathered.' },
+        { label: 'Compared', detail: 'Structured vendor comparison on landed cost, lead time and reliability.' },
+        { label: 'Routed for approval', detail: 'Purchase order handed off through your approval chain, with audit history.' },
       ],
     },
     sections: [
       {
-        title: "Speed-to-lead",
-        content: "The single largest determinant of whether an inbound lead converts is how fast you respond. Aqion Procure answers in seconds, not hours — qualifying, capturing requirements and booking the meeting while the buyer is still interested. Leads that arrive at 11pm on a Friday are handled at 11pm on a Friday."
+        title: "Less chasing. More controlled purchasing.",
+        content: "AQION PROCURE prepares purchase requests and RFQs, coordinates supplier communication, extracts quotes and builds structured comparisons. The administrative work that took a day of someone's week compresses into a review."
       },
       {
-        title: "RFQ to quote",
-        content: "On the sell side it reads the incoming RFQ or tender, pulls the relevant line items and past pricing, drafts the quote, and routes it for approval. The work that took a day of someone's week compresses into a review."
+        title: "Automate administration, not accountability",
+        content: "Procure moves requests through defined approval stages while preserving human control over supplier selection, commitments and exceptions. Purchasing gets faster without losing oversight."
       },
       {
-        title: "Procurement, the buy side",
-        content: "It sources suppliers, compares quotes on landed cost rather than headline price, and routes purchase orders through your approval chain. The same agent that helps you sell also helps you buy well."
+        title: "A clearer procurement record",
+        content: "Every request, quote comparison and approval is logged with audit history. Pending approvals are visible, manual supplier follow-up drops, and purchasing records stop living in scattered inboxes."
       }
     ],
     featuresTitle: "What it handles",
     features: [
-      { title: "Instant lead response", description: "Qualifies and books while intent is still high." },
-      { title: "RFQ and tender parsing", description: "Extracts line items, specs and deadlines from documents." },
-      { title: "Quote drafting", description: "Builds priced quotes from catalogue and historical deals." },
-      { title: "Supplier sourcing", description: "Comparison on landed cost, lead time and reliability." }
+      { title: "Request and RFQ intake", description: "Purchase-request capture and RFQ preparation." },
+      { title: "Supplier workflows", description: "Communication, quote extraction and follow-up." },
+      { title: "Vendor comparison", description: "Structured comparison on landed cost and lead time." },
+      { title: "Approval routing", description: "Purchase-order handoff with audit history." }
     ]
   },
 
   [PageType.AGENT_EXECUTIVE]: {
-    title: "Aqion Chief",
-    kicker: "Executive AI agents",
+    title: "AQION CHIEF",
+    kicker: "Executive intelligence",
     accent: "#8B5CF6",
-    subtitle: "A Jarvis-style agent for owners and senior management — briefings, decisions and follow-through with the whole business behind it.",
+    subtitle: "Helps leaders understand what changed, what matters and what needs attention — without waiting for another manual report.",
     icon: Briefcase,
     showcase: {
       kind: 'flow',
@@ -854,32 +854,32 @@ export const AGENT_DATA: Record<string, DetailPageData> = {
     },
     sections: [
       {
-        title: "The morning brief",
-        content: "Aqion Chief reads across the systems you already run — sales, operations, finance, support — and gives you the short version before the day starts. What moved, what slipped, what needs you specifically. Not a dashboard you have to go and interrogate."
+        title: "Your business, summarized around decisions",
+        content: "AQION CHIEF reads across the systems you already run — sales, operations, finance, support — and gives you the short version before the day starts. Daily briefings, KPI summaries, meeting preparation and decision briefs, instead of a dashboard you have to go and interrogate."
       },
       {
-        title: "Ask anything about your own business",
-        content: "\"Why did margin drop in the Sharjah branch last month?\" \"Which clients have not been contacted in ninety days?\" The agent has the access to answer, and the judgment to tell you when the data does not actually support a conclusion."
+        title: "Focus on exceptions, not dashboards",
+        content: "Chief is designed to surface what changed and where management attention is required, instead of forcing leaders to manually inspect every system. Exception and risk alerts reach you before they become problems."
       },
       {
-        title: "Follow-through",
-        content: "Decisions made in a meeting tend to evaporate. The agent captures the commitment, assigns it, chases it, and tells you when it has not moved. It is the chief of staff function, running continuously."
+        title: "Follow-through that holds",
+        content: "Decisions made in a meeting tend to evaporate. The agent captures the commitment, assigns it, chases it, and tells you when it has not moved — the chief-of-staff function, running continuously."
       }
     ],
     featuresTitle: "What it handles",
     features: [
-      { title: "Cross-system briefing", description: "Daily and weekly synthesis across sales, ops and finance." },
-      { title: "Ad-hoc analysis", description: "Natural-language questions answered against live business data." },
-      { title: "Commitment tracking", description: "Captures decisions and chases them to closure." },
-      { title: "Exception alerting", description: "Surfaces what broke pattern, rather than reporting everything." }
+      { title: "Executive briefings", description: "Daily and weekly synthesis across sales, ops and finance." },
+      { title: "Cross-system questions", description: "Natural-language answers against live business data." },
+      { title: "Exception alerting", description: "Surfaces what broke pattern, and where attention is needed." },
+      { title: "Action tracking", description: "Captures decisions and chases them to closure." }
     ]
   },
 
   [PageType.AGENT_GROWTH]: {
-    title: "Aqion Studio",
-    kicker: "Content generation agents",
+    title: "AQION GROWTH",
+    kicker: "Growth & marketing",
     accent: "#F43F5E",
-    subtitle: "Omnichannel copy, video and distribution — with a human approval loop before anything ships.",
+    subtitle: "Create, coordinate, personalize and measure marketing activity while keeping brand approval in human hands.",
     icon: Share2,
     showcase: {
       kind: 'flow',
@@ -895,23 +895,23 @@ export const AGENT_DATA: Record<string, DetailPageData> = {
     },
     sections: [
       {
-        title: "Copy that sounds like you",
-        content: "Aqion Studio learns your positioning, tone and proof points, then drafts across channels — social, email, landing pages, ad variants — in Arabic and English. The output is a first draft good enough to edit, not a blank page."
+        title: "From campaign idea to consistent execution",
+        content: "AQION GROWTH handles content drafting, campaign planning, CRM audience segmentation, email and messaging campaigns and social-content repurposing — in Arabic and English. The output is a first draft good enough to edit, not a blank page."
       },
       {
-        title: "Video and distribution",
-        content: "It cuts long-form material into short-form, writes the hooks and captions, and schedules distribution per channel. The content calendar stops depending on one person having a free afternoon."
+        title: "Keep the brand human. Automate the workload around it.",
+        content: "Growth handles preparation, personalization, scheduling and lead-nurture follow-up while your team stays responsible for strategy, voice and final approval. Campaign output goes up without brand governance going down."
       },
       {
         title: "Approval before anything is public",
-        content: "Nothing publishes without a human clicking approve. The agent proposes; you decide. That boundary is deliberate — brand risk is not worth the saved minute."
+        content: "Nothing publishes without a human clicking approve. The agent proposes; you decide. That boundary is deliberate — brand risk is not worth the saved minute — and performance summaries feed the next round."
       }
     ],
     featuresTitle: "What it handles",
     features: [
       { title: "Multichannel drafting", description: "Social media, email, landing and ad copy, bilingual." },
+      { title: "Campaign planning", description: "Audience segmentation and lead-nurture workflows." },
       { title: "Video repurposing", description: "Long-form cut to short-form with hooks and captions." },
-      { title: "Scheduling", description: "Channel-appropriate timing and cadence." },
       { title: "Human approval loop", description: "Nothing ships without explicit sign-off." }
     ]
   }
@@ -919,58 +919,58 @@ export const AGENT_DATA: Record<string, DetailPageData> = {
 
 export const PLATFORM_SERVICE_DATA: Record<string, DetailPageData> = {
   [PageType.SERVICE_WEB_STUDIO]: {
-    title: "AI-Ready Web Studio",
-    titleBlackPart: "AI-Ready",
-    subtitle: "Web and mobile designed and built to ship in weeks — and structured so agents can read, update and act on them from day one.",
+    title: "AQION Cloud",
+    titleBlackPart: "AQION",
+    subtitle: "One platform. An entire AI workforce. AQION Cloud gives every AI employee the intelligence, business memory, workflows and enterprise foundation it needs to work across your organization.",
     icon: LayoutTemplate,
     sections: [
       {
-        title: "Not a brochure",
-        content: "Most sites are built as static marketing artefacts, then have AI bolted on afterwards at three times the cost. We build the content model, the data layer and the integration points from the start, so adding an agent later is configuration rather than a rebuild."
+        title: "The operating layer behind every AQION employee",
+        content: "Instead of building isolated AI bots for every department, AQION Cloud provides shared capabilities that power an entire workforce: an AI Runtime that decides what should happen, Business Memory that gives every employee organizational context, and a Workflow Engine that executes approved actions across the systems you already run."
       },
       {
-        title: "Weeks, not quarters",
-        content: "Design, engineering, integration and launch run as one tight cycle with a senior team. You see working software early and often, and the scope conversation happens against something real rather than a wireframe."
+        title: "One employee learns. The platform gets stronger.",
+        content: "Shared infrastructure means new AQION employees do not recreate integrations, business context and workflow logic from zero. The platform becomes more valuable as more of the organization is connected."
       },
       {
-        title: "Instrumented from launch",
-        content: "Analytics, funnels, lead capture, CRM sync and attribution are wired before go-live, not retrofitted after the first month of blind traffic. You know what the site is doing from the day it is public."
+        title: "Built for enterprise evolution",
+        content: "Start with managed cloud infrastructure. Add stricter data controls, private deployment paths and sovereign-AI options as the organization and regulatory requirements evolve — UAE deployment options, auditability, role-based controls, human approval, model flexibility and integration APIs."
       }
     ],
-    featuresTitle: "How we work",
+    featuresTitle: "Inside AQION Cloud",
     features: [
-      { title: "Diagnose", description: "Map the journey, the revenue leak and the surfaces worth rebuilding first." },
-      { title: "Ship", description: "Production-grade web or mobile, launched in tight cycles." },
-      { title: "Instrument", description: "Analytics, CRM, lead capture and attribution wired from day one." },
-      { title: "Agent-ready", description: "Content model and APIs structured for agents to read and act on." }
+      { title: "AI Runtime", description: "Think · Decide · Coordinate. Role, goals, context and guardrails for each employee." },
+      { title: "Business Memory", description: "Know · Remember · Understand. Shared customers, conversations, documents and data." },
+      { title: "Workflow Engine", description: "Automate · Integrate · Execute. Turns decisions into approved actions across systems." },
+      { title: "Enterprise Infrastructure", description: "Secure · Govern · Scale. Isolation, access control and UAE deployment options." }
     ]
   },
 
   [PageType.SERVICE_SOVEREIGN_INFRA]: {
     title: "Sovereign Infrastructure Deployment",
     titleBlackPart: "Sovereign Infrastructure",
-    subtitle: "The ground your agents stand on. Private models, retrieval and observability inside your own boundary — with UAE data residency by default.",
+    subtitle: "The enterprise deployment path for private models, retrieval and observability — with UAE data-residency options for supported workloads.",
     icon: Server,
     sections: [
       {
-        title: "Data residency",
-        content: "Application, database and all records live in me-central-1. Never replicated cross-region. This is a deployment fact you can audit, not a policy statement in a PDF."
+        title: "Data-residency options",
+        content: "AQION supports UAE-hosted deployment options for supported workloads. Exact processing locations depend on the products, AI models, communications providers and deployment configuration selected for your organization."
       },
       {
         title: "Processing choice",
-        content: "Inference runs on international providers under DPA, on UAE endpoints, or fully on-premise. You pick, per workload — and the agent behaves the same either way, because the choice sits behind an abstraction rather than in the application logic."
+        content: "Workloads can be scoped across managed cloud, approved AI providers, UAE-oriented configurations or private deployment paths as enterprise requirements evolve."
       },
       {
-        title: "Portability",
-        content: "Open frameworks and open-weight models. No vendor lock-in anywhere in the pipeline. If you want to move a workload to a different model or a different host in eighteen months, that is a config change, not a rewrite."
+        title: "Sovereign AI roadmap",
+        content: "The architecture is designed to evolve toward private and sovereign AI deployment models as regulated and mission-critical requirements grow."
       }
     ],
     featuresTitle: "What we deploy",
     features: [
-      { title: "Private inference", description: "In your VPC or on-premise, with UAE endpoint options." },
+      { title: "Private deployment paths", description: "VPC and private infrastructure options where the workload requires stricter boundaries." },
       { title: "Retrieval layer", description: "Vector store, chunking and grounding pipeline you own." },
       { title: "Observability", description: "Tracing, evaluation and audit logs on every agent action." },
-      { title: "Compliance controls", description: "Residency, retention and access aligned to UAE expectations." }
+      { title: "Enterprise controls", description: "Role-based access, auditability, retention planning and human approval patterns." }
     ]
   },
 

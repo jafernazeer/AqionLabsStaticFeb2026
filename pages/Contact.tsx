@@ -130,14 +130,14 @@ const Contact: React.FC = () => {
                <div className="mobile-page-center col-span-12 lg:col-span-7 lg:text-left">
                    <p className="eyebrow mb-5">[ Contact AqionLabs ]</p>
                    <h1 className="mobile-heading font-display text-[2.75rem] leading-[0.98] tracking-tight text-ink md:text-7xl">
-                       Build the AI layer<br />
-                       <span className="display-italic text-petrol">your team can trust.</span>
+                       What would you<br />
+                       <span className="display-italic text-petrol">delegate to AI first?</span>
                    </h1>
                    <p className="mobile-copy-measure mt-5 text-[15px] leading-relaxed text-taupe md:hidden">
-                       Tell us what you want to launch, automate or scale.
+                       Tell us where repetitive work is slowing your business down.
                    </p>
                    <p className="mt-7 hidden max-w-2xl text-xl leading-relaxed text-taupe md:block">
-                       Tell us what you are trying to launch, automate or scale. We will map the right product path, the AI stack, and the fastest responsible route to deployment.
+                       Tell us where repetitive conversations, coordination or administration are slowing your business down. We'll identify the right first workflow to delegate to your AI workforce.
                    </p>
                </div>
 
@@ -257,7 +257,7 @@ const Contact: React.FC = () => {
                             </div>
 
                             <button type="submit" className="mobile-action group inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink px-7 py-4 text-sm font-medium text-bone shadow-lg shadow-ink/10 transition-all duration-300 hover:bg-[linear-gradient(90deg,#4f46e5,#9333ea)] hover:shadow-[0_16px_40px_-14px_rgba(79,70,229,0.55)]">
-                                Book a consultation <ArrowRight className="h-4 w-4" />
+                                Book my AQION demo <ArrowRight className="h-4 w-4" />
                             </button>
                        </form>
                    </div>

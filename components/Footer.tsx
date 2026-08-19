@@ -9,17 +9,17 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const agenticServices = [
-    { label: 'Aqion Vox', page: PageType.AGENT_CUSTOMER_SUPPORT },
-    { label: 'Aqion Brain', page: PageType.AGENT_KNOWLEDGE },
-    { label: 'Aqion Desk', page: PageType.AGENT_WORKFORCE },
-    { label: 'Aqion Ledger', page: PageType.AGENT_FINANCE },
-    { label: 'Aqion Procure', page: PageType.AGENT_REVENUE },
-    { label: 'Aqion Chief', page: PageType.AGENT_EXECUTIVE },
-    { label: 'Aqion Studio', page: PageType.AGENT_GROWTH },
+    { label: 'AQION VOX', page: PageType.AGENT_CUSTOMER_SUPPORT },
+    { label: 'AQION BRAIN', page: PageType.AGENT_KNOWLEDGE },
+    { label: 'AQION CHIEF', page: PageType.AGENT_EXECUTIVE },
+    { label: 'AQION OPS', page: PageType.AGENT_WORKFORCE },
+    { label: 'AQION PROCURE', page: PageType.AGENT_REVENUE },
+    { label: 'AQION FIN', page: PageType.AGENT_FINANCE },
+    { label: 'AQION GROWTH', page: PageType.AGENT_GROWTH },
   ];
 
   const platformServices = [
-    { label: 'AI-Ready Web Studio', page: PageType.SERVICE_WEB_STUDIO },
+    { label: 'AQION Cloud', page: PageType.SERVICE_WEB_STUDIO },
     { label: 'Sovereign Infrastructure Deployment', page: PageType.SERVICE_SOVEREIGN_INFRA },
     { label: 'AI Strategy & Discovery', page: PageType.SERVICE_AI_STRATEGY },
   ];
@@ -44,7 +44,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               Let's build something <span className="display-italic">unmistakably yours</span>.
             </h2>
             <p className="mobile-clamp-3 mt-5 text-taupe max-w-md leading-relaxed">
-              We partner with operators in Dubai, Abu Dhabi and across the GCC to ship AI products that move boardroom metrics — not demo videos.
+              We partner with operators in Dubai, Abu Dhabi and across the GCC to deploy AI employees that answer customers, use company knowledge and execute approved workflows.
             </p>
             <a
               href="#"
@@ -85,7 +85,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </ul>
             </div>
             <div>
-              <h3 className="eyebrow mb-5">Services</h3>
+              <h3 className="eyebrow mb-5">Platform</h3>
               <ul className="space-y-3 text-graphite text-sm">
                 {platformServices.map(({ label, page }) => (
                   <li key={label}>
@@ -97,7 +97,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </ul>
             </div>
             <div>
-              <h3 className="eyebrow mb-5">Agentic AI</h3>
+              <h3 className="eyebrow mb-5">AI Workforce</h3>
               <ul className="space-y-3 text-sm text-graphite">
                 {agenticServices.map(({ label, page }) => (
                   <li key={label}>
