@@ -12,7 +12,7 @@ interface HomeProps {
 }
 
 const aqionVoxFeatures = [
-  'Arabic + English + Hindi + Malayalam',
+  'Arabic + English + Hindi',
   'Picks Up Calls 24/7',
   'Inbuilt Voice CRM',
   'Saves Client Details as Leads',
@@ -120,21 +120,31 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               Agentic AI · Built In The UAE
             </div>
 
-            <h1 className="relative z-30 flex w-full max-w-[calc(100vw-3rem)] flex-col items-center leading-none lg:max-w-none lg:items-start">
-              <span className="block font-serif text-[clamp(1.7rem,7.4vw,2.05rem)] italic tracking-[-0.015em] text-[#71717a] sm:text-[clamp(1.9rem,3.5vw,3.3rem)]">
-                AI agents built for
+            <h1 className="relative z-30 flex w-full max-w-[calc(100vw-3rem)] flex-col items-center leading-[1.05] lg:max-w-none lg:items-start">
+              <span className="block max-w-full font-hero text-[clamp(1.85rem,7.6vw,2.15rem)] font-bold tracking-[-0.025em] text-ink sm:text-[clamp(2.2rem,4.4vw,4.4rem)] sm:tracking-[-0.035em]">
+                AI agents built for Real
               </span>
               <span
-                className="mt-2 block max-w-full bg-clip-text pb-2 font-hero text-[clamp(1.85rem,7.6vw,2.15rem)] font-bold tracking-[-0.025em] text-transparent drop-shadow-[0_8px_24px_rgba(79,70,229,0.18)] sm:mt-3 sm:whitespace-nowrap sm:text-[clamp(2.2rem,4.4vw,4.4rem)] sm:tracking-[-0.035em]"
+                className="mt-1 block max-w-full bg-clip-text pb-2 font-hero text-[clamp(1.85rem,7.6vw,2.15rem)] font-bold tracking-[-0.025em] text-transparent drop-shadow-[0_8px_24px_rgba(79,70,229,0.18)] sm:mt-2 sm:text-[clamp(2.2rem,4.4vw,4.4rem)] sm:tracking-[-0.035em]"
                 style={{ backgroundImage: 'linear-gradient(90deg, #4f46e5, #9333ea)' }}
               >
-                Real Enterprise Work.
+                Enterprise Work.
               </span>
             </h1>
 
-            <p className="home-mobile-copy relative z-30 mx-auto mt-5 max-w-[312px] animate-entry text-[13.5px] leading-[1.55] tracking-[0.005em] text-[#52525b] sm:max-w-[540px] sm:text-[15px] md:text-lg lg:mx-0">
+            <p className="home-mobile-copy relative z-30 mx-auto mt-5 max-w-[312px] animate-entry text-center text-[13.5px] leading-[1.55] tracking-[0.005em] text-[#52525b] sm:max-w-[540px] sm:text-[15px] md:text-lg lg:mx-0 lg:text-left">
               From picking up calls, dispatching jobs and updating CRMs to chasing invoices — deploy 24/7 bilingual AI agents hosted securely in the UAE.
             </p>
+
+            <div className="relative z-30 mt-7 animate-entry">
+              <button
+                onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX)}
+                className="group inline-flex min-h-12 cursor-pointer items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#4f46e5] to-[#9333ea] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(79,70,229,0.35)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_14px_36px_rgba(79,70,229,0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4f46e5]"
+              >
+                Explore Aqion Vox
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </button>
+            </div>
 
                       </div>
 
@@ -158,7 +168,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       {/* AQIONVOX CAPABILITY MARQUEE */}
       <section className="border-y border-hairline bg-paper/40 overflow-hidden">
         <div className="py-6 flex items-center gap-6">
-          <span className="eyebrow shrink-0 pl-6">Voice AI Agent for SMEs</span>
+          <span className="eyebrow shrink-0 pl-6">Aqion Vox</span>
           <div className="relative flex-1 overflow-hidden">
             <div className="flex gap-12 animate-marquee whitespace-nowrap">
               {[...aqionVoxFeatures, ...aqionVoxFeatures].map((l, i) => (

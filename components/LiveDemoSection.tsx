@@ -4,21 +4,15 @@ import {
   ArrowUpRight,
   Building2,
   Check,
-  Clapperboard,
   CreditCard,
-  DraftingCompass,
   GraduationCap,
   Hotel,
-  Landmark,
-  Megaphone,
   MicOff,
   PhoneOff,
   Play,
   Scale,
-  ShoppingBag,
   Square,
   Stethoscope,
-  Truck,
   Volume2,
   type LucideIcon,
 } from 'lucide-react';
@@ -40,15 +34,9 @@ const scenarios: Scenario[] = [
   { id: 0, label: 'Healthcare', code: 'HC', Icon: Stethoscope, latency: 680, outcome: { title: 'Clinic workflow captured', sub: 'Patient inquiry qualified and booked', steps: [{ n: '1', t: 'Missed call logged' }, { n: '2', t: 'Appointment slot offered' }, { n: '3', t: 'WhatsApp confirmation sent' }] } },
   { id: 1, label: 'Real Estate', code: 'RE', Icon: Building2, latency: 720, outcome: { title: 'Viewing request qualified', sub: 'Lead routed with buyer intent', steps: [{ n: '1', t: 'Inquiry source matched' }, { n: '2', t: 'Budget and location captured' }, { n: '3', t: 'Viewing scheduled' }] } },
   { id: 2, label: 'Financial Services', code: 'FS', Icon: CreditCard, latency: 695, outcome: { title: 'Finance demo prepared', sub: 'Compliance questions answered', steps: [{ n: '1', t: 'Use case verified' }, { n: '2', t: 'Data residency confirmed' }, { n: '3', t: 'Technical call booked' }] } },
-  { id: 3, label: 'Government', code: 'GV', Icon: Landmark, latency: 650, outcome: { title: 'Public-sector meeting set', sub: 'Formal handoff created', steps: [{ n: '1', t: 'Citizen-services volume captured' }, { n: '2', t: 'Procurement path noted' }, { n: '3', t: 'Official follow-up queued' }] } },
-  { id: 4, label: 'Retail', code: 'RT', Icon: ShoppingBag, latency: 705, outcome: { title: 'Retail support flow built', sub: 'Order and return automation mapped', steps: [{ n: '1', t: 'Order status identified' }, { n: '2', t: 'Return policy explained' }, { n: '3', t: 'CRM note created' }] } },
+  { id: 3, label: 'Legal & Professional', code: 'LP', Icon: Scale, latency: 710, outcome: { title: 'Consultation screened', sub: 'Matter type routed safely', steps: [{ n: '1', t: 'Practice area identified' }, { n: '2', t: 'Conflict check requested' }, { n: '3', t: 'Consultation scheduled' }] } },
+  { id: 4, label: 'Hospitality', code: 'HT', Icon: Hotel, latency: 690, outcome: { title: 'Guest request resolved', sub: 'Booking details confirmed', steps: [{ n: '1', t: 'Guest profile matched' }, { n: '2', t: 'Room preference logged' }, { n: '3', t: 'Confirmation sent' }] } },
   { id: 5, label: 'Education', code: 'ED', Icon: GraduationCap, latency: 735, outcome: { title: 'Admissions call handled', sub: 'Student inquiry moved to counsellor', steps: [{ n: '1', t: 'Program interest captured' }, { n: '2', t: 'Eligibility checked' }, { n: '3', t: 'Counsellor slot booked' }] } },
-  { id: 6, label: 'Hospitality', code: 'HT', Icon: Hotel, latency: 690, outcome: { title: 'Guest request resolved', sub: 'Booking details confirmed', steps: [{ n: '1', t: 'Guest profile matched' }, { n: '2', t: 'Room preference logged' }, { n: '3', t: 'Confirmation sent' }] } },
-  { id: 7, label: 'Logistics', code: 'LG', Icon: Truck, latency: 760, outcome: { title: 'Shipment query closed', sub: 'Delivery status synchronized', steps: [{ n: '1', t: 'AWB number captured' }, { n: '2', t: 'ETA explained' }, { n: '3', t: 'Escalation rule checked' }] } },
-  { id: 8, label: 'Legal & Professional', code: 'LP', Icon: Scale, latency: 710, outcome: { title: 'Consultation screened', sub: 'Matter type routed safely', steps: [{ n: '1', t: 'Practice area identified' }, { n: '2', t: 'Conflict check requested' }, { n: '3', t: 'Consultation scheduled' }] } },
-  { id: 9, label: 'Media & Events', code: 'ME', Icon: Clapperboard, latency: 725, outcome: { title: 'Event inquiry converted', sub: 'Brief sent to production team', steps: [{ n: '1', t: 'Date and venue captured' }, { n: '2', t: 'Budget range logged' }, { n: '3', t: 'Proposal task created' }] } },
-  { id: 10, label: 'Architecture', code: 'AR', Icon: DraftingCompass, latency: 745, outcome: { title: 'Project lead organized', sub: 'Scope routed to design team', steps: [{ n: '1', t: 'Project type captured' }, { n: '2', t: 'Site location noted' }, { n: '3', t: 'Discovery call booked' }] } },
-  { id: 11, label: 'Marketing & Design', code: 'MD', Icon: Megaphone, latency: 700, outcome: { title: 'Campaign brief captured', sub: 'Strategy consult booked', steps: [{ n: '1', t: 'Campaign goal captured' }, { n: '2', t: 'Channels identified' }, { n: '3', t: 'Audit call scheduled' }] } },
 ];
 
 const complianceItems = [
@@ -278,7 +266,7 @@ export default function LiveDemoSection() {
                     <h3 className="font-display text-2xl leading-tight text-ink">Industries Aqion Vox serves</h3>
                   </div>
                   <span className="hidden rounded-full bg-[#4F46E5]/10 px-3 py-1 text-xs font-semibold text-[#4F46E5] sm:inline-flex">
-                    12 industries
+                    6 industries
                   </span>
                 </div>
               </div>

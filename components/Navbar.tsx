@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, Headphones, Brain, Briefcase, Wrench, ShoppingCart, Receipt, Share2, LayoutTemplate, Server, Compass, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ChevronDown, Headphones, Brain, Briefcase, Wrench, ShoppingCart, Receipt, Share2, LayoutTemplate, Server, Compass, Stethoscope, Building2, CreditCard, Scale, Hotel, GraduationCap, ArrowUpRight } from 'lucide-react';
 import { PageType, NavItem } from '../types';
 
 interface NavbarProps {
@@ -58,6 +58,12 @@ const childIcons: Record<string, React.ComponentType<{ className?: string }>> = 
   'AI-Ready Web Studio': LayoutTemplate,
   'Sovereign AI deployment': Server,
   'AI Strategy & Discovery': Compass,
+  'Healthcare': Stethoscope,
+  'Real Estate': Building2,
+  'Financial Services': CreditCard,
+  'Legal & Professional': Scale,
+  'Hospitality': Hotel,
+  'Education': GraduationCap,
 };
 
 const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {

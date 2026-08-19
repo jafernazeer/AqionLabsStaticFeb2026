@@ -215,9 +215,9 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
           </div>
 
           <div className="mt-9 rounded-[28px] border border-white/10 bg-white/[0.04] p-4 md:mt-12 md:p-7">
-            <div className="mobile-priority-grid grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mobile-priority-grid flex flex-wrap justify-center gap-3">
             {data.challenges.map((challenge, idx) => (
-              <div key={challenge} className="mobile-card-center mobile-card-compact rounded-2xl border border-white/10 bg-white/[0.05] p-5 md:text-left">
+              <div key={challenge} className="mobile-card-center mobile-card-compact w-full rounded-2xl border border-white/10 bg-white/[0.05] p-5 sm:w-[calc(50%-0.375rem)] md:text-left lg:w-[calc(33.333%-0.5rem)]">
                 <span className="font-mono text-xs text-[#a5b4fc]">{String(idx + 1).padStart(2, '0')} /</span>
                 <p className="mt-3 font-display text-xl leading-tight text-bone md:mt-4">{challenge}</p>
               </div>
@@ -245,7 +245,10 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
                   return (
                     <div key={key} className="mobile-card-center mobile-card-compact rounded-3xl border border-hairline bg-white/70 p-6 shadow-[0_20px_60px_-42px_rgba(28,25,23,0.3)] backdrop-blur md:text-left">
                       <div className="mobile-center-row mb-4 flex items-center gap-3 md:justify-start md:text-left">
-                        <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/40 bg-gradient-to-br from-[#4f46e5] to-[#9333ea] text-white shadow-[0_0_28px_rgba(79,70,229,0.24)]">
+                        <span
+                          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/40 text-white shadow-[0_0_28px_rgba(79,70,229,0.24)]"
+                          style={{ background: 'linear-gradient(135deg, #4f46e5, #9333ea)' }}
+                        >
                           <Icon className="h-5 w-5" strokeWidth={1.5} />
                         </span>
                         <h3 className="font-display text-xl text-ink">{title}</h3>
@@ -271,9 +274,9 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
                 <span className="display-italic text-petrol">after deployment.</span>
               </h2>
 
-              <div className="mobile-priority-two mt-8 grid gap-px overflow-hidden rounded-2xl border border-hairline bg-hairline sm:grid-cols-2">
+              <div className="mobile-priority-two mt-8 flex flex-wrap justify-center gap-px overflow-hidden rounded-2xl border border-hairline bg-hairline">
                 {data.outcome.map((outcome) => (
-                  <div key={outcome} className="mobile-card-center bg-white/80 p-6 md:text-left">
+                  <div key={outcome} className="mobile-card-center w-full bg-white/80 p-6 sm:w-[calc(50%-0.5px)] md:text-left">
                     <CheckCircle className="mobile-center-icon mb-4 h-7 w-7 text-petrol md:mb-5 md:ml-0" strokeWidth={1.5} />
                     <p className="font-display text-xl leading-tight text-ink">{outcome}</p>
                   </div>
