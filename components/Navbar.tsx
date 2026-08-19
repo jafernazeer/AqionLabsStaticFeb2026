@@ -27,7 +27,7 @@ const navItems: NavItem[] = [
   {
     label: 'Platform',
     children: [
-      { label: 'AQION Cloud', page: PageType.SERVICE_WEB_STUDIO, href: '/services/web-studio' },
+      { label: 'AQION Cloud', page: PageType.PLATFORM_AQION_CLOUD, href: '/platform/aqion-cloud' },
       { label: 'Sovereign AI deployment', page: PageType.SERVICE_SOVEREIGN_INFRA, href: '/services/sovereign-infrastructure' },
       { label: 'AI Strategy & Discovery', page: PageType.SERVICE_AI_STRATEGY, href: '/services/ai-strategy' },
     ],

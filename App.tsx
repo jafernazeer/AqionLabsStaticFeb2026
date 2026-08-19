@@ -19,6 +19,7 @@ const Careers = lazy(() => import('./pages/Careers'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 const Terms = lazy(() => import('./pages/Terms'));
 const AqionFlo = lazy(() => import('./pages/AqionFlo'));
+const AqionCloud = lazy(() => import('./pages/AqionCloud'));
 
 // Helper to sync PageType with URL if needed, but we'll mostly use Routes
 const AppContent: React.FC = () => {
@@ -40,6 +41,7 @@ const AppContent: React.FC = () => {
     if (path === '/agents/revenue') return PageType.AGENT_REVENUE;
     if (path === '/agents/executive') return PageType.AGENT_EXECUTIVE;
     if (path === '/agents/growth') return PageType.AGENT_GROWTH;
+    if (path === '/platform/aqion-cloud') return PageType.PLATFORM_AQION_CLOUD;
     if (path === '/services/web-studio') return PageType.SERVICE_WEB_STUDIO;
     if (path === '/services/sovereign-infrastructure') return PageType.SERVICE_SOVEREIGN_INFRA;
     if (path === '/services/ai-strategy') return PageType.SERVICE_AI_STRATEGY;
@@ -154,6 +156,7 @@ const AppContent: React.FC = () => {
             <Route path="/agents/growth" element={<ServiceDetail data={AGENT_DATA[PageType.AGENT_GROWTH]} onNavigate={handleNavigate} />} />
 
             {/* Platform services */}
+            <Route path="/platform/aqion-cloud" element={<AqionCloud onNavigate={handleNavigate} />} />
             <Route path="/services/web-studio" element={<ServiceDetail data={PLATFORM_SERVICE_DATA[PageType.SERVICE_WEB_STUDIO]} onNavigate={handleNavigate} />} />
             <Route path="/services/sovereign-infrastructure" element={<ServiceDetail data={PLATFORM_SERVICE_DATA[PageType.SERVICE_SOVEREIGN_INFRA]} onNavigate={handleNavigate} />} />
             <Route path="/services/ai-strategy" element={<ServiceDetail data={PLATFORM_SERVICE_DATA[PageType.SERVICE_AI_STRATEGY]} onNavigate={handleNavigate} />} />

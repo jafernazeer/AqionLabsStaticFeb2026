@@ -33,14 +33,13 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ data, onNavigate }) => {
         "Private GPT Development": "GPT",
         "AI Governance & Security": "Security",
         "Human AI Avatars": "Avatars",
-        // Agentic AI Services
-        "AI Creative Suite": "Creative Suite",
-        "Marketing Automation": "Automation",
-        "Sales Copilot": "Copilot",
-        "Multilingual AI Customer Support": "Customer Support",
-        "Process & Workflow Automation": "Workflow Automation",
-        "Enterprise RAG assistant": "RAG assistant",
-        "On Prem & Private LLM deployment": "Private LLM deployment"
+        "AQION VOX": "VOX",
+        "AQION BRAIN": "BRAIN",
+        "AQION CHIEF": "CHIEF",
+        "AQION OPS": "OPS",
+        "AQION PROCURE": "PROCURE",
+        "AQION FIN": "FIN",
+        "AQION GROWTH": "GROWTH"
     };
 
     const highlight = highlights[title];
@@ -58,7 +57,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ data, onNavigate }) => {
   };
 
   const renderPageTitle = () => {
-    // Agent pages (Aqion Vox, Aqion Brain, ...): "AQION" stays ink, the product
+    // Agent pages (AQION VOX, AQION BRAIN, ...): "AQION" stays ink, the product
     // word after it carries the brand gradient — matches "changes." below.
     if (data.kicker) {
       const words = data.title.trim().split(' ');

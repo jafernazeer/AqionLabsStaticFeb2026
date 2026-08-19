@@ -5,12 +5,12 @@ import {
   Brain, Briefcase, Compass, LayoutTemplate, Receipt, Share2, TrendingUp, Wrench
 } from 'lucide-react';
 
-// Agentic AI Services Data
+// Legacy service routes now use AQION workforce positioning.
 export const SERVICE_DATA: Record<string, DetailPageData> = {
   [PageType.SERVICE_DIGITAL_PRESENCE_STUDIO]: {
-    title: "AI Creative Suite",
-    subtitle: "Production-grade web and mobile, shipped in weeks — not quarters. AI woven into the spine, not bolted on top.",
-    icon: Globe,
+    title: "AQION VOX",
+    subtitle: "Customer conversations handled by an AI voice employee that answers, qualifies, books and hands over when human judgment is needed.",
+    icon: Headphones,
     sections: [
       {
         title: "Your digital front door",
@@ -34,9 +34,9 @@ export const SERVICE_DATA: Record<string, DetailPageData> = {
     ]
   },
   [PageType.SERVICE_MARKETING_AGENT]: {
-    title: "Marketing Automation",
-    subtitle: "A full marketing operator that plans campaigns, generates content, publishes, tests, and reallocates spend to what works.",
-    icon: Megaphone,
+    title: "AQION BRAIN",
+    subtitle: "Business knowledge turned into trusted, permission-aware answers available across your organization.",
+    icon: Brain,
     sections: [
       {
         title: "A department that runs itself",
@@ -60,9 +60,9 @@ export const SERVICE_DATA: Record<string, DetailPageData> = {
     ]
   },
   [PageType.SERVICE_SALES_AGENT]: {
-    title: "Sales Copilot",
-    subtitle: "An autonomous SDR that catches every inquiry, qualifies demand, books meetings, and updates the CRM itself.",
-    icon: Handshake,
+    title: "AQION CHIEF",
+    subtitle: "Executive intelligence that turns business activity into concise briefings, priorities and actionable insight.",
+    icon: Briefcase,
     sections: [
       {
         title: "No lead goes cold",
@@ -86,9 +86,9 @@ export const SERVICE_DATA: Record<string, DetailPageData> = {
     ]
   },
   [PageType.SERVICE_CUSTOMER_CONVERSATION_AGENT]: {
-    title: "Multilingual AI Customer Support",
-    subtitle: "Voice and chat agents fluent in English and Gulf Arabic, built for regulated contact centers.",
-    icon: Headphones,
+    title: "AQION OPS",
+    subtitle: "Operations coordination for routine requests, tickets, approvals, assignments and follow-through.",
+    icon: Wrench,
     sections: [
       {
         title: "Support that scales without hiring",
@@ -112,8 +112,8 @@ export const SERVICE_DATA: Record<string, DetailPageData> = {
     ]
   },
   [PageType.SERVICE_OPERATIONS_AGENT]: {
-    title: "Process & Workflow Automation",
-    subtitle: "The back office, automated. Invoices, contracts, onboarding, approvals — handled by agents that document themselves.",
+    title: "AQION PROCURE",
+    subtitle: "Procurement administration from request and RFQ through approval and supplier follow-up, with people in control.",
     icon: Workflow,
     sections: [
       {
@@ -156,9 +156,9 @@ export const SERVICE_DATA: Record<string, DetailPageData> = {
     ]
   },
   [PageType.SERVICE_INTERNAL_KNOWLEDGE_AGENT]: {
-    title: "Enterprise RAG assistant",
-    subtitle: "Your policies, SOPs, and documents, turned into an agent your team can simply ask.",
-    icon: BookOpen,
+    title: "AQION FIN",
+    subtitle: "Finance administration for document capture, receivables follow-up and exception routing with human approval.",
+    icon: Receipt,
     sections: [
       {
         title: "Your company's memory, instant",
@@ -182,9 +182,9 @@ export const SERVICE_DATA: Record<string, DetailPageData> = {
     ]
   },
   [PageType.SERVICE_SOVEREIGN_AI_FOUNDATION]: {
-    title: "On Prem & Private LLM deployment",
-    subtitle: "Private LLMs, retrieval, evals, and observability — with UAE data-residency options for supported workloads.",
-    icon: Server,
+    title: "AQION GROWTH",
+    subtitle: "Marketing and growth workflows that draft, coordinate, personalize and measure activity with human approval.",
+    icon: Share2,
     sections: [
       {
         title: "The ground the others stand on",

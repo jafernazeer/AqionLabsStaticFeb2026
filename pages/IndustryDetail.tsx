@@ -108,7 +108,7 @@ const useCaseContext: Record<string, { headline: string; context: string; signal
 };
 
 const solutionGroups = [
-  { key: 'aqionVox', title: 'Aqion Vox growth layer', icon: Bot },
+  { key: 'aqionVox', title: 'AQION VOX conversation layer', icon: Bot },
   { key: 'aiAutomation', title: 'Automation backbone', icon: Workflow },
   { key: 'enterpriseAi', title: 'Enterprise intelligence', icon: Server },
   { key: 'governance', title: 'Governance controls', icon: Shield },
@@ -178,7 +178,7 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
                 onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX, true)}
                 className="mobile-action inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-hairline bg-paper px-7 py-4 text-sm font-medium text-ink transition-colors hover:border-ink/30 sm:w-auto"
               >
-                Try Aqion Vox demo
+                Try AQION VOX demo
               </button>
             </div>
           </div>

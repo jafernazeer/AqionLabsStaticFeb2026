@@ -18,18 +18,18 @@ interface AboutProps {
 
 const operatingPrinciples = [
   {
-    title: 'Build before the board forgets',
-    body: 'We turn executive AI intent into shipped product, measured workflows and live dashboards within weeks, not quarters.',
+    title: 'Move beyond experimentation',
+    body: 'We turn AI intent into working employees that answer, understand, coordinate and execute inside real business workflows.',
     icon: Workflow,
   },
   {
-    title: 'Revenue is the benchmark',
-    body: 'Every engagement is tied to a commercial metric: conversion, response time, cost-per-resolution, lead velocity or operating margin.',
+    title: 'Workflows are the benchmark',
+    body: 'Every deployment starts with one high-value workflow, the systems it touches and the outcome it should improve.',
     icon: TrendingUp,
   },
   {
-    title: 'UAE-first, globally credible',
-    body: 'Arabic-first experiences, GCC data expectations and enterprise controls are treated as product requirements from day one.',
+    title: 'Regional by design',
+    body: 'UAE and GCC workflows, enterprise controls, multilingual experience and deployment options are product requirements from day one.',
     icon: ShieldCheck,
   },
 ];
@@ -81,7 +81,7 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
                 onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX)}
                 className="mobile-action inline-flex min-h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-hairline bg-paper px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-ink/30 sm:w-auto md:px-7 md:py-4"
               >
-                Explore Aqion Vox
+                Explore AQION VOX
               </button>
             </div>
           </div>
@@ -154,7 +154,7 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
 
             <div className="mobile-copy-measure mt-8 space-y-4 text-[15px] leading-relaxed text-graphite md:text-lg">
               <p>
-                That's why I started AqionLabs: to build an AI workforce platform that lets everyday businesses use enterprise-grade AI without enterprise-level costs. Our first AI employee, Aqion Vox, answers, qualifies, converts and follows up with customers 24/7 — with multilingual regional language support.
+                That's why I started AqionLabs: to build AQION Cloud, an AI workforce platform that helps regional businesses use specialized AI employees without turning AI adoption into an enterprise transformation project. Our first AI employee, AQION VOX, answers, qualifies, captures and follows up on customer conversations.
               </p>
               <p>
                 The real turning point was realising AI can become a real-time mentor if you're curious enough — something you can ask anything, explore any technical challenge with, and get clear, judgment-free guidance from instantly. Not just a productivity tool, but a true problem-solving partner.
@@ -214,8 +214,8 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
                 {[
                   'AI product strategy and use-case prioritisation',
                   'Full-stack web, mobile and workflow engineering',
-                  'Voice, WhatsApp, CRM and automation deployment',
-                  'Governance, security and data-residency planning',
+                  'Voice, CRM and workflow automation deployment',
+                  'Governance, security and data-residency option planning',
                   'Post-launch optimisation against commercial KPIs',
                 ].map((item) => (
                   <div key={item} className="mobile-center-row flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.05] p-4 text-bone/76 md:items-start md:justify-start md:text-left">

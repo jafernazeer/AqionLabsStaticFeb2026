@@ -137,7 +137,7 @@ const Contact: React.FC = () => {
                        Tell us where repetitive work is slowing your business down.
                    </p>
                    <p className="mt-7 hidden max-w-2xl text-xl leading-relaxed text-taupe md:block">
-                       Tell us where repetitive conversations, coordination or administration are slowing your business down. We'll identify the right first workflow to delegate to your AI workforce.
+                       Tell us where repetitive conversations, coordination or administration are slowing your business down. We'll identify the right first workflow, the systems it touches and the AI employee that should own it.
                    </p>
                </div>
 
@@ -190,12 +190,12 @@ const Contact: React.FC = () => {
                        Share the workflow or product. Our build team will scope the next step.
                    </p>
                    <p className="mt-6 hidden text-lg leading-relaxed text-bone/72 md:block">
-                       Use the form for new products, Aqion Vox demos, AI automation briefs, enterprise pilots or partnership conversations. The first response is handled by the team that scopes the work.
+                       Use the form for AQION VOX demos, AQION Cloud platform discussions, AI workforce pilots, integration reviews or partnership conversations. The first response is handled by the team that scopes the work.
                    </p>
                    <div className="mobile-decorative-hide mt-8 rounded-[26px] border border-white/10 bg-white/[0.04] p-6 text-bone md:block">
                        <p className="font-display text-2xl leading-tight">What helps us move quickly</p>
                        <div className="mt-5 grid gap-3 text-sm leading-relaxed text-bone/70">
-                           {['The workflow or product you want to improve', 'The systems your team already uses', 'The decision timeline and deployment region'].map((item) => (
+                           {['The workflow you want to delegate first', 'The systems your team already uses', 'The decision timeline and deployment requirements'].map((item) => (
                                <div key={item} className="flex gap-3">
                                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#a5b4fc]" />
                                    <span>{item}</span>
@@ -257,7 +257,7 @@ const Contact: React.FC = () => {
                             </div>
 
                             <button type="submit" className="mobile-action group inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink px-7 py-4 text-sm font-medium text-bone shadow-lg shadow-ink/10 transition-all duration-300 hover:bg-[linear-gradient(90deg,#4f46e5,#9333ea)] hover:shadow-[0_16px_40px_-14px_rgba(79,70,229,0.55)]">
-                                Book my AQION demo <ArrowRight className="h-4 w-4" />
+                                Book an AQION workforce demo <ArrowRight className="h-4 w-4" />
                             </button>
                        </form>
                    </div>
