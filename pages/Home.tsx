@@ -157,7 +157,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         </div>
 
         <div className="home-desktop-grid pointer-events-none relative z-10 mx-auto grid min-h-[690px] w-full max-w-7xl items-start gap-0 sm:min-h-[730px] md:min-h-[760px] lg:min-h-[calc(100vh-14rem)] lg:grid-cols-[minmax(0,1fr)_minmax(380px,0.9fr)] lg:items-center lg:gap-10">
-          <div className="home-mobile-content relative z-20 order-1 flex w-full max-w-[660px] flex-col items-center pt-[7.25rem] text-center sm:pt-[8rem] md:pt-[8.75rem] lg:items-start lg:pt-0 lg:text-left">
+          <div className="home-mobile-content relative z-20 order-1 flex w-full max-w-[660px] flex-col items-center pt-[9rem] text-center sm:pt-[9.75rem] md:pt-[10.5rem] lg:items-start lg:pt-16 lg:text-left">
             <div className="mb-5 inline-flex max-w-full animate-entry items-center justify-center gap-2 rounded-full border border-ink/[0.08] bg-white/60 px-3 py-1.5 text-center font-mono text-[8.5px] uppercase leading-[1.25] tracking-[0.075em] text-graphite backdrop-blur-md sm:px-3.5 sm:py-2 sm:text-[11px] sm:tracking-[0.14em] lg:mb-7">
               <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-br from-[#4f46e5] to-[#9333ea] shadow-[0_0_0_5px_rgba(79,70,229,0.12)]" />
               Agentic AI • Built in the UAE
@@ -179,14 +179,11 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               Aqion builds AI agents that understand business context, automate workflows and connect conversations to real business outcomes.
             </p>
 
-            <p className="home-mobile-copy relative z-30 mx-auto mt-3.5 max-w-[312px] animate-entry text-center text-[12.5px] leading-[1.55] tracking-[0.005em] text-[#71717a] sm:max-w-[540px] sm:text-[14px] md:text-base lg:mx-0 lg:text-left">
-              Starting with <span className="font-medium text-ink">Aqion Vox</span> — an Agentic Voice AI platform that turns customer conversations into qualified opportunities, structured data and automated actions.
-            </p>
-
             <div className="relative z-30 mt-7 flex animate-entry flex-col items-center gap-3 sm:flex-row lg:items-start">
               <button
                 onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX)}
-                className="group inline-flex min-h-12 cursor-pointer items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#4f46e5] to-[#9333ea] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(79,70,229,0.35)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_14px_36px_rgba(79,70,229,0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4f46e5]"
+                style={{ backgroundImage: 'linear-gradient(90deg, #4f46e5, #9333ea)' }}
+                className="group inline-flex min-h-12 cursor-pointer items-center justify-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(79,70,229,0.35)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_14px_36px_rgba(79,70,229,0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4f46e5]"
               >
                 Experience Aqion Vox
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -209,20 +206,6 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           <div className="hidden lg:order-2 lg:block" aria-hidden="true" />
         </div>
 
-        <div className="home-desktop-status-row absolute inset-x-10 bottom-7 z-10 mx-auto hidden max-w-7xl items-center justify-between gap-6 font-mono text-[11px] uppercase tracking-[0.06em] text-[#71717a] lg:flex">
-          <div className="flex items-center gap-2">
-            <span className="text-[#a1a1aa]">Aqion Vox</span>
-            <span className="h-1 w-1 rounded-full bg-[#a1a1aa]" />
-            <span>Live Demo</span>
-            <span className="h-1 w-1 rounded-full bg-[#a1a1aa]" />
-            <span>Agentic Voice AI</span>
-          </div>
-          <div className="flex items-center gap-2 lg:translate-x-6">
-            <span>UAE</span>
-            <span className="h-1 w-1 rounded-full bg-[#a1a1aa]" />
-            <span>GCC Ready</span>
-          </div>
-        </div>
       </section>
 
       {/* AQION VOX CAPABILITY MARQUEE */}
