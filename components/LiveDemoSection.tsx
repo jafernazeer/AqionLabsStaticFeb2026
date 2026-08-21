@@ -256,31 +256,7 @@ export default function LiveDemoSection() {
           </p>
         </div>
 
-        <div className="flex flex-col items-center gap-6">
-          <div className="w-full rounded-[28px] border border-hairline bg-paper/88 p-4 shadow-[0_20px_70px_-35px_rgba(28,25,23,0.28)] sm:p-5">
-            <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-              <div>
-                <p className="eyebrow mb-1.5">Industry coverage</p>
-                <h3 className="font-display text-xl leading-tight text-ink sm:text-2xl">Industries AQION VOX serves</h3>
-              </div>
-              <span className="rounded-full bg-[#4F46E5]/10 px-3 py-1 text-xs font-semibold text-[#4F46E5]">
-                6 industries
-              </span>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-2.5">
-              {scenarios.map((item) => (
-                <div
-                  key={item.id}
-                  className="group flex items-center gap-2 rounded-full border border-hairline bg-[#FAF7F2] py-2 pl-2.5 pr-4 text-[#6B6357] transition-colors duration-200 hover:border-[#4F46E5]/25 hover:text-ink"
-                >
-                  <IndustryIcon Icon={item.Icon} active={false} />
-                  <span className="text-[13px] font-semibold leading-tight">{item.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
+        <div className="flex flex-col items-center">
           <div className="flex w-full flex-col items-center gap-4 sm:gap-6">
             <div className="mx-auto w-full max-w-[420px] rounded-[32px] bg-gradient-to-b from-[#777981] to-[#42434a] p-1.5 shadow-[0_28px_80px_-30px_rgba(8,8,12,0.5)] sm:rounded-[38px]">
               <div className="relative flex min-h-[510px] flex-col overflow-hidden rounded-[26px] border border-white/10 bg-[#07080d] px-4 pb-4 pt-9 text-white sm:min-h-[586px] sm:rounded-[32px] sm:px-5 sm:pb-5 sm:pt-10 lg:min-h-[684px]">

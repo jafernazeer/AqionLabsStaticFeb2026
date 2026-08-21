@@ -38,6 +38,7 @@ const services = [
     no: '01',
     category: 'Customer Conversation Agent',
     title: 'Aqion Vox',
+    status: 'Available Now',
     body: 'Answers calls, understands intent, qualifies requirements and triggers the next business action.',
     page: PageType.AGENT_CUSTOMER_SUPPORT,
     href: '/agents/customer-support',
@@ -46,6 +47,7 @@ const services = [
     no: '02',
     category: 'Business Knowledge Agent',
     title: 'Aqion Brain',
+    status: 'Roadmap',
     body: 'Turns company documents, policies and operational knowledge into trusted, source-linked answers.',
     page: PageType.AGENT_KNOWLEDGE,
     href: '/agents/knowledge',
@@ -54,6 +56,7 @@ const services = [
     no: '03',
     category: 'Executive Intelligence Agent',
     title: 'Aqion Chief',
+    status: 'Roadmap',
     body: 'Turns business activity into concise briefings, priorities and actionable insights.',
     page: PageType.AGENT_EXECUTIVE,
     href: '/agents/executive',
@@ -62,6 +65,7 @@ const services = [
     no: '04',
     category: 'Operations Agent',
     title: 'Aqion Ops',
+    status: 'Roadmap',
     body: 'Coordinates routine requests, tickets, approvals, assignments and follow-through.',
     page: PageType.AGENT_WORKFORCE,
     href: '/agents/workforce',
@@ -70,6 +74,7 @@ const services = [
     no: '05',
     category: 'Procurement Agent',
     title: 'Aqion Procure',
+    status: 'Roadmap',
     body: 'Moves purchasing from request and RFQ through supplier follow-up and approval.',
     page: PageType.AGENT_REVENUE,
     href: '/agents/revenue',
@@ -78,6 +83,7 @@ const services = [
     no: '06',
     category: 'Finance Operations Agent',
     title: 'Aqion Fin',
+    status: 'Roadmap',
     body: 'Automates repetitive finance administration while keeping people in control.',
     page: PageType.AGENT_FINANCE,
     href: '/agents/finance',
@@ -86,6 +92,7 @@ const services = [
     no: '07',
     category: 'Growth Automation Agent',
     title: 'Aqion Growth',
+    status: 'Roadmap',
     body: 'Scales campaigns, content, nurturing and follow-up with structured human approval.',
     page: PageType.AGENT_GROWTH,
     href: '/agents/growth',
@@ -185,7 +192,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 style={{ backgroundImage: 'linear-gradient(90deg, #4f46e5, #9333ea)' }}
                 className="group inline-flex min-h-12 cursor-pointer items-center justify-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(79,70,229,0.35)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_14px_36px_rgba(79,70,229,0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4f46e5]"
               >
-                Experience Aqion Vox
+                Explore Aqion Vox
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </button>
               <button
@@ -196,10 +203,6 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 <Sparkles className="h-4 w-4 text-[#4f46e5] transition-transform group-hover:scale-110" />
               </button>
             </div>
-
-            <p className="relative z-30 mt-6 max-w-[320px] animate-entry text-center font-mono text-[9px] uppercase leading-[1.7] tracking-[0.11em] text-[#8b8b93] sm:max-w-none sm:text-[10px] sm:tracking-[0.14em] lg:text-left">
-              UAE deployment options · Enterprise controls · Human oversight · Built to integrate
-            </p>
 
                       </div>
 
@@ -255,9 +258,20 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 <span className="col-span-12 font-mono text-xs text-bone/50 transition-colors group-hover:text-[#7c7cff] md:col-span-1 md:pt-2">{s.no}</span>
                 <div className="col-span-12 min-w-0 md:col-span-5">
                   <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-bone/45">{s.category}</p>
-                  <h3 className="whitespace-normal break-words font-display text-[1.45rem] leading-tight tracking-tight text-bone transition-colors duration-200 group-hover:text-[#4F46E5] md:text-4xl">
-                    {s.title}
-                  </h3>
+                  <div className="flex flex-wrap items-center gap-2.5">
+                    <h3 className="whitespace-normal break-words font-display text-[1.45rem] leading-tight tracking-tight text-bone transition-colors duration-200 group-hover:text-[#4F46E5] md:text-4xl">
+                      {s.title}
+                    </h3>
+                    <span
+                      className={`shrink-0 rounded-full border px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.12em] ${
+                        s.status === 'Available Now'
+                          ? 'border-[#7c7cff]/40 bg-[#4F46E5]/20 text-[#c7d2fe]'
+                          : 'border-white/12 bg-white/[0.06] text-bone/45'
+                      }`}
+                    >
+                      {s.status}
+                    </span>
+                  </div>
                 </div>
                 <p className="mobile-clamp-2 col-span-12 min-w-0 break-words text-sm leading-relaxed text-bone/70 transition-colors group-hover:text-[#c7d2fe] md:col-span-5 md:text-base">{s.body}</p>
                 <span className="col-span-12 md:col-span-1 flex md:justify-end pt-2">
@@ -308,20 +322,20 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
       {/* LIVE PILOT — INVESTOR PROOF */}
       <section className="mobile-section-tight mx-auto max-w-7xl px-6 py-16 md:py-24">
-        <div className="relative overflow-hidden rounded-[32px] border border-hairline bg-paper/82 p-6 shadow-[0_28px_90px_-52px_rgba(28,25,23,0.4)] backdrop-blur md:p-12">
+        <div className="relative overflow-hidden rounded-[26px] border border-hairline bg-paper/82 p-5 shadow-[0_28px_90px_-52px_rgba(28,25,23,0.4)] backdrop-blur sm:rounded-[32px] sm:p-8 md:p-12">
           <div aria-hidden className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-petrol/10 blur-3xl" />
-          <div className="relative grid grid-cols-12 items-center gap-8 md:gap-10">
+          <div className="relative grid grid-cols-12 items-center gap-7 md:gap-10">
             <div className="col-span-12 lg:col-span-5">
-              <p className="eyebrow mb-4">[ Live pilot ]</p>
-              <h2 className="font-display text-3xl leading-[1.04] tracking-tight text-ink md:text-5xl">
+              <p className="eyebrow mb-3 sm:mb-4">[ Live pilot ]</p>
+              <h2 className="font-display text-[1.65rem] leading-[1.06] tracking-tight text-ink sm:text-3xl md:text-5xl">
                 EthikCorp <span className="display-italic text-petrol">×</span> AqionLabs
               </h2>
-              <p className="mt-4 text-[15px] leading-relaxed text-taupe md:text-lg">
+              <p className="mt-3 text-[14px] leading-relaxed text-taupe sm:mt-4 sm:text-[15px] md:text-lg">
                 The first deployment of Aqion Vox.
               </p>
               <button
                 onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX)}
-                className="group mt-7 inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-bone transition-colors hover:bg-petrolDeep"
+                className="group mt-6 inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-[13px] font-medium text-bone transition-colors hover:bg-petrolDeep sm:w-auto sm:px-7 sm:text-sm"
               >
                 Experience Live Demo
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -329,16 +343,16 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             </div>
 
             <div className="col-span-12 lg:col-span-6 lg:col-start-7">
-              <div className="grid gap-2.5">
+              <div className="grid gap-2">
                 {pilotFlow.map((step, idx) => (
                   <div key={step}>
-                    <div className="flex items-center gap-3 rounded-2xl border border-hairline bg-bone/70 px-5 py-4">
-                      <span className="font-mono text-[10px] tracking-[0.16em] text-petrol">{String(idx + 1).padStart(2, '0')}</span>
-                      <span className="font-display text-lg leading-tight text-ink md:text-xl">{step}</span>
+                    <div className="flex min-w-0 items-center gap-2.5 rounded-2xl border border-hairline bg-bone/70 px-4 py-3.5 sm:gap-3 sm:px-5 sm:py-4">
+                      <span className="shrink-0 font-mono text-[10px] tracking-[0.14em] text-petrol">{String(idx + 1).padStart(2, '0')}</span>
+                      <span className="min-w-0 break-words font-display text-[15px] leading-snug text-ink sm:text-lg md:text-xl">{step}</span>
                     </div>
                     {idx < pilotFlow.length - 1 && (
                       <div aria-hidden className="flex justify-center py-0.5">
-                        <ArrowRight className="h-4 w-4 rotate-90 text-petrol/50" />
+                        <ArrowRight className="h-3.5 w-3.5 rotate-90 text-petrol/50 sm:h-4 sm:w-4" />
                       </div>
                     )}
                   </div>
@@ -355,7 +369,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="mb-14 grid grid-cols-12 gap-6 md:mb-16">
             <div className="col-span-12 md:col-span-6">
-              <p className="eyebrow !text-[#a5b4fc] mb-4">[ 03 — Aqion Cloud ]</p>
+              <p className="eyebrow !text-[#4F46E5] mb-4">[ 03 — Aqion Cloud ]</p>
               <h2 className="font-display text-[clamp(1.65rem,7.4vw,2.25rem)] leading-[1.02] tracking-tight text-bone md:text-6xl">
                 <span className="block">The Intelligence Layer</span>
                 <span className="display-italic text-bone/90">Behind Every Aqion Agent.</span>
@@ -375,7 +389,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             {cloudStack.map((layer, idx) => (
               <div key={layer.label}>
                 <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.05] px-5 py-5 transition-colors hover:border-[#7c7cff]/30 hover:bg-white/[0.08] md:px-7">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.07] text-[#a5b4fc]">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#4F46E5]/30 bg-[#4F46E5]/15 text-[#4F46E5]">
                     <layer.icon className="h-5 w-5" strokeWidth={1.5} />
                   </span>
                   <div className="min-w-0">

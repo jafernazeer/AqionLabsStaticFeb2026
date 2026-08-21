@@ -21,6 +21,11 @@ const Terms = lazy(() => import('./pages/Terms'));
 const AqionFlo = lazy(() => import('./pages/AqionFlo'));
 const AqionCloud = lazy(() => import('./pages/AqionCloud'));
 const BlankCanvas = lazy(() => import('./pages/BlankCanvas'));
+const Integrations = lazy(() => import('./pages/Integrations'));
+const SecurityData = lazy(() => import('./pages/SecurityData'));
+const AIWorkforce = lazy(() => import('./pages/AIWorkforce'));
+const Pricing = lazy(() => import('./pages/Pricing'));
+const InvestorEnquiries = lazy(() => import('./pages/InvestorEnquiries'));
 
 // Helper to sync PageType with URL if needed, but we'll mostly use Routes
 const AppContent: React.FC = () => {
@@ -176,12 +181,12 @@ const AppContent: React.FC = () => {
             <Route path="/platform/aqion-cloud" element={<AqionCloud onNavigate={handleNavigate} />} />
 
             {/* Awaiting copy — beige canvas placeholders */}
-            <Route path="/platform/integrations" element={<BlankCanvas />} />
-            <Route path="/platform/security-data" element={<BlankCanvas />} />
-            <Route path="/ai-workforce/roadmap" element={<BlankCanvas />} />
-            <Route path="/pricing" element={<BlankCanvas />} />
+            <Route path="/platform/integrations" element={<Integrations onNavigate={handleNavigate} />} />
+            <Route path="/platform/security-data" element={<SecurityData onNavigate={handleNavigate} />} />
+            <Route path="/ai-workforce/roadmap" element={<AIWorkforce onNavigate={handleNavigate} />} />
+            <Route path="/pricing" element={<Pricing onNavigate={handleNavigate} />} />
             <Route path="/resources/ethikcorp-pilot" element={<BlankCanvas />} />
-            <Route path="/resources/investor-enquiries" element={<BlankCanvas />} />
+            <Route path="/resources/investor-enquiries" element={<InvestorEnquiries onNavigate={handleNavigate} />} />
             <Route path="/legal/data-processing" element={<BlankCanvas />} />
             <Route path="/services/web-studio" element={<ServiceDetail data={PLATFORM_SERVICE_DATA[PageType.SERVICE_WEB_STUDIO]} onNavigate={handleNavigate} />} />
             <Route path="/services/sovereign-infrastructure" element={<ServiceDetail data={PLATFORM_SERVICE_DATA[PageType.SERVICE_SOVEREIGN_INFRA]} onNavigate={handleNavigate} />} />

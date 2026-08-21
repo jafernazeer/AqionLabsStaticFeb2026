@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Instagram, Linkedin, Facebook, ArrowUpRight } from 'lucide-react';
+import { Instagram, Linkedin, Facebook } from 'lucide-react';
 import { PageType } from '../types';
 
 interface FooterProps {
@@ -8,7 +8,7 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
-  const footerColumns: { heading: string; links: { label: string; page: PageType }[] }[] = [
+  const footerColumns: { heading: string; links: { label: string; page?: PageType; url?: string }[] }[] = [
     {
       heading: 'Platform',
       links: [
@@ -39,7 +39,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
       heading: 'Resources',
       links: [
         { label: 'Platform Overview', page: PageType.PLATFORM_AQION_CLOUD },
-        { label: 'EthikCorp Pilot', page: PageType.RESOURCE_ETHIKCORP_PILOT },
+        { label: 'EthikCorp Pilot', url: 'https://ethikcorp.aqionlabs.com' },
         { label: 'Live VOX Demo', page: PageType.PRODUCT_AQIONVOX },
         { label: 'Investor Enquiries', page: PageType.RESOURCE_INVESTOR_ENQUIRIES },
       ],
@@ -58,7 +58,6 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
       links: [
         { label: 'Privacy Policy', page: PageType.PRIVACY },
         { label: 'Terms of Use', page: PageType.TERMS },
-        { label: 'Data Processing Notice', page: PageType.DATA_PROCESSING },
       ],
     },
   ];
@@ -77,24 +76,15 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
       <div className="max-w-7xl mx-auto px-6 pb-20 md:pb-32 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20">
-          <div className="lg:col-span-5">
-            <p className="eyebrow mb-4">[ The next chapter ]</p>
-            <h2 className="font-display text-[2.65rem] md:text-6xl tracking-tight text-ink leading-[0.95]">
-              Let's build something <span className="display-italic">unmistakably yours</span>.
-            </h2>
-            <p className="mobile-clamp-3 mt-5 text-taupe max-w-md leading-relaxed">
-              We partner with operators in Dubai, Abu Dhabi and across the GCC to deploy AI employees that answer customers, use company knowledge and execute approved workflows.
+          <div className="lg:col-span-4">
+            <p className="font-hero text-[1.75rem] font-semibold tracking-[-0.03em] text-ink md:text-[2rem]">
+              AqionLabs<span className="bg-gradient-to-r from-[#4f46e5] to-[#9333ea] bg-clip-text text-transparent">.</span>ai
             </p>
-            <a
-              href="#"
-              onClick={(e) => handleNav(e, PageType.CONTACT)}
-              className="mt-8 inline-flex items-center gap-2 bg-ink text-bone px-6 py-3.5 rounded-full text-sm font-medium hover:bg-petrolDeep transition-colors cursor-pointer"
-            >
-              Start a conversation
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
+            <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-taupe">
+              Agentic AI that thinks, talks and acts.
+            </p>
 
-            <div className="flex gap-2 mt-8">
+            <div className="flex gap-2 mt-6">
               {[
                 { Icon: Instagram, href: 'https://instagram.com/aqionlabs', label: 'Instagram' },
                 { Icon: Linkedin, href: 'https://www.linkedin.com/company/aqionlabs', label: 'LinkedIn' },
@@ -114,16 +104,22 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:col-span-7 lg:gap-x-8">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:col-span-8 lg:gap-x-8">
             {footerColumns.map(({ heading, links }) => (
               <div key={heading}>
                 <h3 className="eyebrow mb-5">{heading}</h3>
                 <ul className="space-y-3 text-sm text-graphite">
-                  {links.map(({ label, page }) => (
+                  {links.map(({ label, page, url }) => (
                     <li key={`${heading}-${label}`}>
-                      <a href="#" onClick={(e) => handleNav(e, page)} className="transition-colors hover:text-petrol">
-                        {label}
-                      </a>
+                      {url ? (
+                        <a href={url} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-petrol">
+                          {label}
+                        </a>
+                      ) : (
+                        <a href="#" onClick={(e) => handleNav(e, page!)} className="transition-colors hover:text-petrol">
+                          {label}
+                        </a>
+                      )}
                     </li>
                   ))}
                 </ul>

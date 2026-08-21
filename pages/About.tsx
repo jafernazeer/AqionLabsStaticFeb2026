@@ -48,13 +48,16 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
         <div aria-hidden className="absolute left-1/2 top-1/2 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-petrol/10 blur-[130px]" />
         <div className="relative mx-auto grid w-full min-w-0 max-w-7xl grid-cols-12 items-center gap-8 px-5 sm:px-6 md:gap-10">
           <div className="mobile-page-center col-span-12 min-w-0 lg:col-span-7 lg:text-left">
-            <p className="eyebrow mb-4 md:mb-5">[ About AqionLabs ]</p>
+            <p className="eyebrow mb-4 md:mb-5">[ About AQION ]</p>
             <h1 className="mobile-heading max-w-full font-display text-[2.35rem] leading-[1] tracking-tight text-ink md:text-6xl md:leading-[1]">
-              Building the AI workforce<br />
-              <span className="display-italic block break-words text-petrol md:inline">layer for the Middle East.</span>
+              Building the Agentic AI<br />
+              <span className="display-italic block break-words text-petrol md:inline">Platform for the Middle East.</span>
             </h1>
             <p className="mobile-copy-measure mt-5 max-w-[21rem] break-words text-base leading-relaxed text-graphite md:mt-7 md:max-w-2xl md:text-xl md:leading-[1.5] lg:mx-0">
-              AQION Labs is building AI employees that help organizations move from AI experimentation to real, measurable work — answering customers, understanding the business and completing everyday tasks across the systems teams already use.
+              The first generation of enterprise AI helped people search information, generate content and work faster. The next generation will increasingly understand, decide and act.
+            </p>
+            <p className="mobile-copy-measure mt-4 max-w-[21rem] break-words text-[14.5px] leading-relaxed text-taupe md:max-w-2xl md:text-lg lg:mx-0">
+              AQION Labs is building agentic AI solutions that combine reasoning, business context and workflow execution to perform meaningful work across customer and business operations.
             </p>
             <ul className="mt-7 hidden max-w-2xl space-y-4 md:mt-8 md:block">
               {[
@@ -104,6 +107,43 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* OUR APPROACH */}
+      <section className="mobile-section-tight border-b border-hairline bg-parchment/50 py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+          <div className="mb-10 grid grid-cols-12 gap-6 md:mb-14">
+            <div className="col-span-12 md:col-span-6">
+              <p className="eyebrow mb-4">[ Our approach ]</p>
+              <h2 className="mobile-subheading font-display text-[1.9rem] leading-[1.04] tracking-tight text-ink md:text-5xl">
+                Start With a Real Workflow.<br />
+                <span className="display-italic text-petrol">Build the Platform Around It.</span>
+              </h2>
+            </div>
+            <div className="col-span-12 md:col-span-5 md:col-start-8 md:pt-3">
+              <p className="text-[15px] leading-relaxed text-graphite md:text-lg">
+                AQION is starting with customer conversations through AQION VOX rather than attempting to launch an entire AI Workforce at once.
+              </p>
+              <p className="mt-4 text-[14.5px] leading-relaxed text-taupe md:text-base">
+                The platform capabilities developed around VOX — runtime intelligence, business memory, integrations and workflow execution — form the foundation for AQION Cloud and the broader AI Workforce.
+              </p>
+            </div>
+          </div>
+
+          <div className="mobile-priority-grid grid gap-3 sm:grid-cols-3">
+            {[
+              { stage: 'Today', title: 'AQION VOX', detail: 'Agentic Voice AI' },
+              { stage: 'Platform', title: 'AQION Cloud', detail: 'Shared intelligence layer' },
+              { stage: 'Expansion', title: 'AI Workforce', detail: 'Connected specialized agents' },
+            ].map((step) => (
+              <div key={step.stage} className="rounded-[24px] border border-hairline bg-paper p-5 shadow-[0_18px_60px_-48px_rgba(28,25,23,0.35)] sm:p-6">
+                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-petrol">{step.stage}</p>
+                <h3 className="mt-3 font-display text-xl leading-tight text-ink md:text-2xl">{step.title}</h3>
+                <p className="mt-2 text-[13.5px] leading-relaxed text-taupe sm:text-sm">{step.detail}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
