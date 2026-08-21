@@ -101,6 +101,67 @@
     padding-bottom: 4rem !important;
   }
 
+  /* Content priority: trim long supporting copy so mobile screens stay scannable. */
+  .mobile-clamp-2,
+  .mobile-clamp-3 {
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .mobile-clamp-2 { -webkit-line-clamp: 2; }
+  .mobile-clamp-3 { -webkit-line-clamp: 3; }
+
+  /* Card and grid rhythm: single column with an 8pt gap, comfortable for thumbs. */
+  .mobile-priority-two,
+  .mobile-priority-grid,
+  .mobile-priority-list {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .mobile-priority-two > *,
+  .mobile-priority-grid > * {
+    width: 100% !important;
+  }
+
+  .mobile-card-center {
+    text-align: center !important;
+  }
+
+  .mobile-card-center > * {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Decorative artwork: cheaper to paint, never competing with content. */
+  .mobile-visual-reduce {
+    opacity: 0.3 !important;
+  }
+
+  .mobile-visual-hide,
+  .mobile-decorative-hide {
+    display: none !important;
+  }
+
+  /* A 12-column grid needs 11 gutters of width before any content fits; on a
+     phone that alone exceeds the viewport, so collapse to a single column. */
+  main [class*="grid-cols-12"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 1.5rem !important;
+  }
+
+  main [class*="grid-cols-12"] > * {
+    grid-column: auto !important;
+    min-width: 0;
+  }
+
+  /* Inputs at 16px so iOS does not zoom on focus, and 48px tall for touch. */
+  .mobile-form-control {
+    font-size: 16px !important;
+    min-height: 48px !important;
+  }
+
   .mobile-page-center {
     max-width: min(100%, 22rem) !important;
     margin-left: auto !important;

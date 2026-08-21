@@ -25,7 +25,7 @@ const AqionCloud: React.FC<Props> = ({ onNavigate }) => {
     <div className="mesh-bg min-h-screen overflow-x-hidden font-sans text-ink">
       <PageHero
         eyebrow="Aqion Cloud"
-        title={<>The Platform Behind <span className="display-italic text-petrol">AQION&apos;s Agentic AI.</span></>}
+        title={<>The Platform Behind<br className="hidden md:block" /> <span className="display-italic text-petrol">AQION&apos;s Agentic AI.</span></>}
         lede="AQION Cloud is the shared intelligence, memory and execution layer designed to power AQION&apos;s growing AI Workforce."
         body="It connects reasoning, business context, workflows, integrations and enterprise infrastructure so individual AI agents can operate as part of one connected platform rather than isolated automations."
         actions={

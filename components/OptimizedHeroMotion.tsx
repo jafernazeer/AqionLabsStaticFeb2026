@@ -9,6 +9,8 @@ interface OptimizedHeroMotionProps {
   mediaClassName?: string;
   mediaStyle?: React.CSSProperties;
   onLoad?: () => void;
+  /** true for the above-the-fold hero artwork, false for decorative backdrops. */
+  priority?: boolean;
 }
 
 const shouldReduceMotion = () => {
@@ -23,6 +25,7 @@ const OptimizedHeroMotion: React.FC<OptimizedHeroMotionProps> = ({
   mediaClassName,
   mediaStyle,
   onLoad,
+  priority = true,
 }) => {
   // Keep static image/SVG artwork visible for reduced-motion users. Only
   // autoplay video is omitted because it has no equivalent static frame here.
@@ -50,9 +53,9 @@ const OptimizedHeroMotion: React.FC<OptimizedHeroMotionProps> = ({
       <img
         src={src}
         alt=""
-        loading="eager"
+        loading={priority ? 'eager' : 'lazy'}
         decoding="async"
-        fetchPriority="high"
+        fetchPriority={priority ? 'high' : 'low'}
         onLoad={onLoad}
         className={mediaClassName}
         style={mediaStyle}
@@ -65,6 +68,7 @@ export const ServiceMotionBackdrop: React.FC<{ className?: string }> = ({ classN
   <OptimizedHeroMotion
     kind="image"
     src="/service-motion.svg"
+    priority={false}
     className={`absolute inset-0 pointer-events-none overflow-hidden ${className}`}
     mediaClassName="absolute inset-[-16%_-10%] h-[132%] w-[120%] max-w-none object-cover"
     mediaStyle={{ opacity: 0.44, filter: 'saturate(0.92)', transform: 'scaleX(-1) scale(1.08)' }}
@@ -78,6 +82,7 @@ export const IndustryMotionBackdrop: React.FC<{ src: string; className?: string 
   <OptimizedHeroMotion
     kind="image"
     src={src}
+    priority={false}
     className={`absolute inset-0 pointer-events-none overflow-hidden ${className}`}
     mediaClassName="h-full w-full object-cover"
   />
