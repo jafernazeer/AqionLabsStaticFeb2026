@@ -285,3 +285,10 @@
   }
 
 }
+
+/* The Spline canvas tracks the pointer/finger for the robot head, but must never
+   swallow vertical scrolling on touch devices. */
+.home-robot-scene,
+.home-robot-scene canvas {
+  touch-action: pan-y;
+}

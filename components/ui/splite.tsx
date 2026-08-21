@@ -21,8 +21,11 @@ export function SplineScene({
     <div className="relative h-full w-full overflow-visible [contain:layout_paint]">
       <Spline
         scene={scene}
-        className={`${className} transition-opacity duration-300 ease-out ${
-          isLoaded ? 'opacity-100' : 'pointer-events-none opacity-0'
+        // touch-action: pan-y lets the page keep scrolling vertically while the
+        // scene still receives pointer/touch moves, so the head tracks the finger.
+        style={{ touchAction: 'pan-y', pointerEvents: 'auto' }}
+        className={`${className} transition-opacity duration-200 ease-out ${
+          isLoaded ? 'opacity-100' : 'opacity-0'
         }`}
         onLoad={(app: Application) => {
           if (transparent) {
@@ -32,11 +35,9 @@ export function SplineScene({
               // Older runtimes may not expose background control.
             }
           }
-          // Wait two frames so the transparent background is committed before we
-          // fade in — prevents the one-frame black canvas flash on reveal.
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => setIsLoaded(true));
-          });
+          // Reveal on the next frame: long enough for the transparent background
+          // to commit (no black flash), short enough to feel instant.
+          requestAnimationFrame(() => setIsLoaded(true));
         }}
       />
     </div>

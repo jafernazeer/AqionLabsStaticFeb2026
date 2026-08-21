@@ -159,11 +159,11 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           onLoad={() => document.getElementById('hero-wave-prepaint')?.remove()}
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bone/82 via-bone/66 to-bone/92" aria-hidden />
-        <div className="home-mobile-robot pointer-events-none absolute inset-x-0 top-[24.5rem] z-[2] h-[420px] sm:top-[25.5rem] sm:h-[460px] md:top-[27rem] md:h-[500px] lg:top-16 lg:bottom-[-140px] lg:left-0 lg:right-0 lg:z-30 lg:h-auto lg:w-full">
+        <div className="home-mobile-robot absolute inset-x-0 top-[24.5rem] z-[2] h-[420px] sm:top-[25.5rem] sm:h-[460px] md:top-[27rem] md:h-[500px] lg:top-16 lg:bottom-[-140px] lg:left-0 lg:right-0 lg:z-30 lg:h-auto lg:w-full">
           <RobotHero height="100%" />
         </div>
 
-        <div className="home-desktop-grid pointer-events-none relative z-10 mx-auto grid min-h-[690px] w-full max-w-7xl items-start gap-0 sm:min-h-[730px] md:min-h-[760px] lg:min-h-[calc(100vh-14rem)] lg:grid-cols-[minmax(0,1fr)_minmax(380px,0.9fr)] lg:items-center lg:gap-10">
+        <div className="home-desktop-grid pointer-events-none relative z-10 lg:z-40 mx-auto grid min-h-[690px] w-full max-w-7xl items-start gap-0 sm:min-h-[730px] md:min-h-[760px] lg:min-h-[calc(100vh-14rem)] lg:grid-cols-[minmax(0,1fr)_minmax(380px,0.9fr)] lg:items-center lg:gap-10">
           <div className="home-mobile-content relative z-40 order-1 flex w-full max-w-[660px] flex-col items-center pt-[9rem] text-center sm:pt-[9.75rem] md:pt-[10.5rem] lg:items-start lg:pt-16 lg:text-left">
             <div className="mb-5 inline-flex max-w-full animate-entry items-center justify-center gap-2 rounded-full border border-ink/[0.08] bg-white/60 px-3 py-1.5 text-center font-mono text-[8.5px] uppercase leading-[1.25] tracking-[0.075em] text-graphite backdrop-blur-md sm:px-3.5 sm:py-2 sm:text-[11px] sm:tracking-[0.14em] lg:mb-7">
               <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-br from-[#4f46e5] to-[#9333ea] shadow-[0_0_0_5px_rgba(79,70,229,0.12)]" />
