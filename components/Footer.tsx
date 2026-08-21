@@ -77,9 +77,16 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
       <div className="max-w-7xl mx-auto px-6 pb-20 md:pb-32 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20">
           <div className="lg:col-span-4">
-            <p className="font-hero text-[1.75rem] font-semibold tracking-[-0.03em] text-ink md:text-[2rem]">
-              AqionLabs<span className="bg-gradient-to-r from-[#4f46e5] to-[#9333ea] bg-clip-text text-transparent">.</span>ai
-            </p>
+            <div className="flex items-center gap-2.5">
+              <img
+                src="/Aqionlabsicon-clean.png"
+                alt="AqionLabs icon"
+                className="h-10 w-10 object-contain md:h-11 md:w-11"
+              />
+              <p className="font-hero text-[1.75rem] font-semibold tracking-[-0.03em] text-ink md:text-[2rem]">
+                AqionLabs<span className="bg-gradient-to-r from-[#4f46e5] to-[#9333ea] bg-clip-text text-transparent">.</span>ai
+              </p>
+            </div>
             <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-taupe">
               Agentic AI that thinks, talks and acts.
             </p>
@@ -128,12 +135,6 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-2 border-t border-hairline pt-8 md:mt-20 md:flex-row md:items-baseline md:gap-4">
-          <p className="font-display text-xl leading-none tracking-tight text-ink">AQION Labs</p>
-          <p className="text-sm leading-relaxed text-taupe">
-            The AI Workforce Platform for UAE and GCC businesses.
-          </p>
-        </div>
 
         <div className="mt-14 md:mt-20 pt-6 md:pt-8 border-t border-hairline flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[10px] md:text-xs text-ash font-mono uppercase tracking-[0.14em] md:tracking-[0.18em]">
           <span>© 2026 AqionLabs FZ-LLC · Dubai, UAE</span>

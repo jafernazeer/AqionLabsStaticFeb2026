@@ -131,7 +131,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
               className="h-9 w-9 object-contain lg:h-10 lg:w-10"
             />
             <span className="font-hero text-[17px] font-semibold tracking-[-0.03em] text-ink lg:text-[18px]">
-              Aqionlabs<span className="bg-gradient-to-r from-[#4f46e5] to-[#9333ea] bg-clip-text text-transparent">.</span>ai
+              AqionLabs<span className="bg-gradient-to-r from-[#4f46e5] to-[#9333ea] bg-clip-text text-transparent">.</span>ai
             </span>
           </div>
 
