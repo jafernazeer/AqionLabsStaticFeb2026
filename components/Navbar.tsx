@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, Headphones, Brain, Briefcase, Wrench, ShoppingCart, Receipt, Share2, LayoutTemplate, Server, Compass, Stethoscope, Building2, CreditCard, Scale, Hotel, GraduationCap, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ChevronDown, Headphones, Blocks, Route, ShieldCheck, LayoutTemplate, Stethoscope, Building2, CreditCard, Scale, Hotel, GraduationCap, ArrowUpRight } from 'lucide-react';
 import { PageType, NavItem } from '../types';
 
 interface NavbarProps {
@@ -11,29 +11,22 @@ interface NavbarProps {
 const navItems: NavItem[] = [
   { label: 'Home', page: PageType.HOME },
   {
-    label: 'AI Workforce',
-    page: PageType.AGENTIC_AI,
-    href: '/agentic-ai',
-    children: [
-      { label: 'AQION VOX', page: PageType.AGENT_CUSTOMER_SUPPORT, href: '/agents/customer-support' },
-      { label: 'AQION BRAIN', page: PageType.AGENT_KNOWLEDGE, href: '/agents/knowledge' },
-      { label: 'AQION CHIEF', page: PageType.AGENT_EXECUTIVE, href: '/agents/executive' },
-      { label: 'AQION OPS', page: PageType.AGENT_WORKFORCE, href: '/agents/workforce' },
-      { label: 'AQION PROCURE', page: PageType.AGENT_REVENUE, href: '/agents/revenue' },
-      { label: 'AQION FIN', page: PageType.AGENT_FINANCE, href: '/agents/finance' },
-      { label: 'AQION GROWTH', page: PageType.AGENT_GROWTH, href: '/agents/growth' },
-    ],
-  },
-  {
     label: 'Platform',
     children: [
-      { label: 'AQION Cloud', page: PageType.PLATFORM_AQION_CLOUD, href: '/platform/aqion-cloud' },
-      { label: 'Sovereign AI deployment', page: PageType.SERVICE_SOVEREIGN_INFRA, href: '/services/sovereign-infrastructure' },
-      { label: 'AI Strategy & Discovery', page: PageType.SERVICE_AI_STRATEGY, href: '/services/ai-strategy' },
+      { label: 'Aqion Cloud', page: PageType.PLATFORM_AQION_CLOUD, href: '/platform/aqion-cloud' },
+      { label: 'Integrations', page: PageType.PLATFORM_INTEGRATIONS, href: '/platform/integrations' },
+      { label: 'Security & Data', page: PageType.PLATFORM_SECURITY_DATA, href: '/platform/security-data' },
     ],
   },
   {
-    label: 'Industries',
+    label: 'Agentic AI',
+    children: [
+      { label: 'Aqion Vox', page: PageType.AGENT_CUSTOMER_SUPPORT, href: '/agents/customer-support', badge: 'Available Now' },
+      { label: 'AI Workforce', page: PageType.WORKFORCE_ROADMAP, href: '/ai-workforce/roadmap' },
+    ],
+  },
+  {
+    label: 'Solutions',
     children: [
       { label: 'Healthcare', page: PageType.INDUSTRY_HEALTHCARE, href: '/industries/healthcare' },
       { label: 'Real Estate', page: PageType.INDUSTRY_REAL_ESTATE, href: '/industries/real-estate' },
@@ -43,21 +36,17 @@ const navItems: NavItem[] = [
       { label: 'Education', page: PageType.INDUSTRY_EDUCATION, href: '/industries/education' },
     ],
   },
+  { label: 'Pricing', page: PageType.PRICING },
   { label: 'About', page: PageType.ABOUT },
   { label: 'Contact', page: PageType.CONTACT },
 ];
 
 const childIcons: Record<string, React.ComponentType<{ className?: string }>> = {
-  'AQION VOX': Headphones,
-  'AQION BRAIN': Brain,
-  'AQION CHIEF': Briefcase,
-  'AQION OPS': Wrench,
-  'AQION PROCURE': ShoppingCart,
-  'AQION FIN': Receipt,
-  'AQION GROWTH': Share2,
-  'AQION Cloud': LayoutTemplate,
-  'Sovereign AI deployment': Server,
-  'AI Strategy & Discovery': Compass,
+  'Aqion Cloud': LayoutTemplate,
+  'Integrations': Blocks,
+  'Security & Data': ShieldCheck,
+  'Aqion Vox': Headphones,
+  'AI Workforce': Route,
   'Healthcare': Stethoscope,
   'Real Estate': Building2,
   'Financial Services': CreditCard,
@@ -166,7 +155,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                       </button>
 
                       {desktopHover === item.label && (
-                        <div className="absolute left-0 top-full z-50 w-[19rem] pt-3">
+                        <div className="absolute left-0 top-full z-50 w-[21.5rem] pt-3">
                           <div className="overflow-hidden rounded-[22px] border border-white/70 bg-white/95 shadow-[0_30px_80px_-32px_rgba(28,25,23,0.45)] backdrop-blur-2xl">
                             <div className="p-2.5">
                               {item.children.map(child => {
@@ -175,14 +164,19 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                                 }`;
                                 const childContent = (
                                   <>
-                                    <span className="flex items-center gap-2.5">
+                                    <span className="flex min-w-0 items-center gap-2.5">
                                       {(() => {
                                         const ChildIcon = childIcons[child.label];
                                         return ChildIcon ? <ChildIcon className="h-4 w-4 shrink-0 text-petrol" /> : null;
                                       })()}
-                                      <span className="text-ink">{child.label}</span>
+                                      <span className="truncate text-ink">{child.label}</span>
+                                      {child.badge && (
+                                        <span className="shrink-0 rounded-full border border-[#4f46e5]/20 bg-gradient-to-r from-[#4f46e5]/12 to-[#9333ea]/10 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.1em] text-petrol">
+                                          {child.badge}
+                                        </span>
+                                      )}
                                     </span>
-                                    <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 text-petrol transition-opacity" />
+                                    <ArrowUpRight className="w-3.5 h-3.5 shrink-0 opacity-0 group-hover:opacity-100 text-petrol transition-opacity" />
                                   </>
                                 );
 
@@ -260,9 +254,14 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                           const childClassName = "flex min-h-11 w-full cursor-pointer items-center rounded-xl px-4 text-left text-sm transition-colors hover:bg-bone";
                           const ChildIcon = childIcons[child.label];
                           const childContent = (
-                            <span className="flex items-center gap-2.5 text-graphite">
+                            <span className="flex min-w-0 items-center gap-2.5 text-graphite">
                               {ChildIcon && <ChildIcon className="h-4 w-4 shrink-0 text-petrol" />}
-                              <span>{child.label}</span>
+                              <span className="truncate">{child.label}</span>
+                              {child.badge && (
+                                <span className="shrink-0 rounded-full border border-[#4f46e5]/20 bg-gradient-to-r from-[#4f46e5]/12 to-[#9333ea]/10 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.1em] text-petrol">
+                                  {child.badge}
+                                </span>
+                              )}
                             </span>
                           );
 

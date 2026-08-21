@@ -20,6 +20,7 @@ const Privacy = lazy(() => import('./pages/Privacy'));
 const Terms = lazy(() => import('./pages/Terms'));
 const AqionFlo = lazy(() => import('./pages/AqionFlo'));
 const AqionCloud = lazy(() => import('./pages/AqionCloud'));
+const BlankCanvas = lazy(() => import('./pages/BlankCanvas'));
 
 // Helper to sync PageType with URL if needed, but we'll mostly use Routes
 const AppContent: React.FC = () => {
@@ -42,6 +43,13 @@ const AppContent: React.FC = () => {
     if (path === '/agents/executive') return PageType.AGENT_EXECUTIVE;
     if (path === '/agents/growth') return PageType.AGENT_GROWTH;
     if (path === '/platform/aqion-cloud') return PageType.PLATFORM_AQION_CLOUD;
+    if (path === '/platform/integrations') return PageType.PLATFORM_INTEGRATIONS;
+    if (path === '/platform/security-data') return PageType.PLATFORM_SECURITY_DATA;
+    if (path === '/ai-workforce/roadmap') return PageType.WORKFORCE_ROADMAP;
+    if (path === '/pricing') return PageType.PRICING;
+    if (path === '/resources/ethikcorp-pilot') return PageType.RESOURCE_ETHIKCORP_PILOT;
+    if (path === '/resources/investor-enquiries') return PageType.RESOURCE_INVESTOR_ENQUIRIES;
+    if (path === '/legal/data-processing') return PageType.DATA_PROCESSING;
     if (path === '/services/web-studio') return PageType.SERVICE_WEB_STUDIO;
     if (path === '/services/sovereign-infrastructure') return PageType.SERVICE_SOVEREIGN_INFRA;
     if (path === '/services/ai-strategy') return PageType.SERVICE_AI_STRATEGY;
@@ -98,6 +106,15 @@ const AppContent: React.FC = () => {
       [PageType.SERVICE_WEB_STUDIO]: '/services/web-studio',
       [PageType.SERVICE_SOVEREIGN_INFRA]: '/services/sovereign-infrastructure',
       [PageType.SERVICE_AI_STRATEGY]: '/services/ai-strategy',
+
+      [PageType.PLATFORM_AQION_CLOUD]: '/platform/aqion-cloud',
+      [PageType.PLATFORM_INTEGRATIONS]: '/platform/integrations',
+      [PageType.PLATFORM_SECURITY_DATA]: '/platform/security-data',
+      [PageType.WORKFORCE_ROADMAP]: '/ai-workforce/roadmap',
+      [PageType.PRICING]: '/pricing',
+      [PageType.RESOURCE_ETHIKCORP_PILOT]: '/resources/ethikcorp-pilot',
+      [PageType.RESOURCE_INVESTOR_ENQUIRIES]: '/resources/investor-enquiries',
+      [PageType.DATA_PROCESSING]: '/legal/data-processing',
 
       [PageType.PRODUCT_AQIONVOX]: '/products/aqion-voice',
       [PageType.PRODUCT_AQIONFLO]: '/products/aqionflo',
@@ -157,6 +174,15 @@ const AppContent: React.FC = () => {
 
             {/* Platform services */}
             <Route path="/platform/aqion-cloud" element={<AqionCloud onNavigate={handleNavigate} />} />
+
+            {/* Awaiting copy — beige canvas placeholders */}
+            <Route path="/platform/integrations" element={<BlankCanvas />} />
+            <Route path="/platform/security-data" element={<BlankCanvas />} />
+            <Route path="/ai-workforce/roadmap" element={<BlankCanvas />} />
+            <Route path="/pricing" element={<BlankCanvas />} />
+            <Route path="/resources/ethikcorp-pilot" element={<BlankCanvas />} />
+            <Route path="/resources/investor-enquiries" element={<BlankCanvas />} />
+            <Route path="/legal/data-processing" element={<BlankCanvas />} />
             <Route path="/services/web-studio" element={<ServiceDetail data={PLATFORM_SERVICE_DATA[PageType.SERVICE_WEB_STUDIO]} onNavigate={handleNavigate} />} />
             <Route path="/services/sovereign-infrastructure" element={<ServiceDetail data={PLATFORM_SERVICE_DATA[PageType.SERVICE_SOVEREIGN_INFRA]} onNavigate={handleNavigate} />} />
             <Route path="/services/ai-strategy" element={<ServiceDetail data={PLATFORM_SERVICE_DATA[PageType.SERVICE_AI_STRATEGY]} onNavigate={handleNavigate} />} />

@@ -8,20 +8,59 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
-  const agenticServices = [
-    { label: 'AQION VOX', page: PageType.AGENT_CUSTOMER_SUPPORT },
-    { label: 'AQION BRAIN', page: PageType.AGENT_KNOWLEDGE },
-    { label: 'AQION CHIEF', page: PageType.AGENT_EXECUTIVE },
-    { label: 'AQION OPS', page: PageType.AGENT_WORKFORCE },
-    { label: 'AQION PROCURE', page: PageType.AGENT_REVENUE },
-    { label: 'AQION FIN', page: PageType.AGENT_FINANCE },
-    { label: 'AQION GROWTH', page: PageType.AGENT_GROWTH },
-  ];
-
-  const platformServices = [
-    { label: 'AQION Cloud', page: PageType.SERVICE_WEB_STUDIO },
-    { label: 'Sovereign Infrastructure Deployment', page: PageType.SERVICE_SOVEREIGN_INFRA },
-    { label: 'AI Strategy & Discovery', page: PageType.SERVICE_AI_STRATEGY },
+  const footerColumns: { heading: string; links: { label: string; page: PageType }[] }[] = [
+    {
+      heading: 'Platform',
+      links: [
+        { label: 'Aqion Cloud', page: PageType.PLATFORM_AQION_CLOUD },
+        { label: 'Integrations', page: PageType.PLATFORM_INTEGRATIONS },
+        { label: 'Security & Data', page: PageType.PLATFORM_SECURITY_DATA },
+      ],
+    },
+    {
+      heading: 'Agentic AI',
+      links: [
+        { label: 'Aqion Vox', page: PageType.AGENT_CUSTOMER_SUPPORT },
+        { label: 'AI Workforce', page: PageType.WORKFORCE_ROADMAP },
+      ],
+    },
+    {
+      heading: 'Solutions',
+      links: [
+        { label: 'Healthcare', page: PageType.INDUSTRY_HEALTHCARE },
+        { label: 'Real Estate', page: PageType.INDUSTRY_REAL_ESTATE },
+        { label: 'Financial Services', page: PageType.INDUSTRY_FINANCE },
+        { label: 'Legal & Professional', page: PageType.INDUSTRY_PROFESSIONAL },
+        { label: 'Hospitality', page: PageType.INDUSTRY_HOSPITALITY },
+        { label: 'Education', page: PageType.INDUSTRY_EDUCATION },
+      ],
+    },
+    {
+      heading: 'Resources',
+      links: [
+        { label: 'Platform Overview', page: PageType.PLATFORM_AQION_CLOUD },
+        { label: 'EthikCorp Pilot', page: PageType.RESOURCE_ETHIKCORP_PILOT },
+        { label: 'Live VOX Demo', page: PageType.PRODUCT_AQIONVOX },
+        { label: 'Investor Enquiries', page: PageType.RESOURCE_INVESTOR_ENQUIRIES },
+      ],
+    },
+    {
+      heading: 'Company',
+      links: [
+        { label: 'About', page: PageType.ABOUT },
+        { label: 'Pricing', page: PageType.PRICING },
+        { label: 'Contact', page: PageType.CONTACT },
+        { label: 'Book a Demo', page: PageType.CONTACT },
+      ],
+    },
+    {
+      heading: 'Legal',
+      links: [
+        { label: 'Privacy Policy', page: PageType.PRIVACY },
+        { label: 'Terms of Use', page: PageType.TERMS },
+        { label: 'Data Processing Notice', page: PageType.DATA_PROCESSING },
+      ],
+    },
   ];
 
   const handleNav = (e: React.MouseEvent, page: PageType) => {
@@ -75,47 +114,29 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:col-span-7 xl:grid-cols-4 xl:gap-8">
-            <div>
-              <h3 className="eyebrow mb-5">Company</h3>
-              <ul className="space-y-3 text-graphite text-sm">
-                <li><a href="#" onClick={(e) => handleNav(e, PageType.ABOUT)} className="hover:text-petrol transition-colors">About</a></li>
-                <li><a href="#" onClick={(e) => handleNav(e, PageType.CAREERS)} className="hover:text-petrol transition-colors">Careers</a></li>
-                <li><a href="#" onClick={(e) => handleNav(e, PageType.CONTACT)} className="hover:text-petrol transition-colors">Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="eyebrow mb-5">Platform</h3>
-              <ul className="space-y-3 text-graphite text-sm">
-                {platformServices.map(({ label, page }) => (
-                  <li key={label}>
-                    <a href="#" onClick={(e) => handleNav(e, page)} className="transition-colors hover:text-petrol">
-                      {label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="eyebrow mb-5">AI Workforce</h3>
-              <ul className="space-y-3 text-sm text-graphite">
-                {agenticServices.map(({ label, page }) => (
-                  <li key={label}>
-                    <a href="#" onClick={(e) => handleNav(e, page)} className="transition-colors hover:text-petrol">
-                      {label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="eyebrow mb-5">Legal</h3>
-              <ul className="space-y-3 text-graphite text-sm">
-                <li><a href="#" onClick={(e) => handleNav(e, PageType.PRIVACY)} className="hover:text-petrol transition-colors">Privacy</a></li>
-                <li><a href="#" onClick={(e) => handleNav(e, PageType.TERMS)} className="hover:text-petrol transition-colors">Terms</a></li>
-              </ul>
-            </div>
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:col-span-7 lg:gap-x-8">
+            {footerColumns.map(({ heading, links }) => (
+              <div key={heading}>
+                <h3 className="eyebrow mb-5">{heading}</h3>
+                <ul className="space-y-3 text-sm text-graphite">
+                  {links.map(({ label, page }) => (
+                    <li key={`${heading}-${label}`}>
+                      <a href="#" onClick={(e) => handleNav(e, page)} className="transition-colors hover:text-petrol">
+                        {label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
+        </div>
+
+        <div className="mt-16 flex flex-col gap-2 border-t border-hairline pt-8 md:mt-20 md:flex-row md:items-baseline md:gap-4">
+          <p className="font-display text-xl leading-none tracking-tight text-ink">AQION Labs</p>
+          <p className="text-sm leading-relaxed text-taupe">
+            The AI Workforce Platform for UAE and GCC businesses.
+          </p>
         </div>
 
         <div className="mt-14 md:mt-20 pt-6 md:pt-8 border-t border-hairline flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[10px] md:text-xs text-ash font-mono uppercase tracking-[0.14em] md:tracking-[0.18em]">

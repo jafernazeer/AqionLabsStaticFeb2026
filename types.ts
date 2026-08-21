@@ -19,6 +19,21 @@ export enum PageType {
 
   // Platform
   PLATFORM_AQION_CLOUD = 'PLATFORM_AQION_CLOUD',
+  PLATFORM_INTEGRATIONS = 'PLATFORM_INTEGRATIONS',
+  PLATFORM_SECURITY_DATA = 'PLATFORM_SECURITY_DATA',
+
+  // AI workforce
+  WORKFORCE_ROADMAP = 'WORKFORCE_ROADMAP',
+
+  // Commercial
+  PRICING = 'PRICING',
+
+  // Resources
+  RESOURCE_ETHIKCORP_PILOT = 'RESOURCE_ETHIKCORP_PILOT',
+  RESOURCE_INVESTOR_ENQUIRIES = 'RESOURCE_INVESTOR_ENQUIRIES',
+
+  // Legal
+  DATA_PROCESSING = 'DATA_PROCESSING',
 
   // Platform services
   SERVICE_WEB_STUDIO = 'SERVICE_WEB_STUDIO',
@@ -85,6 +100,8 @@ export interface NavItem {
   label: string;
   page?: PageType;
   href?: string;
+  /** Small status pill rendered beside the label, e.g. "Available Now". */
+  badge?: string;
   children?: NavItem[];
 }
 
