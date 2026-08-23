@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PageType } from '../types';
 import {
   ArrowUpRight,
@@ -15,6 +15,41 @@ import { ServiceMotionBackdrop } from '../components/OptimizedHeroMotion';
 interface AboutProps {
   onNavigate: (page: PageType) => void;
 }
+
+const team = [
+  {
+    name: 'Mohamed Shihas',
+    role: 'CTO',
+    initials: 'MS',
+    photo: '/team-shihas.jpg',
+    linkedin: 'https://www.linkedin.com/in/shihasck/',
+    body: 'Owns the agent runtime, integrations and deployment architecture behind AQION Cloud.',
+  },
+  {
+    name: 'Rinas Musthafa',
+    role: 'Forward Deployed Engineer',
+    initials: 'RM',
+    photo: '/team-rinas.jpg',
+    linkedin: 'https://www.linkedin.com/in/rinas-musthafa/',
+    body: 'Takes deployments from first workflow to production inside customer systems.',
+  },
+  {
+    name: 'Muhammed Niyas A',
+    role: 'Forward Deployed Engineer',
+    initials: 'MN',
+    photo: '/team-niyas-a.jpg',
+    linkedin: 'https://www.linkedin.com/in/muhammedniyas123/',
+    body: 'Builds and hardens the customer-facing agent workflows and integrations.',
+  },
+  {
+    name: 'Muhammed Niyas',
+    role: 'Sales & Marketing',
+    initials: 'MN',
+    photo: '/team-niyas.jpg',
+    linkedin: 'https://www.linkedin.com/in/niyas35/',
+    body: 'Owns pipeline, vertical playbooks and the path from pilot to production.',
+  },
+];
 
 const operatingPrinciples = [
   {
@@ -35,6 +70,9 @@ const operatingPrinciples = [
 ];
 
 const About: React.FC<AboutProps> = ({ onNavigate }) => {
+  // Fall back to a monogram until a member's photo is dropped into /public.
+  const [photoFailed, setPhotoFailed] = useState<Record<string, boolean>>({});
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -148,61 +186,103 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* FOUNDER */}
-      <section className="mobile-section-tight mx-auto max-w-7xl px-5 py-24 sm:px-6 md:py-32">
-        <div className="grid grid-cols-12 items-start gap-10 md:gap-14">
+      {/* FOUNDER — compacted: portrait, pull-quote and three tight beats */}
+      <section className="mobile-section-tight mx-auto max-w-7xl px-5 py-20 sm:px-6 md:py-28">
+        <div className="grid grid-cols-12 items-center gap-9 md:gap-14">
           <div className="col-span-12 md:col-span-5">
-            <div className="relative rounded-[34px] border border-hairline bg-white/74 p-4 shadow-[0_28px_90px_-42px_rgba(28,25,23,0.35)] backdrop-blur-md">
+            <div className="relative mx-auto max-w-[19rem] rounded-[28px] border border-hairline bg-white/74 p-3.5 shadow-[0_28px_90px_-42px_rgba(28,25,23,0.35)] backdrop-blur-md md:max-w-none md:rounded-[34px] md:p-4">
               <img
                 src="/founder-jafer.jpg"
-                alt="Jafer Mohammed, Founder of AqionLabs"
+                alt="Jafer Mohammed, Founder and CEO of AqionLabs"
                 loading="lazy"
-                className="aspect-[4/5] w-full rounded-[24px] object-cover object-top"
+                className="aspect-[4/5] w-full rounded-[22px] object-cover object-top md:rounded-[24px]"
               />
-              <div className="absolute -bottom-5 left-8 right-8 rounded-2xl border border-hairline bg-paper/95 px-5 py-3 shadow-[0_18px_40px_-24px_rgba(28,25,23,0.4)] backdrop-blur-md">
+              <div className="absolute -bottom-5 left-6 right-6 rounded-2xl border border-hairline bg-paper/95 px-4 py-3 shadow-[0_18px_40px_-24px_rgba(28,25,23,0.4)] backdrop-blur-md md:left-8 md:right-8 md:px-5">
                 <p className="font-display text-lg leading-tight text-ink">Jafer Mohammed</p>
-                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-taupe">Founder · AqionLabs</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-taupe">Founder &amp; CEO</p>
               </div>
             </div>
           </div>
 
-          <div className="mobile-page-center col-span-12 md:col-span-6 md:col-start-7 md:text-left">
+          <div className="mobile-page-center col-span-12 mt-6 md:col-span-6 md:col-start-7 md:mt-0 md:text-left">
             <p className="eyebrow mb-4">[ The founder ]</p>
-            <h2 className="mobile-subheading font-display text-4xl leading-[1.02] tracking-tight md:text-6xl">
+            <h2 className="mobile-subheading font-display text-[2.1rem] leading-[1.02] tracking-tight md:text-5xl">
               No safety net.<br />
-              <span className="display-italic">No playbook.</span>
+              <span className="display-italic text-petrol">No playbook.</span>
             </h2>
 
-            <div className="mobile-copy-measure mt-6 space-y-4 text-[15px] leading-relaxed text-graphite md:mt-8 md:text-lg">
-              <p>
-                Almost a year ago I walked away from a stable career and started building AqionLabs — with no safety net and no playbook, just a problem I couldn't stop thinking about.
-              </p>
-              <p>
-                Ten-plus years across enterprise communications, cloud infrastructure, contact centres and large-scale digital transformation — with organisations including Tesla, Disney, UPS and Bank of America. After all of that, one thing became impossible to ignore.
-              </p>
-            </div>
+            <p className="mobile-copy-measure mt-5 text-[15px] leading-relaxed text-graphite md:mt-6 md:text-lg">
+              Ten-plus years across enterprise communications, cloud infrastructure and contact centres — with organisations including Tesla, Disney, UPS and Bank of America. Then a year ago, a stable career traded for a problem I couldn&apos;t stop thinking about.
+            </p>
 
-            <figure className="mt-8 rounded-2xl border border-hairline bg-parchment/70 p-6 md:mt-10">
-              <blockquote className="font-display text-2xl leading-snug tracking-tight text-ink md:text-3xl">
-                Large enterprises have access to world-class AI.{' '}
-                <span className="display-italic">Most SMBs don't.</span>
+            <figure className="mt-6 rounded-2xl border border-hairline bg-parchment/70 p-5 md:mt-7 md:p-6">
+              <blockquote className="font-display text-xl leading-snug tracking-tight text-ink md:text-2xl">
+                Large enterprises have world-class AI.{' '}
+                <span className="display-italic text-petrol">Most businesses here don&apos;t.</span>
               </blockquote>
-              <figcaption className="mt-4 text-sm leading-relaxed text-taupe">
-                Not because they don't need it — because the cost, complexity and infrastructure have always been out of reach.
+              <figcaption className="mt-3 text-[13px] leading-relaxed text-taupe md:text-sm">
+                Not for lack of need — the cost, complexity and infrastructure have always been out of reach.
               </figcaption>
             </figure>
 
-            <div className="mobile-copy-measure mt-8 space-y-4 text-[15px] leading-relaxed text-graphite md:text-lg">
-              <p>
-                That's why I started AqionLabs: to build AQION Cloud, an AI workforce platform that helps regional businesses use specialized AI employees without turning AI adoption into an enterprise transformation project. Our first AI employee, AQION VOX, answers, qualifies, captures and follows up on customer conversations.
-              </p>
-              <p>
-                The real turning point was realising AI can become a real-time mentor if you're curious enough — something you can ask anything, explore any technical challenge with, and get clear, judgment-free guidance from instantly. Not just a productivity tool, but a true problem-solving partner.
-              </p>
-              <p className="text-ink">
-                The future belongs to people who combine human experience with AI effectively under pressure. And honestly, we're only getting started.
+            <p className="mobile-copy-measure mt-6 text-[15px] leading-relaxed text-graphite md:text-lg">
+              AQION Cloud exists to close that gap: specialized AI agents a regional business can deploy without turning adoption into a transformation programme. AQION VOX is the first.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* TEAM */}
+      <section className="mobile-section-tight border-y border-hairline bg-parchment/50 py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+          <div className="mb-10 grid grid-cols-12 gap-6 md:mb-14">
+            <div className="mobile-page-center col-span-12 md:col-span-6 md:text-left">
+              <p className="eyebrow mb-4">[ The team ]</p>
+              <h2 className="mobile-subheading font-display text-[2.1rem] leading-[1.02] tracking-tight md:text-5xl">
+                Small team.<br />
+                <span className="display-italic text-petrol">Shipped product.</span>
+              </h2>
+            </div>
+            <div className="mobile-page-center col-span-12 md:col-span-5 md:col-start-8 md:pt-3 md:text-left">
+              <p className="text-[15px] leading-relaxed text-graphite md:text-lg">
+                Engineers who deploy inside customer systems, not from behind a roadmap. Everyone here works on something a customer touches.
               </p>
             </div>
+          </div>
+
+          <div className="mobile-priority-grid grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {team.map((m) => (
+              <a
+                key={m.name}
+                href={m.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col rounded-[24px] border border-hairline bg-paper p-5 text-center shadow-[0_18px_60px_-48px_rgba(28,25,23,0.35)] transition-colors duration-200 hover:border-ink/25 hover:bg-white focus:outline-none focus:ring-2 focus:ring-[#4f46e5]/35 md:text-left"
+              >
+                <span className="mx-auto mb-4 block h-20 w-20 shrink-0 overflow-hidden rounded-full border border-hairline bg-parchment md:mx-0">
+                  {m.photo && !photoFailed[m.name] ? (
+                    <img
+                      src={m.photo}
+                      alt={`${m.name}, ${m.role} at AqionLabs`}
+                      loading="lazy"
+                      onError={() => setPhotoFailed((prev) => ({ ...prev, [m.name]: true }))}
+                      className="h-full w-full object-cover object-top"
+                    />
+                  ) : (
+                    <span className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#4f46e5]/12 to-[#9333ea]/12 font-display text-xl text-petrol">
+                      {m.initials}
+                    </span>
+                  )}
+                </span>
+                <p className="font-display text-lg leading-tight text-ink">{m.name}</p>
+                <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-petrol">{m.role}</p>
+                <p className="mt-3 text-[13px] leading-relaxed text-taupe">{m.body}</p>
+                <span className="mobile-center-row mt-4 flex items-center gap-1.5 text-[11px] font-medium text-graphite transition-colors group-hover:text-petrol md:justify-start">
+                  LinkedIn
+                  <ArrowUpRight className="h-3 w-3" />
+                </span>
+              </a>
+            ))}
           </div>
         </div>
       </section>
