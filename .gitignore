@@ -129,3 +129,7 @@ Thumbs.db
 components.bak/
 pages.bak/
 App.tsx.bak
+
+# deploy artifacts / local tooling
+aqionlabs-ai-cpanel-upload-*.zip
+.claude/
