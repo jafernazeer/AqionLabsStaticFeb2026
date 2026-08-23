@@ -167,26 +167,18 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           <div className="home-mobile-content relative z-40 order-1 flex w-full max-w-[660px] flex-col items-center pt-[9rem] text-center sm:pt-[9.75rem] md:pt-[10.5rem] lg:items-start lg:pt-16 lg:text-left">
             <div className="mb-5 inline-flex max-w-full animate-entry items-center justify-center gap-2 rounded-full border border-ink/[0.08] bg-white/60 px-3 py-1.5 text-center font-mono text-[8.5px] uppercase leading-[1.25] tracking-[0.075em] text-graphite backdrop-blur-md sm:px-3.5 sm:py-2 sm:text-[11px] sm:tracking-[0.14em] lg:mb-7">
               <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-br from-[#4f46e5] to-[#9333ea] shadow-[0_0_0_5px_rgba(79,70,229,0.12)]" />
-              AI Workforce Platform built for UAE
+              Agentic AI platform built for UAE and GCC
             </div>
 
             <h1 className="relative z-30 flex w-full max-w-[calc(100vw-3rem)] flex-col items-center leading-[1.05] lg:max-w-none lg:items-start">
-              <span className="flex flex-wrap items-baseline justify-center gap-x-[0.3em] lg:justify-start">
-                <span className="font-serif text-[clamp(1.55rem,6.6vw,1.9rem)] italic tracking-[-0.015em] text-[#71717a] sm:text-[clamp(1.8rem,3.2vw,3rem)]">
-                  Agentic AI that
-                </span>
-                <span
-                  className="bg-clip-text font-hero text-[clamp(1.55rem,6.6vw,1.9rem)] font-bold tracking-[-0.025em] text-transparent drop-shadow-[0_8px_24px_rgba(79,70,229,0.18)] sm:text-[clamp(1.85rem,3.6vw,3.5rem)] sm:tracking-[-0.035em]"
-                  style={{ backgroundImage: 'linear-gradient(90deg, #4f46e5, #9333ea)' }}
-                >
-                  Thinks,
-                </span>
+              <span className="block font-serif text-[clamp(1.7rem,7.4vw,2.05rem)] italic tracking-[-0.015em] text-[#71717a] sm:text-[clamp(1.9rem,3.5vw,3.3rem)]">
+                Intelligence That
               </span>
               <span
-                className="mt-1 block max-w-full bg-clip-text pb-2 font-hero text-[clamp(1.7rem,7vw,2rem)] font-bold tracking-[-0.025em] text-transparent drop-shadow-[0_8px_24px_rgba(79,70,229,0.18)] sm:mt-2 sm:text-[clamp(2rem,4vw,4rem)] sm:tracking-[-0.035em]"
-                style={{ backgroundImage: 'linear-gradient(90deg, #9333ea, #4f46e5)' }}
+                className="mt-1 block max-w-full bg-clip-text pb-2 font-hero text-[clamp(1.85rem,7.6vw,2.15rem)] font-bold tracking-[-0.025em] text-transparent drop-shadow-[0_8px_24px_rgba(79,70,229,0.18)] sm:mt-2 sm:text-[clamp(2.2rem,4.4vw,4.4rem)] sm:tracking-[-0.035em]"
+                style={{ backgroundImage: 'linear-gradient(90deg, #4f46e5, #9333ea)' }}
               >
-                Talks and Executes.
+                Delivers Growth
               </span>
             </h1>
 

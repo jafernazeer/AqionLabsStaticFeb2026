@@ -88,7 +88,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </p>
             </div>
             <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-taupe">
-              AI workforce platform built for UAE.
+              Intelligence That Delivers Growth.
             </p>
 
             <div className="flex gap-2 mt-6">
