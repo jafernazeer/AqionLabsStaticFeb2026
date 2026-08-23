@@ -4,7 +4,7 @@ import LiveDemoSection from '../components/LiveDemoSection';
 import OptimizedHeroMotion from '../components/OptimizedHeroMotion';
 import { RobotHero } from '../components/ui/robot-hero';
 import {
-  ArrowUpRight, ArrowRight, ShieldCheck, Sparkles, Cpu, Layers, Zap, Database,
+  ArrowUpRight, ArrowDown, ShieldCheck, Sparkles, Cpu, Layers, Zap, Database,
   Workflow, Server, Stethoscope, Building2, CreditCard, Scale, Hotel, GraduationCap
 } from 'lucide-react';
 
@@ -341,13 +341,15 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               <p className="mt-3 text-[14px] leading-relaxed text-taupe sm:mt-4 sm:text-[15px] md:text-lg">
                 The first deployment of Aqion Vox.
               </p>
-              <button
-                onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX)}
-                className="group mt-6 inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-[13px] font-medium text-bone transition-colors hover:bg-petrolDeep sm:w-auto sm:px-7 sm:text-sm"
+              <a
+                href="https://ethikcorp.aqionlabs.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-6 inline-flex min-h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-[13px] font-medium text-bone transition-colors hover:bg-petrolDeep sm:w-auto sm:px-7 sm:text-sm"
               >
                 Experience Live Demo
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </button>
+              </a>
             </div>
 
             <div className="col-span-12 lg:col-span-6 lg:col-start-7">
@@ -360,7 +362,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                     </div>
                     {idx < pilotFlow.length - 1 && (
                       <div aria-hidden className="flex justify-center py-0.5">
-                        <ArrowRight className="h-3.5 w-3.5 rotate-90 text-petrol/50 sm:h-4 sm:w-4" />
+                        <ArrowDown className="h-3.5 w-3.5 text-petrol/50 sm:h-4 sm:w-4" />
                       </div>
                     )}
                   </div>

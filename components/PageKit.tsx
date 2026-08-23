@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, ArrowUpRight, Check, type LucideIcon } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Check, type LucideIcon } from 'lucide-react';
 import { ServiceMotionBackdrop } from './OptimizedHeroMotion';
 
 /**
@@ -188,7 +188,7 @@ export const FlowSteps: React.FC<{ steps: string[]; tone?: 'light' | 'dark'; com
         </div>
         {idx < steps.length - 1 && (
           <div aria-hidden className="flex justify-center py-0.5">
-            <ArrowRight className="h-3.5 w-3.5 rotate-90 text-petrol/50 sm:h-4 sm:w-4" />
+            <ArrowDown className="h-3.5 w-3.5 text-petrol/50 sm:h-4 sm:w-4" />
           </div>
         )}
       </div>
