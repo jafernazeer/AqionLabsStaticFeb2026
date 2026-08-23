@@ -79,7 +79,130 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
 
   return (
     <div className="mesh-bg min-h-screen overflow-x-hidden pt-20 font-sans text-ink">
-      <section className="mesh-bg mobile-section-tight relative flex min-h-0 items-start overflow-hidden border-b border-hairline py-14 md:min-h-[calc(100vh-5rem)] md:items-center md:py-24">
+      {/* FOUNDER — compacted: portrait, pull-quote and three tight beats */}
+      <section className="mobile-section-tight mx-auto max-w-7xl px-5 py-20 sm:px-6 md:py-28">
+        <div className="grid grid-cols-12 items-center gap-9 md:gap-14">
+          <div className="col-span-12 md:col-span-5">
+            <div className="relative mx-auto max-w-[19rem] rounded-[28px] border border-hairline bg-white/74 p-3.5 shadow-[0_28px_90px_-42px_rgba(28,25,23,0.35)] backdrop-blur-md md:max-w-none md:rounded-[34px] md:p-4">
+              <img
+                src="/founder-jafer.jpg"
+                alt="Jafer Mohammed, Founder and CEO of AqionLabs"
+                loading="lazy"
+                className="aspect-[4/5] w-full rounded-[22px] object-cover object-top md:rounded-[24px]"
+              />
+              <a
+                href="https://www.linkedin.com/in/jafermohammed/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group absolute -bottom-5 left-6 right-6 flex items-center justify-between gap-3 rounded-2xl border border-hairline bg-paper/95 px-4 py-3 shadow-[0_18px_40px_-24px_rgba(28,25,23,0.4)] backdrop-blur-md transition-colors hover:border-ink/25 md:left-8 md:right-8 md:px-5"
+              >
+                <span className="min-w-0">
+                  <span className="block font-display text-lg leading-tight text-ink">Jafer Mohammed</span>
+                  <span className="block font-mono text-[10px] uppercase tracking-[0.16em] text-taupe">Founder &amp; CEO</span>
+                </span>
+                <span className="flex shrink-0 items-center gap-1 text-[11px] font-medium text-graphite transition-colors group-hover:text-petrol">
+                  LinkedIn
+                  <ArrowUpRight className="h-3 w-3" />
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <div className="mobile-page-center col-span-12 mt-6 md:col-span-6 md:col-start-7 md:mt-0 md:text-left">
+            <p className="eyebrow mb-4">[ The founder ]</p>
+            <h2 className="mobile-subheading font-display text-[2.1rem] leading-[1.02] tracking-tight md:text-5xl">
+              No safety net.<br />
+              <span className="display-italic text-petrol">No playbook.</span>
+            </h2>
+
+            <p className="mobile-copy-measure mt-5 text-[15px] leading-relaxed text-graphite md:mt-6 md:text-lg">
+              Ten-plus years across enterprise communications, cloud infrastructure and contact centres — with organisations including Tesla, Disney, UPS and Bank of America. Then a year ago, a stable career traded for a problem I couldn&apos;t stop thinking about.
+            </p>
+
+            <figure className="mt-6 rounded-2xl border border-hairline bg-parchment/70 p-5 md:mt-7 md:p-6">
+              <blockquote className="font-display text-xl leading-snug tracking-tight text-ink md:text-2xl">
+                Large enterprises have world-class AI.{' '}
+                <span className="display-italic text-petrol">Most businesses here don&apos;t.</span>
+              </blockquote>
+              <figcaption className="mt-3 text-[13px] leading-relaxed text-taupe md:text-sm">
+                Not for lack of need — the cost, complexity and infrastructure have always been out of reach.
+              </figcaption>
+            </figure>
+
+            <p className="mobile-copy-measure mt-6 text-[15px] leading-relaxed text-graphite md:text-lg">
+              AQION Cloud exists to close that gap: specialized AI agents a regional business can deploy without turning adoption into a transformation programme. AQION VOX is the first.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* TEAM */}
+      <section className="mobile-section-tight border-y border-hairline bg-parchment/50 py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+          <div className="mb-12 grid grid-cols-12 gap-6 md:mb-16">
+            <div className="mobile-page-center col-span-12 md:col-span-6 md:text-left">
+              <p className="eyebrow mb-4">[ The team ]</p>
+              <h2 className="mobile-subheading font-display text-[2.4rem] leading-[1.02] tracking-tight md:text-6xl">
+                Small team.<br />
+                <span className="display-italic text-petrol">Shipped product.</span>
+              </h2>
+            </div>
+            <div className="mobile-page-center col-span-12 md:col-span-5 md:col-start-8 md:pt-3 md:text-left">
+              <p className="text-[15px] leading-relaxed text-graphite md:text-lg">
+                Engineers who deploy inside customer systems, not from behind a roadmap. Everyone here works on something a customer touches.
+              </p>
+              <div className="mobile-center-row mt-5 flex flex-wrap items-center gap-2.5 md:justify-start">
+                <span className="rounded-full border border-hairline bg-paper px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-graphite">
+                  5 people
+                </span>
+                <span className="rounded-full border border-hairline bg-paper px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-graphite">
+                  Dubai, UAE
+                </span>
+                <span className="rounded-full border border-[#4f46e5]/25 bg-[#4f46e5]/10 px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-petrol">
+                  Shipping since 2026
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mobile-priority-grid grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {team.map((m) => (
+              <a
+                key={m.name}
+                href={m.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col rounded-[26px] border border-hairline bg-paper p-6 text-center shadow-[0_18px_60px_-48px_rgba(28,25,23,0.35)] transition-colors duration-200 hover:border-ink/25 hover:bg-white focus:outline-none focus:ring-2 focus:ring-[#4f46e5]/35 md:text-left"
+              >
+                <span className="mx-auto mb-5 block h-24 w-24 shrink-0 overflow-hidden rounded-full border border-hairline bg-parchment md:mx-0 md:h-[6.5rem] md:w-[6.5rem]">
+                  {m.photo && !photoFailed[m.name] ? (
+                    <img
+                      src={m.photo}
+                      alt={`${m.name}, ${m.role} at AqionLabs`}
+                      loading="lazy"
+                      onError={() => setPhotoFailed((prev) => ({ ...prev, [m.name]: true }))}
+                      className="h-full w-full object-cover object-top"
+                    />
+                  ) : (
+                    <span className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#4f46e5]/12 to-[#9333ea]/12 font-display text-xl text-petrol">
+                      {m.initials}
+                    </span>
+                  )}
+                </span>
+                <p className="font-display text-xl leading-tight text-ink">{m.name}</p>
+                <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-petrol">{m.role}</p>
+                <p className="mt-3 text-[13.5px] leading-relaxed text-taupe">{m.body}</p>
+                <span className="mobile-center-row mt-4 flex items-center gap-1.5 text-[11px] font-medium text-graphite transition-colors group-hover:text-petrol md:justify-start">
+                  LinkedIn
+                  <ArrowUpRight className="h-3 w-3" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mesh-bg mobile-section-tight relative flex min-h-0 items-start overflow-hidden border-b border-hairline py-14 md:items-center md:py-24">
         <ServiceMotionBackdrop className="mobile-visual-reduce opacity-55" />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-bone/84 via-bone/70 to-bone/92" />
         <div aria-hidden className="absolute inset-0 bg-hairline-grid opacity-25" />
@@ -181,107 +304,6 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
                 <h3 className="mt-3 font-display text-xl leading-tight text-ink md:text-2xl">{step.title}</h3>
                 <p className="mt-2 text-[13.5px] leading-relaxed text-taupe sm:text-sm">{step.detail}</p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FOUNDER — compacted: portrait, pull-quote and three tight beats */}
-      <section className="mobile-section-tight mx-auto max-w-7xl px-5 py-20 sm:px-6 md:py-28">
-        <div className="grid grid-cols-12 items-center gap-9 md:gap-14">
-          <div className="col-span-12 md:col-span-5">
-            <div className="relative mx-auto max-w-[19rem] rounded-[28px] border border-hairline bg-white/74 p-3.5 shadow-[0_28px_90px_-42px_rgba(28,25,23,0.35)] backdrop-blur-md md:max-w-none md:rounded-[34px] md:p-4">
-              <img
-                src="/founder-jafer.jpg"
-                alt="Jafer Mohammed, Founder and CEO of AqionLabs"
-                loading="lazy"
-                className="aspect-[4/5] w-full rounded-[22px] object-cover object-top md:rounded-[24px]"
-              />
-              <div className="absolute -bottom-5 left-6 right-6 rounded-2xl border border-hairline bg-paper/95 px-4 py-3 shadow-[0_18px_40px_-24px_rgba(28,25,23,0.4)] backdrop-blur-md md:left-8 md:right-8 md:px-5">
-                <p className="font-display text-lg leading-tight text-ink">Jafer Mohammed</p>
-                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-taupe">Founder &amp; CEO</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mobile-page-center col-span-12 mt-6 md:col-span-6 md:col-start-7 md:mt-0 md:text-left">
-            <p className="eyebrow mb-4">[ The founder ]</p>
-            <h2 className="mobile-subheading font-display text-[2.1rem] leading-[1.02] tracking-tight md:text-5xl">
-              No safety net.<br />
-              <span className="display-italic text-petrol">No playbook.</span>
-            </h2>
-
-            <p className="mobile-copy-measure mt-5 text-[15px] leading-relaxed text-graphite md:mt-6 md:text-lg">
-              Ten-plus years across enterprise communications, cloud infrastructure and contact centres — with organisations including Tesla, Disney, UPS and Bank of America. Then a year ago, a stable career traded for a problem I couldn&apos;t stop thinking about.
-            </p>
-
-            <figure className="mt-6 rounded-2xl border border-hairline bg-parchment/70 p-5 md:mt-7 md:p-6">
-              <blockquote className="font-display text-xl leading-snug tracking-tight text-ink md:text-2xl">
-                Large enterprises have world-class AI.{' '}
-                <span className="display-italic text-petrol">Most businesses here don&apos;t.</span>
-              </blockquote>
-              <figcaption className="mt-3 text-[13px] leading-relaxed text-taupe md:text-sm">
-                Not for lack of need — the cost, complexity and infrastructure have always been out of reach.
-              </figcaption>
-            </figure>
-
-            <p className="mobile-copy-measure mt-6 text-[15px] leading-relaxed text-graphite md:text-lg">
-              AQION Cloud exists to close that gap: specialized AI agents a regional business can deploy without turning adoption into a transformation programme. AQION VOX is the first.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* TEAM */}
-      <section className="mobile-section-tight border-y border-hairline bg-parchment/50 py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
-          <div className="mb-10 grid grid-cols-12 gap-6 md:mb-14">
-            <div className="mobile-page-center col-span-12 md:col-span-6 md:text-left">
-              <p className="eyebrow mb-4">[ The team ]</p>
-              <h2 className="mobile-subheading font-display text-[2.1rem] leading-[1.02] tracking-tight md:text-5xl">
-                Small team.<br />
-                <span className="display-italic text-petrol">Shipped product.</span>
-              </h2>
-            </div>
-            <div className="mobile-page-center col-span-12 md:col-span-5 md:col-start-8 md:pt-3 md:text-left">
-              <p className="text-[15px] leading-relaxed text-graphite md:text-lg">
-                Engineers who deploy inside customer systems, not from behind a roadmap. Everyone here works on something a customer touches.
-              </p>
-            </div>
-          </div>
-
-          <div className="mobile-priority-grid grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {team.map((m) => (
-              <a
-                key={m.name}
-                href={m.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col rounded-[24px] border border-hairline bg-paper p-5 text-center shadow-[0_18px_60px_-48px_rgba(28,25,23,0.35)] transition-colors duration-200 hover:border-ink/25 hover:bg-white focus:outline-none focus:ring-2 focus:ring-[#4f46e5]/35 md:text-left"
-              >
-                <span className="mx-auto mb-4 block h-20 w-20 shrink-0 overflow-hidden rounded-full border border-hairline bg-parchment md:mx-0">
-                  {m.photo && !photoFailed[m.name] ? (
-                    <img
-                      src={m.photo}
-                      alt={`${m.name}, ${m.role} at AqionLabs`}
-                      loading="lazy"
-                      onError={() => setPhotoFailed((prev) => ({ ...prev, [m.name]: true }))}
-                      className="h-full w-full object-cover object-top"
-                    />
-                  ) : (
-                    <span className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#4f46e5]/12 to-[#9333ea]/12 font-display text-xl text-petrol">
-                      {m.initials}
-                    </span>
-                  )}
-                </span>
-                <p className="font-display text-lg leading-tight text-ink">{m.name}</p>
-                <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-petrol">{m.role}</p>
-                <p className="mt-3 text-[13px] leading-relaxed text-taupe">{m.body}</p>
-                <span className="mobile-center-row mt-4 flex items-center gap-1.5 text-[11px] font-medium text-graphite transition-colors group-hover:text-petrol md:justify-start">
-                  LinkedIn
-                  <ArrowUpRight className="h-3 w-3" />
-                </span>
-              </a>
             ))}
           </div>
         </div>
