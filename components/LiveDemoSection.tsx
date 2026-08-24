@@ -25,6 +25,8 @@ export default function LiveDemoSection() {
       id="live-demo"
       className="mesh-bg mobile-section-tight relative z-10 scroll-mt-24 overflow-hidden px-5 pb-14 pt-12 font-sans text-[#1C1917] sm:px-6 md:pb-20 md:pt-16"
     >
+      <div aria-hidden className="absolute inset-0 bg-hairline-grid" />
+
       <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-10">
         <div className="mx-auto max-w-3xl text-center">
           <p className="eyebrow mb-4 text-[#4F46E5]">[ See Aqion Vox in action ]</p>

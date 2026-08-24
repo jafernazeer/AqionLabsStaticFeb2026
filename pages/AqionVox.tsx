@@ -117,7 +117,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
         {/* The wave rides with the handset inside VoxStage, so the hero itself
             carries only the wash and grid. */}
         <div aria-hidden className="absolute inset-0 z-[2] bg-gradient-to-b from-bone/95 via-bone/72 to-bone/94" />
-        <div aria-hidden className="absolute inset-0 bg-hairline-grid opacity-24" />
+        <div aria-hidden className="absolute inset-0 bg-hairline-grid" />
 
         <div id="live-demo" className="relative z-10 mx-auto w-full max-w-7xl scroll-mt-24 px-6 py-20 pt-32 md:py-28 md:pt-36">
           <div className="flex flex-col items-center text-center">

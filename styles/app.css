@@ -292,3 +292,19 @@
 .home-robot-scene canvas {
   touch-action: pan-y;
 }
+
+/*
+ * Bone ground and hairline grid, ported from the reference hero.
+ * These two class names were already used across the pages but had never been
+ * defined, so the grid was silently absent.
+ */
+.mesh-bg {
+  background-color: var(--color-bone);
+}
+
+.bg-hairline-grid {
+  background-image:
+    linear-gradient(rgba(55, 50, 45, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(55, 50, 45, 0.035) 1px, transparent 1px);
+  background-size: 24px 24px;
+}

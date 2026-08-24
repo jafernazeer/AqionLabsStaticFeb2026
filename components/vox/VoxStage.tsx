@@ -69,19 +69,20 @@ export default function VoxStage({ caption = true, wave = true }: { caption?: bo
           middle of the phone rather than the middle of the whole stage. */}
       <div className="relative">
         {wave && (
-          // Full-bleed and unclipped: the ribbon runs the whole width of the
-          // page and passes behind the lower half of the handset.
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 flex items-center justify-center"
-            style={{ left: 'calc(50% - 50vw)', right: 'calc(50% - 50vw)' }}
-          >
+          // Ported from the reference hero: 1700px wide, anchored 350px down and
+          // squashed vertically, so the ribbon sweeps behind the handset.
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0">
             <img
               src="/service-motion.svg"
               alt=""
               loading="lazy"
               decoding="async"
-              className="mobile-visual-reduce h-auto w-screen max-w-none shrink-0 translate-y-[18%] opacity-80"
+              className="mobile-visual-reduce absolute left-1/2 top-1/2 h-auto w-[1700px] max-w-none"
+              style={{
+                transform: 'translate(-50%, -32%) scaleY(0.78)',
+                opacity: 0.54,
+                filter: 'saturate(0.86)',
+              }}
             />
           </div>
         )}

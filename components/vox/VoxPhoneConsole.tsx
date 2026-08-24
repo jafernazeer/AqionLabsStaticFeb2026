@@ -295,28 +295,34 @@ export default function VoxPhoneConsole() {
   }, [callStatus, callError, isPlaying]);
 
   return (
-    // Mockup proportions: wider and shorter than a stock handset, in a thick
-    // charcoal bezel with the side hardware showing.
-    <div className="relative mx-auto w-full max-w-[330px] sm:max-w-[372px]">
-      <span aria-hidden className="absolute -left-[3px] top-[19%] h-[7%] w-[3px] rounded-l bg-[#2b2b2f]" />
-      <span aria-hidden className="absolute -left-[3px] top-[29%] h-[7%] w-[3px] rounded-l bg-[#2b2b2f]" />
-      <span aria-hidden className="absolute -right-[3px] top-[25%] h-[11%] w-[3px] rounded-r bg-[#2b2b2f]" />
+    // Frame, screen and hardware ported from the reference hero: 370px wide,
+    // 370:680 screen, brushed-metal bezel and the island cutout.
+    <div
+      className="relative mx-auto w-[370px] max-w-full shrink-0"
+      style={{ filter: 'drop-shadow(0 38px 28px rgba(23, 21, 19, 0.24))' }}
+    >
+      <span aria-hidden className="absolute left-[-3px] top-[132px] -z-10 h-[58px] w-[4px] rounded-[3px] bg-[#373532]" />
+      <span aria-hidden className="absolute left-[-3px] top-[205px] -z-10 h-[58px] w-[4px] rounded-[3px] bg-[#373532]" />
+      <span aria-hidden className="absolute right-[-3px] top-[168px] -z-10 h-[86px] w-[4px] rounded-[3px] bg-[#373532]" />
 
-      <div className="rounded-[46px] bg-gradient-to-b from-[#4c4c51] via-[#37373b] to-[#232326] p-[9px] shadow-[0_36px_90px_-34px_rgba(8,8,12,0.6)] sm:rounded-[52px] sm:p-[11px]">
-        <div className="relative flex aspect-[745/1390] flex-col overflow-hidden rounded-[38px] bg-[#0b0b14] px-4 pb-5 pt-11 text-white sm:rounded-[43px] sm:px-5 sm:pb-6 sm:pt-12">
-          {/* Fine grid across the screen, as in the mockup */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0"
-            style={{
-              backgroundImage:
-                'linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)',
-              backgroundSize: '34px 34px',
-            }}
-          />
-          {/* Floating pill cutout with the camera dot inside, as in the mockup */}
-          <div className="absolute left-1/2 top-[10px] flex h-[26px] w-[84px] -translate-x-1/2 items-center justify-end rounded-full bg-black pr-2.5 sm:h-[30px] sm:w-[96px]">
-            <span aria-hidden className="h-[7px] w-[7px] rounded-full bg-[#1b1b28]" />
+      <div
+        className="relative rounded-[52px] border border-[#6e6962] p-[8px]"
+        style={{
+          background: 'linear-gradient(145deg, #858078 0%, #373532 13%, #141313 46%, #1d1b19 100%)',
+          boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.15), inset 0 -1px 0 rgba(0,0,0,0.9)',
+        }}
+      >
+        <div
+          className="relative flex aspect-[370/680] flex-col overflow-hidden rounded-[44px] border border-white/[0.07] px-[17px] pb-3 pt-[9px] text-[#f7f5f2]"
+          style={{
+            backgroundColor: '#101016',
+            backgroundImage:
+              'linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)',
+            backgroundSize: '18px 18px',
+          }}
+        >
+          <div className="relative z-[2] mx-auto flex h-[25px] w-[92px] shrink-0 items-center justify-end rounded-full bg-[#050506] pr-[10px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.03)]">
+            <span aria-hidden className="h-[5px] w-[5px] rounded-full bg-[#161d34]" />
           </div>
         <div aria-hidden className="absolute inset-x-0 top-28 h-56 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.2),transparent_68%)]" />
 
@@ -429,8 +435,16 @@ export default function VoxPhoneConsole() {
                 ? () => void endActiveCall(isConnecting ? 'Ready' : 'Call Ended')
                 : () => void startDemo()
             }
-            className={`flex h-[52px] w-full cursor-pointer items-center justify-center gap-2.5 rounded-full text-[15px] font-semibold text-white shadow-[0_16px_38px_-14px_rgba(79,70,229,0.95)] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#7C7CFF]/50 sm:h-[56px] sm:text-base ${
-              isPlaying || isConnecting ? 'bg-red-500/90 hover:bg-red-500' : 'bg-[#635BFF] hover:bg-[#4F46E5]'
+            style={
+              isPlaying || isConnecting
+                ? undefined
+                : {
+                    background: 'linear-gradient(105deg, #5145e5, #6d51ef)',
+                    boxShadow: '0 13px 25px rgba(81, 69, 229, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                  }
+            }
+            className={`mx-auto flex min-h-[46px] min-w-[205px] cursor-pointer items-center justify-center gap-2.5 rounded-full border border-white/[0.18] px-[22px] text-[15px] font-semibold text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#7C7CFF]/50 ${
+              isPlaying || isConnecting ? 'bg-red-500/90 hover:bg-red-500' : ''
             }`}
           >
             {isPlaying || isConnecting ? <Square size={16} className="fill-current" /> : <PhoneCall size={18} />}
