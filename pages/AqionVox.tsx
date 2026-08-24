@@ -70,7 +70,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
         'Managers can see call volume, captured leads, booked meetings and follow-through from one operating view.',
       icon: BarChart3,
       bullets: ['Call volume and outcomes', 'Lead and booking visibility', 'Exportable management views'],
-      image: '/overview-light.png',
+      image: '/aqion-voice-dashboard-overview.png',
     },
     {
       no: '02',
@@ -79,7 +79,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
         'Every conversation can be categorized, routed and saved with context so sales teams start with a cleaner record.',
       icon: Users,
       bullets: ['Intent and contact capture', 'CRM-ready handoff', 'Follow-up context retained'],
-      image: '/leads-light.png',
+      image: '/aqion-voice-dashboard-leads.png',
     },
     {
       no: '03',
@@ -88,7 +88,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
         'Transcripts, summaries and handoff context help teams audit calls, improve service quality and escalate when needed.',
       icon: MessageSquare,
       bullets: ['Transcript history', 'AI call summaries', 'Human escalation context'],
-      image: '/conversations-light.png',
+      image: '/aqion-voice-dashboard-transcripts.png',
     },
     {
       no: '04',
@@ -97,16 +97,16 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
         'AQION VOX can move from conversation to action by booking meetings, confirming next steps and notifying your team.',
       icon: Video,
       bullets: ['Calendar coordination', 'Next-step reminders', 'Automatic post-call summaries'],
-      image: '/meetings-light.png',
+      image: '/aqion-voice-dashboard-meetings.png',
     },
     {
       no: '05',
-      title: 'WhatsApp inbox',
+      title: 'Email updates',
       description:
-        'The same agent answers on WhatsApp, so business messaging is handled alongside voice with one shared record and one set of escalation rules.',
+        'Add recipients in the dashboard so call summaries, transcripts and lead details reach the right team after a conversation.',
       icon: Mail,
-      bullets: ['AI-handled business inbox', 'Shared lead record with voice', 'Unread and routing visibility'],
-      image: '/whatsapp-light.png',
+      bullets: ['Instant call-summary emails', 'Daily analytics digest', 'Hot-lead priority alerts'],
+      image: '/aqion-voice-dashboard-email-updates.png',
     },
   ];
 

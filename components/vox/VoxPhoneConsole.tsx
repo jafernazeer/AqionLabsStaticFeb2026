@@ -295,13 +295,13 @@ export default function VoxPhoneConsole() {
   }, [callStatus, callError, isPlaying]);
 
   return (
-    // Handset shell held at a real phone's 9:19.5 ratio.
-    <div className="mx-auto w-full max-w-[292px] rounded-[42px] bg-gradient-to-b from-[#777981] to-[#42434a] p-[3px] shadow-[0_28px_80px_-30px_rgba(8,8,12,0.55)] sm:max-w-[318px] sm:rounded-[46px]">
-      <div className="relative flex aspect-[9/19.5] flex-col overflow-hidden rounded-[39px] border border-white/10 bg-[#07080d] px-3.5 pb-4 pt-9 text-white sm:rounded-[43px] sm:px-4 sm:pb-5 sm:pt-10">
-        {/* Dynamic-island style cutout, proportioned to the narrower shell */}
-        <div className="absolute left-1/2 top-2 h-[26px] w-[92px] -translate-x-1/2 rounded-full bg-black" />
-        <div className="absolute left-1/2 top-[14px] h-1.5 w-8 -translate-x-[10px] rounded-full bg-white/10" />
-        <div className="absolute left-1/2 top-[13px] h-2 w-2 -translate-x-[34px] rounded-full bg-white/[0.14]" />
+    // iPhone X proportions: 375:812, squarer corners and the classic wide notch.
+    <div className="mx-auto w-full max-w-[288px] rounded-[30px] bg-gradient-to-b from-[#777981] to-[#42434a] p-[4px] shadow-[0_28px_80px_-30px_rgba(8,8,12,0.55)] sm:max-w-[312px] sm:rounded-[34px]">
+      <div className="relative flex aspect-[375/812] flex-col overflow-hidden rounded-[26px] border border-white/10 bg-[#07080d] px-3.5 pb-4 pt-8 text-white sm:rounded-[30px] sm:px-4 sm:pb-5 sm:pt-9">
+        {/* Classic iPhone X notch: cut into the top edge, not a floating island */}
+        <div className="absolute left-1/2 top-0 h-[26px] w-[152px] -translate-x-1/2 rounded-b-[14px] bg-black sm:h-[28px] sm:w-[164px]" />
+        <div className="absolute left-1/2 top-[9px] h-1.5 w-10 -translate-x-[6px] rounded-full bg-white/10" />
+        <div className="absolute left-1/2 top-[8px] h-2 w-2 -translate-x-[38px] rounded-full bg-white/[0.14]" />
         <div aria-hidden className="absolute inset-x-0 top-28 h-56 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.2),transparent_68%)]" />
 
         <div className="relative z-10 flex shrink-0 items-center justify-between gap-3">
@@ -312,7 +312,7 @@ export default function VoxPhoneConsole() {
             <div className="min-w-0">
               <div className="truncate text-[15px] font-semibold tracking-tight">AQION VOX</div>
               <div className="truncate text-[9px] uppercase tracking-[0.14em] text-white/38 sm:text-[10px]">
-                AQION VOX agent console
+                Agent console
               </div>
             </div>
           </div>

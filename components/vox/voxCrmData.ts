@@ -1,15 +1,14 @@
 /**
  * Data source for the Aqion Vox CRM panel.
  *
- * Mirrors the shipped product screenshots in `public/` (overview-light.png,
- * leads-light.png, conversations-light.png, meetings-light.png) so the embedded
- * demo reads as the same application.
+ * Mirrors the current product screenshots in `public/aqion-voice-dashboard-*.png`
+ * — overview, call transcripts, leads, bookings and email updates — carrying
+ * Aqion Vox branding in place of the older Aqion Voice wordmark.
  *
  * The marketing site is a static build with no server, so the dashboard is fed
  * from this module rather than a live API. When a Vox backend exists, replace
- * the body of `useVoxCrmData` and leave the exported types alone — the CRM
- * component reads nothing else. Timestamps are display strings, matching the
- * screenshots; nothing here is parsed as a date.
+ * the body of `useVoxCrmData` and leave the exported types alone. Timestamps
+ * are display strings, matching the screenshots; nothing here is parsed.
  */
 import { useMemo } from 'react';
 
@@ -18,250 +17,225 @@ export type VoxStat = {
   value: string;
   sub: string;
   delta: string;
+  tone: 'emerald' | 'blue' | 'violet';
 };
 
 export type VoxFunnelStage = {
   label: string;
-  value: number;
-  pct: number;
+  value: string;
+  pct: string;
+  width: number;
   tone: string;
 };
 
-export type VoxAgent = {
-  initials: string;
+export type VoxPersona = {
+  initial: string;
   name: string;
-  detail: string;
-  resolved: string;
+  role: string;
+  language: string;
+  calls: string;
+  badge: 'Primary' | 'Active';
 };
 
-export type VoxAction = {
-  title: string;
-  detail: string;
-  priority: 'High' | 'Medium';
+export type VoxTurn = {
+  speaker: 'agent' | 'customer';
+  name: string;
+  at: string;
+  text: string;
+};
+
+export type VoxCallRecord = {
+  id: string;
+  caller: string;
+  phone: string;
+  direction: 'Inbound' | 'Outbound';
+  agent: string;
+  at: string;
+  duration: string;
+  outcome: 'Meeting Booked' | 'Qualified Lead' | 'Escalated';
+  cost: string;
+  summary: string;
+  turns: VoxTurn[];
 };
 
 export type VoxLead = {
   id: string;
+  ref: string;
   name: string;
+  phone: string;
+  company: string;
   region: string;
-  language: string;
-  phone: string;
   email: string;
-  company: string;
-  status: 'New' | 'Contacted' | 'Qualified';
   quality: 'Hot' | 'Warm' | 'Cold';
-  source: 'Voice' | 'WhatsApp' | 'Ads' | 'Website';
   score: number;
-  lastContact: string;
-};
-
-export type VoxTimelineEntry = {
-  label: string;
-  channel: string;
-  detail: string;
-  at: string;
-  tone: 'message' | 'ai' | 'intent' | 'booked' | 'call' | 'qualified' | 'meeting' | 'followup';
-};
-
-export type VoxConversation = {
-  id: string;
-  name: string;
-  channel: 'WA' | 'Voice';
-  state: 'Open' | 'Resolved' | 'Assigned';
-  preview: string;
-  routedTo?: string;
-  unread?: number;
-  at: string;
-  phone: string;
-  timeline: VoxTimelineEntry[];
-};
-
-export type VoxMeeting = {
-  id: string;
-  lead: string;
-  phone: string;
-  company: string;
-  scheduled: string;
-  duration: string;
-  source: 'Voice AI' | 'WhatsApp AI' | 'Manual';
-  status: 'Confirmed' | 'Pending' | 'Completed' | 'Cancelled';
-};
-
-export type VoxCallLog = {
-  id: string;
-  lead: string;
-  company: string;
-  at: string;
-  duration: string;
   language: string;
-  outcome: 'Qualified' | 'Booked' | 'Escalated' | 'Information';
+  captured: string;
+  status: 'New' | 'Contacted' | 'Qualified';
+  notes: string;
 };
 
-export type VoxWhatsAppThread = {
+export type VoxBooking = {
+  id: string;
+  source: 'Voice AI' | 'Direct Intake';
+  name: string;
+  company: string;
+  phone: string;
+  when: string;
+  duration: string;
+  status: 'Confirmed' | 'Pending' | 'Completed';
+  notes: string;
+};
+
+export type VoxRecipient = {
   id: string;
   name: string;
-  preview: string;
-  at: string;
-  unread: number;
+  email: string;
+  team: string;
+};
+
+export type VoxTrigger = {
+  id: string;
+  title: string;
+  detail: string;
+  enabled: boolean;
 };
 
 export type VoxCrmSnapshot = {
   stats: VoxStat[];
   funnel: VoxFunnelStage[];
-  agents: VoxAgent[];
-  actions: VoxAction[];
-  channelMix: { label: string; value: number; tone: string }[];
+  personas: VoxPersona[];
+  calls: VoxCallRecord[];
   leads: VoxLead[];
-  conversations: VoxConversation[];
-  meetings: VoxMeeting[];
-  callLogs: VoxCallLog[];
-  whatsapp: VoxWhatsAppThread[];
+  bookings: VoxBooking[];
+  recipients: VoxRecipient[];
+  triggers: VoxTrigger[];
 };
 
 const snapshot: VoxCrmSnapshot = {
   stats: [
-    { label: 'Leads Captured', value: '1,847', sub: '5 hot accounts', delta: '+12.4%' },
-    { label: 'Meetings Booked', value: '412', sub: 'AI-scheduled demos', delta: '+18.2%' },
-    { label: 'Voice Calls', value: '3,291', sub: '2,876 answered', delta: '+8.7%' },
-    { label: 'AI Cost', value: '$387.42', sub: '$0.12 avg voice call', delta: '+4.1%' },
+    { label: 'Total AI Calls', value: '3,291', sub: '2,876 answered (87.4%)', delta: '8.7%', tone: 'emerald' },
+    { label: 'Total Lead Captured', value: '1,847', sub: 'Live transcription extraction', delta: '12.4%', tone: 'blue' },
+    { label: 'Total Meetings Booked', value: '412', sub: 'Auto-scheduled by Aqion Vox', delta: '18.2%', tone: 'violet' },
   ],
   funnel: [
-    { label: 'Leads Captured', value: 1847, pct: 100, tone: 'bg-emerald-500' },
-    { label: 'AI Responded', value: 1623, pct: 87.9, tone: 'bg-emerald-500' },
-    { label: 'Qualified', value: 894, pct: 48.4, tone: 'bg-blue-500' },
-    { label: 'Meeting Booked', value: 412, pct: 22.3, tone: 'bg-violet-500' },
-    { label: 'Meeting Completed', value: 287, pct: 15.5, tone: 'bg-orange-500' },
-    { label: 'Converted', value: 143, pct: 7.7, tone: 'bg-red-500' },
+    { label: 'Total AI Calls', value: '3,291', pct: '100%', width: 100, tone: 'bg-emerald-500' },
+    { label: 'Answered & Triaged', value: '2,876', pct: '87.4%', width: 87.4, tone: 'bg-blue-500' },
+    { label: 'Leads Captured', value: '1,847', pct: '56.1%', width: 56.1, tone: 'bg-cyan-400' },
+    { label: 'Hot Qualified', value: '894', pct: '27.2%', width: 27.2, tone: 'bg-violet-500' },
+    { label: 'Meetings Booked', value: '412', pct: '12.5%', width: 12.5, tone: 'bg-orange-500' },
   ],
-  agents: [
-    { initials: 'FA', name: 'Fatima', detail: 'Gulf Arabic · 89 calls today', resolved: '94%' },
-    { initials: 'JA', name: 'James', detail: 'British English · 67 calls today', resolved: '91%' },
-    { initials: 'NO', name: 'Nour', detail: 'Saudi Arabic · 54 calls today', resolved: '88%' },
-    { initials: 'RA', name: 'Raj', detail: 'Indian English · 43 calls today', resolved: '86%' },
+  personas: [
+    { initial: 'T', name: 'Tariq', role: 'Executive Assistant', language: 'Bilingual Gulf Arabic / English', calls: '1,420 calls', badge: 'Primary' },
+    { initial: 'J', name: 'James', role: 'Real Estate Advisor', language: 'British English', calls: '890 calls', badge: 'Active' },
+    { initial: 'N', name: 'Nour', role: 'Healthcare Concierge', language: 'Saudi Arabic', calls: '640 calls', badge: 'Active' },
+    { initial: 'R', name: 'Raj', role: 'Fintech Specialist', language: 'Indian Executive English', calls: '341 calls', badge: 'Active' },
   ],
-  actions: [
-    { title: 'Enterprise healthcare lead needs HMS integration brief', detail: 'Solutions · due 24m', priority: 'High' },
-    { title: 'Government proposal draft requested after AI handoff', detail: 'Sales Ops · due 43m', priority: 'High' },
-    { title: 'Real estate pricing question waiting in WhatsApp', detail: 'Growth · due 1h', priority: 'Medium' },
-  ],
-  channelMix: [
-    { label: 'WhatsApp', value: 100, tone: 'bg-emerald-500' },
-    { label: 'Voice', value: 34, tone: 'bg-blue-500' },
-    { label: 'Web chat', value: 27, tone: 'bg-violet-500' },
-    { label: 'Inbound', value: 21, tone: 'bg-orange-500' },
-    { label: 'Campaigns', value: 17, tone: 'bg-teal-500' },
+  calls: [
+    {
+      id: 'call-1',
+      caller: 'Omar Al-Fayed',
+      phone: '+971 50 123 4567',
+      direction: 'Inbound',
+      agent: 'Tariq',
+      at: '2026-03-03 09:15',
+      duration: '2:34',
+      outcome: 'Meeting Booked',
+      cost: '$0.11',
+      summary:
+        'Inbound clinic enquiry. Caller asked about triage automation across three branches and booked an enterprise demo.',
+      turns: [
+        { speaker: 'agent', name: 'Tariq', at: '0:00', text: 'Good morning, this is Tariq from Aqion Vox. How can I help you today?' },
+        { speaker: 'customer', name: 'Customer', at: '0:04', text: 'We run three clinics and miss a lot of calls at peak hours.' },
+        { speaker: 'agent', name: 'Tariq', at: '0:12', text: 'Our voice agent answers every call, checks insurance and books directly into your scheduler.' },
+        { speaker: 'customer', name: 'Customer', at: '0:31', text: 'Can we see that working on one branch first?' },
+        { speaker: 'agent', name: 'Tariq', at: '0:38', text: 'Absolutely. I have booked an enterprise demo for Mar 10 at 10:00 AM.' },
+      ],
+    },
+    {
+      id: 'call-2',
+      caller: 'Sara Al-Rashid',
+      phone: '+971 55 234 5678',
+      direction: 'Outbound',
+      agent: 'James',
+      at: '2026-03-03 14:30',
+      duration: '1:52',
+      outcome: 'Qualified Lead',
+      cost: '$0.08',
+      summary:
+        'Follow-up call regarding luxury off-plan buyer qualification. Client confirmed 100+ agents and requested executive pitch deck.',
+      turns: [
+        { speaker: 'agent', name: 'James', at: '0:00', text: 'Good afternoon, this is James from Aqion Vox. Am I speaking with Sara Al-Rashid?' },
+        { speaker: 'customer', name: 'Customer', at: '0:05', text: 'Yes, hello James. I wanted to learn how your AI agent handles off-plan buyer inquiries.' },
+        { speaker: 'agent', name: 'James', at: '0:12', text: 'Our voice agent pre-qualifies high-net-worth investors, checks budget criteria, and schedules private VIP viewings automatically.' },
+        { speaker: 'customer', name: 'Customer', at: '0:28', text: 'That is exactly what our agency requires. Please email me the technical overview.' },
+        { speaker: 'agent', name: 'James', at: '0:35', text: 'I will dispatch the full documentation to your email immediately, Sara. Thank you for your time.' },
+      ],
+    },
+    {
+      id: 'call-3',
+      caller: 'Ahmed Hassan',
+      phone: '+966 50 345 6789',
+      direction: 'Inbound',
+      agent: 'Nour',
+      at: '2026-03-04 09:30',
+      duration: '3:12',
+      outcome: 'Escalated',
+      cost: '$0.14',
+      summary:
+        'Sovereign cloud architecture questions across six hospitals. Beyond the agent boundary, so escalated to solutions engineering.',
+      turns: [
+        { speaker: 'agent', name: 'Nour', at: '0:00', text: 'Thank you for calling Aqion Vox. How may I assist?' },
+        { speaker: 'customer', name: 'Customer', at: '0:06', text: 'We need to understand where patient call data would be stored.' },
+        { speaker: 'agent', name: 'Nour', at: '0:15', text: 'UAE deployment options are supported. Architecture detail needs our solutions engineer.' },
+        { speaker: 'customer', name: 'Customer', at: '0:44', text: 'Please arrange that conversation.' },
+        { speaker: 'agent', name: 'Nour', at: '0:52', text: 'Escalating now with the full context of this call.' },
+      ],
+    },
+    {
+      id: 'call-4',
+      caller: 'Priya Sharma',
+      phone: '+971 52 456 7890',
+      direction: 'Inbound',
+      agent: 'Raj',
+      at: '2026-03-04 11:00',
+      duration: '2:08',
+      outcome: 'Meeting Booked',
+      cost: '$0.09',
+      summary: 'Compliance and CBUAE logging requirements evaluation. Review call scheduled with the finance team.',
+      turns: [
+        { speaker: 'agent', name: 'Raj', at: '0:00', text: 'Good morning, Aqion Vox speaking. How can I help?' },
+        { speaker: 'customer', name: 'Customer', at: '0:05', text: 'We need call logging that satisfies CBUAE requirements.' },
+        { speaker: 'agent', name: 'Raj', at: '0:14', text: 'Every call is transcribed and retained with an exportable audit trail.' },
+        { speaker: 'customer', name: 'Customer', at: '0:39', text: 'Let us walk through that with our compliance lead.' },
+        { speaker: 'agent', name: 'Raj', at: '0:47', text: 'Booked for Mar 11 at 11:30 AM.' },
+      ],
+    },
   ],
   leads: [
-    { id: 'l1', name: 'Omar Al-Fayed', region: 'UAE', language: 'Arabic', phone: '+971 50 123 4567', email: 'omar@alfayed.ae', company: 'Al-Fayed Clinics', status: 'Qualified', quality: 'Hot', source: 'Voice', score: 88, lastContact: '2h ago' },
-    { id: 'l2', name: 'Sara Al-Rashid', region: 'UAE', language: 'English', phone: '+971 55 234 5678', email: 'sara@rashid-realty.com', company: 'Rashid Realty', status: 'Contacted', quality: 'Warm', source: 'WhatsApp', score: 65, lastContact: '5h ago' },
-    { id: 'l3', name: 'Ahmed Hassan', region: 'Saudi Arabia', language: 'Arabic', phone: '+966 50 345 6789', email: 'a.hassan@medgroup.sa', company: 'Saudi Med Group', status: 'Qualified', quality: 'Hot', source: 'Voice', score: 92, lastContact: '1h ago' },
-    { id: 'l4', name: 'Priya Sharma', region: 'UAE', language: 'English', phone: '+971 52 456 7890', email: 'priya@emiratesfinance.com', company: 'Emirates Finance', status: 'Qualified', quality: 'Hot', source: 'Voice', score: 79, lastContact: '3h ago' },
-    { id: 'l5', name: 'Adaeze Okonkwo', region: 'UAE', language: 'English', phone: '+971 54 567 8901', email: 'adaeze@dubairestaurants.com', company: 'Dubai Restaurants LLC', status: 'Contacted', quality: 'Warm', source: 'Ads', score: 58, lastContact: '6h ago' },
-    { id: 'l6', name: 'Hassan Al-Kuwaiti', region: 'Kuwait', language: 'Arabic', phone: '+965 60 678 9012', email: 'h.kuwaiti@gov.kw', company: 'Ministry of Services KW', status: 'Qualified', quality: 'Hot', source: 'Voice', score: 95, lastContact: '45min ago' },
-    { id: 'l7', name: 'Tarek Masri', region: 'Lebanon', language: 'Arabic', phone: '+961 3 789 0123', email: 'tarek@masri-properties.lb', company: 'Masri Properties', status: 'New', quality: 'Warm', source: 'Website', score: 52, lastContact: '1d ago' },
-    { id: 'l8', name: 'Dr. Amina Hassan', region: 'UAE', language: 'English', phone: '+971 50 890 1234', email: 'amina@cityhospital.ae', company: 'City Hospital', status: 'Qualified', quality: 'Hot', source: 'Voice', score: 87, lastContact: '2h ago' },
+    { id: 'l1', ref: 'LD_001', name: 'Omar Al-Fayed', phone: '+971 50 123 4567', company: 'Al-Fayed Clinics', region: 'UAE', email: 'omar@alfayed.ae', quality: 'Hot', score: 88, language: 'Gulf Arabic', captured: '2026-03-03 09:15', status: 'Qualified', notes: 'Clinic group in Dubai running three branches. Wants after-hours triage and insurance pre-checks before booking.' },
+    { id: 'l2', ref: 'LD_002', name: 'Sara Al-Rashid', phone: '+971 55 234 5678', company: 'Rashid Realty', region: 'UAE', email: 'sara@rashid-realty.com', quality: 'Warm', score: 65, language: 'English', captured: '2026-03-03 14:30', status: 'Contacted', notes: 'Luxury off-plan brokerage with 100+ agents. Requested executive pitch deck and technical overview by email.' },
+    { id: 'l3', ref: 'LD_003', name: 'Ahmed Hassan', phone: '+966 50 345 6789', company: 'Saudi Med Group', region: 'Saudi Arabia', email: 'a.hassan@medgroup.sa', quality: 'Hot', score: 92, language: 'Saudi Arabic', captured: '2026-03-04 09:30', status: 'Qualified', notes: 'Sovereign cloud voice AI architecture review for six hospitals. Escalated to solutions engineering.' },
+    { id: 'l4', ref: 'LD_004', name: 'Priya Sharma', phone: '+971 52 456 7890', company: 'Emirates Finance', region: 'UAE', email: 'priya@emiratesfinance.com', quality: 'Hot', score: 79, language: 'English', captured: '2026-03-04 11:00', status: 'Qualified', notes: 'Compliance and CBUAE logging requirements evaluation ahead of a finance-team review.' },
+    { id: 'l5', ref: 'LD_005', name: 'Adaeze Okonkwo', phone: '+971 54 567 8901', company: 'Dubai Restaurants LLC', region: 'UAE', email: 'adaeze@dubairestaurants.com', quality: 'Warm', score: 58, language: 'English', captured: '2026-03-04 15:45', status: 'Contacted', notes: 'Restaurant chain in Dubai Downtown looking for table booking voice concierge.' },
+    { id: 'l6', ref: 'LD_006', name: 'Hassan Al-Kuwaiti', phone: '+965 60 678 9012', company: 'Ministry of Services KW', region: 'Kuwait', email: 'h.kuwaiti@gov.kw', quality: 'Hot', score: 95, language: 'Kuwaiti Arabic', captured: '2026-03-05 08:45', status: 'Qualified', notes: 'Public sector digital transformation AI voice RFP presentation requested.' },
+    { id: 'l7', ref: 'LD_007', name: 'Tarek Masri', phone: '+961 3 789 0123', company: 'Masri Properties', region: 'Lebanon', email: 'tarek@masri-properties.lb', quality: 'Warm', score: 52, language: 'Arabic', captured: '2026-03-05 13:20', status: 'New', notes: 'Regional property portfolio. Asked for pricing across a small agent seat count.' },
+    { id: 'l8', ref: 'LD_008', name: 'Dr. Amina Hassan', phone: '+971 50 890 1234', company: 'City Hospital Dubai', region: 'UAE', email: 'amina@cityhospital.ae', quality: 'Hot', score: 87, language: 'English / Arabic', captured: '2026-03-05 16:10', status: 'Qualified', notes: 'Bilingual patient intake for a hospital switchboard handling high daytime volume.' },
+    { id: 'l9', ref: 'LD_009', name: 'Ali Al-Bahraini', phone: '+973 36 901 2345', company: 'Al-Bahraini Trading', region: 'Bahrain', email: 'ali@albahraini.bh', quality: 'Cold', score: 32, language: 'Arabic', captured: '2026-03-06 10:00', status: 'New', notes: 'General enquiry about pricing. Ended the call before requirements were captured.' },
+    { id: 'l10', ref: 'LD_010', name: 'Fatima Al-Zahra', phone: '+971 58 012 3456', company: 'Al-Zahra Luxury Design', region: 'UAE', email: 'fatima@alzahradesign.ae', quality: 'Warm', score: 61, language: 'Emirati Arabic', captured: '2026-03-06 14:15', status: 'Contacted', notes: 'Interior design studio wanting consultation booking and follow-up reminders.' },
   ],
-  conversations: [
-    {
-      id: 'c1',
-      name: 'Omar Al-Fayed',
-      channel: 'WA',
-      state: 'Resolved',
-      preview: 'شكراً جزيلاً، انتظر التاكيد',
-      at: '2h ago',
-      phone: '+971 50 123 4567',
-      timeline: [
-        { label: 'Message', channel: 'Whatsapp', detail: 'Lead sent first inquiry about clinic appointment pricing', at: 'Mar 3, 09:10 AM', tone: 'message' },
-        { label: 'AI Response', channel: 'Whatsapp', detail: 'AI responded with pricing details and booking offer', at: 'Mar 3, 09:10 AM', tone: 'ai' },
-        { label: 'Meeting Intent', channel: 'Whatsapp', detail: 'AI detected meeting booking intent', at: 'Mar 3, 09:13 AM', tone: 'intent' },
-        { label: 'Booking Confirmed', channel: 'Whatsapp', detail: 'Appointment booked: Mar 4, 10:00 AM via Cal.com', at: 'Mar 3, 09:13 AM', tone: 'booked' },
-        { label: 'Inbound Call', channel: 'Voice', detail: 'AI voice call — 2:34 min — Gulf Arabic — Fatima agent', at: 'Mar 3, 09:15 AM', tone: 'call' },
-        { label: 'Lead Qualified', channel: 'Voice', detail: 'Lead score updated: 45 → 88 (Hot). Enterprise interest confirmed.', at: 'Mar 3, 09:15 AM', tone: 'qualified' },
-        { label: 'Demo Meeting', channel: 'Meeting', detail: 'Attended enterprise demo — 45 min — Solutions team', at: 'Mar 4, 10:00 AM', tone: 'meeting' },
-        { label: 'Follow-up', channel: 'Whatsapp', detail: 'AI sent post-demo follow-up with enterprise proposal', at: 'Mar 4, 11:30 AM', tone: 'followup' },
-      ],
-    },
-    {
-      id: 'c2',
-      name: 'Sara Al-Rashid',
-      channel: 'WA',
-      state: 'Open',
-      preview: 'Can you send me the pricing details?',
-      routedTo: 'Sales Team',
-      unread: 2,
-      at: '45min ago',
-      phone: '+971 55 234 5678',
-      timeline: [
-        { label: 'Message', channel: 'Whatsapp', detail: 'Asked for a full pricing breakdown across plans', at: 'Mar 3, 11:02 AM', tone: 'message' },
-        { label: 'AI Response', channel: 'Whatsapp', detail: 'AI shared plan comparison and offered a callback', at: 'Mar 3, 11:02 AM', tone: 'ai' },
-        { label: 'Routed', channel: 'Whatsapp', detail: 'Handed to Sales Team — custom pricing requested', at: 'Mar 3, 11:06 AM', tone: 'intent' },
-      ],
-    },
-    {
-      id: 'c3',
-      name: 'Ahmed Hassan',
-      channel: 'Voice',
-      state: 'Assigned',
-      preview: 'Escalated to human agent',
-      routedTo: 'Enterprise Sales',
-      at: '1h ago',
-      phone: '+966 50 345 6789',
-      timeline: [
-        { label: 'Inbound Call', channel: 'Voice', detail: 'AI voice call — 4:12 min — Saudi Arabic — Nour agent', at: 'Mar 3, 10:41 AM', tone: 'call' },
-        { label: 'Lead Qualified', channel: 'Voice', detail: 'Lead score updated: 60 → 92 (Hot). Multi-site rollout.', at: 'Mar 3, 10:45 AM', tone: 'qualified' },
-        { label: 'Escalated', channel: 'Voice', detail: 'Handed to Enterprise Sales with full call context', at: 'Mar 3, 10:46 AM', tone: 'followup' },
-      ],
-    },
-    {
-      id: 'c4',
-      name: 'Priya Sharma',
-      channel: 'WA',
-      state: 'Resolved',
-      preview: 'Meeting confirmed for Wed 10 AM ✓',
-      at: '3h ago',
-      phone: '+971 52 456 7890',
-      timeline: [
-        { label: 'Message', channel: 'Whatsapp', detail: 'Requested a product walkthrough for the finance team', at: 'Mar 3, 08:20 AM', tone: 'message' },
-        { label: 'Booking Confirmed', channel: 'Whatsapp', detail: 'Appointment booked: Mar 5, 10:00 AM via Cal.com', at: 'Mar 3, 08:24 AM', tone: 'booked' },
-      ],
-    },
-    {
-      id: 'c5',
-      name: 'Hassan Al-Kuwaiti',
-      channel: 'WA',
-      state: 'Open',
-      preview: 'Please send the formal proposal document',
-      unread: 1,
-      at: '30min ago',
-      phone: '+965 60 678 9012',
-      timeline: [
-        { label: 'Message', channel: 'Whatsapp', detail: 'Government tender — asked for a formal written proposal', at: 'Mar 3, 11:18 AM', tone: 'message' },
-        { label: 'AI Response', channel: 'Whatsapp', detail: 'AI confirmed scope and flagged for proposal drafting', at: 'Mar 3, 11:19 AM', tone: 'ai' },
-      ],
-    },
+  bookings: [
+    { id: 'b1', source: 'Voice AI', name: 'Omar Al-Fayed', company: 'Al-Fayed Clinics', phone: '+971 50 123 4567', when: 'Mar 10, 2026 10:00 AM', duration: '30 Minutes', status: 'Confirmed', notes: 'Enterprise clinic triage automation demo. 3 branch setup.' },
+    { id: 'b2', source: 'Voice AI', name: 'Ahmed Hassan', company: 'Saudi Med Group', phone: '+966 50 345 6789', when: 'Mar 10, 2026 02:00 PM', duration: '45 Minutes', status: 'Confirmed', notes: 'Sovereign cloud voice AI architecture review for 6 hospitals.' },
+    { id: 'b3', source: 'Voice AI', name: 'Priya Sharma', company: 'Emirates Finance', phone: '+971 52 456 7890', when: 'Mar 11, 2026 11:30 AM', duration: '30 Minutes', status: 'Pending', notes: 'Compliance and CBUAE logging requirements evaluation.' },
+    { id: 'b4', source: 'Direct Intake', name: 'Hassan Al-Kuwaiti', company: 'Ministry of Services KW', phone: '+965 60 678 9012', when: 'Mar 12, 2026 09:00 AM', duration: '60 Minutes', status: 'Confirmed', notes: 'Public sector digital transformation AI voice RFP presentation.' },
   ],
-  meetings: [
-    { id: 'm1', lead: 'Omar Al-Fayed', phone: '+971 50 123 4567', company: 'Al-Fayed Clinics', scheduled: 'Tue Mar 4, 10:00 AM', duration: '45 min', source: 'Voice AI', status: 'Confirmed' },
-    { id: 'm2', lead: 'Sara Al-Rashid', phone: '+971 55 234 5678', company: 'Rashid Realty', scheduled: 'Thu Mar 6, 2:00 PM', duration: '30 min', source: 'Voice AI', status: 'Confirmed' },
-    { id: 'm3', lead: 'Priya Sharma', phone: '+971 52 456 7890', company: 'Emirates Finance', scheduled: 'Wed Mar 5, 10:00 AM', duration: '60 min', source: 'Voice AI', status: 'Completed' },
-    { id: 'm4', lead: 'Hassan Al-Kuwaiti', phone: '+965 60 678 9012', company: 'Ministry of Services KW', scheduled: 'Sun Mar 9, 10:00 AM', duration: '60 min', source: 'Voice AI', status: 'Pending' },
-    { id: 'm5', lead: 'Dr. Amina Hassan', phone: '+971 50 890 1234', company: 'City Hospital', scheduled: 'Mon Mar 9, 11:00 AM', duration: '60 min', source: 'Voice AI', status: 'Confirmed' },
-    { id: 'm6', lead: 'Adaeze Okonkwo', phone: '+971 54 567 8901', company: 'Dubai Restaurants LLC', scheduled: 'Wed Mar 11, 3:00 PM', duration: '30 min', source: 'WhatsApp AI', status: 'Pending' },
-    { id: 'm7', lead: 'Rania Khalil', phone: '+20 10 1234 5678', company: 'Khalil Tech Egypt', scheduled: 'Mon Mar 3, 2:00 PM', duration: '30 min', source: 'Manual', status: 'Cancelled' },
+  recipients: [
+    { id: 'r1', name: 'Operations Team', email: 'operations@example.ae', team: 'Operations' },
   ],
-  callLogs: [
-    { id: 'cl1', lead: 'Omar Al-Fayed', company: 'Al-Fayed Clinics', at: 'Mar 3, 09:15 AM', duration: '2:34', language: 'Gulf Arabic', outcome: 'Booked' },
-    { id: 'cl2', lead: 'Ahmed Hassan', company: 'Saudi Med Group', at: 'Mar 3, 10:41 AM', duration: '4:12', language: 'Saudi Arabic', outcome: 'Escalated' },
-    { id: 'cl3', lead: 'Priya Sharma', company: 'Emirates Finance', at: 'Mar 3, 08:20 AM', duration: '3:08', language: 'English', outcome: 'Qualified' },
-    { id: 'cl4', lead: 'Dr. Amina Hassan', company: 'City Hospital', at: 'Mar 2, 04:52 PM', duration: '5:01', language: 'English', outcome: 'Qualified' },
-    { id: 'cl5', lead: 'Tarek Masri', company: 'Masri Properties', at: 'Mar 2, 01:14 PM', duration: '1:47', language: 'Arabic', outcome: 'Information' },
-  ],
-  whatsapp: [
-    { id: 'w1', name: 'Sara Al-Rashid', preview: 'Can you send me the pricing details?', at: '45min ago', unread: 2 },
-    { id: 'w2', name: 'Hassan Al-Kuwaiti', preview: 'Please send the formal proposal document', at: '30min ago', unread: 1 },
-    { id: 'w3', name: 'Rania Khalil', preview: "Yes I'm interested! What plans do you offer?", at: '1h ago', unread: 3 },
-    { id: 'w4', name: 'Ali Al-Bahraini', preview: 'Hi Ali, we tried to reach you — free to talk?', at: '8h ago', unread: 0 },
-    { id: 'w5', name: 'Omar Al-Fayed', preview: 'شكراً جزيلاً، انتظر التاكيد', at: '2h ago', unread: 0 },
+  triggers: [
+    { id: 't1', title: 'Instant Call Summary Emails', detail: 'Send lead details & transcript summary immediately after each call', enabled: true },
+    { id: 't2', title: 'Daily Call Analytics Summary', detail: 'Send daily report of call volume, leads captured & meetings booked', enabled: true },
+    { id: 't3', title: 'Hot Lead High-Priority Alerts', detail: 'Urgent notification when a Hot Lead is qualified by Aqion Vox', enabled: true },
   ],
 };
 
