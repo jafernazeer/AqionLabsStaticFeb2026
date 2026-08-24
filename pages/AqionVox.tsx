@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { PageType } from '../types';
 import { useLocation } from 'react-router-dom';
-import LiveDemoSection from '../components/LiveDemoSection';
-import OptimizedHeroMotion from '../components/OptimizedHeroMotion';
+import OptimizedHeroMotion, { ServiceMotionBackdrop } from '../components/OptimizedHeroMotion';
+import VoxPhoneConsole from '../components/vox/VoxPhoneConsole';
+import VoxCRM from '../components/vox/VoxCRM';
 import {
-  ArrowUpRight, Check, Play, BarChart3, Users, MessageSquare, Video, Mail,
+  ArrowUpRight, Check, BarChart3, Users, MessageSquare, Video, Mail,
   ShieldCheck, Languages, Headphones, Workflow, X
 } from 'lucide-react';
 
@@ -27,9 +28,28 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
   const location = useLocation();
   const [zoomedCapability, setZoomedCapability] = useState<{ title: string; image: string } | null>(null);
 
+  // Arriving with a hash (for example the homepage "Experience Vox CRM"
+  // button) should land on that section rather than snapping to the top.
+  // The page is lazy-loaded and its artwork settles late, so keep re-aligning
+  // for a moment instead of scrolling once against a shifting layout.
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
+    if (!location.hash) {
+      window.scrollTo(0, 0);
+      return undefined;
+    }
+
+    let frame = 0;
+    let attempts = 0;
+
+    const align = () => {
+      const target = document.querySelector(location.hash);
+      if (target) target.scrollIntoView({ behavior: 'auto', block: 'start' });
+      if (++attempts < 12) frame = window.setTimeout(align, 80);
+    };
+
+    align();
+    return () => window.clearTimeout(frame);
+  }, [location.pathname, location.hash]);
 
   useEffect(() => {
     if (!zoomedCapability) return undefined;
@@ -104,41 +124,80 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
         <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-bone/84 via-bone/58 to-bone/92" />
         <div aria-hidden className="absolute inset-0 bg-hairline-grid opacity-24" />
 
-        <div className="relative z-10 flex w-full max-w-6xl flex-col items-center px-6 py-20 pt-32 text-center md:py-32 md:pt-40">
-          {/* Badge */}
-          <div className="mb-5 -translate-y-8 inline-flex items-center gap-2 rounded-full border border-petrol/30 bg-petrol/8 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-petrol md:mb-10 md:-translate-y-3 md:text-[12px] md:tracking-[0.18em]">
-            <span className="w-1.5 h-1.5 rounded-full bg-petrol" />
-            Now in Public Beta
+        <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 py-20 pt-32 md:py-28 md:pt-36 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-16 lg:py-32">
+          <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+            {/* Badge */}
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-petrol/30 bg-petrol/8 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-petrol md:text-[12px] md:tracking-[0.18em]">
+              <span className="w-1.5 h-1.5 rounded-full bg-petrol" />
+              Now in Public Beta
+            </div>
+
+            {/* Main headline */}
+            <h1 className="display-xxl text-[15vw] leading-[0.9] tracking-[-0.04em] text-ink sm:text-[10vw] lg:text-[6.4rem] xl:text-[7.4rem]">
+              <span className="block">Intelligence</span>
+              <span className="display-italic block text-petrol">that answers.</span>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="mt-6 max-w-[340px] font-display text-lg leading-[1.25] tracking-tight text-graphite md:max-w-xl md:text-[1.8rem] lg:text-[2.05rem]">
+              Aqion Vox is an AI voice employee that answers, qualifies and moves customer conversations to the next
+              business action.
+            </p>
+
+            {/* Feature line */}
+            <p className="mt-6 max-w-[320px] text-[15px] leading-relaxed text-taupe md:max-w-2xl md:text-lg">
+              <span className="block">Every call arrives with a built-in Voice CRM for</span>
+              <strong className="mt-3 block font-semibold text-ink">
+                Voice analytics · Call transcriptions · Lead capture · Meeting management · Email summaries
+              </strong>
+            </p>
+
+            <div className="mt-9">
+              <a
+                href="#live-dashboard"
+                className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-ink/[0.14] bg-white/70 px-6 py-3.5 text-sm font-semibold text-ink backdrop-blur-md transition-colors hover:border-petrol/35 hover:text-petrol"
+              >
+                See the CRM behind the call
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </div>
           </div>
 
-          {/* Main headline */}
-          <h1 className="display-xxl text-[16.5vw] leading-[0.9] tracking-[-0.04em] text-ink md:text-[11.8vw] lg:text-[10.5rem]">
-            <span className="mb-2 block md:mb-0 md:mr-[0.08em] md:inline">Never miss</span>
-            <span className="display-italic block text-petrol md:inline">another call.</span>
-          </h1>
-
-          {/* Subtitle */}
-          <p className="mt-5 max-w-[310px] font-display text-lg leading-[1.25] tracking-tight text-graphite md:mt-7 md:max-w-none md:text-[2.1rem] lg:text-[2.75rem]">
-            AQION VOX is an AI voice employee that answers, qualifies and moves customer conversations to the next business action.
-          </p>
-
-          {/* Feature line */}
-          <p className="mt-5 max-w-[312px] text-[15px] leading-relaxed text-taupe md:mt-7 md:max-w-3xl md:text-xl">
-            <span className="block">AQION VOX includes a built-in Voice CRM for</span>
-            <strong className="mt-3 block font-semibold text-ink">Voice analytics · Call transcriptions · Lead capture · Meeting management · Email summaries</strong>
-          </p>
-
-          {/* Primary demo action */}
-          <div className="mt-14 flex translate-y-4 items-center justify-center md:mt-10 md:translate-y-0">
-            <a
-              href="#live-demo"
-              className="group inline-flex min-h-14 min-w-[240px] items-center justify-center gap-3 rounded-full border border-ink bg-ink px-8 py-4 text-base font-medium text-bone shadow-[0_18px_40px_-24px_rgba(28,25,23,0.8)] transition-colors hover:bg-petrolDeep"
-            >
-              <Play className="h-4 w-4 fill-current" />
-              Call AQION VOX Now
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
+          {/* Live agent console */}
+          <div id="live-demo" className="scroll-mt-28">
+            <VoxPhoneConsole />
+            <p className="mt-4 text-center text-[12.5px] leading-relaxed text-taupe lg:text-left">
+              Start a call and the transcript appears on screen as you speak.
+            </p>
           </div>
+        </div>
+      </section>
+
+      {/* AQION VOX CRM — banner + live dashboard */}
+      <section
+        id="live-dashboard"
+        className="mobile-section-tight relative z-10 scroll-mt-24 overflow-hidden border-t border-hairline bg-parchment/40 px-5 py-20 sm:px-6 md:py-28"
+      >
+        <ServiceMotionBackdrop className="mobile-visual-reduce opacity-40" />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-bone/82 via-bone/62 to-bone/90" />
+
+        <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-8">
+          <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-[#0d0d10] px-6 py-7 text-bone shadow-[0_24px_70px_-38px_rgba(28,25,23,0.72)] sm:px-8 sm:py-8 lg:px-10">
+            <div aria-hidden className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(rgba(129,140,248,0.8)_1px,transparent_1px)] bg-[length:20px_20px]" />
+            <div aria-hidden className="absolute -right-20 top-1/2 h-56 w-56 -translate-y-1/2 rounded-full bg-[#4F46E5]/20 blur-3xl" />
+            <div className="relative max-w-3xl">
+              <p className="eyebrow mb-3 !text-[#4F46E5]">[ Aqion Vox CRM ]</p>
+              <h2 className="font-display text-[2rem] leading-[1.04] tracking-tight text-bone sm:text-4xl">
+                See what happens <span className="display-italic text-[#4F46E5]">after every call.</span>
+              </h2>
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-bone/62 sm:text-base">
+                Analytics, call transcripts, captured leads, meeting management and automated email summaries — all in
+                one operating view.
+              </p>
+            </div>
+          </div>
+
+          <VoxCRM />
         </div>
       </section>
 
@@ -166,10 +225,6 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
             ))}
           </div>
         </div>
-      </section>
-
-      <section className="mesh-bg relative z-10 py-0 md:py-10">
-        <LiveDemoSection />
       </section>
 
       {/* CAPABILITIES */}
