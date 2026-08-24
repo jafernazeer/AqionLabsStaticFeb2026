@@ -64,26 +64,32 @@ function NoteColumn({ notes, side }: { notes: Note[]; side: 'left' | 'right' }) 
  */
 export default function VoxStage({ caption = true, wave = true }: { caption?: boolean; wave?: boolean }) {
   return (
-    <div className="relative w-full">
-      {wave && (
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-1/2 flex -translate-y-1/2 justify-center overflow-hidden"
-        >
-          <img
-            src="/service-motion.svg"
-            alt=""
-            loading="lazy"
-            decoding="async"
-            className="mobile-visual-reduce h-auto w-[190%] max-w-none opacity-70 md:w-[150%] lg:w-[118%]"
-          />
-        </div>
-      )}
+    <div className="w-full">
+      {/* The wave sits inside the handset row, so its centre line tracks the
+          middle of the phone rather than the middle of the whole stage. */}
+      <div className="relative">
+        {wave && (
+          // Clipped to a band across the handset's middle: centred on the phone,
+          // but never tall enough to reach the copy above it.
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 my-auto flex h-[38%] items-center justify-center overflow-hidden sm:h-[42%]"
+          >
+            <img
+              src="/service-motion.svg"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className="mobile-visual-reduce h-auto w-[190%] max-w-none shrink-0 opacity-70 md:w-[150%] lg:w-[118%]"
+            />
+          </div>
+        )}
 
-      <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:gap-10">
-        <NoteColumn notes={LEFT_NOTES} side="left" />
-        <VoxPhoneConsole />
-        <NoteColumn notes={RIGHT_NOTES} side="right" />
+        <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:gap-10">
+          <NoteColumn notes={LEFT_NOTES} side="left" />
+          <VoxPhoneConsole />
+          <NoteColumn notes={RIGHT_NOTES} side="right" />
+        </div>
       </div>
 
       {caption && (
