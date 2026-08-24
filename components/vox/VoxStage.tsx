@@ -69,18 +69,19 @@ export default function VoxStage({ caption = true, wave = true }: { caption?: bo
           middle of the phone rather than the middle of the whole stage. */}
       <div className="relative">
         {wave && (
-          // Clipped to a band across the handset's middle: centred on the phone,
-          // but never tall enough to reach the copy above it.
+          // Full-bleed and unclipped: the ribbon runs the whole width of the
+          // page and passes behind the lower half of the handset.
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 my-auto flex h-[38%] items-center justify-center overflow-hidden sm:h-[42%]"
+            className="pointer-events-none absolute inset-y-0 flex items-center justify-center"
+            style={{ left: 'calc(50% - 50vw)', right: 'calc(50% - 50vw)' }}
           >
             <img
               src="/service-motion.svg"
               alt=""
               loading="lazy"
               decoding="async"
-              className="mobile-visual-reduce h-auto w-[190%] max-w-none shrink-0 opacity-70 md:w-[150%] lg:w-[118%]"
+              className="mobile-visual-reduce h-auto w-screen max-w-none shrink-0 translate-y-[18%] opacity-80"
             />
           </div>
         )}
@@ -93,7 +94,7 @@ export default function VoxStage({ caption = true, wave = true }: { caption?: bo
       </div>
 
       {caption && (
-        <p className="relative z-10 mt-8 text-center font-mono text-[9px] uppercase leading-relaxed tracking-[0.16em] text-taupe sm:text-[10px] sm:tracking-[0.2em]">
+        <p className="relative z-20 mt-16 text-center font-mono text-[9px] uppercase leading-relaxed tracking-[0.16em] text-taupe sm:mt-24 sm:text-[10px] sm:tracking-[0.2em]">
           One conversation. Live understanding. A structured opportunity ready for your team.
         </p>
       )}
