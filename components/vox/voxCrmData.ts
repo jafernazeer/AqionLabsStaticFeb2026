@@ -35,11 +35,21 @@ export type VoxCall = {
 
 export type VoxLead = {
   id: string;
+  ref: string;
   name: string;
+  /** Empty when the caller never gave one — shown as "No number captured". */
+  phone: string;
+  email: string;
   company: string;
   interest: string;
+  language: string;
+  /** 0-100 confidence that this lead is worth a callback. */
+  quality: number;
+  temperature: 'Hot' | 'Warm' | 'Cold';
   status: 'New' | 'Qualified' | 'Contacted';
   capturedAt: string;
+  /** What the agent pulled out of the conversation, in prose. */
+  transcriptNotes: string;
 };
 
 export type VoxBooking = {
@@ -151,10 +161,70 @@ const snapshot: VoxCrmSnapshot = {
     },
   ],
   leads: [
-    { id: 'lead-1', name: 'Layla H.', company: 'Meridian Clinics', interest: 'Appointment automation', status: 'Qualified', capturedAt: '2026-08-24T09:18:00Z' },
-    { id: 'lead-2', name: 'Omar S.', company: 'Marina Estates', interest: 'Viewing coordination', status: 'New', capturedAt: '2026-08-24T08:44:00Z' },
-    { id: 'lead-3', name: 'Priya R.', company: 'Gulf Analytics Institute', interest: 'Admissions intake', status: 'Contacted', capturedAt: '2026-08-23T11:57:00Z' },
-    { id: 'lead-4', name: 'Khalid M.', company: 'Falcon Logistics', interest: 'After-hours support line', status: 'Qualified', capturedAt: '2026-08-23T09:31:00Z' },
+    {
+      id: 'lead-1',
+      ref: 'LD_001',
+      name: 'Layla H.',
+      phone: '05•• ••8496',
+      email: 'layla@example.ae',
+      company: 'Meridian Clinics',
+      interest: 'Appointment automation',
+      language: 'English',
+      quality: 92,
+      temperature: 'Hot',
+      status: 'Qualified',
+      capturedAt: '2026-08-24T09:18:00Z',
+      transcriptNotes:
+        'Layla manages front desk operations for three Meridian clinics in Dubai. Roughly 40% of calls go unanswered at peak hours. Asked about after-hours booking, insurance pre-checks and whether the agent can write into their existing scheduling system. Requested a scoped pilot on one clinic first.',
+    },
+    {
+      id: 'lead-2',
+      ref: 'LD_002',
+      name: 'Omar S.',
+      phone: '05•• ••1313',
+      email: 'omar@example.ae',
+      company: 'Marina Estates',
+      interest: 'Viewing coordination',
+      language: 'English',
+      quality: 90,
+      temperature: 'Hot',
+      status: 'New',
+      capturedAt: '2026-08-24T08:44:00Z',
+      transcriptNotes:
+        'Buyer enquiry on a two-bedroom Dubai Marina listing. Budget stated at 2.4 million with a two-month move-in window. Wants weekend viewings and asked whether the agent can route directly to the listing agent rather than a shared inbox.',
+    },
+    {
+      id: 'lead-3',
+      ref: 'LD_003',
+      name: 'Priya R.',
+      phone: '',
+      email: 'priya@example.ae',
+      company: 'Gulf Analytics Institute',
+      interest: 'Admissions intake',
+      language: 'English',
+      quality: 72,
+      temperature: 'Warm',
+      status: 'Contacted',
+      capturedAt: '2026-08-23T11:57:00Z',
+      transcriptNotes:
+        'Prospective student for the data analytics diploma. Three years in finance operations, which meets the work-experience route, so no degree check needed. Counsellor callback scheduled for the following morning. Did not leave a phone number — reachable by email only.',
+    },
+    {
+      id: 'lead-4',
+      ref: 'LD_004',
+      name: 'Unnamed caller',
+      phone: '',
+      email: '',
+      company: '',
+      interest: 'After-hours support line',
+      language: 'English',
+      quality: 30,
+      temperature: 'Cold',
+      status: 'New',
+      capturedAt: '2026-08-23T09:31:00Z',
+      transcriptNotes:
+        'Caller asked general pricing questions about an after-hours support line, then ended the call before giving contact details. No name, number or company captured. Retained for volume reporting only.',
+    },
   ],
   bookings: [
     { id: 'booking-1', title: 'Dermatology consultation', attendee: 'Layla H.', scheduledAt: '2026-08-27T12:30:00Z', channel: 'Clinic — Room 4' },

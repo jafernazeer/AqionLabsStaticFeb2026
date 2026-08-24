@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { ArrowUpRight, Check } from 'lucide-react';
-import { ServiceMotionBackdrop } from './OptimizedHeroMotion';
-import VoxPhoneConsole from './vox/VoxPhoneConsole';
+import VoxStage from './vox/VoxStage';
 
 /**
  * Homepage live demo: the Aqion Vox handset and nothing else. The CRM itself
@@ -26,21 +25,16 @@ export default function LiveDemoSection() {
       id="live-demo"
       className="mesh-bg mobile-section-tight relative z-10 scroll-mt-24 overflow-hidden px-5 pb-14 pt-12 font-sans text-[#1C1917] sm:px-6 md:pb-20 md:pt-16"
     >
-      <ServiceMotionBackdrop className="mobile-visual-reduce opacity-45" />
-      <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-bone/78 via-bone/58 to-bone/88" />
-
-      <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-8">
-        <div className="max-w-3xl">
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-10">
+        <div className="mx-auto max-w-3xl text-center">
           <p className="eyebrow mb-4 text-[#4F46E5]">[ See Aqion Vox in action ]</p>
-          <p className="max-w-2xl text-[16px] font-medium leading-[1.6] text-[#6B6357] md:text-[18px]">
+          <p className="mx-auto max-w-2xl text-[16px] font-medium leading-[1.6] text-[#6B6357] md:text-[18px]">
             Start a live call. Aqion Vox will ask about your industry and use case, then adapt the conversation in real
             time — and the transcript appears on screen as you speak.
           </p>
         </div>
 
-        <div className="flex w-full flex-col items-center">
-          <VoxPhoneConsole />
-        </div>
+        <VoxStage />
 
         <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-[#0d0d10] px-6 py-7 text-bone shadow-[0_24px_70px_-38px_rgba(28,25,23,0.72)] sm:px-8 sm:py-8 lg:flex lg:items-center lg:justify-between lg:gap-12 lg:px-10">
           <div aria-hidden className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(rgba(129,140,248,0.8)_1px,transparent_1px)] bg-[length:20px_20px]" />

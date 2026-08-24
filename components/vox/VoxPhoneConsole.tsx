@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Vapi from '@vapi-ai/web';
-import { MicOff, PhoneOff, Play, Square, Volume2 } from 'lucide-react';
+import { MicOff, PhoneCall, PhoneOff, Square, Volume2 } from 'lucide-react';
 
 /** Vite injects `import.meta.env`; the project ships no `vite/client` types. */
 const env = (import.meta as unknown as { env?: Record<string, string | undefined> }).env ?? {};
@@ -384,9 +384,20 @@ export default function VoxPhoneConsole() {
                 </div>
               </div>
             </div>
-            <p className="mt-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/35">Adaptive voice workflow</p>
-            <p className="mt-2 font-mono text-2xl font-semibold tracking-[0.1em] text-white/75">{formatTime(callSeconds)}</p>
-            <p className="mt-2 max-w-[240px] text-xs leading-relaxed text-white/38">{statusCopy}</p>
+            <p className="mt-6 font-display text-[1.35rem] leading-tight tracking-tight text-white">
+              Test Live Call Now
+            </p>
+            <p className="mt-3 max-w-[250px] text-[12.5px] leading-relaxed text-white/45">
+              Watch the conversation live
+              <br />
+              as transcripts appear on the screen
+            </p>
+            <p className="mt-4 max-w-[250px] text-[12.5px] leading-relaxed text-white/32">
+              Scroll down to view
+              <br />
+              captured leads after the call
+            </p>
+            <p className="mt-4 text-[11px] leading-relaxed text-white/30">{statusCopy}</p>
           </div>
         )}
 
@@ -398,12 +409,12 @@ export default function VoxPhoneConsole() {
                 ? () => void endActiveCall(isConnecting ? 'Ready' : 'Call Ended')
                 : () => void startDemo()
             }
-            className={`mb-3 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-xl text-sm font-semibold text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#7C7CFF]/50 ${
-              isPlaying || isConnecting ? 'bg-red-500/80 hover:bg-red-500' : 'bg-[#4F46E5] hover:bg-[#4338CA]'
+            className={`mb-3 flex h-12 w-full cursor-pointer items-center justify-center gap-2.5 rounded-full text-sm font-semibold text-white shadow-[0_12px_30px_-14px_rgba(79,70,229,0.9)] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#7C7CFF]/50 ${
+              isPlaying || isConnecting ? 'bg-red-500/85 hover:bg-red-500' : 'bg-[#4F46E5] hover:bg-[#4338CA]'
             }`}
           >
-            {isPlaying || isConnecting ? <Square size={16} className="fill-current" /> : <Play size={17} className="fill-current" />}
-            {isPlaying || isConnecting ? 'Stop call' : 'Start call'}
+            {isPlaying || isConnecting ? <Square size={15} className="fill-current" /> : <PhoneCall size={16} />}
+            {isPlaying || isConnecting ? 'Stop Call' : 'Start Call'}
           </button>
           <div className="flex justify-center gap-5">
             <button
