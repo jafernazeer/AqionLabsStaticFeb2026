@@ -155,7 +155,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           kind="image"
           src="/service-motion.svg"
           className="hero-video-bg absolute inset-0 pointer-events-none overflow-hidden opacity-[0.42]"
-          mediaClassName="h-full w-full object-cover object-center [transform:translateY(-4%)_scale(1.04)] sm:[transform:translateY(-2%)_scale(1.02)] md:[transform:translateY(2%)_scale(1.02)] lg:[transform:translateY(6%)_scale(1.02)]"
+          mediaClassName="absolute left-1/2 top-[58%] h-auto w-[1700px] max-w-none [transform:translate(-50%,-50%)_scaleY(0.78)] md:static md:h-full md:w-full md:max-w-full md:object-cover md:object-center md:[transform:translateY(2%)_scale(1.02)] lg:[transform:translateY(6%)_scale(1.02)]"
           onLoad={() => document.getElementById('hero-wave-prepaint')?.remove()}
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bone/82 via-bone/66 to-bone/92" aria-hidden />
@@ -284,7 +284,8 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       </section>
 
       {/* SECTION 02 — FEATURED PRODUCT */}
-      <section id="featured-aqionvox" className="mobile-section-tight bg-petrol text-bone py-10 md:py-12 relative overflow-hidden">
+      {/* Desktop only: on mobile the demo follows the agentic-AI band directly */}
+      <section id="featured-aqionvox" className="mobile-section-tight hidden bg-petrol text-bone py-10 md:block md:py-12 relative overflow-hidden">
         <div aria-hidden className="absolute inset-0 opacity-[0.07] bg-[radial-gradient(rgba(250,247,242,0.6)_1px,transparent_1px)] bg-[length:22px_22px]" />
         <div className="max-w-7xl mx-auto px-6 relative">
           <div className="grid grid-cols-12 items-center gap-8 md:gap-10">
