@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { PageType } from '../types';
 import { useLocation } from 'react-router-dom';
-import OptimizedHeroMotion, { ServiceMotionBackdrop } from '../components/OptimizedHeroMotion';
+import { ServiceMotionBackdrop } from '../components/OptimizedHeroMotion';
 import VoxStage from '../components/vox/VoxStage';
 import VoxCRM from '../components/vox/VoxCRM';
 import {
@@ -70,7 +70,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
         'Managers can see call volume, captured leads, booked meetings and follow-through from one operating view.',
       icon: BarChart3,
       bullets: ['Call volume and outcomes', 'Lead and booking visibility', 'Exportable management views'],
-      image: '/aqion-voice-dashboard-overview.png',
+      image: '/overview-light.png',
     },
     {
       no: '02',
@@ -79,7 +79,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
         'Every conversation can be categorized, routed and saved with context so sales teams start with a cleaner record.',
       icon: Users,
       bullets: ['Intent and contact capture', 'CRM-ready handoff', 'Follow-up context retained'],
-      image: '/aqion-voice-dashboard-leads.png',
+      image: '/leads-light.png',
     },
     {
       no: '03',
@@ -88,7 +88,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
         'Transcripts, summaries and handoff context help teams audit calls, improve service quality and escalate when needed.',
       icon: MessageSquare,
       bullets: ['Transcript history', 'AI call summaries', 'Human escalation context'],
-      image: '/aqion-voice-dashboard-transcripts.png',
+      image: '/conversations-light.png',
     },
     {
       no: '04',
@@ -97,16 +97,16 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
         'AQION VOX can move from conversation to action by booking meetings, confirming next steps and notifying your team.',
       icon: Video,
       bullets: ['Calendar coordination', 'Next-step reminders', 'Automatic post-call summaries'],
-      image: '/aqion-voice-dashboard-meetings.png',
+      image: '/meetings-light.png',
     },
     {
       no: '05',
-      title: 'Email updates',
+      title: 'WhatsApp inbox',
       description:
-        'Add recipients in the dashboard so call summaries, transcripts and lead details reach the right team after a conversation.',
+        'The same agent answers on WhatsApp, so business messaging is handled alongside voice with one shared record and one set of escalation rules.',
       icon: Mail,
-      bullets: ['Call-summary emails', 'Team recipients', 'Daily performance digests'],
-      image: '/aqion-voice-dashboard-email-updates.png',
+      bullets: ['AI-handled business inbox', 'Shared lead record with voice', 'Unread and routing visibility'],
+      image: '/whatsapp-light.png',
     },
   ];
 
@@ -114,14 +114,24 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
     <div className="mesh-bg text-ink overflow-x-hidden font-sans relative min-h-screen">
       {/* HERO — centered, inspired by V1 */}
       <section className="relative flex min-h-[82vh] items-center justify-center overflow-hidden bg-[#FAF7F2] md:min-h-screen">
-        <OptimizedHeroMotion
-          kind="image"
-          src="/Aqionvoxhero1.svg"
-          className="absolute left-1/2 top-[44%] z-[1] h-[164vw] max-h-[1820px] w-[164vw] max-w-[1820px] pointer-events-none overflow-hidden opacity-[0.68] [transform:translate(-50%,-50%)] [translate:none] [backface-visibility:hidden] [contain:layout_paint_size] md:top-[59%] md:h-[98vw] md:max-h-[980px] md:w-[98vw] md:max-w-[980px] lg:top-[60%] lg:h-[69vw] lg:max-h-[980px] lg:w-[69vw] lg:max-w-[980px]"
-          mediaClassName="h-full w-full object-contain"
-          mediaStyle={{ transform: 'translateZ(0)' }}
+        {/* Wave artwork across the middle of the hero, in place of the old circle */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-1/2 z-[1] flex -translate-y-1/2 justify-center overflow-hidden"
+        >
+          <img
+            src="/service-motion.svg"
+            alt=""
+            loading="eager"
+            decoding="async"
+            className="mobile-visual-reduce h-auto w-[220%] max-w-none opacity-60 md:w-[160%] lg:w-[125%]"
+          />
+        </div>
+        {/* Heavier wash over the upper half so the headline stays crisp where the wave crosses it */}
+        <div
+          aria-hidden
+          className="absolute inset-0 z-[2] bg-gradient-to-b from-bone/95 via-bone/72 to-bone/94"
         />
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-bone/84 via-bone/58 to-bone/92" />
         <div aria-hidden className="absolute inset-0 bg-hairline-grid opacity-24" />
 
         <div id="live-demo" className="relative z-10 mx-auto w-full max-w-7xl scroll-mt-24 px-6 py-20 pt-32 md:py-28 md:pt-36">
@@ -148,7 +158,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
           </div>
 
           <div className="mt-14 md:mt-16">
-            <VoxStage />
+            <VoxStage wave={false} />
           </div>
         </div>
       </section>

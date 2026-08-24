@@ -58,19 +58,27 @@ function NoteColumn({ notes, side }: { notes: Note[]; side: 'left' | 'right' }) 
   );
 }
 
-export default function VoxStage({ caption = true }: { caption?: boolean }) {
+/**
+ * `wave` is off where the surrounding section already paints the artwork —
+ * two overlapping copies read as noise rather than one continuous ribbon.
+ */
+export default function VoxStage({ caption = true, wave = true }: { caption?: boolean; wave?: boolean }) {
   return (
     <div className="relative w-full">
-      {/* Wave artwork, riding across the lower half of the handset */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-[58%] overflow-hidden">
-        <img
-          src="/service-motion.svg"
-          alt=""
-          loading="lazy"
-          decoding="async"
-          className="mobile-visual-reduce h-auto w-[150%] max-w-none -translate-x-[16%] opacity-80 md:w-[128%] md:-translate-x-[11%] lg:w-full lg:translate-x-0"
-        />
-      </div>
+      {wave && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-1/2 flex -translate-y-1/2 justify-center overflow-hidden"
+        >
+          <img
+            src="/service-motion.svg"
+            alt=""
+            loading="lazy"
+            decoding="async"
+            className="mobile-visual-reduce h-auto w-[190%] max-w-none opacity-70 md:w-[150%] lg:w-[118%]"
+          />
+        </div>
+      )}
 
       <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:gap-10">
         <NoteColumn notes={LEFT_NOTES} side="left" />

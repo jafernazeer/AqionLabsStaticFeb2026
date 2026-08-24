@@ -295,11 +295,13 @@ export default function VoxPhoneConsole() {
   }, [callStatus, callError, isPlaying]);
 
   return (
-    <div className="mx-auto w-full max-w-[420px] rounded-[32px] bg-gradient-to-b from-[#777981] to-[#42434a] p-1.5 shadow-[0_28px_80px_-30px_rgba(8,8,12,0.5)] sm:rounded-[38px]">
-      <div className="relative flex min-h-[510px] flex-col overflow-hidden rounded-[26px] border border-white/10 bg-[#07080d] px-4 pb-4 pt-9 text-white sm:min-h-[586px] sm:rounded-[32px] sm:px-5 sm:pb-5 sm:pt-10 lg:min-h-[660px]">
-        <div className="absolute left-1/2 top-0 h-12 w-36 -translate-x-1/2 rounded-b-[28px] bg-black" />
-        <div className="absolute left-1/2 top-5 h-2 w-14 -translate-x-1/2 rounded-full bg-white/10" />
-        <div className="absolute left-1/2 top-5 h-2 w-2 -translate-x-[48px] rounded-full bg-white/10" />
+    // Handset shell held at a real phone's 9:19.5 ratio.
+    <div className="mx-auto w-full max-w-[292px] rounded-[42px] bg-gradient-to-b from-[#777981] to-[#42434a] p-[3px] shadow-[0_28px_80px_-30px_rgba(8,8,12,0.55)] sm:max-w-[318px] sm:rounded-[46px]">
+      <div className="relative flex aspect-[9/19.5] flex-col overflow-hidden rounded-[39px] border border-white/10 bg-[#07080d] px-3.5 pb-4 pt-9 text-white sm:rounded-[43px] sm:px-4 sm:pb-5 sm:pt-10">
+        {/* Dynamic-island style cutout, proportioned to the narrower shell */}
+        <div className="absolute left-1/2 top-2 h-[26px] w-[92px] -translate-x-1/2 rounded-full bg-black" />
+        <div className="absolute left-1/2 top-[14px] h-1.5 w-8 -translate-x-[10px] rounded-full bg-white/10" />
+        <div className="absolute left-1/2 top-[13px] h-2 w-2 -translate-x-[34px] rounded-full bg-white/[0.14]" />
         <div aria-hidden className="absolute inset-x-0 top-28 h-56 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.2),transparent_68%)]" />
 
         <div className="relative z-10 flex shrink-0 items-center justify-between gap-3">
@@ -366,10 +368,10 @@ export default function VoxPhoneConsole() {
           </div>
         ) : (
           <div className="relative z-10 flex flex-1 flex-col items-center justify-center py-7 text-center sm:py-10">
-            <div className="relative flex h-40 w-40 items-center justify-center sm:h-48 sm:w-48">
+            <div className="relative flex h-32 w-32 items-center justify-center sm:h-36 sm:w-36">
               <span className={`absolute inset-0 rounded-full border border-[#7477ff]/20 ${isPlaying ? 'animate-ping' : ''}`} />
-              <span className={`absolute inset-5 rounded-full border border-[#7477ff]/25 bg-[#7477ff]/[0.04] ${isPlaying ? 'animate-pulse' : ''}`} />
-              <div className="relative flex h-24 w-24 items-center justify-center rounded-full border border-white/10 bg-gradient-to-br from-[#232449] via-[#15162c] to-[#0c0d16] shadow-[0_24px_60px_-20px_rgba(99,102,241,0.85)] sm:h-28 sm:w-28">
+              <span className={`absolute inset-4 rounded-full border border-[#7477ff]/25 bg-[#7477ff]/[0.04] ${isPlaying ? 'animate-pulse' : ''}`} />
+              <div className="relative flex h-20 w-20 items-center justify-center rounded-full border border-white/10 bg-gradient-to-br from-[#232449] via-[#15162c] to-[#0c0d16] shadow-[0_24px_60px_-20px_rgba(99,102,241,0.85)] sm:h-24 sm:w-24">
                 <div className="flex h-10 items-center gap-1" aria-hidden="true">
                   {[18, 30, 22, 38, 26, 34, 20].map((height, idx) => (
                     <span
