@@ -54,8 +54,11 @@ function headFor(path) {
   return { title, description, url, ld };
 }
 
-const server = spawn('npx', ['vite', 'preview', '--port', String(PORT), '--strictPort'], {
-  cwd: new URL('..', import.meta.url).pathname, stdio: 'ignore', detached: false,
+// Spawn vite directly rather than through npx: the npx wrapper survives kill()
+// and leaves the port held, which silently poisons the next run.
+const viteBin = new URL('../node_modules/.bin/vite', import.meta.url).pathname;
+const server = spawn(viteBin, ['preview', '--port', String(PORT), '--strictPort'], {
+  cwd: new URL('..', import.meta.url).pathname, stdio: 'ignore', detached: true,
 });
 await new Promise(r => setTimeout(r, 4000));
 
@@ -93,7 +96,7 @@ try {
     done++;
   }
 } finally {
-  server.kill('SIGTERM');
+  try { process.kill(-server.pid, 'SIGTERM'); } catch { server.kill('SIGKILL'); }
 }
 
 console.log(`prerendered ${done}/${routes.length}`);
