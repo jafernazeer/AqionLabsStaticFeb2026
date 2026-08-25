@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { PageType } from '../types';
 import LiveDemoSection from '../components/LiveDemoSection';
-import OptimizedHeroMotion from '../components/OptimizedHeroMotion';
+import WaveMotion from '../components/WaveMotion';
 import { RobotHero } from '../components/ui/robot-hero';
 import {
   ArrowUpRight, ArrowDown, ShieldCheck, Sparkles, Cpu, Layers, Zap, Database,
@@ -151,13 +151,9 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       {/* HERO */}
       <section className="home-mobile-hero relative isolate z-20 min-h-[820px] overflow-hidden px-6 pt-20 pb-12 sm:min-h-[860px] md:min-h-[900px] md:pt-28 lg:min-h-screen lg:overflow-visible lg:px-10 lg:pt-32 lg:pb-10">
         <div className="absolute inset-0 -z-10 mesh-bg" aria-hidden />
-        <OptimizedHeroMotion
-          kind="image"
-          src="/service-motion.svg"
-          className="hero-video-bg absolute inset-0 pointer-events-none overflow-hidden opacity-[0.42]"
-          mediaClassName="absolute left-1/2 top-[58%] h-auto w-[1700px] max-w-none [transform:translate(-50%,-50%)_scaleY(0.78)] md:static md:h-full md:w-full md:max-w-full md:object-cover md:object-center md:[transform:translateY(2%)_scale(1.02)] lg:[transform:translateY(6%)_scale(1.02)]"
-          onLoad={() => document.getElementById('hero-wave-prepaint')?.remove()}
-        />
+        <div className="hero-video-bg pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden opacity-[0.42]" aria-hidden>
+          <WaveMotion className="w-[190%] max-w-none shrink-0 md:w-[130%] lg:w-[112%]" />
+        </div>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bone/82 via-bone/66 to-bone/92" aria-hidden />
         <div className="home-mobile-robot absolute inset-x-0 top-[24.5rem] z-[2] h-[420px] sm:top-[25.5rem] sm:h-[460px] md:top-[27rem] md:h-[500px] lg:top-16 lg:bottom-[-140px] lg:left-0 lg:right-0 lg:z-30 lg:h-auto lg:w-full">
           <RobotHero height="100%" />

@@ -1,5 +1,6 @@
 import { AudioLines, ScanText, UserRoundCheck, type LucideIcon } from 'lucide-react';
 import VoxPhoneConsole from './VoxPhoneConsole';
+import WaveMotion from '../WaveMotion';
 
 /**
  * The demo stage: the Aqion Vox handset centred on the wave artwork, flanked by
@@ -72,12 +73,8 @@ export default function VoxStage({ caption = true, wave = true }: { caption?: bo
           // Ported from the reference hero: 1700px wide, anchored 350px down and
           // squashed vertically, so the ribbon sweeps behind the handset.
           <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-            <img
-              src="/service-motion.svg"
-              alt=""
-              loading="lazy"
-              decoding="async"
-              className="mobile-visual-reduce absolute left-1/2 top-1/2 h-auto w-[1700px] max-w-none"
+            <WaveMotion
+              className="absolute left-1/2 top-1/2 w-[1700px] max-w-none"
               style={{
                 transform: 'translate(-50%, -32%) scaleY(0.78)',
                 opacity: 0.54,

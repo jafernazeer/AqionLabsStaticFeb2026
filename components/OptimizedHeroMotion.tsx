@@ -1,4 +1,5 @@
 import React from 'react';
+import WaveMotion from './WaveMotion';
 
 type MotionKind = 'video' | 'image';
 
@@ -65,14 +66,12 @@ const OptimizedHeroMotion: React.FC<OptimizedHeroMotionProps> = ({
 };
 
 export const ServiceMotionBackdrop: React.FC<{ className?: string }> = ({ className = 'opacity-70' }) => (
-  <OptimizedHeroMotion
-    kind="image"
-    src="/service-motion.svg"
-    priority={false}
-    className={`absolute inset-0 pointer-events-none overflow-hidden ${className}`}
-    mediaClassName="absolute inset-[-16%_-10%] h-[132%] w-[120%] max-w-none object-cover"
-    mediaStyle={{ opacity: 0.44, filter: 'saturate(0.92)', transform: 'scaleX(-1) scale(1.08)' }}
-  />
+  <div className={`absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none ${className}`} aria-hidden>
+    <WaveMotion
+      className="w-[170%] max-w-none shrink-0 md:w-[135%] lg:w-[115%]"
+      style={{ opacity: 0.44, filter: 'saturate(0.92)' }}
+    />
+  </div>
 );
 
 export const IndustryMotionBackdrop: React.FC<{ src: string; className?: string }> = ({
