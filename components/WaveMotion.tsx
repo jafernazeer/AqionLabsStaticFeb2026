@@ -1,22 +1,31 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useMemo, useState } from 'react';
+import waveMarkup from '../assets/service-motion.svg?raw';
 
 /**
- * The animated wave ribbon.
+ * The wave ribbon — the artwork from `service-motion.svg`, drawn inline.
  *
- * The artwork drives itself with 36 SMIL `<animate>` elements. Browsers run
- * those reliably when the SVG is a document (`<object>`), but mobile engines
- * frequently freeze SMIL on the first painted frame when the same file is
- * referenced from an `<img>` — which is why the wave looked static on phones.
+ * The motion comes from the file's own SMIL `<animate>` elements. Those run
+ * everywhere when the SVG is part of the host document; it is only when the
+ * same file is referenced through `<img>` or `<object>` that mobile engines
+ * freeze it on the first frame. So the markup is inlined rather than fetched:
+ * the animation is the browser's normal SMIL path on every engine, and there
+ * is no second request to lose to cache or race conditions.
  *
- * The file is a single shared asset across every page, so after the first
- * request it comes from cache; the `preload` in index.html starts that request
- * during head parsing rather than at layout.
+ * The bundled copy is the source file with its unused `<defs>` duplicate of the
+ * ribbon removed — 190KB of markup, ~5KB over the wire once compressed.
  */
 
-const SRC = '/service-motion.svg';
-
-/** Intrinsic viewBox of the artwork, used to hold its ratio inside an <object>. */
+/** Intrinsic viewBox of the artwork; the wrapper holds this ratio. */
 const RATIO = '1080 / 653';
+
+/** The token `assets/service-motion.svg` carries in place of its clip-path id. */
+const CLIP_TOKEN = /__WAVE_CLIP__/g;
+
+/**
+ * SMIL ignores `prefers-reduced-motion`, so the still frame is the same markup
+ * with the timing elements removed — each path holds its opening `d`.
+ */
+const STILL_MARKUP = waveMarkup.replace(/<animate\b[^>]*\/>/g, '');
 
 export default function WaveMotion({
   className = '',
@@ -25,6 +34,8 @@ export default function WaveMotion({
   className?: string;
   style?: React.CSSProperties;
 }) {
+  // Several ribbons can share a page, and each needs its own clip-path id.
+  const clipId = `wave-clip-${useId().replace(/[^a-zA-Z0-9]/g, '')}`;
   const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
@@ -36,35 +47,17 @@ export default function WaveMotion({
     return () => query.removeEventListener('change', onChange);
   }, []);
 
-  const shared: React.CSSProperties = {
-    aspectRatio: RATIO,
-    pointerEvents: 'none',
-    ...style,
-  };
-
-  // Readers who ask for less motion get the same artwork as a still frame.
-  if (reduceMotion) {
-    return (
-      <img
-        src={SRC}
-        alt=""
-        aria-hidden="true"
-        loading="lazy"
-        decoding="async"
-        className={className}
-        style={shared}
-      />
-    );
-  }
+  const html = useMemo(
+    () => (reduceMotion ? STILL_MARKUP : waveMarkup).replace(CLIP_TOKEN, clipId),
+    [clipId, reduceMotion],
+  );
 
   return (
-    <object
-      type="image/svg+xml"
-      data={SRC}
+    <div
       aria-hidden="true"
-      tabIndex={-1}
       className={className}
-      style={shared}
+      style={{ aspectRatio: RATIO, pointerEvents: 'none', ...style }}
+      dangerouslySetInnerHTML={{ __html: html }}
     />
   );
 }

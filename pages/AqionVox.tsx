@@ -257,7 +257,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
                       ))}
                     </ul>
                   </div>
-                  <div className="mobile-visual-hide col-span-12 md:col-span-6">
+                  <div className="col-span-12 md:col-span-6">
                     <button
                       type="button"
                       onClick={() => setZoomedCapability({ title: cap.title, image: cap.image })}

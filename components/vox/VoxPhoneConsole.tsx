@@ -66,7 +66,7 @@ function LiveTranscript({ lines }: { lines: TranscriptLine[] }) {
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <p className="mb-2 shrink-0 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/35">
+      <p className="mb-2 shrink-0 text-[8px] sm:text-[9px] font-semibold uppercase tracking-[0.2em] text-white/35">
         Live transcript
       </p>
       {lines.length === 0 ? (
@@ -86,13 +86,13 @@ function LiveTranscript({ lines }: { lines: TranscriptLine[] }) {
           {lines.map((line) => (
             <li
               key={line.id}
-              className={`max-w-[86%] rounded-2xl px-3 py-2 text-[12.5px] leading-snug ${
+              className={`max-w-[86%] rounded-2xl px-3 py-2 text-[10.5px] sm:text-[12.5px] leading-snug ${
                 line.speaker === 'agent'
                   ? 'self-start border border-[#7C7CFF]/25 bg-[#7C7CFF]/[0.12] text-white/85'
                   : 'self-end border border-white/10 bg-white/[0.06] text-white/70'
               } ${line.isFinal ? '' : 'opacity-60'}`}
             >
-              <span className="mb-0.5 block text-[8.5px] font-semibold uppercase tracking-[0.16em] text-white/35">
+              <span className="mb-0.5 block text-[7.5px] sm:text-[8.5px] font-semibold uppercase tracking-[0.16em] text-white/35">
                 {line.speaker === 'agent' ? 'Aqion Vox' : 'You'}
               </span>
               {line.text}
@@ -332,14 +332,14 @@ export default function VoxPhoneConsole() {
               <img src="/AqionVoxLogoIcon-clean.png" alt="Aqion Vox" className="h-7 w-7 object-contain" />
             </span>
             <div className="min-w-0">
-              <div className="truncate text-[15px] font-semibold tracking-tight">AQION VOX</div>
-              <div className="truncate text-[9px] uppercase tracking-[0.14em] text-white/38 sm:text-[10px]">
+              <div className="truncate text-[12.5px] sm:text-[15px] font-semibold tracking-tight">AQION VOX</div>
+              <div className="truncate text-[8px] sm:text-[9px] uppercase tracking-[0.14em] text-white/38 sm:text-[10px]">
                 Agent console
               </div>
             </div>
           </div>
           <div
-            className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-2.5 py-1.5 font-mono text-[9px] font-bold uppercase tracking-[0.14em] sm:text-[10px] ${
+            className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-2.5 py-1.5 font-mono text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.14em] sm:text-[10px] ${
               isPlaying
                 ? 'border-[#7C7CFF]/55 bg-[#34316F]/70 text-[#B8BCFF]'
                 : callStatus === 'Error'
@@ -378,7 +378,7 @@ export default function VoxPhoneConsole() {
                     />
                   ))}
                 </div>
-                <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">
+                <span className="text-[8.5px] sm:text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">
                   {isPlaying ? 'Live' : 'Ended'}
                 </span>
               </div>
@@ -410,20 +410,20 @@ export default function VoxPhoneConsole() {
                 </div>
               </div>
             </div>
-            <p className="mt-4 shrink-0 font-display text-[1.15rem] leading-tight tracking-tight text-white sm:text-[1.3rem]">
+            <p className="mt-4 shrink-0 font-display text-[0.95rem] sm:text-[1.15rem] leading-tight tracking-tight text-white sm:text-[1.3rem]">
               Test Live Call Now
             </p>
-            <p className="mt-2 shrink-0 max-w-[250px] text-[11.5px] leading-relaxed text-white/45 sm:text-[12.5px]">
+            <p className="mt-2 shrink-0 max-w-[250px] text-[9.5px] sm:text-[11.5px] leading-relaxed text-white/45 sm:text-[12.5px]">
               Watch the conversation live
               <br />
               as transcripts appear on the screen
             </p>
-            <p className="mt-2.5 shrink-0 max-w-[250px] text-[11.5px] leading-relaxed text-white/32 sm:text-[12.5px]">
+            <p className="mt-2.5 shrink-0 max-w-[250px] text-[9.5px] sm:text-[11.5px] leading-relaxed text-white/32 sm:text-[12.5px]">
               Scroll down to view
               <br />
               captured leads after the call
             </p>
-            <p className="mt-2.5 shrink-0 text-[10.5px] leading-relaxed text-white/30">{statusCopy}</p>
+            <p className="mt-2.5 shrink-0 text-[9px] sm:text-[10.5px] leading-relaxed text-white/30">{statusCopy}</p>
           </div>
         )}
 
@@ -443,7 +443,7 @@ export default function VoxPhoneConsole() {
                     boxShadow: '0 13px 25px rgba(81, 69, 229, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                   }
             }
-            className={`mx-auto flex min-h-[46px] min-w-[205px] cursor-pointer items-center justify-center gap-2.5 rounded-full border border-white/[0.18] px-[22px] text-[15px] font-semibold text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#7C7CFF]/50 ${
+            className={`mx-auto flex min-h-[46px] min-w-[205px] cursor-pointer items-center justify-center gap-2.5 rounded-full border border-white/[0.18] px-[22px] text-[12.5px] sm:text-[15px] font-semibold text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#7C7CFF]/50 ${
               isPlaying || isConnecting ? 'bg-red-500/90 hover:bg-red-500' : ''
             }`}
           >
