@@ -37,7 +37,10 @@ else
   npm install
 fi
 
-npm run build
+# build:full, not build: the plain build skips the SEO and prerender steps, so a
+# cPanel deploy would serve a bare SPA while the uploaded zip carried 55
+# prerendered routes. The two paths have to produce the same site.
+npm run build:full
 
 mkdir -p "$DEPLOY_PATH"
 
