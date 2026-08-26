@@ -154,7 +154,7 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
           <div className="col-span-12 md:col-span-5">
             <div className="relative mx-auto max-w-[19rem] rounded-[28px] border border-hairline bg-white/74 p-3.5 shadow-[0_28px_90px_-42px_rgba(28,25,23,0.35)] backdrop-blur-md md:max-w-none md:rounded-[34px] md:p-4">
               <img
-                src="/founder-jafer.jpg"
+                src="/JaferMohamme_Founder_CEO.png"
                 alt="Jafer Mohammed, Founder and CEO of AqionLabs"
                 loading="lazy"
                 className="aspect-[4/5] w-full rounded-[22px] object-cover object-top md:rounded-[24px]"
