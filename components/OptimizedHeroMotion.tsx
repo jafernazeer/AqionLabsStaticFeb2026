@@ -65,7 +65,7 @@ const OptimizedHeroMotion: React.FC<OptimizedHeroMotionProps> = ({
   );
 };
 
-export const ServiceMotionBackdrop: React.FC<{ className?: string }> = ({ className = 'opacity-70' }) => (
+export const WaveBackdrop: React.FC<{ className?: string }> = ({ className = 'opacity-70' }) => (
   <div className={`absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none ${className}`} aria-hidden>
     <WaveMotion
       className="w-[170%] max-w-none shrink-0 md:w-[135%] lg:w-[115%]"
@@ -75,3 +75,16 @@ export const ServiceMotionBackdrop: React.FC<{ className?: string }> = ({ classN
 );
 
 export default OptimizedHeroMotion;
+
+export const IndustryMotionBackdrop: React.FC<{ src: string; className?: string }> = ({
+  src,
+  className = 'opacity-[0.55]',
+}) => (
+  <OptimizedHeroMotion
+    kind="image"
+    src={src}
+    priority={false}
+    className={`absolute inset-0 pointer-events-none overflow-hidden ${className}`}
+    mediaClassName="h-full w-full object-cover"
+  />
+);

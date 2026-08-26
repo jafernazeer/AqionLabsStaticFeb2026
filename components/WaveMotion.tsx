@@ -1,55 +1,26 @@
-import { useEffect, useMemo, useState } from 'react';
-import waveMarkup from '../assets/service-motion.min.svg?raw';
-
 /**
- * The wave ribbon — the artwork from `service-motion.svg`, drawn inline.
+ * The wave ribbon.
  *
- * The motion is 24 SMIL `<animate>` elements, and how the markup reaches the
- * page decides whether they run at all:
+ * The artwork animates itself — `service-motion.svg` carries its own SMIL
+ * timeline — so the only question is how it reaches the page.
  *
- *  - Through `<img>` or `<object>`, mobile engines freeze SMIL on the opening
- *    frame. This is what made the ribbon a still picture on phones.
- *  - Fetched and written with `innerHTML` after load, the nodes come from the
- *    fragment parser, and Blink does not reliably hand them to its SMIL
- *    scheduler — the clock stays at zero and the ribbon is static again. It
- *    also cannot appear until the route's JavaScript has downloaded and run.
- *  - Parsed by the HTML parser as part of the document, they always run, and
- *    they start with the page rather than after it.
+ * Rendering the markup inside React was the mistake. Inline SMIL depends on
+ * how the nodes were created and on React not rebuilding them at hydration;
+ * either one going wrong leaves the ribbon frozen on its opening frame, which
+ * is what made it look like a static picture that only started moving once the
+ * bundle had loaded.
  *
- * So the markup is bundled and rendered inline. It is ~147KB of text, which
- * looks expensive until you check the wire: it compresses to about 3.5KB, and
- * the host already serves gzip. Paying that per page buys motion that is
- * running before the first frame is painted.
+ * An `<img>` has none of that. The browser treats the SVG as its own document,
+ * starts its timeline the moment the image decodes, and loops it forever.
+ * Nothing about React can interrupt it, there is no hydration to survive, and
+ * the file is cached across every page instead of being re-parsed per render.
+ * This is the same delivery the industry hero artwork has always used.
  */
 
-/** Intrinsic viewBox of the artwork; the wrapper holds this ratio. */
+const SRC = '/service-motion.svg';
+
+/** Intrinsic viewBox of the artwork; the wrapper holds its ratio. */
 const RATIO = '1080 / 653';
-
-/** The token `assets/service-motion.min.svg` carries for its clip-path id. */
-const CLIP_TOKEN = /__WAVE_CLIP__/g;
-
-/**
- * A constant, deliberately, rather than a per-instance generated id.
- *
- * The ribbon is painted by the prerendered HTML and animates the moment the
- * parser reaches it. React then hydrates over that DOM, and it only leaves
- * `dangerouslySetInnerHTML` untouched when the markup matches exactly. A
- * generated id does not survive that comparison: lazy routes resolve in a
- * different order at hydration than they did during prerender, so the ids
- * differ, React rebuilds the subtree, and SMIL restarts from zero once the
- * bundle has loaded. That rebuild is the static wave that suddenly starts
- * moving a few seconds in.
- *
- * Every ribbon on a page carries the same clipPath, so one shared id renders
- * identically while keeping the markup stable across server and client.
- */
-const CLIP_ID = 'wave-clip';
-
-/**
- * SMIL ignores `prefers-reduced-motion`, so the still frame is the same markup
- * with the timing elements removed — each path holds its opening `d`.
- */
-const STILL_MARKUP = waveMarkup.replace(/<animate\b[^>]*\/>/g, '');
 
 export default function WaveMotion({
   className = '',
@@ -58,28 +29,14 @@ export default function WaveMotion({
   className?: string;
   style?: React.CSSProperties;
 }) {
-  const [reduceMotion, setReduceMotion] = useState(false);
-
-  useEffect(() => {
-    const query = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReduceMotion(query.matches);
-
-    const onChange = () => setReduceMotion(query.matches);
-    query.addEventListener('change', onChange);
-    return () => query.removeEventListener('change', onChange);
-  }, []);
-
-  const html = useMemo(
-    () => (reduceMotion ? STILL_MARKUP : waveMarkup).replace(CLIP_TOKEN, CLIP_ID),
-    [reduceMotion],
-  );
-
   return (
-    <div
+    <img
+      src={SRC}
+      alt=""
       aria-hidden="true"
+      decoding="async"
       className={className}
       style={{ aspectRatio: RATIO, pointerEvents: 'none', ...style }}
-      dangerouslySetInnerHTML={{ __html: html }}
     />
   );
 }

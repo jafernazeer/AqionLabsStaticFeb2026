@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowDown, ArrowUpRight, Check, type LucideIcon } from 'lucide-react';
-import { ServiceMotionBackdrop } from './OptimizedHeroMotion';
+import { WaveBackdrop } from './OptimizedHeroMotion';
 
 /**
  * Shared building blocks for AQION content pages.
@@ -16,7 +16,7 @@ export const PageHero: React.FC<{
   actions?: React.ReactNode;
 }> = ({ eyebrow, title, lede, body, actions }) => (
   <section className="mesh-bg mobile-section-tight relative overflow-hidden border-b border-hairline px-5 pb-20 pt-28 sm:px-6 md:pb-28 md:pt-36">
-    <ServiceMotionBackdrop className="opacity-50" />
+    <WaveBackdrop className="opacity-50" />
     <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-bone/86 via-bone/70 to-bone/94" />
     <div aria-hidden className="absolute inset-0 bg-hairline-grid opacity-25" />
     <div aria-hidden className="absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-petrol/10 blur-[120px]" />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { PageType } from '../types';
 import { useLocation } from 'react-router-dom';
-import { ServiceMotionBackdrop } from '../components/OptimizedHeroMotion';
+import { WaveBackdrop } from '../components/OptimizedHeroMotion';
 import VoxStage from '../components/vox/VoxStage';
 import VoxCRM from '../components/vox/VoxCRM';
 import {
@@ -153,7 +153,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
         id="live-dashboard"
         className="mobile-section-tight relative z-10 scroll-mt-24 overflow-hidden border-t border-hairline bg-parchment/40 px-5 py-20 sm:px-6 md:py-28"
       >
-        <ServiceMotionBackdrop className="opacity-40" />
+        <WaveBackdrop className="opacity-40" />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-bone/82 via-bone/62 to-bone/90" />
 
         <div className="relative z-10 mx-auto max-w-7xl">

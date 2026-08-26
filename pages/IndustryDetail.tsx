@@ -22,7 +22,7 @@ import {
   Workflow,
   type LucideIcon,
 } from 'lucide-react';
-import { ServiceMotionBackdrop } from '../components/OptimizedHeroMotion';
+import { IndustryMotionBackdrop, WaveBackdrop } from '../components/OptimizedHeroMotion';
 
 interface IndustryDetailProps {
   data: IndustryPageData;
@@ -114,12 +114,23 @@ const solutionGroups = [
   { key: 'governance', title: 'Governance controls', icon: Shield },
 ] as const;
 
+const industryMotionAssets: Record<string, string> = {
+  Healthcare: '/industryhero.svg',
+  'Real Estate': '/industryhero2.svg',
+  'Financial Services': '/industryhero2.svg',
+  'Legal Services': '/industryhero2.svg',
+  'Legal & Professional': '/industryhero2.svg',
+  Education: 'wave',
+  Hospitality: 'wave',
+};
+
 const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [data]);
 
   const HeroIcon = iconMap[data.title] || Building2;
+  const industryMotionAsset = industryMotionAssets[data.title] || 'wave';
   const copy = useCaseContext[data.title] || {
     headline: data.headline,
     context: data.context,
@@ -130,7 +141,11 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
   return (
     <div className="mesh-bg min-h-screen overflow-x-hidden pt-20 font-sans text-ink">
       <section className="mobile-section-tight relative z-10 flex min-h-0 items-center overflow-hidden border-b border-hairline mesh-bg py-20 md:min-h-[calc(100vh-5rem)]">
-        <ServiceMotionBackdrop className="opacity-70" />
+        {industryMotionAsset === 'wave' ? (
+          <WaveBackdrop className="opacity-70" />
+        ) : (
+          <IndustryMotionBackdrop src={industryMotionAsset} className="opacity-[0.55]" />
+        )}
         <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-bone/88 via-bone/72 to-bone/94" />
         <div aria-hidden className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-petrol/10 blur-[110px]" />
 

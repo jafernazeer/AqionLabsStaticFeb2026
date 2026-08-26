@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { PageType } from '../types';
-import { ServiceMotionBackdrop } from '../components/OptimizedHeroMotion';
+import { WaveBackdrop } from '../components/OptimizedHeroMotion';
 import {
   ArrowRight,
   Building,
@@ -77,7 +77,7 @@ const Industries: React.FC<IndustriesProps> = ({ onNavigate }) => {
   return (
     <div className="mesh-bg min-h-screen overflow-x-hidden pt-20 font-sans text-ink">
       <section className="mobile-section-tight mesh-bg relative flex min-h-0 items-center overflow-hidden border-b border-hairline px-5 py-16 sm:px-6 md:min-h-[82vh] md:py-28">
-        <ServiceMotionBackdrop className="opacity-70" />
+        <WaveBackdrop className="opacity-70" />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-bone/84 via-bone/66 to-bone/92" />
         <div aria-hidden className="absolute inset-0 bg-hairline-grid opacity-25" />
         <div aria-hidden className="absolute left-1/2 top-1/2 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-petrol/10 blur-[130px]" />
