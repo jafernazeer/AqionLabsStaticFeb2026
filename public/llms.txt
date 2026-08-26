@@ -22,7 +22,6 @@ Status: Aqion Vox in public beta; further agents on the roadmap.
 
 - [AqionLabs — Agentic AI for UAE and GCC Businesses](https://aqionlabs.ai/): AqionLabs builds agentic AI that answers calls, qualifies leads and moves work into your systems. Aqion Vox voice AI and Aqion Cloud, built for the UAE and GCC.
 - [About AqionLabs — Team and Approach](https://aqionlabs.ai/about): The team building agentic AI in Dubai: founder-led engineering, forward-deployed delivery and a UAE-first product direction.
-- [Careers at AqionLabs](https://aqionlabs.ai/careers): Join a small UAE team shipping agentic AI into production for regional businesses.
 - [Contact AqionLabs — Book a Demo](https://aqionlabs.ai/contact): Talk to the AqionLabs team about deploying an AI voice employee or the Aqion Cloud platform for your business.
 - [AqionLabs Pricing — Platform, Implementation and Usage](https://aqionlabs.ai/pricing): Transparent pricing for Aqion Vox and Aqion Cloud: monthly platform tiers, implementation, consumption and enterprise agreements.
 
@@ -30,59 +29,25 @@ Status: Aqion Vox in public beta; further agents on the roadmap.
 
 - [Agentic AI — The AqionLabs AI Workforce](https://aqionlabs.ai/agentic-ai): Specialised AI agents for customer conversation, knowledge, operations, finance and growth.
 - [Aqion Vox — AI Customer Support Agent](https://aqionlabs.ai/agents/customer-support): An AI voice employee for customer care: live transcription, lead capture, bookings and a full CRM behind every conversation.
-- [Executive — AqionLabs AI Agent](https://aqionlabs.ai/agents/executive): Executive from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Finance — AqionLabs AI Agent](https://aqionlabs.ai/agents/finance): Finance from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Growth — AqionLabs AI Agent](https://aqionlabs.ai/agents/growth): Growth from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Knowledge — AqionLabs AI Agent](https://aqionlabs.ai/agents/knowledge): Knowledge from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Revenue — AqionLabs AI Agent](https://aqionlabs.ai/agents/revenue): Revenue from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Workforce — AqionLabs AI Agent](https://aqionlabs.ai/agents/workforce): Workforce from AqionLabs — agentic AI built for businesses across the UAE and GCC.
 - [AI Workforce Roadmap — AqionLabs](https://aqionlabs.ai/ai-workforce/roadmap): How the AqionLabs agent portfolio expands from customer engagement into the wider operating layer.
 - [Aqion Cloud — The Platform Behind Agentic AI](https://aqionlabs.ai/platform/aqion-cloud): Aqion Cloud is the shared intelligence, memory and execution layer powering the AqionLabs AI workforce.
 - [Integrations — Connect Aqion to Your Stack](https://aqionlabs.ai/platform/integrations): Connect Aqion agents to CRM, calendar, WhatsApp, email and the business systems your team already runs on.
 - [Security and Data — AqionLabs](https://aqionlabs.ai/platform/security-data): Access control, audit, observability and UAE deployment options for supported workloads.
 - [Aqion Vox — AI Voice Agent for Customer Care](https://aqionlabs.ai/products/aqion-voice): Aqion Vox answers every call in Arabic and English, qualifies the caller, books the meeting and writes the lead into your CRM. Try the live demo.
-- [Aqionflo — AqionLabs](https://aqionlabs.ai/products/aqionflo): Aqionflo from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Aqionflo Ai — AqionLabs](https://aqionlabs.ai/products/aqionflo-ai): Aqionflo Ai from AqionLabs — agentic AI built for businesses across the UAE and GCC.
 - [Aqionvox Ai — AqionLabs](https://aqionlabs.ai/products/aqionvox-ai): Aqionvox Ai from AqionLabs — agentic AI built for businesses across the UAE and GCC.
 
 ## Industries
 
 - [Industries — Agentic AI by Sector](https://aqionlabs.ai/industries): How UAE healthcare, real estate, finance, legal, hospitality and education teams deploy Aqion agents.
-- [Agentic AI for Architecture Planning](https://aqionlabs.ai/industries/architecture-planning): Architecture Planning from AqionLabs — agentic AI built for businesses across the UAE and GCC.
 - [Agentic AI for Education](https://aqionlabs.ai/industries/education): Education from AqionLabs — agentic AI built for businesses across the UAE and GCC.
 - [Agentic AI for Financial Services](https://aqionlabs.ai/industries/financial-services): Financial Services from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Agentic AI for Government](https://aqionlabs.ai/industries/government): Government from AqionLabs — agentic AI built for businesses across the UAE and GCC.
 - [Agentic AI for Healthcare](https://aqionlabs.ai/industries/healthcare): Healthcare from AqionLabs — agentic AI built for businesses across the UAE and GCC.
 - [Agentic AI for Hospitality](https://aqionlabs.ai/industries/hospitality): Hospitality from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Agentic AI for Logistics](https://aqionlabs.ai/industries/logistics): Logistics from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Agentic AI for Marketing Design](https://aqionlabs.ai/industries/marketing-design): Marketing Design from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Agentic AI for Media Events](https://aqionlabs.ai/industries/media-events): Media Events from AqionLabs — agentic AI built for businesses across the UAE and GCC.
 - [Agentic AI for Professional Services](https://aqionlabs.ai/industries/professional-services): Professional Services from AqionLabs — agentic AI built for businesses across the UAE and GCC.
 - [Agentic AI for Real Estate](https://aqionlabs.ai/industries/real-estate): Real Estate from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Agentic AI for Retail](https://aqionlabs.ai/industries/retail): Retail from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-
-## Services
-
-- [Services — AqionLabs](https://aqionlabs.ai/services): Services from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Ai Automation — AqionLabs Services](https://aqionlabs.ai/services/ai-automation): Ai Automation from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Ai Strategy — AqionLabs Services](https://aqionlabs.ai/services/ai-strategy): Ai Strategy from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Ai Strategy Governance — AqionLabs Services](https://aqionlabs.ai/services/ai-strategy-governance): Ai Strategy Governance from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Conversational Ai — AqionLabs Services](https://aqionlabs.ai/services/conversational-ai): Conversational Ai from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Customer Conversation Agent — AqionLabs Services](https://aqionlabs.ai/services/customer-conversation-agent): Customer Conversation Agent from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Digital Presence Studio — AqionLabs Services](https://aqionlabs.ai/services/digital-presence-studio): Digital Presence Studio from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Enterprise Ai Solutions — AqionLabs Services](https://aqionlabs.ai/services/enterprise-ai-solutions): Enterprise Ai Solutions from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Internal Knowledge Agent — AqionLabs Services](https://aqionlabs.ai/services/internal-knowledge-agent): Internal Knowledge Agent from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Marketing Agent — AqionLabs Services](https://aqionlabs.ai/services/marketing-agent): Marketing Agent from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Operations Agent — AqionLabs Services](https://aqionlabs.ai/services/operations-agent): Operations Agent from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Rapid Application Engineering — AqionLabs Services](https://aqionlabs.ai/services/rapid-application-engineering): Rapid Application Engineering from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Sales Agent — AqionLabs Services](https://aqionlabs.ai/services/sales-agent): Sales Agent from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Sovereign Ai Foundation — AqionLabs Services](https://aqionlabs.ai/services/sovereign-ai-foundation): Sovereign Ai Foundation from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Sovereign Infrastructure — AqionLabs Services](https://aqionlabs.ai/services/sovereign-infrastructure): Sovereign Infrastructure from AqionLabs — agentic AI built for businesses across the UAE and GCC.
-- [Web Studio — AqionLabs Services](https://aqionlabs.ai/services/web-studio): Web Studio from AqionLabs — agentic AI built for businesses across the UAE and GCC.
 
 ## Legal
 
-- [Data Processing — AqionLabs](https://aqionlabs.ai/legal/data-processing): AqionLabs data processing terms and sub-processor information.
 - [Privacy Policy — AqionLabs](https://aqionlabs.ai/privacy): How AqionLabs collects, processes and protects personal data.
 - [Terms of Use — AqionLabs](https://aqionlabs.ai/terms): The terms governing use of AqionLabs websites and services.
 

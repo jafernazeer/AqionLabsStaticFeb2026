@@ -4,7 +4,6 @@ import {
   ArrowUpRight,
   Check,
   Globe,
-  Layers,
   ShieldCheck,
   Sparkles,
   TrendingUp,
@@ -391,12 +390,6 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
                 className="mobile-action inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-bone px-7 py-4 text-sm font-medium text-petrol transition-colors hover:bg-parchment sm:w-auto"
               >
                 Book a call <Sparkles className="h-4 w-4" />
-              </button>
-              <button
-                onClick={() => onNavigate(PageType.SERVICE_DIGITAL_PRESENCE_STUDIO)}
-                className="mobile-action inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-white/15 bg-white/10 px-7 py-4 text-sm font-medium text-bone transition-colors hover:bg-white/15 sm:w-auto"
-              >
-                View services <Layers className="h-4 w-4" />
               </button>
             </div>
           </div>

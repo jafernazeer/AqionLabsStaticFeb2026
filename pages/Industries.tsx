@@ -4,16 +4,11 @@ import { ServiceMotionBackdrop } from '../components/OptimizedHeroMotion';
 import {
   ArrowRight,
   Building,
-  Briefcase,
   Coffee,
   GraduationCap,
   Landmark,
-  Layers,
   Scale,
-  Search,
   Stethoscope,
-  Tickets,
-  Truck,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -52,20 +47,6 @@ const industries: IndustryCard[] = [
     icon: Landmark,
   },
   {
-    name: 'Government',
-    eyebrow: 'Citizen engagement',
-    description: 'Multilingual public enquiries, secure routing, service visibility and governance-ready AI layers.',
-    page: PageType.INDUSTRY_GOVERNMENT,
-    icon: Briefcase,
-  },
-  {
-    name: 'Retail',
-    eyebrow: 'Customer support',
-    description: 'Order tracking, returns, product enquiries, store support and WhatsApp sales automation.',
-    page: PageType.INDUSTRY_RETAIL,
-    icon: Search,
-  },
-  {
     name: 'Education',
     eyebrow: 'Admissions',
     description: 'Student enquiries, programme qualification, admissions coordination and support assistants.',
@@ -80,39 +61,11 @@ const industries: IndustryCard[] = [
     icon: Coffee,
   },
   {
-    name: 'Logistics',
-    eyebrow: 'Shipment visibility',
-    description: 'Tracking enquiries, delivery updates, exception routing and operations support automation.',
-    page: PageType.INDUSTRY_LOGISTICS,
-    icon: Truck,
-  },
-  {
     name: 'Legal & Professional',
     eyebrow: 'Client intake',
     description: 'Matter screening, consultation booking, knowledge retrieval and document workflow support.',
     page: PageType.INDUSTRY_PROFESSIONAL,
     icon: Scale,
-  },
-  {
-    name: 'Media & Events',
-    eyebrow: 'Peak demand',
-    description: 'Ticketing spikes, attendee FAQs, schedule updates, refunds and sponsor coordination.',
-    page: PageType.INDUSTRY_MEDIA_EVENTS,
-    icon: Tickets,
-  },
-  {
-    name: 'Architecture',
-    eyebrow: 'Project intake',
-    description: 'RFP handling, client briefs, approval workflows, documentation and stakeholder coordination.',
-    page: PageType.INDUSTRY_ARCHITECTURE,
-    icon: Building,
-  },
-  {
-    name: 'Marketing & Design',
-    eyebrow: 'Campaign ops',
-    description: 'Inbound leads, proposal follow-up, campaign coordination, reporting and client onboarding.',
-    page: PageType.INDUSTRY_MARKETING_DESIGN,
-    icon: Layers,
   },
 ];
 

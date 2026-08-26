@@ -16,8 +16,6 @@ export const ROUTES = {
     'The team building agentic AI in Dubai: founder-led engineering, forward-deployed delivery and a UAE-first product direction.', 0.8),
   '/contact': t('Contact AqionLabs — Book a Demo',
     'Talk to the AqionLabs team about deploying an AI voice employee or the Aqion Cloud platform for your business.', 0.8),
-  '/careers': t('Careers at AqionLabs',
-    'Join a small UAE team shipping agentic AI into production for regional businesses.', 0.5),
   '/pricing': t('AqionLabs Pricing — Platform, Implementation and Usage',
     'Transparent pricing for Aqion Vox and Aqion Cloud: monthly platform tiers, implementation, consumption and enterprise agreements.', 0.8),
   '/products/aqion-voice': t('Aqion Vox — AI Voice Agent for Customer Care',
@@ -40,7 +38,6 @@ export const ROUTES = {
     'Information for investors following AqionLabs, an agentic AI company building from the UAE.', 0.6),
   '/privacy': t('Privacy Policy — AqionLabs', 'How AqionLabs collects, processes and protects personal data.', 0.3),
   '/terms': t('Terms of Use — AqionLabs', 'The terms governing use of AqionLabs websites and services.', 0.3),
-  '/legal/data-processing': t('Data Processing — AqionLabs', 'AqionLabs data processing terms and sub-processor information.', 0.3),
 };
 
 /** Everything else gets a readable title derived from its own path. */

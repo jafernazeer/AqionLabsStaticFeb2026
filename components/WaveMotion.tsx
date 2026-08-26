@@ -1,47 +1,55 @@
-import { useEffect, useId, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import waveMarkup from '../assets/service-motion.min.svg?raw';
 
 /**
- * The wave ribbon — the artwork from `service-motion.svg`.
+ * The wave ribbon — the artwork from `service-motion.svg`, drawn inline.
  *
- * Two constraints pull against each other here.
+ * The motion is 24 SMIL `<animate>` elements, and how the markup reaches the
+ * page decides whether they run at all:
  *
- * The motion is 24 SMIL `<animate>` elements, and mobile engines freeze SMIL
- * whenever the SVG is a nested document — referenced through `<img>` or
- * `<object>`. The markup therefore has to live in the host document.
+ *  - Through `<img>` or `<object>`, mobile engines freeze SMIL on the opening
+ *    frame. This is what made the ribbon a still picture on phones.
+ *  - Fetched and written with `innerHTML` after load, the nodes come from the
+ *    fragment parser, and Blink does not reliably hand them to its SMIL
+ *    scheduler — the clock stays at zero and the ribbon is static again. It
+ *    also cannot appear until the route's JavaScript has downloaded and run.
+ *  - Parsed by the HTML parser as part of the document, they always run, and
+ *    they start with the page rather than after it.
  *
- * But it cannot be *bundled* into the document either. Inlined at build time it
- * lands in all 55 prerendered pages, taking `index.html` from 11KB to 502KB and
- * re-downloading the same artwork on every navigation.
- *
- * So the file is fetched once and injected inline: one request, shared by every
- * ribbon on every page and served from cache after the first, with the markup
- * still sitting in the host document where SMIL runs. `index.html` preloads it
- * so the request starts while the head is parsing rather than at first render.
+ * So the markup is bundled and rendered inline. It is ~147KB of text, which
+ * looks expensive until you check the wire: it compresses to about 3.5KB, and
+ * the host already serves gzip. Paying that per page buys motion that is
+ * running before the first frame is painted.
  */
-
-const SRC = '/service-motion.min.svg';
 
 /** Intrinsic viewBox of the artwork; the wrapper holds this ratio. */
 const RATIO = '1080 / 653';
 
-/** The token the file carries in place of its clip-path id. */
+/** The token `assets/service-motion.min.svg` carries for its clip-path id. */
 const CLIP_TOKEN = /__WAVE_CLIP__/g;
 
 /**
- * One request for the whole session. Every ribbon awaits the same promise, so
- * mounting three of them does not fetch three copies.
+ * A constant, deliberately, rather than a per-instance generated id.
+ *
+ * The ribbon is painted by the prerendered HTML and animates the moment the
+ * parser reaches it. React then hydrates over that DOM, and it only leaves
+ * `dangerouslySetInnerHTML` untouched when the markup matches exactly. A
+ * generated id does not survive that comparison: lazy routes resolve in a
+ * different order at hydration than they did during prerender, so the ids
+ * differ, React rebuilds the subtree, and SMIL restarts from zero once the
+ * bundle has loaded. That rebuild is the static wave that suddenly starts
+ * moving a few seconds in.
+ *
+ * Every ribbon on a page carries the same clipPath, so one shared id renders
+ * identically while keeping the markup stable across server and client.
  */
-let pending: Promise<string> | null = null;
+const CLIP_ID = 'wave-clip';
 
-function loadWave(): Promise<string> {
-  if (!pending) {
-    pending = fetch(SRC)
-      .then((response) => (response.ok ? response.text() : ''))
-      // A failed fetch leaves the decoration absent rather than breaking a page.
-      .catch(() => '');
-  }
-  return pending;
-}
+/**
+ * SMIL ignores `prefers-reduced-motion`, so the still frame is the same markup
+ * with the timing elements removed — each path holds its opening `d`.
+ */
+const STILL_MARKUP = waveMarkup.replace(/<animate\b[^>]*\/>/g, '');
 
 export default function WaveMotion({
   className = '',
@@ -50,20 +58,7 @@ export default function WaveMotion({
   className?: string;
   style?: React.CSSProperties;
 }) {
-  // Several ribbons can share a page, and each needs its own clip-path id.
-  const clipId = `wave-clip-${useId().replace(/[^a-zA-Z0-9]/g, '')}`;
-  const [markup, setMarkup] = useState('');
   const [reduceMotion, setReduceMotion] = useState(false);
-
-  useEffect(() => {
-    let active = true;
-    loadWave().then((text) => {
-      if (active) setMarkup(text);
-    });
-    return () => {
-      active = false;
-    };
-  }, []);
 
   useEffect(() => {
     const query = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -74,13 +69,10 @@ export default function WaveMotion({
     return () => query.removeEventListener('change', onChange);
   }, []);
 
-  const html = useMemo(() => {
-    if (!markup) return '';
-    // SMIL ignores `prefers-reduced-motion`, so the still frame is the same
-    // markup with the timing elements removed — each path holds its opening `d`.
-    const source = reduceMotion ? markup.replace(/<animate\b[^>]*\/>/g, '') : markup;
-    return source.replace(CLIP_TOKEN, clipId);
-  }, [markup, reduceMotion, clipId]);
+  const html = useMemo(
+    () => (reduceMotion ? STILL_MARKUP : waveMarkup).replace(CLIP_TOKEN, CLIP_ID),
+    [reduceMotion],
+  );
 
   return (
     <div
