@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { ServiceMotionBackdrop } from '../components/OptimizedHeroMotion';
 import { PageType } from '../types';
 import { 
   Activity, Package, Users, Briefcase, 
@@ -43,11 +44,8 @@ const AqionFlo: React.FC<AqionFloProps> = ({ onNavigate }) => {
 
       {/* Hero Section */}
       <section className="mobile-section-tight relative py-32 px-6 max-w-7xl mx-auto z-10 overflow-hidden text-center">
-          {/* Background Waves - Optimized */}
-          <div className="mobile-visual-reduce absolute inset-0 opacity-20 pointer-events-none flex items-center justify-center">
-             <div className="w-[500px] h-[500px] border border-petrol/20 rounded-full animate-[spin_30s_linear_infinite] absolute"></div>
-             <div className="w-[600px] h-[600px] border border-brass/10 rounded-full animate-[spin_40s_linear_infinite_reverse] absolute"></div>
-          </div>
+          {/* The same wave ribbon every other hero carries. */}
+          <ServiceMotionBackdrop className="opacity-60" />
 
           <div className="relative z-10 max-w-5xl mx-auto">
               <div className="mb-8 inline-block">

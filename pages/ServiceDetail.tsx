@@ -92,7 +92,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ data, onNavigate }) => {
       
       {/* Header */}
       <div className="mobile-section-tight mesh-bg relative z-10 flex min-h-0 items-center overflow-hidden border-b border-hairline py-20 md:min-h-[calc(100vh-5rem)]">
-        <ServiceMotionBackdrop className="opacity-70 mobile-visual-reduce" />
+        <ServiceMotionBackdrop className="opacity-70" />
         <div className="absolute inset-0 bg-gradient-to-b from-bone/82 via-bone/70 to-bone/92" aria-hidden />
         <div
           aria-hidden

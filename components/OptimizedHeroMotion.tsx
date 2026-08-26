@@ -74,17 +74,4 @@ export const ServiceMotionBackdrop: React.FC<{ className?: string }> = ({ classN
   </div>
 );
 
-export const IndustryMotionBackdrop: React.FC<{ src: string; className?: string }> = ({
-  src,
-  className = 'opacity-[0.55]',
-}) => (
-  <OptimizedHeroMotion
-    kind="image"
-    src={src}
-    priority={false}
-    className={`absolute inset-0 pointer-events-none overflow-hidden ${className}`}
-    mediaClassName="h-full w-full object-cover"
-  />
-);
-
 export default OptimizedHeroMotion;

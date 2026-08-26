@@ -79,6 +79,76 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
 
   return (
     <div className="mesh-bg min-h-screen overflow-x-hidden pt-20 font-sans text-ink">
+      <section className="mesh-bg mobile-section-tight relative flex min-h-0 items-start overflow-hidden border-b border-hairline py-14 md:items-center md:py-24">
+        <ServiceMotionBackdrop className="opacity-55" />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-bone/84 via-bone/70 to-bone/92" />
+        <div aria-hidden className="absolute inset-0 bg-hairline-grid opacity-25" />
+        <div aria-hidden className="absolute left-1/2 top-1/2 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-petrol/10 blur-[130px]" />
+        <div className="relative mx-auto grid w-full min-w-0 max-w-7xl grid-cols-12 items-center gap-8 px-5 sm:px-6 md:gap-10">
+          <div className="mobile-page-center col-span-12 min-w-0 lg:col-span-7 lg:text-left">
+            <p className="eyebrow mb-4 md:mb-5">[ About AQION ]</p>
+            <h1 className="mobile-heading max-w-full font-display text-[2.35rem] leading-[1] tracking-tight text-ink md:text-6xl md:leading-[1]">
+              Building the Agentic AI<br />
+              <span className="display-italic block break-words text-petrol md:inline">Platform for the Middle East.</span>
+            </h1>
+            <p className="mobile-copy-measure mt-5 max-w-[21rem] break-words text-base leading-relaxed text-graphite md:mt-7 md:max-w-2xl md:text-xl md:leading-[1.5] lg:mx-0">
+              The first generation of enterprise AI helped people search information, generate content and work faster. The next generation will increasingly understand, decide and act.
+            </p>
+            <p className="mobile-copy-measure mt-4 max-w-[21rem] break-words text-[14.5px] leading-relaxed text-taupe md:max-w-2xl md:text-lg lg:mx-0">
+              AQION Labs is building agentic AI solutions that combine reasoning, business context and workflow execution to perform meaningful work across customer and business operations.
+            </p>
+            <ul className="mt-7 hidden max-w-2xl space-y-4 md:mt-8 md:block">
+              {[
+                { k: 'Not more AI demos', v: "Businesses don't need another demo. They need AI that answers customers, understands the organization, works across existing systems and reliably completes everyday tasks." },
+                { k: 'AI employees, not wrappers', v: 'We build specialized AI workers on one shared platform — AI runtime, business memory, workflow engine and enterprise controls — not isolated chatbots bolted onto every department.' },
+                { k: 'Practical for the region', v: 'AQION was created to make the shift from experimentation to real, measurable work practical for businesses across the UAE and GCC.' },
+              ].map((item) => (
+                <li key={item.k} className="flex gap-3 text-left">
+                  <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-[#4f46e5] to-[#9333ea]" />
+                  <p className="text-base leading-relaxed text-taupe">
+                    <span className="font-medium text-ink">{item.k}:</span> {item.v}
+                  </p>
+                </li>
+              ))}
+            </ul>
+            <div className="mobile-center-row mt-7 flex max-w-full flex-col gap-3 sm:flex-row md:mt-9 lg:justify-start">
+              <button
+                onClick={() => onNavigate(PageType.CONTACT)}
+                className="mobile-action inline-flex min-h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-medium text-bone transition-colors hover:bg-petrolDeep sm:w-auto md:px-7 md:py-4"
+              >
+                Start a build conversation <ArrowUpRight className="h-4 w-4" />
+              </button>
+              <button
+                onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX)}
+                className="mobile-action inline-flex min-h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-hairline bg-paper px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-ink/30 sm:w-auto md:px-7 md:py-4"
+              >
+                Explore AQION VOX
+              </button>
+            </div>
+          </div>
+
+          <div className="hidden lg:col-span-5 lg:block">
+            <div className="rounded-[34px] border border-hairline bg-white/74 p-6 shadow-[0_28px_90px_-42px_rgba(28,25,23,0.35)] backdrop-blur-md">
+              <div className="rounded-[26px] bg-[#0d0d10] p-7 text-bone">
+                <div className="mb-12 flex items-center justify-between">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-bone/55">Operating from</span>
+                  <span className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-xs text-petrol">UAE</span>
+                </div>
+                <div className="mb-10 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#4f46e5] to-[#9333ea] text-white shadow-[0_18px_36px_-22px_rgba(79,70,229,0.9)]">
+                  <Globe className="h-8 w-8" strokeWidth={1.4} />
+                </div>
+                <h2 className="font-display text-4xl leading-tight">
+                  Built for the market where AI adoption, regulation and ambition move fastest.
+                </h2>
+                <p className="mt-5 text-bone/66 leading-relaxed">
+                  We align with the UAE's digital economy goals by turning AI from experimentation into deployable infrastructure for private and regulated teams.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FOUNDER — compacted: portrait, pull-quote and three tight beats */}
       <section className="mobile-section-tight mx-auto max-w-7xl px-5 py-20 sm:px-6 md:py-28">
         <div className="grid grid-cols-12 items-center gap-9 md:gap-14">
@@ -202,75 +272,6 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      <section className="mesh-bg mobile-section-tight relative flex min-h-0 items-start overflow-hidden border-b border-hairline py-14 md:items-center md:py-24">
-        <ServiceMotionBackdrop className="mobile-visual-reduce opacity-55" />
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-bone/84 via-bone/70 to-bone/92" />
-        <div aria-hidden className="absolute inset-0 bg-hairline-grid opacity-25" />
-        <div aria-hidden className="absolute left-1/2 top-1/2 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-petrol/10 blur-[130px]" />
-        <div className="relative mx-auto grid w-full min-w-0 max-w-7xl grid-cols-12 items-center gap-8 px-5 sm:px-6 md:gap-10">
-          <div className="mobile-page-center col-span-12 min-w-0 lg:col-span-7 lg:text-left">
-            <p className="eyebrow mb-4 md:mb-5">[ About AQION ]</p>
-            <h1 className="mobile-heading max-w-full font-display text-[2.35rem] leading-[1] tracking-tight text-ink md:text-6xl md:leading-[1]">
-              Building the Agentic AI<br />
-              <span className="display-italic block break-words text-petrol md:inline">Platform for the Middle East.</span>
-            </h1>
-            <p className="mobile-copy-measure mt-5 max-w-[21rem] break-words text-base leading-relaxed text-graphite md:mt-7 md:max-w-2xl md:text-xl md:leading-[1.5] lg:mx-0">
-              The first generation of enterprise AI helped people search information, generate content and work faster. The next generation will increasingly understand, decide and act.
-            </p>
-            <p className="mobile-copy-measure mt-4 max-w-[21rem] break-words text-[14.5px] leading-relaxed text-taupe md:max-w-2xl md:text-lg lg:mx-0">
-              AQION Labs is building agentic AI solutions that combine reasoning, business context and workflow execution to perform meaningful work across customer and business operations.
-            </p>
-            <ul className="mt-7 hidden max-w-2xl space-y-4 md:mt-8 md:block">
-              {[
-                { k: 'Not more AI demos', v: "Businesses don't need another demo. They need AI that answers customers, understands the organization, works across existing systems and reliably completes everyday tasks." },
-                { k: 'AI employees, not wrappers', v: 'We build specialized AI workers on one shared platform — AI runtime, business memory, workflow engine and enterprise controls — not isolated chatbots bolted onto every department.' },
-                { k: 'Practical for the region', v: 'AQION was created to make the shift from experimentation to real, measurable work practical for businesses across the UAE and GCC.' },
-              ].map((item) => (
-                <li key={item.k} className="flex gap-3 text-left">
-                  <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-[#4f46e5] to-[#9333ea]" />
-                  <p className="text-base leading-relaxed text-taupe">
-                    <span className="font-medium text-ink">{item.k}:</span> {item.v}
-                  </p>
-                </li>
-              ))}
-            </ul>
-            <div className="mobile-center-row mt-7 flex max-w-full flex-col gap-3 sm:flex-row md:mt-9 lg:justify-start">
-              <button
-                onClick={() => onNavigate(PageType.CONTACT)}
-                className="mobile-action inline-flex min-h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-medium text-bone transition-colors hover:bg-petrolDeep sm:w-auto md:px-7 md:py-4"
-              >
-                Start a build conversation <ArrowUpRight className="h-4 w-4" />
-              </button>
-              <button
-                onClick={() => onNavigate(PageType.PRODUCT_AQIONVOX)}
-                className="mobile-action inline-flex min-h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-hairline bg-paper px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-ink/30 sm:w-auto md:px-7 md:py-4"
-              >
-                Explore AQION VOX
-              </button>
-            </div>
-          </div>
-
-          <div className="hidden lg:col-span-5 lg:block">
-            <div className="rounded-[34px] border border-hairline bg-white/74 p-6 shadow-[0_28px_90px_-42px_rgba(28,25,23,0.35)] backdrop-blur-md">
-              <div className="rounded-[26px] bg-[#0d0d10] p-7 text-bone">
-                <div className="mb-12 flex items-center justify-between">
-                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-bone/55">Operating from</span>
-                  <span className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-xs text-petrol">UAE</span>
-                </div>
-                <div className="mb-10 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#4f46e5] to-[#9333ea] text-white shadow-[0_18px_36px_-22px_rgba(79,70,229,0.9)]">
-                  <Globe className="h-8 w-8" strokeWidth={1.4} />
-                </div>
-                <h2 className="font-display text-4xl leading-tight">
-                  Built for the market where AI adoption, regulation and ambition move fastest.
-                </h2>
-                <p className="mt-5 text-bone/66 leading-relaxed">
-                  We align with the UAE's digital economy goals by turning AI from experimentation into deployable infrastructure for private and regulated teams.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* OUR APPROACH */}
       <section className="mobile-section-tight border-b border-hairline bg-parchment/50 py-20 md:py-28">

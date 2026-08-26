@@ -122,7 +122,7 @@ const Contact: React.FC = () => {
        <div className="pointer-events-none fixed inset-0 z-0 bg-hairline-grid opacity-80"></div>
 
        <section className="mesh-bg mobile-section-tight relative z-10 overflow-hidden border-b border-hairline px-5 py-20 sm:px-6 md:py-28">
-           <ServiceMotionBackdrop className="mobile-visual-reduce opacity-50" />
+           <ServiceMotionBackdrop className="opacity-50" />
            <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-bone/84 via-bone/70 to-bone/92" />
            <div aria-hidden className="absolute inset-0 bg-hairline-grid opacity-25" />
            <div aria-hidden className="absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-petrol/10 blur-[120px]" />

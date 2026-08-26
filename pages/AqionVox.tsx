@@ -153,7 +153,7 @@ const AqionVox: React.FC<AqionVoxProps> = ({ onNavigate }) => {
         id="live-dashboard"
         className="mobile-section-tight relative z-10 scroll-mt-24 overflow-hidden border-t border-hairline bg-parchment/40 px-5 py-20 sm:px-6 md:py-28"
       >
-        <ServiceMotionBackdrop className="mobile-visual-reduce opacity-40" />
+        <ServiceMotionBackdrop className="opacity-40" />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-bone/82 via-bone/62 to-bone/90" />
 
         <div className="relative z-10 mx-auto max-w-7xl">

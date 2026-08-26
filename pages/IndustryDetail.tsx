@@ -22,7 +22,7 @@ import {
   Workflow,
   type LucideIcon,
 } from 'lucide-react';
-import { IndustryMotionBackdrop, ServiceMotionBackdrop } from '../components/OptimizedHeroMotion';
+import { ServiceMotionBackdrop } from '../components/OptimizedHeroMotion';
 
 interface IndustryDetailProps {
   data: IndustryPageData;
@@ -114,29 +114,12 @@ const solutionGroups = [
   { key: 'governance', title: 'Governance controls', icon: Shield },
 ] as const;
 
-const industryMotionAssets: Record<string, string> = {
-  Healthcare: '/industryhero.svg',
-  Retail: '/industryhero.svg',
-  Government: '/industryhero.svg',
-  Logistics: '/industryhero.svg',
-  'Real Estate': '/industryhero2.svg',
-  'Financial Services': '/industryhero2.svg',
-  'Legal Services': '/industryhero2.svg',
-  'Architecture & Planning': '/industryhero2.svg',
-  Education: 'service-motion',
-  Hospitality: 'service-motion',
-  'Media & Events': 'service-motion',
-  'Marketing & Design': 'service-motion',
-};
-
 const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [data]);
 
   const HeroIcon = iconMap[data.title] || Building2;
-  const industryMotionAsset = industryMotionAssets[data.title] || '/industryhero.svg';
-  const useServiceMotion = industryMotionAsset === 'service-motion';
   const copy = useCaseContext[data.title] || {
     headline: data.headline,
     context: data.context,
@@ -147,11 +130,7 @@ const IndustryDetail: React.FC<IndustryDetailProps> = ({ data, onNavigate }) => 
   return (
     <div className="mesh-bg min-h-screen overflow-x-hidden pt-20 font-sans text-ink">
       <section className="mobile-section-tight relative z-10 flex min-h-0 items-center overflow-hidden border-b border-hairline mesh-bg py-20 md:min-h-[calc(100vh-5rem)]">
-        {useServiceMotion ? (
-          <ServiceMotionBackdrop className="opacity-70 mobile-visual-reduce" />
-        ) : (
-          <IndustryMotionBackdrop src={industryMotionAsset} className="mobile-visual-reduce opacity-[0.55]" />
-        )}
+        <ServiceMotionBackdrop className="opacity-70" />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-bone/88 via-bone/72 to-bone/94" />
         <div aria-hidden className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-petrol/10 blur-[110px]" />
 

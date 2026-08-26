@@ -88,6 +88,10 @@ try {
       .replace(/<meta property="twitter:description"[^>]*>/, `<meta property="twitter:description" content="${esc(description)}" />`)
       .replace(/<meta property="twitter:url"[^>]*>/, `<meta property="twitter:url" content="${url}" />`)
       .replace(/<link rel="canonical"[^>]*>/, `<link rel="canonical" href="${url}" />`)
+      // The wave ribbon is a shared asset the browser fetches once and caches.
+      // Chrome dumps the live DOM, so without this every page would carry its
+      // own serialised copy — about 190KB each, on all 55 of them.
+      .replace(/<svg[^>]*viewBox="0 0 1080 653"[\s\S]*?<\/svg>/g, '')
       .replace('</head>', `  <script type="application/ld+json">${JSON.stringify(ld)}</script>\n</head>`);
 
     const out = route === '/' ? join(DIST, 'index.html') : join(DIST, route.slice(1), 'index.html');

@@ -1,31 +1,47 @@
 import { useEffect, useId, useMemo, useState } from 'react';
-import waveMarkup from '../assets/service-motion.svg?raw';
 
 /**
- * The wave ribbon — the artwork from `service-motion.svg`, drawn inline.
+ * The wave ribbon — the artwork from `service-motion.svg`.
  *
- * The motion comes from the file's own SMIL `<animate>` elements. Those run
- * everywhere when the SVG is part of the host document; it is only when the
- * same file is referenced through `<img>` or `<object>` that mobile engines
- * freeze it on the first frame. So the markup is inlined rather than fetched:
- * the animation is the browser's normal SMIL path on every engine, and there
- * is no second request to lose to cache or race conditions.
+ * Two constraints pull against each other here.
  *
- * The bundled copy is the source file with its unused `<defs>` duplicate of the
- * ribbon removed — 190KB of markup, ~5KB over the wire once compressed.
+ * The motion is 24 SMIL `<animate>` elements, and mobile engines freeze SMIL
+ * whenever the SVG is a nested document — referenced through `<img>` or
+ * `<object>`. The markup therefore has to live in the host document.
+ *
+ * But it cannot be *bundled* into the document either. Inlined at build time it
+ * lands in all 55 prerendered pages, taking `index.html` from 11KB to 502KB and
+ * re-downloading the same artwork on every navigation.
+ *
+ * So the file is fetched once and injected inline: one request, shared by every
+ * ribbon on every page and served from cache after the first, with the markup
+ * still sitting in the host document where SMIL runs. `index.html` preloads it
+ * so the request starts while the head is parsing rather than at first render.
  */
+
+const SRC = '/service-motion.min.svg';
 
 /** Intrinsic viewBox of the artwork; the wrapper holds this ratio. */
 const RATIO = '1080 / 653';
 
-/** The token `assets/service-motion.svg` carries in place of its clip-path id. */
+/** The token the file carries in place of its clip-path id. */
 const CLIP_TOKEN = /__WAVE_CLIP__/g;
 
 /**
- * SMIL ignores `prefers-reduced-motion`, so the still frame is the same markup
- * with the timing elements removed — each path holds its opening `d`.
+ * One request for the whole session. Every ribbon awaits the same promise, so
+ * mounting three of them does not fetch three copies.
  */
-const STILL_MARKUP = waveMarkup.replace(/<animate\b[^>]*\/>/g, '');
+let pending: Promise<string> | null = null;
+
+function loadWave(): Promise<string> {
+  if (!pending) {
+    pending = fetch(SRC)
+      .then((response) => (response.ok ? response.text() : ''))
+      // A failed fetch leaves the decoration absent rather than breaking a page.
+      .catch(() => '');
+  }
+  return pending;
+}
 
 export default function WaveMotion({
   className = '',
@@ -36,7 +52,18 @@ export default function WaveMotion({
 }) {
   // Several ribbons can share a page, and each needs its own clip-path id.
   const clipId = `wave-clip-${useId().replace(/[^a-zA-Z0-9]/g, '')}`;
+  const [markup, setMarkup] = useState('');
   const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+    loadWave().then((text) => {
+      if (active) setMarkup(text);
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   useEffect(() => {
     const query = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -47,10 +74,13 @@ export default function WaveMotion({
     return () => query.removeEventListener('change', onChange);
   }, []);
 
-  const html = useMemo(
-    () => (reduceMotion ? STILL_MARKUP : waveMarkup).replace(CLIP_TOKEN, clipId),
-    [clipId, reduceMotion],
-  );
+  const html = useMemo(() => {
+    if (!markup) return '';
+    // SMIL ignores `prefers-reduced-motion`, so the still frame is the same
+    // markup with the timing elements removed — each path holds its opening `d`.
+    const source = reduceMotion ? markup.replace(/<animate\b[^>]*\/>/g, '') : markup;
+    return source.replace(CLIP_TOKEN, clipId);
+  }, [markup, reduceMotion, clipId]);
 
   return (
     <div
